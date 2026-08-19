@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-08-19 17:33:07",
+  "updated_at": "2026-08-19 17:38:27",
   "year": 2026,
   "month": 8,
   "members": [
@@ -8,7 +8,7 @@
       "nickname": "시조새",
       "gender": "m",
       "birthdate": "1995-12-09",
-      "role": null,
+      "role": "수장",
       "team": "JSA",
       "balloons": 2906404
     },
@@ -17,7 +17,7 @@
       "nickname": "조기석",
       "gender": "m",
       "birthdate": "1992-06-15",
-      "role": null,
+      "role": "",
       "team": "JSA",
       "balloons": 84800
     },
@@ -26,7 +26,7 @@
       "nickname": "홍구",
       "gender": "m",
       "birthdate": "1994-07-19",
-      "role": null,
+      "role": "",
       "team": "JSA",
       "balloons": 44332
     },
@@ -35,7 +35,7 @@
       "nickname": "김성대",
       "gender": "m",
       "birthdate": "1992-04-23",
-      "role": null,
+      "role": "",
       "team": "JSA",
       "balloons": 122110
     },
@@ -44,7 +44,7 @@
       "nickname": "구성훈",
       "gender": "m",
       "birthdate": "1989-07-21",
-      "role": null,
+      "role": "",
       "team": "JSA",
       "balloons": 57371
     },
@@ -53,7 +53,7 @@
       "nickname": "김영진",
       "gender": "m",
       "birthdate": "1995-05-24",
-      "role": null,
+      "role": "",
       "team": "JSA",
       "balloons": 77055
     },
@@ -62,7 +62,7 @@
       "nickname": "김병수",
       "gender": "m",
       "birthdate": "1994-01-27",
-      "role": null,
+      "role": "",
       "team": "JSA",
       "balloons": 79774
     },
@@ -71,7 +71,7 @@
       "nickname": "김민우",
       "gender": "m",
       "birthdate": "1990-02-03",
-      "role": null,
+      "role": "",
       "team": "JSA",
       "balloons": 82880
     },
@@ -80,7 +80,7 @@
       "nickname": "하블리",
       "gender": "f",
       "birthdate": "1997-12-11",
-      "role": null,
+      "role": "",
       "team": "JSA",
       "balloons": 188836
     },
@@ -89,7 +89,7 @@
       "nickname": "소심",
       "gender": "f",
       "birthdate": "1995-04-26",
-      "role": null,
+      "role": "",
       "team": "JSA",
       "balloons": 94634
     },
@@ -98,7 +98,7 @@
       "nickname": "라미",
       "gender": "f",
       "birthdate": "1996-09-09",
-      "role": null,
+      "role": "",
       "team": "JSA",
       "balloons": 88796
     },
@@ -107,7 +107,7 @@
       "nickname": "나린",
       "gender": "f",
       "birthdate": "1996-11-27",
-      "role": null,
+      "role": "",
       "team": "JSA",
       "balloons": 91774
     },
@@ -116,7 +116,7 @@
       "nickname": "려원",
       "gender": "f",
       "birthdate": "2001-01-03",
-      "role": null,
+      "role": "",
       "team": "JSA",
       "balloons": 131337
     },
@@ -125,7 +125,7 @@
       "nickname": "쟈닌",
       "gender": "f",
       "birthdate": "1997-07-15",
-      "role": null,
+      "role": "",
       "team": "JSA",
       "balloons": 75382
     },
@@ -134,7 +134,7 @@
       "nickname": "백원이야",
       "gender": "f",
       "birthdate": "1996-01-06",
-      "role": null,
+      "role": "",
       "team": "JSA",
       "balloons": 50670
     },
@@ -143,7 +143,7 @@
       "nickname": "모비",
       "gender": "f",
       "birthdate": "2001-08-18",
-      "role": null,
+      "role": "",
       "team": "JSA",
       "balloons": 15902
     },
@@ -152,7 +152,7 @@
       "nickname": "미진이",
       "gender": "f",
       "birthdate": "2001-08-24",
-      "role": null,
+      "role": "",
       "team": "JSA",
       "balloons": 51393
     },
@@ -161,16 +161,16 @@
       "nickname": "타마양",
       "gender": "f",
       "birthdate": "2001-04-23",
-      "role": null,
+      "role": "",
       "team": "JSA",
-      "balloons": 38546
+      "balloons": 38759
     },
     {
       "id": "kidsaoq",
       "nickname": "떠아",
       "gender": "f",
       "birthdate": "1999-12-09",
-      "role": null,
+      "role": "",
       "team": "JSA",
       "balloons": 55779
     },
@@ -179,7 +179,7 @@
       "nickname": "김바다",
       "gender": "f",
       "birthdate": "2000-10-16",
-      "role": null,
+      "role": "",
       "team": "JSA",
       "balloons": 72018
     },
@@ -188,7 +188,7 @@
       "nickname": "휘연",
       "gender": "f",
       "birthdate": "1996-08-31",
-      "role": null,
+      "role": "",
       "team": "JSA",
       "balloons": 44130
     },
@@ -197,7 +197,7 @@
       "nickname": "흑운장",
       "gender": "m",
       "birthdate": "1988-03-02",
-      "role": null,
+      "role": "수장",
       "team": "흑카데미",
       "balloons": 238180
     },
@@ -206,7 +206,7 @@
       "nickname": "유승곤",
       "gender": "m",
       "birthdate": "1993-10-14",
-      "role": null,
+      "role": "",
       "team": "흑카데미",
       "balloons": 21227
     },
@@ -215,7 +215,7 @@
       "nickname": "배호딱",
       "gender": "m",
       "birthdate": "1995-11-27",
-      "role": null,
+      "role": "",
       "team": "흑카데미",
       "balloons": 15571
     },
@@ -224,7 +224,7 @@
       "nickname": "민찬기",
       "gender": "m",
       "birthdate": "1989-12-17",
-      "role": null,
+      "role": "",
       "team": "흑카데미",
       "balloons": 14782
     },
@@ -233,7 +233,7 @@
       "nickname": "김영주",
       "gender": "m",
       "birthdate": "1994-03-18",
-      "role": null,
+      "role": "",
       "team": "흑카데미",
       "balloons": 27635
     },
@@ -242,7 +242,7 @@
       "nickname": "팔레트",
       "gender": "m",
       "birthdate": "1994-04-02",
-      "role": null,
+      "role": "",
       "team": "흑카데미",
       "balloons": 20459
     },
@@ -251,7 +251,7 @@
       "nickname": "빡재",
       "gender": "m",
       "birthdate": "1991-07-11",
-      "role": null,
+      "role": "",
       "team": "흑카데미",
       "balloons": 67112
     },
@@ -260,7 +260,7 @@
       "nickname": "히엉",
       "gender": "f",
       "birthdate": "1996-11-02",
-      "role": null,
+      "role": "",
       "team": "흑카데미",
       "balloons": 64778
     },
@@ -269,7 +269,7 @@
       "nickname": "우힝이",
       "gender": "f",
       "birthdate": "1992-02-15",
-      "role": null,
+      "role": "",
       "team": "흑카데미",
       "balloons": 45523
     },
@@ -278,7 +278,7 @@
       "nickname": "나예리",
       "gender": "f",
       "birthdate": "1995-05-30",
-      "role": null,
+      "role": "",
       "team": "흑카데미",
       "balloons": 130517
     },
@@ -287,7 +287,7 @@
       "nickname": "링가",
       "gender": "f",
       "birthdate": "1997-11-05",
-      "role": null,
+      "role": "",
       "team": "흑카데미",
       "balloons": 20500
     },
@@ -296,7 +296,7 @@
       "nickname": "유이",
       "gender": "f",
       "birthdate": "1991-11-21",
-      "role": null,
+      "role": "",
       "team": "흑카데미",
       "balloons": 66415
     },
@@ -305,7 +305,7 @@
       "nickname": "메옹",
       "gender": "f",
       "birthdate": "2001-04-03",
-      "role": null,
+      "role": "",
       "team": "흑카데미",
       "balloons": 55965
     },
@@ -314,7 +314,7 @@
       "nickname": "선정은",
       "gender": "f",
       "birthdate": "1997-10-07",
-      "role": null,
+      "role": "",
       "team": "흑카데미",
       "balloons": 40862
     },
@@ -323,7 +323,7 @@
       "nickname": "경콩",
       "gender": "f",
       "birthdate": "1999-05-16",
-      "role": null,
+      "role": "",
       "team": "흑카데미",
       "balloons": 41600
     },
@@ -332,7 +332,7 @@
       "nickname": "갱이다",
       "gender": "f",
       "birthdate": "2002-05-04",
-      "role": null,
+      "role": "",
       "team": "흑카데미",
       "balloons": 69072
     },
@@ -341,7 +341,7 @@
       "nickname": "제갈츄빈",
       "gender": "f",
       "birthdate": "1996-10-18",
-      "role": null,
+      "role": "",
       "team": "흑카데미",
       "balloons": 26834
     },
@@ -350,7 +350,7 @@
       "nickname": "오세은",
       "gender": "f",
       "birthdate": "2004-12-25",
-      "role": null,
+      "role": "",
       "team": "흑카데미",
       "balloons": 18615
     },
@@ -359,7 +359,7 @@
       "nickname": "김유나",
       "gender": "f",
       "birthdate": "2003-10-24",
-      "role": null,
+      "role": "",
       "team": "흑카데미",
       "balloons": 26534
     },
@@ -368,7 +368,7 @@
       "nickname": "가영",
       "gender": "f",
       "birthdate": "1997-04-11",
-      "role": null,
+      "role": "",
       "team": "흑카데미",
       "balloons": 73033
     },
@@ -377,7 +377,7 @@
       "nickname": "케이",
       "gender": "m",
       "birthdate": "1989-11-23",
-      "role": null,
+      "role": "수장",
       "team": "케이대",
       "balloons": 10115426
     },
@@ -386,7 +386,7 @@
       "nickname": "정영재",
       "gender": "m",
       "birthdate": "1993-01-24",
-      "role": null,
+      "role": "",
       "team": "케이대",
       "balloons": 69145
     },
@@ -395,7 +395,7 @@
       "nickname": "장윤철",
       "gender": "m",
       "birthdate": "1993-04-01",
-      "role": null,
+      "role": "",
       "team": "케이대",
       "balloons": 24187
     },
@@ -404,7 +404,7 @@
       "nickname": "김경모",
       "gender": "m",
       "birthdate": "1988-09-08",
-      "role": null,
+      "role": "",
       "team": "케이대",
       "balloons": 52906
     },
@@ -413,7 +413,7 @@
       "nickname": "홍덕",
       "gender": "m",
       "birthdate": "1995-08-21",
-      "role": null,
+      "role": "",
       "team": "케이대",
       "balloons": 64986
     },
@@ -422,7 +422,7 @@
       "nickname": "정민기",
       "gender": "m",
       "birthdate": "1995-03-16",
-      "role": null,
+      "role": "",
       "team": "케이대",
       "balloons": 67859
     },
@@ -431,7 +431,7 @@
       "nickname": "고석현",
       "gender": "m",
       "birthdate": "1988-01-15",
-      "role": null,
+      "role": "",
       "team": "케이대",
       "balloons": 76661
     },
@@ -440,7 +440,7 @@
       "nickname": "김학수",
       "gender": "m",
       "birthdate": "1989-04-23",
-      "role": null,
+      "role": "",
       "team": "케이대",
       "balloons": 191880
     },
@@ -449,7 +449,7 @@
       "nickname": "유민",
       "gender": "m",
       "birthdate": "2002-03-02",
-      "role": null,
+      "role": "",
       "team": "케이대",
       "balloons": 36515
     },
@@ -458,7 +458,7 @@
       "nickname": "정소윤",
       "gender": "f",
       "birthdate": "1988-01-02",
-      "role": null,
+      "role": "",
       "team": "케이대",
       "balloons": 78626
     },
@@ -467,7 +467,7 @@
       "nickname": "보혜",
       "gender": "f",
       "birthdate": "1997-03-20",
-      "role": null,
+      "role": "",
       "team": "케이대",
       "balloons": 0
     },
@@ -476,7 +476,7 @@
       "nickname": "슬돌이",
       "gender": "f",
       "birthdate": "1993-03-16",
-      "role": null,
+      "role": "",
       "team": "케이대",
       "balloons": 155416
     },
@@ -485,7 +485,7 @@
       "nickname": "늑대채린",
       "gender": "f",
       "birthdate": "1998-11-12",
-      "role": null,
+      "role": "",
       "team": "케이대",
       "balloons": 0
     },
@@ -494,7 +494,7 @@
       "nickname": "링고",
       "gender": "f",
       "birthdate": "1997-11-05",
-      "role": null,
+      "role": "",
       "team": "케이대",
       "balloons": 123006
     },
@@ -503,7 +503,7 @@
       "nickname": "내가먼지",
       "gender": "f",
       "birthdate": "2001-02-17",
-      "role": null,
+      "role": "",
       "team": "케이대",
       "balloons": 175717
     },
@@ -512,16 +512,16 @@
       "nickname": "박하악",
       "gender": "f",
       "birthdate": "2001-03-26",
-      "role": null,
+      "role": "",
       "team": "케이대",
-      "balloons": 130790
+      "balloons": 131662
     },
     {
       "id": "wittyku",
       "nickname": "냥수디",
       "gender": "f",
       "birthdate": "2001-09-24",
-      "role": null,
+      "role": "",
       "team": "케이대",
       "balloons": 198580
     },
@@ -530,7 +530,7 @@
       "nickname": "정서린",
       "gender": "f",
       "birthdate": "1999-07-05",
-      "role": null,
+      "role": "",
       "team": "케이대",
       "balloons": 100342
     },
@@ -539,7 +539,7 @@
       "nickname": "단비송",
       "gender": "f",
       "birthdate": "2001-03-05",
-      "role": null,
+      "role": "",
       "team": "케이대",
       "balloons": 83050
     },
@@ -548,7 +548,7 @@
       "nickname": "연또",
       "gender": "f",
       "birthdate": "1997-07-14",
-      "role": null,
+      "role": "",
       "team": "케이대",
       "balloons": 68495
     },
@@ -557,7 +557,7 @@
       "nickname": "또아",
       "gender": "f",
       "birthdate": "2002-10-13",
-      "role": null,
+      "role": "",
       "team": "케이대",
       "balloons": 55457
     },
@@ -566,7 +566,7 @@
       "nickname": "김윤환",
       "gender": "m",
       "birthdate": "1989-06-13",
-      "role": null,
+      "role": "수장",
       "team": "캄몬스타즈",
       "balloons": 351487
     },
@@ -575,7 +575,7 @@
       "nickname": "김민철",
       "gender": "m",
       "birthdate": "1991-12-10",
-      "role": null,
+      "role": "",
       "team": "캄몬스타즈",
       "balloons": 178543
     },
@@ -584,7 +584,7 @@
       "nickname": "변현제",
       "gender": "m",
       "birthdate": "1994-01-28",
-      "role": null,
+      "role": "",
       "team": "캄몬스타즈",
       "balloons": 45763
     },
@@ -593,7 +593,7 @@
       "nickname": "사테",
       "gender": "m",
       "birthdate": "1992-07-16",
-      "role": null,
+      "role": "",
       "team": "캄몬스타즈",
       "balloons": 135110
     },
@@ -602,7 +602,7 @@
       "nickname": "박준오",
       "gender": "m",
       "birthdate": "1992-06-24",
-      "role": null,
+      "role": "",
       "team": "캄몬스타즈",
       "balloons": 99133
     },
@@ -611,7 +611,7 @@
       "nickname": "지동원",
       "gender": "m",
       "birthdate": "1993-02-04",
-      "role": null,
+      "role": "",
       "team": "캄몬스타즈",
       "balloons": 77782
     },
@@ -620,7 +620,7 @@
       "nickname": "배성흠",
       "gender": "m",
       "birthdate": "1991-08-17",
-      "role": null,
+      "role": "",
       "team": "캄몬스타즈",
       "balloons": 227938
     },
@@ -629,7 +629,7 @@
       "nickname": "왜냐맨",
       "gender": "m",
       "birthdate": "1991-06-17",
-      "role": null,
+      "role": "",
       "team": "캄몬스타즈",
       "balloons": 124770
     },
@@ -638,7 +638,7 @@
       "nickname": "박수범",
       "gender": "m",
       "birthdate": "1990-12-10",
-      "role": null,
+      "role": "",
       "team": "캄몬스타즈",
       "balloons": 166495
     },
@@ -647,7 +647,7 @@
       "nickname": "남덕선",
       "gender": "f",
       "birthdate": "1994-02-27",
-      "role": null,
+      "role": "",
       "team": "캄몬스타즈",
       "balloons": 147010
     },
@@ -656,16 +656,16 @@
       "nickname": "지두두",
       "gender": "f",
       "birthdate": "1997-09-01",
-      "role": null,
+      "role": "",
       "team": "캄몬스타즈",
-      "balloons": 287768
+      "balloons": 287799
     },
     {
       "id": "freshtomato",
       "nickname": "토마토",
       "gender": "f",
       "birthdate": "1999-08-05",
-      "role": null,
+      "role": "",
       "team": "캄몬스타즈",
       "balloons": 452877
     },
@@ -674,7 +674,7 @@
       "nickname": "햇살",
       "gender": "f",
       "birthdate": "1996-11-21",
-      "role": null,
+      "role": "",
       "team": "캄몬스타즈",
       "balloons": 142467
     },
@@ -683,16 +683,16 @@
       "nickname": "찌킹",
       "gender": "f",
       "birthdate": "1997-05-14",
-      "role": null,
+      "role": "",
       "team": "캄몬스타즈",
-      "balloons": 159699
+      "balloons": 160109
     },
     {
       "id": "soju2022",
       "nickname": "소주양",
       "gender": "f",
       "birthdate": "1999-02-22",
-      "role": null,
+      "role": "",
       "team": "캄몬스타즈",
       "balloons": 106072
     },
@@ -701,7 +701,7 @@
       "nickname": "치리",
       "gender": "f",
       "birthdate": "2000-12-02",
-      "role": null,
+      "role": "",
       "team": "캄몬스타즈",
       "balloons": 171301
     },
@@ -710,7 +710,7 @@
       "nickname": "주하랑",
       "gender": "f",
       "birthdate": "1999-10-15",
-      "role": null,
+      "role": "",
       "team": "캄몬스타즈",
       "balloons": 177950
     },
@@ -719,7 +719,7 @@
       "nickname": "비타밍",
       "gender": "f",
       "birthdate": "2000-01-20",
-      "role": null,
+      "role": "",
       "team": "캄몬스타즈",
       "balloons": 193592
     },
@@ -728,7 +728,7 @@
       "nickname": "임조이",
       "gender": "f",
       "birthdate": "1998-11-11",
-      "role": null,
+      "role": "",
       "team": "캄몬스타즈",
       "balloons": 114908
     },
@@ -737,7 +737,7 @@
       "nickname": "아리송이",
       "gender": "f",
       "birthdate": "1999-01-02",
-      "role": null,
+      "role": "",
       "team": "캄몬스타즈",
       "balloons": 150986
     },
@@ -746,7 +746,7 @@
       "nickname": "먼진",
       "gender": "f",
       "birthdate": "2001-01-13",
-      "role": null,
+      "role": "",
       "team": "캄몬스타즈",
       "balloons": 233911
     },
@@ -755,7 +755,7 @@
       "nickname": "낭니",
       "gender": "f",
       "birthdate": "1999-08-11",
-      "role": null,
+      "role": "",
       "team": "캄몬스타즈",
       "balloons": 675511
     },
@@ -764,7 +764,7 @@
       "nickname": "병하",
       "gender": "m",
       "birthdate": "1992-12-27",
-      "role": null,
+      "role": "수장",
       "team": "엠비대",
       "balloons": 286296
     },
@@ -773,16 +773,16 @@
       "nickname": "마예준",
       "gender": "m",
       "birthdate": "1984-12-19",
-      "role": null,
+      "role": "수장",
       "team": "엠비대",
-      "balloons": 49736
+      "balloons": 49865
     },
     {
       "id": "lyh8808",
       "nickname": "이영한",
       "gender": "m",
       "birthdate": "1991-08-24",
-      "role": null,
+      "role": "",
       "team": "엠비대",
       "balloons": 78832
     },
@@ -791,7 +791,7 @@
       "nickname": "만두호성",
       "gender": "m",
       "birthdate": "1995-08-30",
-      "role": null,
+      "role": "",
       "team": "엠비대",
       "balloons": 2933
     },
@@ -800,7 +800,7 @@
       "nickname": "얍삽e",
       "gender": "m",
       "birthdate": "1992-03-05",
-      "role": null,
+      "role": "",
       "team": "엠비대",
       "balloons": 5977
     },
@@ -809,7 +809,7 @@
       "nickname": "이창우",
       "gender": "m",
       "birthdate": "1994-11-08",
-      "role": null,
+      "role": "",
       "team": "엠비대",
       "balloons": 19836
     },
@@ -818,7 +818,7 @@
       "nickname": "정경두",
       "gender": "m",
       "birthdate": "1992-10-15",
-      "role": null,
+      "role": "",
       "team": "엠비대",
       "balloons": 35106
     },
@@ -827,7 +827,7 @@
       "nickname": "최재성",
       "gender": "m",
       "birthdate": "1994-03-01",
-      "role": null,
+      "role": "",
       "team": "엠비대",
       "balloons": 4811
     },
@@ -836,7 +836,7 @@
       "nickname": "빡죠스",
       "gender": "m",
       "birthdate": "1992-11-27",
-      "role": null,
+      "role": "",
       "team": "엠비대",
       "balloons": 12346
     },
@@ -845,7 +845,7 @@
       "nickname": "토스봇",
       "gender": "m",
       "birthdate": "1989-11-26",
-      "role": null,
+      "role": "",
       "team": "엠비대",
       "balloons": 8281
     },
@@ -854,7 +854,7 @@
       "nickname": "카히리",
       "gender": "f",
       "birthdate": "1996-10-29",
-      "role": null,
+      "role": "",
       "team": "엠비대",
       "balloons": 23595
     },
@@ -863,7 +863,7 @@
       "nickname": "구보라",
       "gender": "f",
       "birthdate": "1999-04-27",
-      "role": null,
+      "role": "",
       "team": "엠비대",
       "balloons": 65016
     },
@@ -872,7 +872,7 @@
       "nickname": "최세상",
       "gender": "f",
       "birthdate": "1999-02-02",
-      "role": null,
+      "role": "",
       "team": "엠비대",
       "balloons": 55931
     },
@@ -881,7 +881,7 @@
       "nickname": "시녕뭉",
       "gender": "f",
       "birthdate": "1996-02-16",
-      "role": null,
+      "role": "",
       "team": "엠비대",
       "balloons": 26883
     },
@@ -890,7 +890,7 @@
       "nickname": "오하얀",
       "gender": "f",
       "birthdate": "1997-05-24",
-      "role": null,
+      "role": "",
       "team": "엠비대",
       "balloons": 55725
     },
@@ -899,7 +899,7 @@
       "nickname": "연수",
       "gender": "f",
       "birthdate": "1996-12-02",
-      "role": null,
+      "role": "",
       "team": "엠비대",
       "balloons": 50053
     },
@@ -908,7 +908,7 @@
       "nickname": "김채이",
       "gender": "f",
       "birthdate": "1997-04-23",
-      "role": null,
+      "role": "",
       "team": "엠비대",
       "balloons": 56517
     },
@@ -917,7 +917,7 @@
       "nickname": "정다닝",
       "gender": "f",
       "birthdate": "2004-03-01",
-      "role": null,
+      "role": "",
       "team": "엠비대",
       "balloons": 50234
     },
@@ -926,7 +926,7 @@
       "nickname": "권아온",
       "gender": "f",
       "birthdate": "1997-05-30",
-      "role": null,
+      "role": "",
       "team": "엠비대",
       "balloons": 21526
     },
@@ -935,7 +935,7 @@
       "nickname": "햄희",
       "gender": "f",
       "birthdate": "2003-06-05",
-      "role": null,
+      "role": "",
       "team": "엠비대",
       "balloons": 20107
     },
@@ -944,7 +944,7 @@
       "nickname": "요구리",
       "gender": "f",
       "birthdate": "2002-11-13",
-      "role": null,
+      "role": "",
       "team": "엠비대",
       "balloons": 32127
     },
@@ -953,7 +953,7 @@
       "nickname": "와이퍼",
       "gender": "m",
       "birthdate": "1994-06-28",
-      "role": null,
+      "role": "수장",
       "team": "와플대",
       "balloons": 116962
     },
@@ -962,7 +962,7 @@
       "nickname": "김수식",
       "gender": "m",
       "birthdate": "1997-03-25",
-      "role": null,
+      "role": "",
       "team": "와플대",
       "balloons": 19353
     },
@@ -971,7 +971,7 @@
       "nickname": "쿨지지",
       "gender": "m",
       "birthdate": "1997-12-08",
-      "role": null,
+      "role": "",
       "team": "와플대",
       "balloons": 24046
     },
@@ -980,7 +980,7 @@
       "nickname": "전상욱",
       "gender": "m",
       "birthdate": "1987-02-21",
-      "role": null,
+      "role": "",
       "team": "와플대",
       "balloons": 22889
     },
@@ -989,7 +989,7 @@
       "nickname": "허유",
       "gender": "m",
       "birthdate": "1992-05-18",
-      "role": null,
+      "role": "",
       "team": "와플대",
       "balloons": 39591
     },
@@ -998,7 +998,7 @@
       "nickname": "박성준",
       "gender": "m",
       "birthdate": "1986-12-18",
-      "role": null,
+      "role": "",
       "team": "와플대",
       "balloons": 18131
     },
@@ -1007,7 +1007,7 @@
       "nickname": "최하니",
       "gender": "f",
       "birthdate": "1990-11-26",
-      "role": null,
+      "role": "",
       "team": "와플대",
       "balloons": 0
     },
@@ -1016,7 +1016,7 @@
       "nickname": "금선2",
       "gender": "f",
       "birthdate": "1998-05-19",
-      "role": null,
+      "role": "",
       "team": "와플대",
       "balloons": 6027
     },
@@ -1025,7 +1025,7 @@
       "nickname": "비재희",
       "gender": "f",
       "birthdate": "1996-10-04",
-      "role": null,
+      "role": "",
       "team": "와플대",
       "balloons": 77243
     },
@@ -1034,16 +1034,16 @@
       "nickname": "삐약삐약",
       "gender": "f",
       "birthdate": "1996-06-08",
-      "role": null,
+      "role": "",
       "team": "와플대",
-      "balloons": 122149
+      "balloons": 122151
     },
     {
       "id": "jjjjeong",
       "nickname": "태린",
       "gender": "f",
       "birthdate": "1992-07-09",
-      "role": null,
+      "role": "",
       "team": "와플대",
       "balloons": 14517
     },
@@ -1052,7 +1052,7 @@
       "nickname": "하이현",
       "gender": "f",
       "birthdate": "1997-09-07",
-      "role": null,
+      "role": "",
       "team": "와플대",
       "balloons": 30889
     },
@@ -1061,7 +1061,7 @@
       "nickname": "얌쭈",
       "gender": "f",
       "birthdate": "1995-06-17",
-      "role": null,
+      "role": "",
       "team": "와플대",
       "balloons": 23131
     },
@@ -1070,7 +1070,7 @@
       "nickname": "루다",
       "gender": "f",
       "birthdate": "1997-05-23",
-      "role": null,
+      "role": "",
       "team": "와플대",
       "balloons": 29181
     },
@@ -1079,7 +1079,7 @@
       "nickname": "구키",
       "gender": "f",
       "birthdate": "1996-11-16",
-      "role": null,
+      "role": "",
       "team": "와플대",
       "balloons": 51320
     },
@@ -1088,7 +1088,7 @@
       "nickname": "여지니",
       "gender": "f",
       "birthdate": "2005-07-01",
-      "role": null,
+      "role": "",
       "team": "와플대",
       "balloons": 7950
     },
@@ -1097,7 +1097,7 @@
       "nickname": "정중만",
       "gender": "m",
       "birthdate": "1994-01-15",
-      "role": null,
+      "role": "수장",
       "team": "수술대",
       "balloons": 123549
     },
@@ -1106,7 +1106,7 @@
       "nickname": "짭제",
       "gender": "m",
       "birthdate": "1995-08-22",
-      "role": null,
+      "role": "",
       "team": "수술대",
       "balloons": 44554
     },
@@ -1115,7 +1115,7 @@
       "nickname": "신상문",
       "gender": "m",
       "birthdate": "1989-11-21",
-      "role": null,
+      "role": "",
       "team": "수술대",
       "balloons": 84464
     },
@@ -1124,7 +1124,7 @@
       "nickname": "선우도현",
       "gender": "m",
       "birthdate": "1997-08-17",
-      "role": null,
+      "role": "",
       "team": "수술대",
       "balloons": 53030
     },
@@ -1133,7 +1133,7 @@
       "nickname": "김기덕",
       "gender": "m",
       "birthdate": "1991-01-02",
-      "role": null,
+      "role": "",
       "team": "수술대",
       "balloons": 37320
     },
@@ -1142,7 +1142,7 @@
       "nickname": "전제민",
       "gender": "m",
       "birthdate": "1993-08-21",
-      "role": null,
+      "role": "",
       "team": "수술대",
       "balloons": 26136
     },
@@ -1151,7 +1151,7 @@
       "nickname": "윤준석",
       "gender": "m",
       "birthdate": "1986-02-01",
-      "role": null,
+      "role": "",
       "team": "수술대",
       "balloons": 31217
     },
@@ -1160,7 +1160,7 @@
       "nickname": "이소룡",
       "gender": "m",
       "birthdate": "1993-11-21",
-      "role": null,
+      "role": "",
       "team": "수술대",
       "balloons": 95833
     },
@@ -1169,7 +1169,7 @@
       "nickname": "다린",
       "gender": "f",
       "birthdate": "1990-10-02",
-      "role": null,
+      "role": "",
       "team": "수술대",
       "balloons": 28177
     },
@@ -1178,7 +1178,7 @@
       "nickname": "공다츠",
       "gender": "f",
       "birthdate": "1998-11-22",
-      "role": null,
+      "role": "",
       "team": "수술대",
       "balloons": 55673
     },
@@ -1187,7 +1187,7 @@
       "nickname": "파찌",
       "gender": "f",
       "birthdate": "1988-06-25",
-      "role": null,
+      "role": "",
       "team": "수술대",
       "balloons": 184324
     },
@@ -1196,7 +1196,7 @@
       "nickname": "기나",
       "gender": "f",
       "birthdate": "1997-07-05",
-      "role": null,
+      "role": "",
       "team": "수술대",
       "balloons": 150484
     },
@@ -1205,7 +1205,7 @@
       "nickname": "몽순",
       "gender": "f",
       "birthdate": "1993-04-15",
-      "role": null,
+      "role": "",
       "team": "수술대",
       "balloons": 48938
     },
@@ -1214,7 +1214,7 @@
       "nickname": "깨림이",
       "gender": "f",
       "birthdate": "1997-04-29",
-      "role": null,
+      "role": "",
       "team": "수술대",
       "balloons": 76545
     },
@@ -1223,7 +1223,7 @@
       "nickname": "2라니",
       "gender": "f",
       "birthdate": "1994-10-13",
-      "role": null,
+      "role": "",
       "team": "수술대",
       "balloons": 103006
     },
@@ -1232,7 +1232,7 @@
       "nickname": "핑핑",
       "gender": "f",
       "birthdate": "1999-02-15",
-      "role": null,
+      "role": "",
       "team": "수술대",
       "balloons": 70851
     },
@@ -1241,7 +1241,7 @@
       "nickname": "밍가",
       "gender": "f",
       "birthdate": "1998-11-04",
-      "role": null,
+      "role": "",
       "team": "수술대",
       "balloons": 73012
     },
@@ -1250,7 +1250,7 @@
       "nickname": "밥새",
       "gender": "f",
       "birthdate": "2004-06-08",
-      "role": null,
+      "role": "",
       "team": "수술대",
       "balloons": 63233
     },
@@ -1259,7 +1259,7 @@
       "nickname": "면추가",
       "gender": "f",
       "birthdate": "2003-06-06",
-      "role": null,
+      "role": "",
       "team": "수술대",
       "balloons": 79322
     },
@@ -1268,7 +1268,7 @@
       "nickname": "헤요이",
       "gender": "f",
       "birthdate": "2000-01-20",
-      "role": null,
+      "role": "",
       "team": "수술대",
       "balloons": 54666
     },
@@ -1277,7 +1277,7 @@
       "nickname": "아링",
       "gender": "f",
       "birthdate": "2002-01-16",
-      "role": null,
+      "role": "",
       "team": "수술대",
       "balloons": 198732
     },
@@ -1286,7 +1286,7 @@
       "nickname": "봄덕이",
       "gender": "f",
       "birthdate": "1996-12-12",
-      "role": null,
+      "role": "",
       "team": "수술대",
       "balloons": 13917
     },
@@ -1295,7 +1295,7 @@
       "nickname": "온도이",
       "gender": "f",
       "birthdate": "2003-09-28",
-      "role": null,
+      "role": "",
       "team": "수술대",
       "balloons": 27814
     },
@@ -1304,7 +1304,7 @@
       "nickname": "기뉴다",
       "gender": "m",
       "birthdate": "1988-10-22",
-      "role": null,
+      "role": "수장",
       "team": "뉴캣슬",
       "balloons": 400632
     },
@@ -1313,7 +1313,7 @@
       "nickname": "박성균",
       "gender": "m",
       "birthdate": "1991-10-03",
-      "role": null,
+      "role": "",
       "team": "뉴캣슬",
       "balloons": 18626
     },
@@ -1322,7 +1322,7 @@
       "nickname": "도재욱",
       "gender": "m",
       "birthdate": "1989-10-06",
-      "role": null,
+      "role": "",
       "team": "뉴캣슬",
       "balloons": 200749
     },
@@ -1331,7 +1331,7 @@
       "nickname": "구라미스",
       "gender": "m",
       "birthdate": "1997-07-25",
-      "role": null,
+      "role": "",
       "team": "뉴캣슬",
       "balloons": 39002
     },
@@ -1340,7 +1340,7 @@
       "nickname": "김건욱",
       "gender": "m",
       "birthdate": "1995-03-26",
-      "role": null,
+      "role": "",
       "team": "뉴캣슬",
       "balloons": 90919
     },
@@ -1349,7 +1349,7 @@
       "nickname": "액션구드론",
       "gender": "m",
       "birthdate": "1993-12-12",
-      "role": null,
+      "role": "",
       "team": "뉴캣슬",
       "balloons": 33442
     },
@@ -1358,7 +1358,7 @@
       "nickname": "초난강",
       "gender": "m",
       "birthdate": "1997-01-18",
-      "role": null,
+      "role": "",
       "team": "뉴캣슬",
       "balloons": 48628
     },
@@ -1367,7 +1367,7 @@
       "nickname": "저그맨",
       "gender": "m",
       "birthdate": "1984-10-28",
-      "role": null,
+      "role": "",
       "team": "뉴캣슬",
       "balloons": 91534
     },
@@ -1376,7 +1376,7 @@
       "nickname": "트슈",
       "gender": "m",
       "birthdate": "1993-12-19",
-      "role": null,
+      "role": "",
       "team": "뉴캣슬",
       "balloons": 58455
     },
@@ -1385,7 +1385,7 @@
       "nickname": "박듀듀",
       "gender": "f",
       "birthdate": "1996-07-05",
-      "role": null,
+      "role": "",
       "team": "뉴캣슬",
       "balloons": 113293
     },
@@ -1394,7 +1394,7 @@
       "nickname": "키링",
       "gender": "f",
       "birthdate": "2000-04-19",
-      "role": null,
+      "role": "",
       "team": "뉴캣슬",
       "balloons": 112393
     },
@@ -1403,16 +1403,16 @@
       "nickname": "최도랑",
       "gender": "f",
       "birthdate": "1997-01-24",
-      "role": null,
+      "role": "",
       "team": "뉴캣슬",
-      "balloons": 168315
+      "balloons": 168317
     },
     {
       "id": "zzzz809",
       "nickname": "백갑숙",
       "gender": "f",
       "birthdate": "2003-06-18",
-      "role": null,
+      "role": "",
       "team": "뉴캣슬",
       "balloons": 98994
     },
@@ -1421,7 +1421,7 @@
       "nickname": "이아깽",
       "gender": "f",
       "birthdate": "1998-12-03",
-      "role": null,
+      "role": "",
       "team": "뉴캣슬",
       "balloons": 102764
     },
@@ -1430,7 +1430,7 @@
       "nickname": "진유성",
       "gender": "f",
       "birthdate": "2002-11-02",
-      "role": null,
+      "role": "",
       "team": "뉴캣슬",
       "balloons": 70980
     },
@@ -1439,7 +1439,7 @@
       "nickname": "막내현진",
       "gender": "f",
       "birthdate": "1998-04-23",
-      "role": null,
+      "role": "",
       "team": "뉴캣슬",
       "balloons": 169264
     },
@@ -1448,7 +1448,7 @@
       "nickname": "밍또얌",
       "gender": "f",
       "birthdate": "2002-02-10",
-      "role": null,
+      "role": "",
       "team": "뉴캣슬",
       "balloons": 100810
     },
@@ -1457,7 +1457,7 @@
       "nickname": "퀸주",
       "gender": "f",
       "birthdate": "2004-08-16",
-      "role": null,
+      "role": "",
       "team": "뉴캣슬",
       "balloons": 266040
     },
@@ -1466,7 +1466,7 @@
       "nickname": "냥냥코기",
       "gender": "f",
       "birthdate": "2001-11-02",
-      "role": null,
+      "role": "",
       "team": "뉴캣슬",
       "balloons": 72149
     },
@@ -1475,7 +1475,7 @@
       "nickname": "유즈",
       "gender": "f",
       "birthdate": "2002-02-09",
-      "role": null,
+      "role": "",
       "team": "뉴캣슬",
       "balloons": 111172
     },
@@ -1484,7 +1484,7 @@
       "nickname": "단솔",
       "gender": "f",
       "birthdate": "1996-03-02",
-      "role": null,
+      "role": "",
       "team": "뉴캣슬",
       "balloons": 44528
     },
@@ -1493,7 +1493,7 @@
       "nickname": "으니",
       "gender": "f",
       "birthdate": "2003-01-07",
-      "role": null,
+      "role": "",
       "team": "뉴캣슬",
       "balloons": 43138
     },
@@ -1502,7 +1502,7 @@
       "nickname": "하윤",
       "gender": "f",
       "birthdate": "2003-01-31",
-      "role": null,
+      "role": "",
       "team": "뉴캣슬",
       "balloons": 132415
     },
@@ -1511,7 +1511,7 @@
       "nickname": "뽀현욱",
       "gender": "m",
       "birthdate": "1990-02-23",
-      "role": null,
+      "role": "수장",
       "team": "BGM",
       "balloons": 127938
     },
@@ -1520,7 +1520,7 @@
       "nickname": "프발",
       "gender": "m",
       "birthdate": "1995-08-28",
-      "role": null,
+      "role": "",
       "team": "BGM",
       "balloons": 54497
     },
@@ -1529,7 +1529,7 @@
       "nickname": "김범수",
       "gender": "m",
       "birthdate": "1994-01-02",
-      "role": null,
+      "role": "",
       "team": "BGM",
       "balloons": 14184
     },
@@ -1538,7 +1538,7 @@
       "nickname": "김대한",
       "gender": "m",
       "birthdate": "1979-12-08",
-      "role": null,
+      "role": "",
       "team": "BGM",
       "balloons": 9304
     },
@@ -1547,7 +1547,7 @@
       "nickname": "이윤열",
       "gender": "m",
       "birthdate": "1984-11-20",
-      "role": null,
+      "role": "",
       "team": "BGM",
       "balloons": 12099
     },
@@ -1556,7 +1556,7 @@
       "nickname": "난수",
       "gender": "m",
       "birthdate": "1989-11-21",
-      "role": null,
+      "role": "",
       "team": "BGM",
       "balloons": 26441
     },
@@ -1565,16 +1565,16 @@
       "nickname": "안아",
       "gender": "f",
       "birthdate": "1993-04-02",
-      "role": null,
+      "role": "",
       "team": "BGM",
-      "balloons": 64663
+      "balloons": 64708
     },
     {
       "id": "s1on0106",
       "nickname": "김쵸아",
       "gender": "f",
       "birthdate": "1993-01-06",
-      "role": null,
+      "role": "",
       "team": "BGM",
       "balloons": 33324
     },
@@ -1583,7 +1583,7 @@
       "nickname": "뚜미",
       "gender": "f",
       "birthdate": "1993-04-20",
-      "role": null,
+      "role": "",
       "team": "BGM",
       "balloons": 34702
     },
@@ -1592,7 +1592,7 @@
       "nickname": "꼬니부깅",
       "gender": "f",
       "birthdate": "1991-08-12",
-      "role": null,
+      "role": "",
       "team": "BGM",
       "balloons": 123300
     },
@@ -1601,7 +1601,7 @@
       "nickname": "슈슈",
       "gender": "f",
       "birthdate": "1990-12-14",
-      "role": null,
+      "role": "",
       "team": "BGM",
       "balloons": 79594
     },
@@ -1610,7 +1610,7 @@
       "nickname": "뽀누나",
       "gender": "f",
       "birthdate": "1981-09-13",
-      "role": null,
+      "role": "",
       "team": "BGM",
       "balloons": 14927
     },
@@ -1619,7 +1619,7 @@
       "nickname": "라운이",
       "gender": "f",
       "birthdate": "1995-07-15",
-      "role": null,
+      "role": "",
       "team": "BGM",
       "balloons": 22254
     },
@@ -1628,7 +1628,7 @@
       "nickname": "엔돌핀",
       "gender": "f",
       "birthdate": "1996-04-03",
-      "role": null,
+      "role": "",
       "team": "BGM",
       "balloons": 72936
     },
@@ -1637,7 +1637,7 @@
       "nickname": "다라츄",
       "gender": "f",
       "birthdate": "1998-04-10",
-      "role": null,
+      "role": "",
       "team": "BGM",
       "balloons": 36342
     },
@@ -1646,7 +1646,7 @@
       "nickname": "제티",
       "gender": "f",
       "birthdate": "1992-08-27",
-      "role": null,
+      "role": "",
       "team": "BGM",
       "balloons": 13802
     },
@@ -1655,7 +1655,7 @@
       "nickname": "황단비",
       "gender": "f",
       "birthdate": "1996-10-03",
-      "role": null,
+      "role": "",
       "team": "BGM",
       "balloons": 26086
     },
@@ -1664,7 +1664,7 @@
       "nickname": "예담",
       "gender": "f",
       "birthdate": "1997-04-29",
-      "role": null,
+      "role": "",
       "team": "BGM",
       "balloons": 55913
     },
@@ -1673,7 +1673,7 @@
       "nickname": "진서랄까",
       "gender": "f",
       "birthdate": "1996-10-09",
-      "role": null,
+      "role": "",
       "team": "BGM",
       "balloons": 111736
     },
@@ -1682,7 +1682,7 @@
       "nickname": "혁민",
       "gender": "m",
       "birthdate": "1995-06-21",
-      "role": null,
+      "role": "수장",
       "team": "HM",
       "balloons": 2421575
     },
@@ -1691,7 +1691,7 @@
       "nickname": "최호선",
       "gender": "m",
       "birthdate": "1990-02-28",
-      "role": null,
+      "role": "",
       "team": "HM",
       "balloons": 5445
     },
@@ -1700,7 +1700,7 @@
       "nickname": "방태수",
       "gender": "m",
       "birthdate": "1992-04-15",
-      "role": null,
+      "role": "",
       "team": "HM",
       "balloons": 21724
     },
@@ -1709,7 +1709,7 @@
       "nickname": "박준혁",
       "gender": "m",
       "birthdate": "1994-01-13",
-      "role": null,
+      "role": "",
       "team": "HM",
       "balloons": 6290
     },
@@ -1718,7 +1718,7 @@
       "nickname": "강민",
       "gender": "m",
       "birthdate": "1982-03-15",
-      "role": null,
+      "role": "",
       "team": "HM",
       "balloons": 1308
     },
@@ -1727,7 +1727,7 @@
       "nickname": "파메",
       "gender": "m",
       "birthdate": "1987-09-17",
-      "role": null,
+      "role": "",
       "team": "HM",
       "balloons": 11925
     },
@@ -1736,7 +1736,7 @@
       "nickname": "카리스",
       "gender": "m",
       "birthdate": "1986-11-27",
-      "role": null,
+      "role": "",
       "team": "HM",
       "balloons": 14192
     },
@@ -1745,7 +1745,7 @@
       "nickname": "사랑e",
       "gender": "f",
       "birthdate": "1985-06-29",
-      "role": null,
+      "role": "",
       "team": "HM",
       "balloons": 33389
     },
@@ -1754,7 +1754,7 @@
       "nickname": "슬아",
       "gender": "f",
       "birthdate": "1991-08-23",
-      "role": null,
+      "role": "",
       "team": "HM",
       "balloons": 27764
     },
@@ -1763,7 +1763,7 @@
       "nickname": "설둥이",
       "gender": "f",
       "birthdate": "2000-12-15",
-      "role": null,
+      "role": "",
       "team": "HM",
       "balloons": 36786
     },
@@ -1772,7 +1772,7 @@
       "nickname": "연블비",
       "gender": "f",
       "birthdate": "1992-05-30",
-      "role": null,
+      "role": "",
       "team": "HM",
       "balloons": 46206
     },
@@ -1781,7 +1781,7 @@
       "nickname": "세월",
       "gender": "f",
       "birthdate": "1996-04-14",
-      "role": null,
+      "role": "",
       "team": "HM",
       "balloons": 25473
     },
@@ -1790,7 +1790,7 @@
       "nickname": "이응씨",
       "gender": "f",
       "birthdate": "1993-05-13",
-      "role": null,
+      "role": "",
       "team": "HM",
       "balloons": 18405
     },
@@ -1799,7 +1799,7 @@
       "nickname": "이아라",
       "gender": "f",
       "birthdate": "2000-07-14",
-      "role": null,
+      "role": "",
       "team": "HM",
       "balloons": 17380
     },
@@ -1808,7 +1808,7 @@
       "nickname": "임진묵",
       "gender": "m",
       "birthdate": "1988-01-29",
-      "role": null,
+      "role": "수장",
       "team": "DM",
       "balloons": 53655
     },
@@ -1817,7 +1817,7 @@
       "nickname": "전태규",
       "gender": "m",
       "birthdate": "1984-02-13",
-      "role": null,
+      "role": "수장",
       "team": "DM",
       "balloons": 126781
     },
@@ -1826,7 +1826,7 @@
       "nickname": "이예훈",
       "gender": "m",
       "birthdate": "1992-02-18",
-      "role": null,
+      "role": "",
       "team": "DM",
       "balloons": 33323
     },
@@ -1835,7 +1835,7 @@
       "nickname": "원선재",
       "gender": "m",
       "birthdate": "1993-07-12",
-      "role": null,
+      "role": "",
       "team": "DM",
       "balloons": 27961
     },
@@ -1844,7 +1844,7 @@
       "nickname": "서지수",
       "gender": "f",
       "birthdate": "1985-05-21",
-      "role": null,
+      "role": "",
       "team": "DM",
       "balloons": 123395
     },
@@ -1853,7 +1853,7 @@
       "nickname": "다나짱",
       "gender": "f",
       "birthdate": "1998-10-01",
-      "role": null,
+      "role": "",
       "team": "DM",
       "balloons": 41771
     },
@@ -1862,7 +1862,7 @@
       "nickname": "빵리나",
       "gender": "f",
       "birthdate": "1995-02-08",
-      "role": null,
+      "role": "",
       "team": "DM",
       "balloons": 66540
     },
@@ -1871,7 +1871,7 @@
       "nickname": "정소이",
       "gender": "f",
       "birthdate": "1996-01-05",
-      "role": null,
+      "role": "",
       "team": "DM",
       "balloons": 65002
     },
@@ -1880,7 +1880,7 @@
       "nickname": "수니양",
       "gender": "f",
       "birthdate": "1997-06-20",
-      "role": null,
+      "role": "",
       "team": "DM",
       "balloons": 54370
     },
@@ -1889,7 +1889,7 @@
       "nickname": "김말랑",
       "gender": "f",
       "birthdate": "1996-01-11",
-      "role": null,
+      "role": "",
       "team": "DM",
       "balloons": 50383
     },
@@ -1898,7 +1898,7 @@
       "nickname": "다뉴",
       "gender": "f",
       "birthdate": "1999-06-19",
-      "role": null,
+      "role": "",
       "team": "DM",
       "balloons": 175507
     },
@@ -1907,7 +1907,7 @@
       "nickname": "은서",
       "gender": "f",
       "birthdate": "2000-10-28",
-      "role": null,
+      "role": "",
       "team": "DM",
       "balloons": 134712
     },
@@ -1916,7 +1916,7 @@
       "nickname": "은조",
       "gender": "f",
       "birthdate": "2005-01-05",
-      "role": null,
+      "role": "",
       "team": "DM",
       "balloons": 123797
     },
@@ -1925,7 +1925,7 @@
       "nickname": "설영욱",
       "gender": "m",
       "birthdate": "체크",
-      "role": null,
+      "role": "수장",
       "team": "신세계",
       "balloons": 104101
     },
@@ -1934,16 +1934,16 @@
       "nickname": "몽군",
       "gender": "m",
       "birthdate": "1992-05-17",
-      "role": null,
+      "role": "",
       "team": "신세계",
-      "balloons": 38905
+      "balloons": 39198
     },
     {
       "id": "snfjdro369",
       "nickname": "윤수철",
       "gender": "m",
       "birthdate": "1993-12-14",
-      "role": null,
+      "role": "",
       "team": "신세계",
       "balloons": 21160
     },
@@ -1952,7 +1952,7 @@
       "nickname": "권혁진",
       "gender": "m",
       "birthdate": "1991-11-23",
-      "role": null,
+      "role": "",
       "team": "신세계",
       "balloons": 81481
     },
@@ -1961,7 +1961,7 @@
       "nickname": "김상곤",
       "gender": "m",
       "birthdate": "1995-01-28",
-      "role": null,
+      "role": "",
       "team": "신세계",
       "balloons": 0
     },
@@ -1970,7 +1970,7 @@
       "nickname": "킁식",
       "gender": "m",
       "birthdate": "1988-12-23",
-      "role": null,
+      "role": "",
       "team": "신세계",
       "balloons": 1242
     },
@@ -1979,7 +1979,7 @@
       "nickname": "또봉순",
       "gender": "f",
       "birthdate": "1991-06-03",
-      "role": null,
+      "role": "",
       "team": "신세계",
       "balloons": 19132
     },
@@ -1988,7 +1988,7 @@
       "nickname": "연애인",
       "gender": "f",
       "birthdate": "1987-10-31",
-      "role": null,
+      "role": "",
       "team": "신세계",
       "balloons": 14681
     },
@@ -1997,7 +1997,7 @@
       "nickname": "예실",
       "gender": "f",
       "birthdate": "2000-12-05",
-      "role": null,
+      "role": "",
       "team": "신세계",
       "balloons": 43556
     },
@@ -2006,7 +2006,7 @@
       "nickname": "김설",
       "gender": "f",
       "birthdate": "1995-03-11",
-      "role": null,
+      "role": "",
       "team": "신세계",
       "balloons": 44116
     },
@@ -2015,7 +2015,7 @@
       "nickname": "지우리",
       "gender": "f",
       "birthdate": "2004-08-05",
-      "role": null,
+      "role": "",
       "team": "신세계",
       "balloons": 126646
     },
@@ -2024,7 +2024,7 @@
       "nickname": "요시",
       "gender": "f",
       "birthdate": "1997-01-21",
-      "role": null,
+      "role": "",
       "team": "신세계",
       "balloons": 29880
     },
@@ -2033,7 +2033,7 @@
       "nickname": "밤하밍",
       "gender": "f",
       "birthdate": "2006-06-24",
-      "role": null,
+      "role": "",
       "team": "신세계",
       "balloons": 42443
     },
@@ -2042,7 +2042,7 @@
       "nickname": "혜냥",
       "gender": "f",
       "birthdate": "1997-03-27",
-      "role": null,
+      "role": "",
       "team": "신세계",
       "balloons": 107117
     },
@@ -2051,7 +2051,7 @@
       "nickname": "빵훈",
       "gender": "m",
       "birthdate": "1994-02-18",
-      "role": null,
+      "role": "수장",
       "team": "더블비",
       "balloons": 367884
     },
@@ -2060,7 +2060,7 @@
       "nickname": "광기남",
       "gender": "m",
       "birthdate": "체크",
-      "role": null,
+      "role": "전력외",
       "team": "더블비",
       "balloons": 30629
     },
@@ -2069,7 +2069,7 @@
       "nickname": "두디",
       "gender": "f",
       "birthdate": "1997-08-04",
-      "role": null,
+      "role": "",
       "team": "더블비",
       "balloons": 238059
     },
@@ -2078,7 +2078,7 @@
       "nickname": "아라미",
       "gender": "f",
       "birthdate": "1993-12-13",
-      "role": null,
+      "role": "",
       "team": "더블비",
       "balloons": 97235
     },
@@ -2087,7 +2087,7 @@
       "nickname": "예슬",
       "gender": "f",
       "birthdate": "1995-08-11",
-      "role": null,
+      "role": "",
       "team": "더블비",
       "balloons": 113347
     },
@@ -2096,7 +2096,7 @@
       "nickname": "한쪼니",
       "gender": "f",
       "birthdate": "1995-03-28",
-      "role": null,
+      "role": "",
       "team": "더블비",
       "balloons": 42643
     },
@@ -2105,7 +2105,7 @@
       "nickname": "박쭈이",
       "gender": "f",
       "birthdate": "1999-01-17",
-      "role": null,
+      "role": "",
       "team": "더블비",
       "balloons": 26016
     },
@@ -2114,7 +2114,7 @@
       "nickname": "김윤중",
       "gender": "m",
       "birthdate": "1990-07-04",
-      "role": null,
+      "role": "수장",
       "team": "드림즈",
       "balloons": 430670
     },
@@ -2123,7 +2123,7 @@
       "nickname": "황병영",
       "gender": "m",
       "birthdate": "1991-07-24",
-      "role": null,
+      "role": "",
       "team": "드림즈",
       "balloons": 46996
     },
@@ -2132,7 +2132,7 @@
       "nickname": "어윤수",
       "gender": "m",
       "birthdate": "1992-09-24",
-      "role": null,
+      "role": "",
       "team": "드림즈",
       "balloons": 41635
     },
@@ -2141,7 +2141,7 @@
       "nickname": "윤용태",
       "gender": "m",
       "birthdate": "1988-07-14",
-      "role": null,
+      "role": "",
       "team": "드림즈",
       "balloons": 46613
     },
@@ -2150,7 +2150,7 @@
       "nickname": "요닝",
       "gender": "f",
       "birthdate": "2000-09-22",
-      "role": null,
+      "role": "",
       "team": "드림즈",
       "balloons": 303971
     },
@@ -2159,7 +2159,7 @@
       "nickname": "모리",
       "gender": "f",
       "birthdate": "2002-03-28",
-      "role": null,
+      "role": "",
       "team": "드림즈",
       "balloons": 224876
     },
@@ -2168,7 +2168,7 @@
       "nickname": "진땅콩",
       "gender": "f",
       "birthdate": "2001-01-13",
-      "role": null,
+      "role": "",
       "team": "드림즈",
       "balloons": 167336
     },
@@ -2177,7 +2177,7 @@
       "nickname": "요괴버스",
       "gender": "f",
       "birthdate": "체크",
-      "role": null,
+      "role": "",
       "team": "드림즈",
       "balloons": 140928
     },
@@ -2186,7 +2186,7 @@
       "nickname": "이나",
       "gender": "f",
       "birthdate": "체크",
-      "role": null,
+      "role": "",
       "team": "드림즈",
       "balloons": 91429
     }
