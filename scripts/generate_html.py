@@ -281,7 +281,7 @@ def main():
   .team-title {{
     font-weight: 700;
     text-align: center;
-    background: #2f3542;
+    background: #25528F;
     color: #fff;
     padding: 8px;
     margin: -10px -10px 8px -10px;
@@ -332,7 +332,7 @@ def main():
 
   td.excluded {{
     background: #fdeaea !important;
-    color: #c0392b;
+    color: #222;
     font-weight: 700;
   }}
   td.tier1, td.tier5, td.tier10 {{ font-weight: 700; }}
@@ -363,6 +363,31 @@ def main():
     border-radius: 2px;
     margin-right: 3px;
     vertical-align: middle;
+  }}
+
+  /* 모바일: 한 줄에 2팀씩 보이도록 강제 2열 + 여백/폰트 축소 */
+  @media (max-width: 600px) {{
+    body {{ padding: 12px 6px; }}
+    .grid {{
+      grid-template-columns: 1fr 1fr;
+      gap: 6px;
+    }}
+    .team-card {{
+      padding: 5px;
+      border-radius: 7px;
+    }}
+    .team-title {{
+      font-size: 11px;
+      padding: 5px;
+      margin: -5px -5px 5px -5px;
+      border-radius: 7px 7px 0 0;
+    }}
+    table {{ font-size: 8px; }}
+    th, td {{ padding: 2px 1px; }}
+    .name-left {{ font-size: 8px; }}
+    .bday-mark {{ font-size: 8px; }}
+    .header {{ font-size: 10px; gap: 8px; flex-wrap: wrap; }}
+    .legend {{ font-size: 9px; }}
   }}
 </style>
 </head>
