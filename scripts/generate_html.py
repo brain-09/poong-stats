@@ -1,15 +1,14 @@
 """
 data/latest.json 을 읽어서 docs/index.html 로 렌더링하는 스크립트.
 
-반영 사항:
-- 팀별 표를 (남 테이블/여 테이블/요약 테이블) 3개가 아니라 하나의 테이블로 통합
-  (이름 | 성별 | 별풍선, 전체 별풍선 내림차순 정렬 + 하단에 합계/평균 행 포함)
-- 상위 1% 파랑 / 5% 초록 / 10% 노랑 계열 하이라이트
-- Noto Sans KR 폰트
-- 별풍선 값 가운데 정렬
+팀별 표 구성: 표 1개, 열은 [남자 멤버 | 별풍선 | 여자 멤버 | 별풍선] 4열로 나란히 배치.
+남/여 각각 별풍선 내림차순 정렬. 하단에는 합계/평균/인원 행 포함.
+
+기타 반영 사항:
+- 상위 1% 파랑 / 5% 초록 / 10% 노랑 하이라이트
+- Noto Sans KR 폰트, 별풍선 값 가운데 정렬
 - 생일 표시는 이름 칸 오른쪽 끝에 작게
-- '남자 멤버' / '여자 멤버' 표기
-- 여자 평균 행은 청록 계열 하이라이트 (전체 평균은 기존 남색 계열 유지)
+- 여자 평균 행 청록 하이라이트
 - 수장/전력외는 집계 제외 + 빨간 배경
 
 실행: python scripts/generate_html.py
@@ -83,6 +82,29 @@ def build_today_birthday_section(members: list, today):
     """
 
 
+def name_cell(m, current_month):
+    role = m.get("role")
+    role_html = f"<span class='role'>{role}</span>" if role else ""
+    bday = parse_birthdate(m.get("birthdate"))
+    bday_html = "<span class='bday-mark'>🎂</span>" if bday and bday[0] == current_month else ""
+    return (
+        f"<div class='name-cell'>"
+        f"<span class='name-left'>{m['nickname']} {role_html}</span>"
+        f"{bday_html}"
+        f"</div>"
+    )
+
+
+def value_class(m, tiers):
+    classes = []
+    if m.get("role") in EXCLUDED_ROLES:
+        classes.append("excluded")
+    tier = tiers.get((m["nickname"], m["team"]))
+    if tier:
+        classes.append(tier)
+    return " ".join(classes)
+
+
 def build_team_card(team_name: str, members: list, current_month: int, tiers: dict):
     counted = [m for m in members if m.get("role") not in EXCLUDED_ROLES]
     males_counted = [m for m in counted if m["gender"] == "m"]
@@ -95,58 +117,48 @@ def build_team_card(team_name: str, members: list, current_month: int, tiers: di
     female_avg = round(female_sum / len(females_counted)) if females_counted else 0
     total_avg = round(total_sum / len(counted)) if counted else 0
 
-    members_sorted = sorted(members, key=lambda x: -x["balloons"])
+    males_all = sorted([m for m in members if m["gender"] == "m"], key=lambda x: -x["balloons"])
+    females_all = sorted([m for m in members if m["gender"] == "f"], key=lambda x: -x["balloons"])
 
-    def name_cell(m):
-        role = m.get("role")
-        role_html = f"<span class='role'>{role}</span>" if role else ""
-        bday = parse_birthdate(m.get("birthdate"))
-        bday_html = "<span class='bday-mark'>🎂</span>" if bday and bday[0] == current_month else ""
-        return (
-            f"<div class='name-cell'>"
-            f"<span class='name-left'>{m['nickname']} {role_html}</span>"
-            f"{bday_html}"
-            f"</div>"
-        )
+    max_rows = max(len(males_all), len(females_all), 1)
 
-    def value_class(m):
-        classes = []
-        if m.get("role") in EXCLUDED_ROLES:
-            classes.append("excluded")
-        tier = tiers.get((m["nickname"], m["team"]))
-        if tier:
-            classes.append(tier)
-        return " ".join(classes)
+    body_rows = []
+    for i in range(max_rows):
+        if i < len(males_all):
+            m = males_all[i]
+            m_name = f"<td class='name-td'>{name_cell(m, current_month)}</td>"
+            m_val = f"<td class='num {value_class(m, tiers)}'>{fmt(m['balloons'])}</td>"
+        else:
+            m_name = "<td class='name-td empty'>-</td>"
+            m_val = "<td class='num empty'>-</td>"
 
-    rows = []
-    for m in members_sorted:
-        gender_label = "남자" if m["gender"] == "m" else "여자"
-        cls = value_class(m)
-        rows.append(
-            f"<tr><td class='name-td'>{name_cell(m)}</td>"
-            f"<td class='gender-td'>{gender_label}</td>"
-            f"<td class='num {cls}'>{fmt(m['balloons'])}</td></tr>"
-        )
-    rows_html = "".join(rows) if rows else "<tr><td colspan='3' class='empty'>-</td></tr>"
+        if i < len(females_all):
+            f_ = females_all[i]
+            f_name = f"<td class='name-td'>{name_cell(f_, current_month)}</td>"
+            f_val = f"<td class='num {value_class(f_, tiers)}'>{fmt(f_['balloons'])}</td>"
+        else:
+            f_name = "<td class='name-td empty'>-</td>"
+            f_val = "<td class='num empty'>-</td>"
 
-    summary_rows = f"""
-      <tr class="summary-row"><td colspan="2">남자 합계</td><td class="num">{fmt(male_sum)}</td></tr>
-      <tr class="summary-row"><td colspan="2">남자 평균</td><td class="num">{fmt(male_avg)}</td></tr>
-      <tr class="summary-row"><td colspan="2">여자 합계</td><td class="num">{fmt(female_sum)}</td></tr>
-      <tr class="summary-row"><td colspan="2">여자 평균</td><td class="num female-avg">{fmt(female_avg)}</td></tr>
-      <tr class="summary-row"><td colspan="2">전체 합계</td><td class="num total">{fmt(total_sum)}</td></tr>
-      <tr class="summary-row"><td colspan="2">전체 평균</td><td class="num total">{fmt(total_avg)}</td></tr>
-      <tr class="summary-row"><td colspan="2">인원</td><td>총 {len(members)}명 (집계 {len(counted)}명)</td></tr>
+        body_rows.append(f"<tr>{m_name}{m_val}{f_name}{f_val}</tr>")
+
+    body_html = "".join(body_rows)
+
+    summary_html = f"""
+      <tr class="summary-row"><td colspan="2">남자 합계 {fmt(male_sum)}</td><td colspan="2">여자 합계 {fmt(female_sum)}</td></tr>
+      <tr class="summary-row"><td colspan="2">남자 평균 {fmt(male_avg)}</td><td colspan="2" class="female-avg">여자 평균 {fmt(female_avg)}</td></tr>
+      <tr class="summary-row total"><td colspan="2">전체 합계 {fmt(total_sum)}</td><td colspan="2">전체 평균 {fmt(total_avg)}</td></tr>
+      <tr class="summary-row"><td colspan="4">인원 총 {len(members)}명 (집계 {len(counted)}명 · 남 {len(males_all)} / 여 {len(females_all)})</td></tr>
     """
 
     return total_avg, f"""
     <div class="team-card">
       <div class="team-title">{team_name} <span class="team-avg">전체평균 {fmt(total_avg)}</span></div>
       <table>
-        <thead><tr><th>이름</th><th>성별</th><th>별풍선</th></tr></thead>
+        <thead><tr><th>남자 멤버</th><th>별풍선</th><th>여자 멤버</th><th>별풍선</th></tr></thead>
         <tbody>
-          {rows_html}
-          {summary_rows}
+          {body_html}
+          {summary_html}
         </tbody>
       </table>
     </div>
@@ -232,7 +244,7 @@ def main():
 
   .grid {{
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(420px, 1fr));
     gap: 18px;
     max-width: 1240px;
     margin: 0 auto;
@@ -265,10 +277,11 @@ def main():
     width: 100%;
     border-collapse: collapse;
     font-size: 12.5px;
+    table-layout: fixed;
   }}
   th, td {{
     border: 1px solid #eceef1;
-    padding: 6px;
+    padding: 5px 6px;
     text-align: center;
   }}
   th {{
@@ -276,7 +289,6 @@ def main():
     font-weight: 700;
     color: #555;
   }}
-  td.gender-td {{ color: #888; width: 44px; }}
   td.name-td {{ text-align: left; }}
   .name-cell {{
     display: flex;
@@ -284,7 +296,7 @@ def main():
     align-items: center;
     gap: 4px;
   }}
-  .name-left {{ white-space: nowrap; }}
+  .name-left {{ white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }}
   .bday-mark {{ font-size: 11px; flex-shrink: 0; }}
 
   td.num {{
@@ -292,7 +304,7 @@ def main():
     font-variant-numeric: tabular-nums;
     font-weight: 500;
   }}
-  td.empty {{ color: #bbb; }}
+  td.empty {{ color: #ccc; }}
 
   .role {{
     font-size: 10px;
@@ -308,7 +320,6 @@ def main():
     color: #c0392b;
     font-weight: 700;
   }}
-  /* 상위 1% 파랑 / 5% 초록 / 10% 노랑 */
   td.tier1 {{ background: #90caf9; }}
   td.tier5 {{ background: #a5d6a7; }}
   td.tier10 {{ background: #fff59d; }}
@@ -316,9 +327,9 @@ def main():
     background: #fdeaea !important;
   }}
 
-  tr.summary-row td {{ font-size: 12px; background: #fafbfc; }}
-  td.total {{ font-weight: 700; background: #e3e7fb !important; }}
-  td.female-avg {{ background: #b2ebe4 !important; font-weight: 600; }}
+  tr.summary-row td {{ font-size: 12px; background: #fafbfc; font-weight: 600; text-align: center; }}
+  tr.summary-row.total td {{ font-weight: 700; background: #e3e7fb; }}
+  tr.summary-row td.female-avg {{ background: #b2ebe4; }}
 
   .legend {{
     max-width: 1240px;
