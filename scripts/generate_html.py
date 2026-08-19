@@ -256,6 +256,7 @@ PAGE_CSS = """
     table { font-size: 7px; }
     th, td { padding: 1px 1px; height: 13px; }
     tr.summary-row td { font-size: 7px; padding: 1px 1px; height: 13px; }
+    .name-cell { min-height: 8px; }
     .name-left { font-size: 7px; }
     .bday-mark { font-size: 6px; }
     .team-logo { height: 9px; width: 9px; }
