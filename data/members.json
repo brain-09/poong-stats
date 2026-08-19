@@ -1,4 +1,4 @@
-[
+{"members": [
 {"id": "superbsw123", "nickname": "시조새", "gender": "m", "birthdate": "1995-12-09", "team": "JSA"},
 {"id": "sharpragu", "nickname": "조기석", "gender": "m", "birthdate": "1992-06-15", "team": "JSA"},
 {"id": "dpfgc3", "nickname": "홍구", "gender": "m", "birthdate": "1994-07-19", "team": "JSA"},
@@ -242,4 +242,4 @@
 {"id": "wlswn6565", "nickname": "진땅콩", "gender": "f", "birthdate": "2001-01-13", "team": "드림즈"},
 {"id": "j4141h", "nickname": "요괴버스", "gender": "f", "birthdate": "체크", "team": "드림즈"},
 {"id": "nmirifo7795", "nickname": "이나", "gender": "f", "birthdate": "체크", "team": "드림즈"}
-]
+]}
