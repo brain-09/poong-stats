@@ -32,6 +32,9 @@ LOGOS_DIR = ROOT / "docs" / "logos"
 
 EXCLUDED_ROLES = {"수장", "전력외"}
 
+# 팀별 단독 페이지(docs/teams/)를 만들 팀 목록. 필요한 팀 이름만 여기 추가하면 됨.
+SINGLE_TEAM_PAGES = ["캄몬스타즈"]
+
 # 모든 페이지가 공유하는 스타일. f-string이 아니라 일반 문자열이라 중괄호를 그대로 쓴다.
 PAGE_CSS = """
   @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&display=swap');
@@ -71,26 +74,10 @@ PAGE_CSS = """
     padding: 2px 0;
   }
   .top-date-select:hover { color: #25528F; }
-  .top-title {
-    font-size: 18px;
-    font-weight: 700;
-    color: #222;
-  }
   .top-meta {
     font-size: 13px;
     color: #888;
   }
-  .back-link {
-    max-width: 1080px;
-    margin: 0 auto 12px;
-    font-size: 13px;
-  }
-  .back-link a {
-    color: #25528F;
-    text-decoration: none;
-    font-weight: 700;
-  }
-  .back-link a:hover { text-decoration: underline; }
   .grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
@@ -257,7 +244,7 @@ PAGE_CSS = """
     .team-logo { height: 14px; width: 14px; }
     .rank-change { font-size: 8px; padding: 1px 5px; }
     .top-bar { padding: 10px 14px; }
-    .top-date-select, .top-title { font-size: 14px; }
+    .top-date-select { font-size: 14px; }
     .top-meta { font-size: 10px; }
     .legend { font-size: 9px; }
   }
@@ -609,8 +596,40 @@ def render_page(data: dict, archive_slugs: list, current_year: int, current_mont
     return page_shell(top_bar_html=top_bar_html, body_html=body_html, extra_banner=banner)
 
 
-def render_team_page(data: dict, team_name: str, team_members: list, tiers: dict) -> str:
-    """특정 팀 하나만 담은 단독 페이지 (이번 달 기준). iframe으로 그 팀만 따로 게시할 때 사용."""
+def build_team_month_select(team_name: str, archive_slugs: list, current_year: int, current_month: int,
+                             active_slug: str) -> str:
+    """
+    팀 단독 페이지 상단의 월 선택 드롭다운. 같은 docs/teams/ 폴더 안에 파일명으로만
+    구분해서 저장하므로(이번달: {팀}.html, 과거달: {팀}__YYYY-MM.html) 상대경로 계산이 필요없다.
+    """
+    current_slug = f"{current_year:04d}-{current_month:02d}"
+    options = []
+
+    label = f"{current_year}년 {current_month:02d}월"
+    selected = " selected" if active_slug == current_slug else ""
+    options.append(f"<option value='{team_name}.html'{selected}>{label}</option>")
+
+    for slug in archive_slugs:
+        year, month = slug.split("-")
+        label = f"{year}년 {int(month):02d}월"
+        selected = " selected" if slug == active_slug else ""
+        options.append(f"<option value='{team_name}__{slug}.html'{selected}>{label}</option>")
+
+    options_html = "".join(options)
+    return (
+        "<select class='top-date-select' "
+        "onchange=\"if(this.value) window.location.href=this.value;\">"
+        f"{options_html}</select>"
+    )
+
+
+def render_team_page(data: dict, team_name: str, team_members: list, tiers: dict,
+                      archive_slugs: list, current_year: int, current_month: int,
+                      is_archive: bool = False) -> str:
+    """특정 팀 하나만 담은 단독 페이지. iframe으로 그 팀만 따로 게시할 때 사용."""
+    active_slug = f"{data['year']:04d}-{data['month']:02d}"
+    month_select_html = build_team_month_select(team_name, archive_slugs, current_year, current_month, active_slug)
+
     current_ranks = compute_team_ranks(data["members"])
     prev_ranks = load_previous_ranks(data["year"], data["month"])
     badge = rank_change_badge(current_ranks[team_name], prev_ranks, team_name)
@@ -619,19 +638,49 @@ def render_team_page(data: dict, team_name: str, team_members: list, tiers: dict
 
     top_bar_html = f"""
   <div class="top-bar">
-    <span class="top-title">{team_name}</span>
-    <span class="top-meta">{data['year']}년 {data['month']:02d}월 / 인원 {len(team_members)}명 / 업데이트 {data['updated_at']} / 출처: 풍투데이</span>
+    {month_select_html}
+    <span class="top-meta">{team_name} / 인원 {len(team_members)}명 / 업데이트 {data['updated_at']} / 출처: 풍투데이</span>
   </div>
     """
 
     body_html = f"""
-  <div class="back-link"><a href="../index.html">← 전체 팀 보기</a></div>
   <div class="grid single-team">
     {card_html}
   </div>
     """
 
-    return page_shell(top_bar_html=top_bar_html, body_html=body_html)
+    banner = "<div class='archive-banner'>📁 이 페이지는 지난 기록입니다 (당시 팀 구성 기준)</div>" if is_archive else ""
+
+    return page_shell(top_bar_html=top_bar_html, body_html=body_html, extra_banner=banner)
+
+
+def generate_team_pages(data: dict, is_archive: bool, archive_slugs: list,
+                         current_year: int, current_month: int):
+    """SINGLE_TEAM_PAGES에 지정된 팀들만 docs/teams/ 에 단독 페이지로 생성"""
+    if not SINGLE_TEAM_PAGES:
+        return
+
+    members = data["members"]
+    teams = group_teams(members)
+    tiers = compute_percentile_tiers(members)
+    slug = f"{data['year']:04d}-{data['month']:02d}"
+
+    OUTPUT_TEAMS_DIR.mkdir(parents=True, exist_ok=True)
+
+    for team_name in SINGLE_TEAM_PAGES:
+        team_members = teams.get(team_name)
+        if team_members is None:
+            continue  # 그 달에 해당 팀이 없으면 건너뜀
+
+        html = render_team_page(
+            data, team_name, team_members, tiers,
+            archive_slugs, current_year, current_month, is_archive=is_archive,
+        )
+        filename = f"{team_name}.html" if not is_archive else f"{team_name}__{slug}.html"
+        out_path = OUTPUT_TEAMS_DIR / filename
+        with open(out_path, "w", encoding="utf-8") as f:
+            f.write(html)
+        print(f"완료: {out_path} 생성됨")
 
 
 def main():
@@ -653,20 +702,11 @@ def main():
         f.write(html)
     print(f"완료: {OUTPUT_PATH} 생성됨")
 
-    # 팀별 단독 페이지 (이번 달 기준)
-    current_members = current_data["members"]
-    current_teams = group_teams(current_members)
-    current_tiers = compute_percentile_tiers(current_members)
+    # 팀별 단독 페이지 (이번 달)
+    generate_team_pages(current_data, is_archive=False, archive_slugs=archive_slugs,
+                         current_year=current_year, current_month=current_month)
 
-    OUTPUT_TEAMS_DIR.mkdir(parents=True, exist_ok=True)
-    for team_name, team_members in current_teams.items():
-        team_html = render_team_page(current_data, team_name, team_members, current_tiers)
-        out_path = OUTPUT_TEAMS_DIR / f"{team_name}.html"
-        with open(out_path, "w", encoding="utf-8") as f:
-            f.write(team_html)
-        print(f"완료: {out_path} 생성됨")
-
-    # 과거 달 페이지들
+    # 과거 달 페이지들 (전체 페이지 + 팀별 단독 페이지)
     if archive_slugs:
         OUTPUT_ARCHIVE_DIR.mkdir(parents=True, exist_ok=True)
         for slug in archive_slugs:
@@ -680,6 +720,9 @@ def main():
             with open(out_path, "w", encoding="utf-8") as f:
                 f.write(a_html)
             print(f"완료: {out_path} 생성됨")
+
+            generate_team_pages(archive_data, is_archive=True, archive_slugs=archive_slugs,
+                                 current_year=current_year, current_month=current_month)
 
 
 if __name__ == "__main__":
