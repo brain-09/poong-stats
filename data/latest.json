@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-08-20 04:40:14",
+  "updated_at": "2026-08-20 04:51:45",
   "year": 2026,
   "month": 8,
   "members": [
@@ -919,7 +919,7 @@
       "birthdate": "2004-03-01",
       "role": "",
       "team": "엠비대",
-      "balloons": 55234
+      "balloons": 55267
     },
     {
       "id": "arr0530",
@@ -1576,7 +1576,7 @@
       "birthdate": "1993-01-06",
       "role": "",
       "team": "BGM",
-      "balloons": 37051
+      "balloons": 37201
     },
     {
       "id": "eeceec",
@@ -1765,7 +1765,7 @@
       "birthdate": "2000-12-15",
       "role": "",
       "team": "HM",
-      "balloons": 51287
+      "balloons": 51387
     },
     {
       "id": "ynblbee",
