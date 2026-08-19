@@ -150,7 +150,7 @@ PAGE_CSS = """
     padding: 3px 4px;
     text-align: center;
     vertical-align: middle;
-    height: 22px;
+    height: 24px;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -203,7 +203,7 @@ PAGE_CSS = """
     background: #fafbfc;
     font-weight: 600;
     text-align: center;
-    height: 22px;
+    height: 24px;
     vertical-align: middle;
   }
   td.total-sum, td.total-avg { background: #CDD7F5 !important; font-weight: 700; }
