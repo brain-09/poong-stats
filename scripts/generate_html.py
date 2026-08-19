@@ -143,6 +143,8 @@ PAGE_CSS = """
     border: 1px solid #eceef1;
     padding: 3px 4px;
     text-align: center;
+    vertical-align: middle;
+    height: 22px;
   }
   th {
     background: #f7f8fa;
@@ -236,7 +238,7 @@ PAGE_CSS = """
       border-radius: 7px;
     }
     table { font-size: 7px; }
-    th, td { padding: 1px 1px; }
+    th, td { padding: 1px 1px; height: 13px; }
     tr.summary-row td { font-size: 7px; padding: 1px 1px; }
     .name-left { font-size: 7px; }
     .bday-mark { font-size: 6px; }
