@@ -246,15 +246,29 @@ def render_page(data: dict, nav_html: str, is_archive: bool = False) -> str:
     padding: 24px 16px;
     color: #222;
   }}
-  .header {{
-    display: flex;
-    justify-content: center;
-    gap: 24px;
+  .top-bar {{
     max-width: 1080px;
-    margin: 0 auto 16px;
+    margin: 0 auto 18px;
+    background: #fff;
+    border: 1px solid #e2e4e9;
+    border-left: 5px solid #25528F;
+    border-radius: 8px;
+    padding: 14px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 6px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+  }}
+  .top-date {{
+    font-size: 18px;
+    font-weight: 700;
+    color: #222;
+  }}
+  .top-meta {{
     font-size: 13px;
     color: #888;
-    text-align: center;
   }}
   .grid {{
     display: grid;
@@ -420,7 +434,9 @@ def render_page(data: dict, nav_html: str, is_archive: bool = False) -> str:
     tr.summary-row td {{ font-size: 8px; padding: 2px 1px; }}
     .name-left {{ font-size: 8px; }}
     .bday-mark {{ font-size: 8px; }}
-    .header {{ font-size: 10px; gap: 8px; flex-wrap: wrap; }}
+    .top-bar {{ padding: 10px 14px; }}
+    .top-date {{ font-size: 14px; }}
+    .top-meta {{ font-size: 10px; }}
     .legend {{ font-size: 9px; }}
     .month-nav a, .month-nav .nav-current {{
       font-size: 12px;
@@ -433,10 +449,9 @@ def render_page(data: dict, nav_html: str, is_archive: bool = False) -> str:
 <body>
   {nav_html}
   {"<div class='archive-banner'>📁 이 페이지는 지난 기록입니다 (당시 팀 구성 기준)</div>" if is_archive else ""}
-  <div class="header">
-    <span>업데이트: {data['updated_at']} (KST)</span>
-    <span>총 {team_count}개 팀 · 총 {member_count}명</span>
-    <span>출처: 풍투데이(poong.today)</span>
+  <div class="top-bar">
+    <span class="top-date">{data['year']}년 {data['month']:02d}월</span>
+    <span class="top-meta">총인원 {member_count} / 팀 {team_count} / 업데이트 {data['updated_at']} / 출처: 풍투데이</span>
   </div>
   <div class="grid">
     {cards_html}
