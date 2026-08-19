@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-08-19 15:21:56",
+  "updated_at": "2026-08-19 15:33:27",
   "year": 2026,
   "month": 8,
   "members": [
@@ -10,7 +10,7 @@
       "birthdate": "1995-12-09",
       "role": "수장",
       "team": "JSA",
-      "balloons": 2892440
+      "balloons": 2906404
     },
     {
       "id": "sharpragu",
@@ -370,7 +370,7 @@
       "birthdate": "1997-04-11",
       "role": null,
       "team": "흑카데미",
-      "balloons": 73032
+      "balloons": 73033
     },
     {
       "id": "zpdl1313",
@@ -397,7 +397,7 @@
       "birthdate": "1993-04-01",
       "role": null,
       "team": "케이대",
-      "balloons": 24181
+      "balloons": 24187
     },
     {
       "id": "kkmkhh1234",
@@ -784,7 +784,7 @@
       "birthdate": "1991-08-24",
       "role": null,
       "team": "엠비대",
-      "balloons": 78388
+      "balloons": 78398
     },
     {
       "id": "rlarnfk24",
@@ -1036,7 +1036,7 @@
       "birthdate": "1996-06-08",
       "role": null,
       "team": "와플대",
-      "balloons": 122138
+      "balloons": 122143
     },
     {
       "id": "jjjjeong",
@@ -1927,7 +1927,7 @@
       "birthdate": null,
       "role": "수장",
       "team": "신세계",
-      "balloons": 100617
+      "balloons": 100657
     },
     {
       "id": "cksgmldbs",

@@ -5,12 +5,12 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>팀별 별풍선 랭킹</title>
 <style>
-  @import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css');
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&display=swap');
 
   * { box-sizing: border-box; }
 
   body {
-    font-family: 'Pretendard', -apple-system, "Malgun Gothic", sans-serif;
+    font-family: 'Noto Sans KR', -apple-system, "Malgun Gothic", sans-serif;
     background: #f2f3f5;
     margin: 0;
     padding: 24px 16px;
@@ -51,7 +51,7 @@
 
   .grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(440px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
     gap: 18px;
     max-width: 1240px;
     margin: 0 auto;
@@ -80,11 +80,6 @@
     color: #cfd3e0;
     margin-left: 6px;
   }
-  .table-pair {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 8px;
-  }
   table {
     width: 100%;
     border-collapse: collapse;
@@ -92,16 +87,27 @@
   }
   th, td {
     border: 1px solid #eceef1;
-    padding: 5px 6px;
+    padding: 6px;
     text-align: center;
   }
   th {
     background: #f7f8fa;
-    font-weight: 600;
+    font-weight: 700;
     color: #555;
   }
+  td.gender-td { color: #888; width: 44px; }
+  td.name-td { text-align: left; }
+  .name-cell {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 4px;
+  }
+  .name-left { white-space: nowrap; }
+  .bday-mark { font-size: 11px; flex-shrink: 0; }
+
   td.num {
-    text-align: right;
+    text-align: center;
     font-variant-numeric: tabular-nums;
     font-weight: 500;
   }
@@ -121,16 +127,17 @@
     color: #c0392b;
     font-weight: 700;
   }
-  td.tier1 { background: #ffd54f; }
-  td.tier5 { background: #ffe9a8; }
-  td.tier10 { background: #fff6dc; }
+  /* 상위 1% 파랑 / 5% 초록 / 10% 노랑 */
+  td.tier1 { background: #90caf9; }
+  td.tier5 { background: #a5d6a7; }
+  td.tier10 { background: #fff59d; }
   td.excluded.tier1, td.excluded.tier5, td.excluded.tier10 {
     background: #fdeaea !important;
   }
 
-  table.summary { margin-top: 8px; }
-  table.summary td { font-size: 12px; text-align: center; }
-  table.summary td.total { font-weight: 700; background: #eef2ff; }
+  tr.summary-row td { font-size: 12px; background: #fafbfc; }
+  td.total { font-weight: 700; background: #e3e7fb !important; }
+  td.female-avg { background: #b2ebe4 !important; font-weight: 600; }
 
   .legend {
     max-width: 1240px;
@@ -151,7 +158,7 @@
 </head>
 <body>
   <div class="header">
-    <span>업데이트: 2026-08-19 15:21:56 (KST)</span>
+    <span>업데이트: 2026-08-19 15:33:27 (KST)</span>
     <span>2026년 8월 기준</span>
   </div>
   
@@ -159,290 +166,277 @@
     
     <div class="team-card">
       <div class="team-title">캄몬스타즈 <span class="team-avg">전체평균 193,758</span></div>
-      <div class="table-pair">
-        <table>
-          <thead><tr><th>남 멤버</th><th>별풍선</th></tr></thead>
-          <tbody><tr><td>김윤환 <span class='role'>수장</span></td><td class='num excluded tier5'>351,487</td></tr><tr><td>배성흠  🎂</td><td class='num tier10'>227,938</td></tr><tr><td>김민철</td><td class='num '>178,543</td></tr><tr><td>박수범</td><td class='num '>166,495</td></tr><tr><td>사테</td><td class='num '>135,110</td></tr><tr><td>왜냐맨</td><td class='num '>124,770</td></tr><tr><td>박준오</td><td class='num '>99,133</td></tr><tr><td>지동원</td><td class='num '>77,782</td></tr><tr><td>변현제</td><td class='num '>45,763</td></tr></tbody>
-        </table>
-        <table>
-          <thead><tr><th>여 멤버</th><th>별풍선</th></tr></thead>
-          <tbody><tr><td>낭니  🎂</td><td class='num tier5'>675,511</td></tr><tr><td>토마토  🎂</td><td class='num tier5'>452,877</td></tr><tr><td>지두두</td><td class='num tier5'>287,679</td></tr><tr><td>먼진</td><td class='num tier10'>233,911</td></tr><tr><td>비타밍</td><td class='num tier10'>193,592</td></tr><tr><td>주하랑</td><td class='num '>177,950</td></tr><tr><td>치리</td><td class='num '>171,301</td></tr><tr><td>찌킹</td><td class='num '>159,191</td></tr><tr><td>아리송이</td><td class='num '>150,986</td></tr><tr><td>남덕선</td><td class='num '>147,010</td></tr><tr><td>햇살</td><td class='num '>142,390</td></tr><tr><td>임조이</td><td class='num '>114,908</td></tr><tr><td>소주양</td><td class='num '>106,072</td></tr></tbody>
-        </table>
-      </div>
-      <table class="summary">
-        <tr><td>남자 합계</td><td class="num">1,055,534</td><td>여자 합계</td><td class="num">3,013,378</td></tr>
-        <tr><td>남자 평균</td><td class="num">131,942</td><td>여자 평균</td><td class="num">231,798</td></tr>
-        <tr><td>전체 합계</td><td class="num total">4,068,912</td><td>전체 평균</td><td class="num total">193,758</td></tr>
-        <tr><td>인원</td><td colspan="3">총 22명 (집계 21명 · 수장/전력외 제외)</td></tr>
+      <table>
+        <thead><tr><th>이름</th><th>성별</th><th>별풍선</th></tr></thead>
+        <tbody>
+          <tr><td class='name-td'><div class='name-cell'><span class='name-left'>낭니 </span><span class='bday-mark'>🎂</span></div></td><td class='gender-td'>여자</td><td class='num tier5'>675,511</td></tr><tr><td class='name-td'><div class='name-cell'><span class='name-left'>토마토 </span><span class='bday-mark'>🎂</span></div></td><td class='gender-td'>여자</td><td class='num tier5'>452,877</td></tr><tr><td class='name-td'><div class='name-cell'><span class='name-left'>김윤환 <span class='role'>수장</span></span></div></td><td class='gender-td'>남자</td><td class='num excluded tier5'>351,487</td></tr><tr><td class='name-td'><div class='name-cell'><span class='name-left'>지두두 </span></div></td><td class='gender-td'>여자</td><td class='num tier5'>287,679</td></tr><tr><td class='name-td'><div class='name-cell'><span class='name-left'>먼진 </span></div></td><td class='gender-td'>여자</td><td class='num tier10'>233,911</td></tr><tr><td class='name-td'><div class='name-cell'><span class='name-left'>배성흠 </span><span class='bday-mark'>🎂</span></div></td><td class='gender-td'>남자</td><td class='num tier10'>227,938</td></tr><tr><td class='name-td'><div class='name-cell'><span class='name-left'>비타밍 </span></div></td><td class='gender-td'>여자</td><td class='num tier10'>193,592</td></tr><tr><td class='name-td'><div class='name-cell'><span class='name-left'>김민철 </span></div></td><td class='gender-td'>남자</td><td class='num '>178,543</td></tr><tr><td class='name-td'><div class='name-cell'><span class='name-left'>주하랑 </span></div></td><td class='gender-td'>여자</td><td class='num '>177,950</td></tr><tr><td class='name-td'><div class='name-cell'><span class='name-left'>치리 </span></div></td><td class='gender-td'>여자</td><td class='num '>171,301</td></tr><tr><td class='name-td'><div class='name-cell'><span class='name-left'>박수범 </span></div></td><td class='gender-td'>남자</td><td class='num '>166,495</td></tr><tr><td class='name-td'><div class='name-cell'><span class='name-left'>찌킹 </span></div></td><td class='gender-td'>여자</td><td class='num '>159,191</td></tr><tr><td class='name-td'><div class='name-cell'><span class='name-left'>아리송이 </span></div></td><td class='gender-td'>여자</td><td class='num '>150,986</td></tr><tr><td class='name-td'><div class='name-cell'><span class='name-left'>남덕선 </span></div></td><td class='gender-td'>여자</td><td class='num '>147,010</td></tr><tr><td class='name-td'><div class='name-cell'><span class='name-left'>햇살 </span></div></td><td class='gender-td'>여자</td><td class='num '>142,390</td></tr><tr><td class='name-td'><div class='name-cell'><span class='name-left'>사테 </span></div></td><td class='gender-td'>남자</td><td class='num '>135,110</td></tr><tr><td class='name-td'><div class='name-cell'><span class='name-left'>왜냐맨 </span></div></td><td class='gender-td'>남자</td><td class='num '>124,770</td></tr><tr><td class='name-td'><div class='name-cell'><span class='name-left'>임조이 </span></div></td><td class='gender-td'>여자</td><td class='num '>114,908</td></tr><tr><td class='name-td'><div class='name-cell'><span class='name-left'>소주양 </span></div></td><td class='gender-td'>여자</td><td class='num '>106,072</td></tr><tr><td class='name-td'><div class='name-cell'><span class='name-left'>박준오 </span></div></td><td class='gender-td'>남자</td><td class='num '>99,133</td></tr><tr><td class='name-td'><div class='name-cell'><span class='name-left'>지동원 </span></div></td><td class='gender-td'>남자</td><td class='num '>77,782</td></tr><tr><td class='name-td'><div class='name-cell'><span class='name-left'>변현제 </span></div></td><td class='gender-td'>남자</td><td class='num '>45,763</td></tr>
+          
+      <tr class="summary-row"><td colspan="2">남자 합계</td><td class="num">1,055,534</td></tr>
+      <tr class="summary-row"><td colspan="2">남자 평균</td><td class="num">131,942</td></tr>
+      <tr class="summary-row"><td colspan="2">여자 합계</td><td class="num">3,013,378</td></tr>
+      <tr class="summary-row"><td colspan="2">여자 평균</td><td class="num female-avg">231,798</td></tr>
+      <tr class="summary-row"><td colspan="2">전체 합계</td><td class="num total">4,068,912</td></tr>
+      <tr class="summary-row"><td colspan="2">전체 평균</td><td class="num total">193,758</td></tr>
+      <tr class="summary-row"><td colspan="2">인원</td><td>총 22명 (집계 21명)</td></tr>
+    
+        </tbody>
       </table>
     </div>
     
     <div class="team-card">
       <div class="team-title">드림즈 <span class="team-avg">전체평균 132,973</span></div>
-      <div class="table-pair">
-        <table>
-          <thead><tr><th>남 멤버</th><th>별풍선</th></tr></thead>
-          <tbody><tr><td>김윤중 <span class='role'>수장</span></td><td class='num excluded tier5'>430,670</td></tr><tr><td>황병영</td><td class='num '>46,996</td></tr><tr><td>윤용태</td><td class='num '>46,613</td></tr><tr><td>어윤수</td><td class='num '>41,635</td></tr></tbody>
-        </table>
-        <table>
-          <thead><tr><th>여 멤버</th><th>별풍선</th></tr></thead>
-          <tbody><tr><td>요닝</td><td class='num tier5'>303,971</td></tr><tr><td>모리</td><td class='num tier10'>224,876</td></tr><tr><td>진땅콩</td><td class='num '>167,336</td></tr><tr><td>요괴버스</td><td class='num '>140,928</td></tr><tr><td>이나</td><td class='num '>91,429</td></tr></tbody>
-        </table>
-      </div>
-      <table class="summary">
-        <tr><td>남자 합계</td><td class="num">135,244</td><td>여자 합계</td><td class="num">928,540</td></tr>
-        <tr><td>남자 평균</td><td class="num">45,081</td><td>여자 평균</td><td class="num">185,708</td></tr>
-        <tr><td>전체 합계</td><td class="num total">1,063,784</td><td>전체 평균</td><td class="num total">132,973</td></tr>
-        <tr><td>인원</td><td colspan="3">총 9명 (집계 8명 · 수장/전력외 제외)</td></tr>
+      <table>
+        <thead><tr><th>이름</th><th>성별</th><th>별풍선</th></tr></thead>
+        <tbody>
+          <tr><td class='name-td'><div class='name-cell'><span class='name-left'>김윤중 <span class='role'>수장</span></span></div></td><td class='gender-td'>남자</td><td class='num excluded tier5'>430,670</td></tr><tr><td class='name-td'><div class='name-cell'><span class='name-left'>요닝 </span></div></td><td class='gender-td'>여자</td><td class='num tier5'>303,971</td></tr><tr><td class='name-td'><div class='name-cell'><span class='name-left'>모리 </span></div></td><td class='gender-td'>여자</td><td class='num tier10'>224,876</td></tr><tr><td class='name-td'><div class='name-cell'><span class='name-left'>진땅콩 </span></div></td><td class='gender-td'>여자</td><td class='num '>167,336</td></tr><tr><td class='name-td'><div class='name-cell'><span class='name-left'>요괴버스 </span></div></td><td class='gender-td'>여자</td><td class='num '>140,928</td></tr><tr><td class='name-td'><div class='name-cell'><span class='name-left'>이나 </span></div></td><td class='gender-td'>여자</td><td class='num '>91,429</td></tr><tr><td class='name-td'><div class='name-cell'><span class='name-left'>황병영 </span></div></td><td class='gender-td'>남자</td><td class='num '>46,996</td></tr><tr><td class='name-td'><div class='name-cell'><span class='name-left'>윤용태 </span></div></td><td class='gender-td'>남자</td><td class='num '>46,613</td></tr><tr><td class='name-td'><div class='name-cell'><span class='name-left'>어윤수 </span></div></td><td class='gender-td'>남자</td><td class='num '>41,635</td></tr>
+          
+      <tr class="summary-row"><td colspan="2">남자 합계</td><td class="num">135,244</td></tr>
+      <tr class="summary-row"><td colspan="2">남자 평균</td><td class="num">45,081</td></tr>
+      <tr class="summary-row"><td colspan="2">여자 합계</td><td class="num">928,540</td></tr>
+      <tr class="summary-row"><td colspan="2">여자 평균</td><td class="num female-avg">185,708</td></tr>
+      <tr class="summary-row"><td colspan="2">전체 합계</td><td class="num total">1,063,784</td></tr>
+      <tr class="summary-row"><td colspan="2">전체 평균</td><td class="num total">132,973</td></tr>
+      <tr class="summary-row"><td colspan="2">인원</td><td>총 9명 (집계 8명)</td></tr>
+    
+        </tbody>
       </table>
     </div>
     
     <div class="team-card">
       <div class="team-title">더블비 <span class="team-avg">전체평균 103,460</span></div>
-      <div class="table-pair">
-        <table>
-          <thead><tr><th>남 멤버</th><th>별풍선</th></tr></thead>
-          <tbody><tr><td>빵훈 <span class='role'>수장</span></td><td class='num excluded tier5'>367,884</td></tr><tr><td>광기남 <span class='role'>전력외</span></td><td class='num excluded'>30,629</td></tr></tbody>
-        </table>
-        <table>
-          <thead><tr><th>여 멤버</th><th>별풍선</th></tr></thead>
-          <tbody><tr><td>두디  🎂</td><td class='num tier10'>238,059</td></tr><tr><td>예슬  🎂</td><td class='num '>113,347</td></tr><tr><td>아라미</td><td class='num '>97,235</td></tr><tr><td>한쪼니</td><td class='num '>42,643</td></tr><tr><td>박쭈이</td><td class='num '>26,016</td></tr></tbody>
-        </table>
-      </div>
-      <table class="summary">
-        <tr><td>남자 합계</td><td class="num">0</td><td>여자 합계</td><td class="num">517,300</td></tr>
-        <tr><td>남자 평균</td><td class="num">0</td><td>여자 평균</td><td class="num">103,460</td></tr>
-        <tr><td>전체 합계</td><td class="num total">517,300</td><td>전체 평균</td><td class="num total">103,460</td></tr>
-        <tr><td>인원</td><td colspan="3">총 7명 (집계 5명 · 수장/전력외 제외)</td></tr>
+      <table>
+        <thead><tr><th>이름</th><th>성별</th><th>별풍선</th></tr></thead>
+        <tbody>
+          <tr><td class='name-td'><div class='name-cell'><span class='name-left'>빵훈 <span class='role'>수장</span></span></div></td><td class='gender-td'>남자</td><td class='num excluded tier5'>367,884</td></tr><tr><td class='name-td'><div class='name-cell'><span class='name-left'>두디 </span><span class='bday-mark'>🎂</span></div></td><td class='gender-td'>여자</td><td class='num tier10'>238,059</td></tr><tr><td class='name-td'><div class='name-cell'><span class='name-left'>예슬 </span><span class='bday-mark'>🎂</span></div></td><td class='gender-td'>여자</td><td class='num '>113,347</td></tr><tr><td class='name-td'><div class='name-cell'><span class='name-left'>아라미 </span></div></td><td class='gender-td'>여자</td><td class='num '>97,235</td></tr><tr><td class='name-td'><div class='name-cell'><span class='name-left'>한쪼니 </span></div></td><td class='gender-td'>여자</td><td class='num '>42,643</td></tr><tr><td class='name-td'><div class='name-cell'><span class='name-left'>광기남 <span class='role'>전력외</span></span></div></td><td class='gender-td'>남자</td><td class='num excluded'>30,629</td></tr><tr><td class='name-td'><div class='name-cell'><span class='name-left'>박쭈이 </span></div></td><td class='gender-td'>여자</td><td class='num '>26,016</td></tr>
+          
+      <tr class="summary-row"><td colspan="2">남자 합계</td><td class="num">0</td></tr>
+      <tr class="summary-row"><td colspan="2">남자 평균</td><td class="num">0</td></tr>
+      <tr class="summary-row"><td colspan="2">여자 합계</td><td class="num">517,300</td></tr>
+      <tr class="summary-row"><td colspan="2">여자 평균</td><td class="num female-avg">103,460</td></tr>
+      <tr class="summary-row"><td colspan="2">전체 합계</td><td class="num total">517,300</td></tr>
+      <tr class="summary-row"><td colspan="2">전체 평균</td><td class="num total">103,460</td></tr>
+      <tr class="summary-row"><td colspan="2">인원</td><td>총 7명 (집계 5명)</td></tr>
+    
+        </tbody>
       </table>
     </div>
     
     <div class="team-card">
       <div class="team-title">뉴캣슬 <span class="team-avg">전체평균 99,065</span></div>
-      <div class="table-pair">
-        <table>
-          <thead><tr><th>남 멤버</th><th>별풍선</th></tr></thead>
-          <tbody><tr><td>기뉴다 <span class='role'>수장</span></td><td class='num excluded tier5'>400,632</td></tr><tr><td>도재욱</td><td class='num tier10'>200,749</td></tr><tr><td>저그맨</td><td class='num '>91,534</td></tr><tr><td>김건욱</td><td class='num '>90,919</td></tr><tr><td>트슈</td><td class='num '>58,455</td></tr><tr><td>초난강</td><td class='num '>48,628</td></tr><tr><td>구라미스</td><td class='num '>39,002</td></tr><tr><td>액션구드론</td><td class='num '>33,442</td></tr><tr><td>박성균</td><td class='num '>18,626</td></tr></tbody>
-        </table>
-        <table>
-          <thead><tr><th>여 멤버</th><th>별풍선</th></tr></thead>
-          <tbody><tr><td>퀸주  🎂</td><td class='num tier10'>266,040</td></tr><tr><td>막내현진</td><td class='num '>169,264</td></tr><tr><td>최도랑</td><td class='num '>160,430</td></tr><tr><td>하윤</td><td class='num '>132,110</td></tr><tr><td>박듀듀</td><td class='num '>113,293</td></tr><tr><td>키링</td><td class='num '>112,393</td></tr><tr><td>유즈</td><td class='num '>111,172</td></tr><tr><td>이아깽</td><td class='num '>102,764</td></tr><tr><td>밍또얌</td><td class='num '>100,810</td></tr><tr><td>백갑숙</td><td class='num '>98,994</td></tr><tr><td>냥냥코기</td><td class='num '>72,149</td></tr><tr><td>진유성</td><td class='num '>70,980</td></tr><tr><td>단솔</td><td class='num '>44,528</td></tr><tr><td>으니</td><td class='num '>43,138</td></tr></tbody>
-        </table>
-      </div>
-      <table class="summary">
-        <tr><td>남자 합계</td><td class="num">581,355</td><td>여자 합계</td><td class="num">1,598,065</td></tr>
-        <tr><td>남자 평균</td><td class="num">72,669</td><td>여자 평균</td><td class="num">114,148</td></tr>
-        <tr><td>전체 합계</td><td class="num total">2,179,420</td><td>전체 평균</td><td class="num total">99,065</td></tr>
-        <tr><td>인원</td><td colspan="3">총 23명 (집계 22명 · 수장/전력외 제외)</td></tr>
+      <table>
+        <thead><tr><th>이름</th><th>성별</th><th>별풍선</th></tr></thead>
+        <tbody>
+          <tr><td class='name-td'><div class='name-cell'><span class='name-left'>기뉴다 <span class='role'>수장</span></span></div></td><td class='gender-td'>남자</td><td class='num excluded tier5'>400,632</td></tr><tr><td class='name-td'><div class='name-cell'><span class='name-left'>퀸주 </span><span class='bday-mark'>🎂</span></div></td><td class='gender-td'>여자</td><td class='num tier10'>266,040</td></tr><tr><td class='name-td'><div class='name-cell'><span class='name-left'>도재욱 </span></div></td><td class='gender-td'>남자</td><td class='num tier10'>200,749</td></tr><tr><td class='name-td'><div class='name-cell'><span class='name-left'>막내현진 </span></div></td><td class='gender-td'>여자</td><td class='num '>169,264</td></tr><tr><td class='name-td'><div class='name-cell'><span class='name-left'>최도랑 </span></div></td><td class='gender-td'>여자</td><td class='num '>160,430</td></tr><tr><td class='name-td'><div class='name-cell'><span class='name-left'>하윤 </span></div></td><td class='gender-td'>여자</td><td class='num '>132,110</td></tr><tr><td class='name-td'><div class='name-cell'><span class='name-left'>박듀듀 </span></div></td><td class='gender-td'>여자</td><td class='num '>113,293</td></tr><tr><td class='name-td'><div class='name-cell'><span class='name-left'>키링 </span></div></td><td class='gender-td'>여자</td><td class='num '>112,393</td></tr><tr><td class='name-td'><div class='name-cell'><span class='name-left'>유즈 </span></div></td><td class='gender-td'>여자</td><td class='num '>111,172</td></tr><tr><td class='name-td'><div class='name-cell'><span class='name-left'>이아깽 </span></div></td><td class='gender-td'>여자</td><td class='num '>102,764</td></tr><tr><td class='name-td'><div class='name-cell'><span class='name-left'>밍또얌 </span></div></td><td class='gender-td'>여자</td><td class='num '>100,810</td></tr><tr><td class='name-td'><div class='name-cell'><span class='name-left'>백갑숙 </span></div></td><td class='gender-td'>여자</td><td class='num '>98,994</td></tr><tr><td class='name-td'><div class='name-cell'><span class='name-left'>저그맨 </span></div></td><td class='gender-td'>남자</td><td class='num '>91,534</td></tr><tr><td class='name-td'><div class='name-cell'><span class='name-left'>김건욱 </span></div></td><td class='gender-td'>남자</td><td class='num '>90,919</td></tr><tr><td class='name-td'><div class='name-cell'><span class='name-left'>냥냥코기 </span></div></td><td class='gender-td'>여자</td><td class='num '>72,149</td></tr><tr><td class='name-td'><div class='name-cell'><span class='name-left'>진유성 </span></div></td><td class='gender-td'>여자</td><td class='num '>70,980</td></tr><tr><td class='name-td'><div class='name-cell'><span class='name-left'>트슈 </span></div></td><td class='gender-td'>남자</td><td class='num '>58,455</td></tr><tr><td class='name-td'><div class='name-cell'><span class='name-left'>초난강 </span></div></td><td class='gender-td'>남자</td><td class='num '>48,628</td></tr><tr><td class='name-td'><div class='name-cell'><span class='name-left'>단솔 </span></div></td><td class='gender-td'>여자</td><td class='num '>44,528</td></tr><tr><td class='name-td'><div class='name-cell'><span class='name-left'>으니 </span></div></td><td class='gender-td'>여자</td><td class='num '>43,138</td></tr><tr><td class='name-td'><div class='name-cell'><span class='name-left'>구라미스 </span></div></td><td class='gender-td'>남자</td><td class='num '>39,002</td></tr><tr><td class='name-td'><div class='name-cell'><span class='name-left'>액션구드론 </span></div></td><td class='gender-td'>남자</td><td class='num '>33,442</td></tr><tr><td class='name-td'><div class='name-cell'><span class='name-left'>박성균 </span></div></td><td class='gender-td'>남자</td><td class='num '>18,626</td></tr>
+          
+      <tr class="summary-row"><td colspan="2">남자 합계</td><td class="num">581,355</td></tr>
+      <tr class="summary-row"><td colspan="2">남자 평균</td><td class="num">72,669</td></tr>
+      <tr class="summary-row"><td colspan="2">여자 합계</td><td class="num">1,598,065</td></tr>
+      <tr class="summary-row"><td colspan="2">여자 평균</td><td class="num female-avg">114,148</td></tr>
+      <tr class="summary-row"><td colspan="2">전체 합계</td><td class="num total">2,179,420</td></tr>
+      <tr class="summary-row"><td colspan="2">전체 평균</td><td class="num total">99,065</td></tr>
+      <tr class="summary-row"><td colspan="2">인원</td><td>총 23명 (집계 22명)</td></tr>
+    
+        </tbody>
       </table>
     </div>
     
     <div class="team-card">
       <div class="team-title">케이대 <span class="team-avg">전체평균 87,538</span></div>
-      <div class="table-pair">
-        <table>
-          <thead><tr><th>남 멤버</th><th>별풍선</th></tr></thead>
-          <tbody><tr><td>케이 <span class='role'>수장</span></td><td class='num excluded tier1'>10,115,426</td></tr><tr><td>김학수</td><td class='num tier10'>191,880</td></tr><tr><td>고석현</td><td class='num '>76,661</td></tr><tr><td>정영재</td><td class='num '>69,145</td></tr><tr><td>정민기</td><td class='num '>67,859</td></tr><tr><td>홍덕  🎂</td><td class='num '>64,986</td></tr><tr><td>김경모</td><td class='num '>52,906</td></tr><tr><td>유민</td><td class='num '>36,515</td></tr><tr><td>장윤철</td><td class='num '>24,181</td></tr></tbody>
-        </table>
-        <table>
-          <thead><tr><th>여 멤버</th><th>별풍선</th></tr></thead>
-          <tbody><tr><td>냥수디</td><td class='num tier10'>198,580</td></tr><tr><td>내가먼지</td><td class='num '>175,717</td></tr><tr><td>슬돌이</td><td class='num '>155,416</td></tr><tr><td>박하악</td><td class='num '>129,695</td></tr><tr><td>링고</td><td class='num '>123,006</td></tr><tr><td>정서린</td><td class='num '>100,342</td></tr><tr><td>단비송</td><td class='num '>83,050</td></tr><tr><td>정소윤</td><td class='num '>78,485</td></tr><tr><td>연또</td><td class='num '>68,495</td></tr><tr><td>또아</td><td class='num '>53,838</td></tr><tr><td>보혜</td><td class='num '>0</td></tr><tr><td>늑대채린</td><td class='num '>0</td></tr></tbody>
-        </table>
-      </div>
-      <table class="summary">
-        <tr><td>남자 합계</td><td class="num">584,133</td><td>여자 합계</td><td class="num">1,166,624</td></tr>
-        <tr><td>남자 평균</td><td class="num">73,017</td><td>여자 평균</td><td class="num">97,219</td></tr>
-        <tr><td>전체 합계</td><td class="num total">1,750,757</td><td>전체 평균</td><td class="num total">87,538</td></tr>
-        <tr><td>인원</td><td colspan="3">총 21명 (집계 20명 · 수장/전력외 제외)</td></tr>
+      <table>
+        <thead><tr><th>이름</th><th>성별</th><th>별풍선</th></tr></thead>
+        <tbody>
+          <tr><td class='name-td'><div class='name-cell'><span class='name-left'>케이 <span class='role'>수장</span></span></div></td><td class='gender-td'>남자</td><td class='num excluded tier1'>10,115,426</td></tr><tr><td class='name-td'><div class='name-cell'><span class='name-left'>냥수디 </span></div></td><td class='gender-td'>여자</td><td class='num tier10'>198,580</td></tr><tr><td class='name-td'><div class='name-cell'><span class='name-left'>김학수 </span></div></td><td class='gender-td'>남자</td><td class='num tier10'>191,880</td></tr><tr><td class='name-td'><div class='name-cell'><span class='name-left'>내가먼지 </span></div></td><td class='gender-td'>여자</td><td class='num '>175,717</td></tr><tr><td class='name-td'><div class='name-cell'><span class='name-left'>슬돌이 </span></div></td><td class='gender-td'>여자</td><td class='num '>155,416</td></tr><tr><td class='name-td'><div class='name-cell'><span class='name-left'>박하악 </span></div></td><td class='gender-td'>여자</td><td class='num '>129,695</td></tr><tr><td class='name-td'><div class='name-cell'><span class='name-left'>링고 </span></div></td><td class='gender-td'>여자</td><td class='num '>123,006</td></tr><tr><td class='name-td'><div class='name-cell'><span class='name-left'>정서린 </span></div></td><td class='gender-td'>여자</td><td class='num '>100,342</td></tr><tr><td class='name-td'><div class='name-cell'><span class='name-left'>단비송 </span></div></td><td class='gender-td'>여자</td><td class='num '>83,050</td></tr><tr><td class='name-td'><div class='name-cell'><span class='name-left'>정소윤 </span></div></td><td class='gender-td'>여자</td><td class='num '>78,485</td></tr><tr><td class='name-td'><div class='name-cell'><span class='name-left'>고석현 </span></div></td><td class='gender-td'>남자</td><td class='num '>76,661</td></tr><tr><td class='name-td'><div class='name-cell'><span class='name-left'>정영재 </span></div></td><td class='gender-td'>남자</td><td class='num '>69,145</td></tr><tr><td class='name-td'><div class='name-cell'><span class='name-left'>연또 </span></div></td><td class='gender-td'>여자</td><td class='num '>68,495</td></tr><tr><td class='name-td'><div class='name-cell'><span class='name-left'>정민기 </span></div></td><td class='gender-td'>남자</td><td class='num '>67,859</td></tr><tr><td class='name-td'><div class='name-cell'><span class='name-left'>홍덕 </span><span class='bday-mark'>🎂</span></div></td><td class='gender-td'>남자</td><td class='num '>64,986</td></tr><tr><td class='name-td'><div class='name-cell'><span class='name-left'>또아 </span></div></td><td class='gender-td'>여자</td><td class='num '>53,838</td></tr><tr><td class='name-td'><div class='name-cell'><span class='name-left'>김경모 </span></div></td><td class='gender-td'>남자</td><td class='num '>52,906</td></tr><tr><td class='name-td'><div class='name-cell'><span class='name-left'>유민 </span></div></td><td class='gender-td'>남자</td><td class='num '>36,515</td></tr><tr><td class='name-td'><div class='name-cell'><span class='name-left'>장윤철 </span></div></td><td class='gender-td'>남자</td><td class='num '>24,187</td></tr><tr><td class='name-td'><div class='name-cell'><span class='name-left'>보혜 </span></div></td><td class='gender-td'>여자</td><td class='num '>0</td></tr><tr><td class='name-td'><div class='name-cell'><span class='name-left'>늑대채린 </span></div></td><td class='gender-td'>여자</td><td class='num '>0</td></tr>
+          
+      <tr class="summary-row"><td colspan="2">남자 합계</td><td class="num">584,139</td></tr>
+      <tr class="summary-row"><td colspan="2">남자 평균</td><td class="num">73,017</td></tr>
+      <tr class="summary-row"><td colspan="2">여자 합계</td><td class="num">1,166,624</td></tr>
+      <tr class="summary-row"><td colspan="2">여자 평균</td><td class="num female-avg">97,219</td></tr>
+      <tr class="summary-row"><td colspan="2">전체 합계</td><td class="num total">1,750,763</td></tr>
+      <tr class="summary-row"><td colspan="2">전체 평균</td><td class="num total">87,538</td></tr>
+      <tr class="summary-row"><td colspan="2">인원</td><td>총 21명 (집계 20명)</td></tr>
+    
+        </tbody>
       </table>
     </div>
     
     <div class="team-card">
       <div class="team-title">DM <span class="team-avg">전체평균 81,523</span></div>
-      <div class="table-pair">
-        <table>
-          <thead><tr><th>남 멤버</th><th>별풍선</th></tr></thead>
-          <tbody><tr><td>전태규 <span class='role'>수장</span></td><td class='num excluded'>126,781</td></tr><tr><td>임진묵 <span class='role'>수장</span></td><td class='num excluded'>53,655</td></tr><tr><td>이예훈</td><td class='num '>33,323</td></tr><tr><td>원선재</td><td class='num '>27,961</td></tr></tbody>
-        </table>
-        <table>
-          <thead><tr><th>여 멤버</th><th>별풍선</th></tr></thead>
-          <tbody><tr><td>다뉴</td><td class='num '>175,507</td></tr><tr><td>은서</td><td class='num '>134,712</td></tr><tr><td>은조</td><td class='num '>123,797</td></tr><tr><td>서지수</td><td class='num '>123,395</td></tr><tr><td>빵리나</td><td class='num '>66,540</td></tr><tr><td>정소이</td><td class='num '>65,002</td></tr><tr><td>수니양</td><td class='num '>54,370</td></tr><tr><td>김말랑</td><td class='num '>50,383</td></tr><tr><td>다나짱</td><td class='num '>41,763</td></tr></tbody>
-        </table>
-      </div>
-      <table class="summary">
-        <tr><td>남자 합계</td><td class="num">61,284</td><td>여자 합계</td><td class="num">835,469</td></tr>
-        <tr><td>남자 평균</td><td class="num">30,642</td><td>여자 평균</td><td class="num">92,830</td></tr>
-        <tr><td>전체 합계</td><td class="num total">896,753</td><td>전체 평균</td><td class="num total">81,523</td></tr>
-        <tr><td>인원</td><td colspan="3">총 13명 (집계 11명 · 수장/전력외 제외)</td></tr>
+      <table>
+        <thead><tr><th>이름</th><th>성별</th><th>별풍선</th></tr></thead>
+        <tbody>
+          <tr><td class='name-td'><div class='name-cell'><span class='name-left'>다뉴 </span></div></td><td class='gender-td'>여자</td><td class='num '>175,507</td></tr><tr><td class='name-td'><div class='name-cell'><span class='name-left'>은서 </span></div></td><td class='gender-td'>여자</td><td class='num '>134,712</td></tr><tr><td class='name-td'><div class='name-cell'><span class='name-left'>전태규 <span class='role'>수장</span></span></div></td><td class='gender-td'>남자</td><td class='num excluded'>126,781</td></tr><tr><td class='name-td'><div class='name-cell'><span class='name-left'>은조 </span></div></td><td class='gender-td'>여자</td><td class='num '>123,797</td></tr><tr><td class='name-td'><div class='name-cell'><span class='name-left'>서지수 </span></div></td><td class='gender-td'>여자</td><td class='num '>123,395</td></tr><tr><td class='name-td'><div class='name-cell'><span class='name-left'>빵리나 </span></div></td><td class='gender-td'>여자</td><td class='num '>66,540</td></tr><tr><td class='name-td'><div class='name-cell'><span class='name-left'>정소이 </span></div></td><td class='gender-td'>여자</td><td class='num '>65,002</td></tr><tr><td class='name-td'><div class='name-cell'><span class='name-left'>수니양 </span></div></td><td class='gender-td'>여자</td><td class='num '>54,370</td></tr><tr><td class='name-td'><div class='name-cell'><span class='name-left'>임진묵 <span class='role'>수장</span></span></div></td><td class='gender-td'>남자</td><td class='num excluded'>53,655</td></tr><tr><td class='name-td'><div class='name-cell'><span class='name-left'>김말랑 </span></div></td><td class='gender-td'>여자</td><td class='num '>50,383</td></tr><tr><td class='name-td'><div class='name-cell'><span class='name-left'>다나짱 </span></div></td><td class='gender-td'>여자</td><td class='num '>41,763</td></tr><tr><td class='name-td'><div class='name-cell'><span class='name-left'>이예훈 </span></div></td><td class='gender-td'>남자</td><td class='num '>33,323</td></tr><tr><td class='name-td'><div class='name-cell'><span class='name-left'>원선재 </span></div></td><td class='gender-td'>남자</td><td class='num '>27,961</td></tr>
+          
+      <tr class="summary-row"><td colspan="2">남자 합계</td><td class="num">61,284</td></tr>
+      <tr class="summary-row"><td colspan="2">남자 평균</td><td class="num">30,642</td></tr>
+      <tr class="summary-row"><td colspan="2">여자 합계</td><td class="num">835,469</td></tr>
+      <tr class="summary-row"><td colspan="2">여자 평균</td><td class="num female-avg">92,830</td></tr>
+      <tr class="summary-row"><td colspan="2">전체 합계</td><td class="num total">896,753</td></tr>
+      <tr class="summary-row"><td colspan="2">전체 평균</td><td class="num total">81,523</td></tr>
+      <tr class="summary-row"><td colspan="2">인원</td><td>총 13명 (집계 11명)</td></tr>
+    
+        </tbody>
       </table>
     </div>
     
     <div class="team-card">
       <div class="team-title">JSA <span class="team-avg">전체평균 77,364</span></div>
-      <div class="table-pair">
-        <table>
-          <thead><tr><th>남 멤버</th><th>별풍선</th></tr></thead>
-          <tbody><tr><td>시조새 <span class='role'>수장</span></td><td class='num excluded tier1'>2,892,440</td></tr><tr><td>김성대</td><td class='num '>122,110</td></tr><tr><td>조기석</td><td class='num '>84,800</td></tr><tr><td>김민우</td><td class='num '>82,880</td></tr><tr><td>김병수</td><td class='num '>79,774</td></tr><tr><td>김영진</td><td class='num '>77,055</td></tr><tr><td>구성훈</td><td class='num '>57,371</td></tr><tr><td>홍구</td><td class='num '>44,332</td></tr></tbody>
-        </table>
-        <table>
-          <thead><tr><th>여 멤버</th><th>별풍선</th></tr></thead>
-          <tbody><tr><td>하블리</td><td class='num tier10'>188,836</td></tr><tr><td>려원</td><td class='num '>131,337</td></tr><tr><td>소심</td><td class='num '>94,634</td></tr><tr><td>나린</td><td class='num '>91,774</td></tr><tr><td>라미</td><td class='num '>88,796</td></tr><tr><td>쟈닌</td><td class='num '>75,382</td></tr><tr><td>김바다</td><td class='num '>72,018</td></tr><tr><td>떠아</td><td class='num '>55,779</td></tr><tr><td>미진이  🎂</td><td class='num '>51,393</td></tr><tr><td>백원이야</td><td class='num '>50,670</td></tr><tr><td>휘연  🎂</td><td class='num '>44,130</td></tr><tr><td>타마양</td><td class='num '>38,304</td></tr><tr><td>모비  🎂</td><td class='num '>15,902</td></tr></tbody>
-        </table>
-      </div>
-      <table class="summary">
-        <tr><td>남자 합계</td><td class="num">548,322</td><td>여자 합계</td><td class="num">998,955</td></tr>
-        <tr><td>남자 평균</td><td class="num">78,332</td><td>여자 평균</td><td class="num">76,843</td></tr>
-        <tr><td>전체 합계</td><td class="num total">1,547,277</td><td>전체 평균</td><td class="num total">77,364</td></tr>
-        <tr><td>인원</td><td colspan="3">총 21명 (집계 20명 · 수장/전력외 제외)</td></tr>
+      <table>
+        <thead><tr><th>이름</th><th>성별</th><th>별풍선</th></tr></thead>
+        <tbody>
+          <tr><td class='name-td'><div class='name-cell'><span class='name-left'>시조새 <span class='role'>수장</span></span></div></td><td class='gender-td'>남자</td><td class='num excluded tier1'>2,906,404</td></tr><tr><td class='name-td'><div class='name-cell'><span class='name-left'>하블리 </span></div></td><td class='gender-td'>여자</td><td class='num tier10'>188,836</td></tr><tr><td class='name-td'><div class='name-cell'><span class='name-left'>려원 </span></div></td><td class='gender-td'>여자</td><td class='num '>131,337</td></tr><tr><td class='name-td'><div class='name-cell'><span class='name-left'>김성대 </span></div></td><td class='gender-td'>남자</td><td class='num '>122,110</td></tr><tr><td class='name-td'><div class='name-cell'><span class='name-left'>소심 </span></div></td><td class='gender-td'>여자</td><td class='num '>94,634</td></tr><tr><td class='name-td'><div class='name-cell'><span class='name-left'>나린 </span></div></td><td class='gender-td'>여자</td><td class='num '>91,774</td></tr><tr><td class='name-td'><div class='name-cell'><span class='name-left'>라미 </span></div></td><td class='gender-td'>여자</td><td class='num '>88,796</td></tr><tr><td class='name-td'><div class='name-cell'><span class='name-left'>조기석 </span></div></td><td class='gender-td'>남자</td><td class='num '>84,800</td></tr><tr><td class='name-td'><div class='name-cell'><span class='name-left'>김민우 </span></div></td><td class='gender-td'>남자</td><td class='num '>82,880</td></tr><tr><td class='name-td'><div class='name-cell'><span class='name-left'>김병수 </span></div></td><td class='gender-td'>남자</td><td class='num '>79,774</td></tr><tr><td class='name-td'><div class='name-cell'><span class='name-left'>김영진 </span></div></td><td class='gender-td'>남자</td><td class='num '>77,055</td></tr><tr><td class='name-td'><div class='name-cell'><span class='name-left'>쟈닌 </span></div></td><td class='gender-td'>여자</td><td class='num '>75,382</td></tr><tr><td class='name-td'><div class='name-cell'><span class='name-left'>김바다 </span></div></td><td class='gender-td'>여자</td><td class='num '>72,018</td></tr><tr><td class='name-td'><div class='name-cell'><span class='name-left'>구성훈 </span></div></td><td class='gender-td'>남자</td><td class='num '>57,371</td></tr><tr><td class='name-td'><div class='name-cell'><span class='name-left'>떠아 </span></div></td><td class='gender-td'>여자</td><td class='num '>55,779</td></tr><tr><td class='name-td'><div class='name-cell'><span class='name-left'>미진이 </span><span class='bday-mark'>🎂</span></div></td><td class='gender-td'>여자</td><td class='num '>51,393</td></tr><tr><td class='name-td'><div class='name-cell'><span class='name-left'>백원이야 </span></div></td><td class='gender-td'>여자</td><td class='num '>50,670</td></tr><tr><td class='name-td'><div class='name-cell'><span class='name-left'>홍구 </span></div></td><td class='gender-td'>남자</td><td class='num '>44,332</td></tr><tr><td class='name-td'><div class='name-cell'><span class='name-left'>휘연 </span><span class='bday-mark'>🎂</span></div></td><td class='gender-td'>여자</td><td class='num '>44,130</td></tr><tr><td class='name-td'><div class='name-cell'><span class='name-left'>타마양 </span></div></td><td class='gender-td'>여자</td><td class='num '>38,304</td></tr><tr><td class='name-td'><div class='name-cell'><span class='name-left'>모비 </span><span class='bday-mark'>🎂</span></div></td><td class='gender-td'>여자</td><td class='num '>15,902</td></tr>
+          
+      <tr class="summary-row"><td colspan="2">남자 합계</td><td class="num">548,322</td></tr>
+      <tr class="summary-row"><td colspan="2">남자 평균</td><td class="num">78,332</td></tr>
+      <tr class="summary-row"><td colspan="2">여자 합계</td><td class="num">998,955</td></tr>
+      <tr class="summary-row"><td colspan="2">여자 평균</td><td class="num female-avg">76,843</td></tr>
+      <tr class="summary-row"><td colspan="2">전체 합계</td><td class="num total">1,547,277</td></tr>
+      <tr class="summary-row"><td colspan="2">전체 평균</td><td class="num total">77,364</td></tr>
+      <tr class="summary-row"><td colspan="2">인원</td><td>총 21명 (집계 20명)</td></tr>
+    
+        </tbody>
       </table>
     </div>
     
     <div class="team-card">
       <div class="team-title">수술대 <span class="team-avg">전체평균 72,784</span></div>
-      <div class="table-pair">
-        <table>
-          <thead><tr><th>남 멤버</th><th>별풍선</th></tr></thead>
-          <tbody><tr><td>정중만 <span class='role'>수장</span></td><td class='num excluded'>123,549</td></tr><tr><td>이소룡</td><td class='num '>95,833</td></tr><tr><td>신상문</td><td class='num '>84,464</td></tr><tr><td>선우도현  🎂</td><td class='num '>53,030</td></tr><tr><td>짭제  🎂</td><td class='num '>44,554</td></tr><tr><td>김기덕</td><td class='num '>37,320</td></tr><tr><td>윤준석</td><td class='num '>31,217</td></tr><tr><td>전제민  🎂</td><td class='num '>26,136</td></tr></tbody>
-        </table>
-        <table>
-          <thead><tr><th>여 멤버</th><th>별풍선</th></tr></thead>
-          <tbody><tr><td>아링</td><td class='num tier10'>198,732</td></tr><tr><td>파찌</td><td class='num '>184,324</td></tr><tr><td>기나</td><td class='num '>150,484</td></tr><tr><td>2라니</td><td class='num '>103,006</td></tr><tr><td>면추가</td><td class='num '>79,322</td></tr><tr><td>깨림이</td><td class='num '>76,545</td></tr><tr><td>밍가</td><td class='num '>73,012</td></tr><tr><td>핑핑</td><td class='num '>70,851</td></tr><tr><td>밥새</td><td class='num '>63,233</td></tr><tr><td>공다츠</td><td class='num '>55,673</td></tr><tr><td>헤요이</td><td class='num '>54,666</td></tr><tr><td>몽순</td><td class='num '>48,938</td></tr><tr><td>다린</td><td class='num '>28,177</td></tr><tr><td>온도이</td><td class='num '>27,814</td></tr><tr><td>봄덕이</td><td class='num '>13,917</td></tr></tbody>
-        </table>
-      </div>
-      <table class="summary">
-        <tr><td>남자 합계</td><td class="num">372,554</td><td>여자 합계</td><td class="num">1,228,694</td></tr>
-        <tr><td>남자 평균</td><td class="num">53,222</td><td>여자 평균</td><td class="num">81,913</td></tr>
-        <tr><td>전체 합계</td><td class="num total">1,601,248</td><td>전체 평균</td><td class="num total">72,784</td></tr>
-        <tr><td>인원</td><td colspan="3">총 23명 (집계 22명 · 수장/전력외 제외)</td></tr>
+      <table>
+        <thead><tr><th>이름</th><th>성별</th><th>별풍선</th></tr></thead>
+        <tbody>
+          <tr><td class='name-td'><div class='name-cell'><span class='name-left'>아링 </span></div></td><td class='gender-td'>여자</td><td class='num tier10'>198,732</td></tr><tr><td class='name-td'><div class='name-cell'><span class='name-left'>파찌 </span></div></td><td class='gender-td'>여자</td><td class='num '>184,324</td></tr><tr><td class='name-td'><div class='name-cell'><span class='name-left'>기나 </span></div></td><td class='gender-td'>여자</td><td class='num '>150,484</td></tr><tr><td class='name-td'><div class='name-cell'><span class='name-left'>정중만 <span class='role'>수장</span></span></div></td><td class='gender-td'>남자</td><td class='num excluded'>123,549</td></tr><tr><td class='name-td'><div class='name-cell'><span class='name-left'>2라니 </span></div></td><td class='gender-td'>여자</td><td class='num '>103,006</td></tr><tr><td class='name-td'><div class='name-cell'><span class='name-left'>이소룡 </span></div></td><td class='gender-td'>남자</td><td class='num '>95,833</td></tr><tr><td class='name-td'><div class='name-cell'><span class='name-left'>신상문 </span></div></td><td class='gender-td'>남자</td><td class='num '>84,464</td></tr><tr><td class='name-td'><div class='name-cell'><span class='name-left'>면추가 </span></div></td><td class='gender-td'>여자</td><td class='num '>79,322</td></tr><tr><td class='name-td'><div class='name-cell'><span class='name-left'>깨림이 </span></div></td><td class='gender-td'>여자</td><td class='num '>76,545</td></tr><tr><td class='name-td'><div class='name-cell'><span class='name-left'>밍가 </span></div></td><td class='gender-td'>여자</td><td class='num '>73,012</td></tr><tr><td class='name-td'><div class='name-cell'><span class='name-left'>핑핑 </span></div></td><td class='gender-td'>여자</td><td class='num '>70,851</td></tr><tr><td class='name-td'><div class='name-cell'><span class='name-left'>밥새 </span></div></td><td class='gender-td'>여자</td><td class='num '>63,233</td></tr><tr><td class='name-td'><div class='name-cell'><span class='name-left'>공다츠 </span></div></td><td class='gender-td'>여자</td><td class='num '>55,673</td></tr><tr><td class='name-td'><div class='name-cell'><span class='name-left'>헤요이 </span></div></td><td class='gender-td'>여자</td><td class='num '>54,666</td></tr><tr><td class='name-td'><div class='name-cell'><span class='name-left'>선우도현 </span><span class='bday-mark'>🎂</span></div></td><td class='gender-td'>남자</td><td class='num '>53,030</td></tr><tr><td class='name-td'><div class='name-cell'><span class='name-left'>몽순 </span></div></td><td class='gender-td'>여자</td><td class='num '>48,938</td></tr><tr><td class='name-td'><div class='name-cell'><span class='name-left'>짭제 </span><span class='bday-mark'>🎂</span></div></td><td class='gender-td'>남자</td><td class='num '>44,554</td></tr><tr><td class='name-td'><div class='name-cell'><span class='name-left'>김기덕 </span></div></td><td class='gender-td'>남자</td><td class='num '>37,320</td></tr><tr><td class='name-td'><div class='name-cell'><span class='name-left'>윤준석 </span></div></td><td class='gender-td'>남자</td><td class='num '>31,217</td></tr><tr><td class='name-td'><div class='name-cell'><span class='name-left'>다린 </span></div></td><td class='gender-td'>여자</td><td class='num '>28,177</td></tr><tr><td class='name-td'><div class='name-cell'><span class='name-left'>온도이 </span></div></td><td class='gender-td'>여자</td><td class='num '>27,814</td></tr><tr><td class='name-td'><div class='name-cell'><span class='name-left'>전제민 </span><span class='bday-mark'>🎂</span></div></td><td class='gender-td'>남자</td><td class='num '>26,136</td></tr><tr><td class='name-td'><div class='name-cell'><span class='name-left'>봄덕이 </span></div></td><td class='gender-td'>여자</td><td class='num '>13,917</td></tr>
+          
+      <tr class="summary-row"><td colspan="2">남자 합계</td><td class="num">372,554</td></tr>
+      <tr class="summary-row"><td colspan="2">남자 평균</td><td class="num">53,222</td></tr>
+      <tr class="summary-row"><td colspan="2">여자 합계</td><td class="num">1,228,694</td></tr>
+      <tr class="summary-row"><td colspan="2">여자 평균</td><td class="num female-avg">81,913</td></tr>
+      <tr class="summary-row"><td colspan="2">전체 합계</td><td class="num total">1,601,248</td></tr>
+      <tr class="summary-row"><td colspan="2">전체 평균</td><td class="num total">72,784</td></tr>
+      <tr class="summary-row"><td colspan="2">인원</td><td>총 23명 (집계 22명)</td></tr>
+    
+        </tbody>
       </table>
     </div>
     
     <div class="team-card">
       <div class="team-title">BGM <span class="team-avg">전체평균 44,780</span></div>
-      <div class="table-pair">
-        <table>
-          <thead><tr><th>남 멤버</th><th>별풍선</th></tr></thead>
-          <tbody><tr><td>뽀현욱 <span class='role'>수장</span></td><td class='num excluded'>127,938</td></tr><tr><td>프발  🎂</td><td class='num '>54,497</td></tr><tr><td>난수</td><td class='num '>26,441</td></tr><tr><td>김범수</td><td class='num '>14,184</td></tr><tr><td>이윤열</td><td class='num '>12,099</td></tr><tr><td>김대한</td><td class='num '>9,304</td></tr></tbody>
-        </table>
-        <table>
-          <thead><tr><th>여 멤버</th><th>별풍선</th></tr></thead>
-          <tbody><tr><td>꼬니부깅  🎂</td><td class='num '>123,300</td></tr><tr><td>진서랄까</td><td class='num '>111,736</td></tr><tr><td>슈슈</td><td class='num '>79,594</td></tr><tr><td>엔돌핀</td><td class='num '>72,936</td></tr><tr><td>안아</td><td class='num '>64,608</td></tr><tr><td>예담</td><td class='num '>55,913</td></tr><tr><td>다라츄</td><td class='num '>36,342</td></tr><tr><td>뚜미</td><td class='num '>34,702</td></tr><tr><td>김쵸아</td><td class='num '>33,324</td></tr><tr><td>황단비</td><td class='num '>26,086</td></tr><tr><td>라운이</td><td class='num '>22,254</td></tr><tr><td>뽀누나</td><td class='num '>14,927</td></tr><tr><td>제티  🎂</td><td class='num '>13,802</td></tr></tbody>
-        </table>
-      </div>
-      <table class="summary">
-        <tr><td>남자 합계</td><td class="num">116,525</td><td>여자 합계</td><td class="num">689,524</td></tr>
-        <tr><td>남자 평균</td><td class="num">23,305</td><td>여자 평균</td><td class="num">53,040</td></tr>
-        <tr><td>전체 합계</td><td class="num total">806,049</td><td>전체 평균</td><td class="num total">44,780</td></tr>
-        <tr><td>인원</td><td colspan="3">총 19명 (집계 18명 · 수장/전력외 제외)</td></tr>
+      <table>
+        <thead><tr><th>이름</th><th>성별</th><th>별풍선</th></tr></thead>
+        <tbody>
+          <tr><td class='name-td'><div class='name-cell'><span class='name-left'>뽀현욱 <span class='role'>수장</span></span></div></td><td class='gender-td'>남자</td><td class='num excluded'>127,938</td></tr><tr><td class='name-td'><div class='name-cell'><span class='name-left'>꼬니부깅 </span><span class='bday-mark'>🎂</span></div></td><td class='gender-td'>여자</td><td class='num '>123,300</td></tr><tr><td class='name-td'><div class='name-cell'><span class='name-left'>진서랄까 </span></div></td><td class='gender-td'>여자</td><td class='num '>111,736</td></tr><tr><td class='name-td'><div class='name-cell'><span class='name-left'>슈슈 </span></div></td><td class='gender-td'>여자</td><td class='num '>79,594</td></tr><tr><td class='name-td'><div class='name-cell'><span class='name-left'>엔돌핀 </span></div></td><td class='gender-td'>여자</td><td class='num '>72,936</td></tr><tr><td class='name-td'><div class='name-cell'><span class='name-left'>안아 </span></div></td><td class='gender-td'>여자</td><td class='num '>64,608</td></tr><tr><td class='name-td'><div class='name-cell'><span class='name-left'>예담 </span></div></td><td class='gender-td'>여자</td><td class='num '>55,913</td></tr><tr><td class='name-td'><div class='name-cell'><span class='name-left'>프발 </span><span class='bday-mark'>🎂</span></div></td><td class='gender-td'>남자</td><td class='num '>54,497</td></tr><tr><td class='name-td'><div class='name-cell'><span class='name-left'>다라츄 </span></div></td><td class='gender-td'>여자</td><td class='num '>36,342</td></tr><tr><td class='name-td'><div class='name-cell'><span class='name-left'>뚜미 </span></div></td><td class='gender-td'>여자</td><td class='num '>34,702</td></tr><tr><td class='name-td'><div class='name-cell'><span class='name-left'>김쵸아 </span></div></td><td class='gender-td'>여자</td><td class='num '>33,324</td></tr><tr><td class='name-td'><div class='name-cell'><span class='name-left'>난수 </span></div></td><td class='gender-td'>남자</td><td class='num '>26,441</td></tr><tr><td class='name-td'><div class='name-cell'><span class='name-left'>황단비 </span></div></td><td class='gender-td'>여자</td><td class='num '>26,086</td></tr><tr><td class='name-td'><div class='name-cell'><span class='name-left'>라운이 </span></div></td><td class='gender-td'>여자</td><td class='num '>22,254</td></tr><tr><td class='name-td'><div class='name-cell'><span class='name-left'>뽀누나 </span></div></td><td class='gender-td'>여자</td><td class='num '>14,927</td></tr><tr><td class='name-td'><div class='name-cell'><span class='name-left'>김범수 </span></div></td><td class='gender-td'>남자</td><td class='num '>14,184</td></tr><tr><td class='name-td'><div class='name-cell'><span class='name-left'>제티 </span><span class='bday-mark'>🎂</span></div></td><td class='gender-td'>여자</td><td class='num '>13,802</td></tr><tr><td class='name-td'><div class='name-cell'><span class='name-left'>이윤열 </span></div></td><td class='gender-td'>남자</td><td class='num '>12,099</td></tr><tr><td class='name-td'><div class='name-cell'><span class='name-left'>김대한 </span></div></td><td class='gender-td'>남자</td><td class='num '>9,304</td></tr>
+          
+      <tr class="summary-row"><td colspan="2">남자 합계</td><td class="num">116,525</td></tr>
+      <tr class="summary-row"><td colspan="2">남자 평균</td><td class="num">23,305</td></tr>
+      <tr class="summary-row"><td colspan="2">여자 합계</td><td class="num">689,524</td></tr>
+      <tr class="summary-row"><td colspan="2">여자 평균</td><td class="num female-avg">53,040</td></tr>
+      <tr class="summary-row"><td colspan="2">전체 합계</td><td class="num total">806,049</td></tr>
+      <tr class="summary-row"><td colspan="2">전체 평균</td><td class="num total">44,780</td></tr>
+      <tr class="summary-row"><td colspan="2">인원</td><td>총 19명 (집계 18명)</td></tr>
+    
+        </tbody>
       </table>
     </div>
     
     <div class="team-card">
       <div class="team-title">흑카데미 <span class="team-avg">전체평균 44,581</span></div>
-      <div class="table-pair">
-        <table>
-          <thead><tr><th>남 멤버</th><th>별풍선</th></tr></thead>
-          <tbody><tr><td>흑운장 <span class='role'>수장</span></td><td class='num excluded tier10'>238,180</td></tr><tr><td>빡재</td><td class='num '>67,112</td></tr><tr><td>김영주</td><td class='num '>27,635</td></tr><tr><td>유승곤</td><td class='num '>21,227</td></tr><tr><td>팔레트</td><td class='num '>20,459</td></tr><tr><td>배호딱</td><td class='num '>15,571</td></tr><tr><td>민찬기</td><td class='num '>14,782</td></tr></tbody>
-        </table>
-        <table>
-          <thead><tr><th>여 멤버</th><th>별풍선</th></tr></thead>
-          <tbody><tr><td>나예리</td><td class='num '>130,517</td></tr><tr><td>가영</td><td class='num '>73,032</td></tr><tr><td>갱이다</td><td class='num '>69,072</td></tr><tr><td>유이</td><td class='num '>66,415</td></tr><tr><td>히엉</td><td class='num '>64,778</td></tr><tr><td>메옹</td><td class='num '>55,965</td></tr><tr><td>우힝이</td><td class='num '>45,523</td></tr><tr><td>경콩</td><td class='num '>41,600</td></tr><tr><td>선정은</td><td class='num '>40,862</td></tr><tr><td>제갈츄빈</td><td class='num '>26,834</td></tr><tr><td>김유나</td><td class='num '>26,534</td></tr><tr><td>링가</td><td class='num '>20,500</td></tr><tr><td>오세은</td><td class='num '>18,615</td></tr></tbody>
-        </table>
-      </div>
-      <table class="summary">
-        <tr><td>남자 합계</td><td class="num">166,786</td><td>여자 합계</td><td class="num">680,247</td></tr>
-        <tr><td>남자 평균</td><td class="num">27,798</td><td>여자 평균</td><td class="num">52,327</td></tr>
-        <tr><td>전체 합계</td><td class="num total">847,033</td><td>전체 평균</td><td class="num total">44,581</td></tr>
-        <tr><td>인원</td><td colspan="3">총 20명 (집계 19명 · 수장/전력외 제외)</td></tr>
+      <table>
+        <thead><tr><th>이름</th><th>성별</th><th>별풍선</th></tr></thead>
+        <tbody>
+          <tr><td class='name-td'><div class='name-cell'><span class='name-left'>흑운장 <span class='role'>수장</span></span></div></td><td class='gender-td'>남자</td><td class='num excluded tier10'>238,180</td></tr><tr><td class='name-td'><div class='name-cell'><span class='name-left'>나예리 </span></div></td><td class='gender-td'>여자</td><td class='num '>130,517</td></tr><tr><td class='name-td'><div class='name-cell'><span class='name-left'>가영 </span></div></td><td class='gender-td'>여자</td><td class='num '>73,033</td></tr><tr><td class='name-td'><div class='name-cell'><span class='name-left'>갱이다 </span></div></td><td class='gender-td'>여자</td><td class='num '>69,072</td></tr><tr><td class='name-td'><div class='name-cell'><span class='name-left'>빡재 </span></div></td><td class='gender-td'>남자</td><td class='num '>67,112</td></tr><tr><td class='name-td'><div class='name-cell'><span class='name-left'>유이 </span></div></td><td class='gender-td'>여자</td><td class='num '>66,415</td></tr><tr><td class='name-td'><div class='name-cell'><span class='name-left'>히엉 </span></div></td><td class='gender-td'>여자</td><td class='num '>64,778</td></tr><tr><td class='name-td'><div class='name-cell'><span class='name-left'>메옹 </span></div></td><td class='gender-td'>여자</td><td class='num '>55,965</td></tr><tr><td class='name-td'><div class='name-cell'><span class='name-left'>우힝이 </span></div></td><td class='gender-td'>여자</td><td class='num '>45,523</td></tr><tr><td class='name-td'><div class='name-cell'><span class='name-left'>경콩 </span></div></td><td class='gender-td'>여자</td><td class='num '>41,600</td></tr><tr><td class='name-td'><div class='name-cell'><span class='name-left'>선정은 </span></div></td><td class='gender-td'>여자</td><td class='num '>40,862</td></tr><tr><td class='name-td'><div class='name-cell'><span class='name-left'>김영주 </span></div></td><td class='gender-td'>남자</td><td class='num '>27,635</td></tr><tr><td class='name-td'><div class='name-cell'><span class='name-left'>제갈츄빈 </span></div></td><td class='gender-td'>여자</td><td class='num '>26,834</td></tr><tr><td class='name-td'><div class='name-cell'><span class='name-left'>김유나 </span></div></td><td class='gender-td'>여자</td><td class='num '>26,534</td></tr><tr><td class='name-td'><div class='name-cell'><span class='name-left'>유승곤 </span></div></td><td class='gender-td'>남자</td><td class='num '>21,227</td></tr><tr><td class='name-td'><div class='name-cell'><span class='name-left'>링가 </span></div></td><td class='gender-td'>여자</td><td class='num '>20,500</td></tr><tr><td class='name-td'><div class='name-cell'><span class='name-left'>팔레트 </span></div></td><td class='gender-td'>남자</td><td class='num '>20,459</td></tr><tr><td class='name-td'><div class='name-cell'><span class='name-left'>오세은 </span></div></td><td class='gender-td'>여자</td><td class='num '>18,615</td></tr><tr><td class='name-td'><div class='name-cell'><span class='name-left'>배호딱 </span></div></td><td class='gender-td'>남자</td><td class='num '>15,571</td></tr><tr><td class='name-td'><div class='name-cell'><span class='name-left'>민찬기 </span></div></td><td class='gender-td'>남자</td><td class='num '>14,782</td></tr>
+          
+      <tr class="summary-row"><td colspan="2">남자 합계</td><td class="num">166,786</td></tr>
+      <tr class="summary-row"><td colspan="2">남자 평균</td><td class="num">27,798</td></tr>
+      <tr class="summary-row"><td colspan="2">여자 합계</td><td class="num">680,248</td></tr>
+      <tr class="summary-row"><td colspan="2">여자 평균</td><td class="num female-avg">52,327</td></tr>
+      <tr class="summary-row"><td colspan="2">전체 합계</td><td class="num total">847,034</td></tr>
+      <tr class="summary-row"><td colspan="2">전체 평균</td><td class="num total">44,581</td></tr>
+      <tr class="summary-row"><td colspan="2">인원</td><td>총 20명 (집계 19명)</td></tr>
+    
+        </tbody>
       </table>
     </div>
     
     <div class="team-card">
       <div class="team-title">신세계 <span class="team-avg">전체평균 43,303</span></div>
-      <div class="table-pair">
-        <table>
-          <thead><tr><th>남 멤버</th><th>별풍선</th></tr></thead>
-          <tbody><tr><td>설영욱 <span class='role'>수장</span></td><td class='num excluded'>100,617</td></tr><tr><td>권혁진</td><td class='num '>75,875</td></tr><tr><td>몽군</td><td class='num '>38,785</td></tr><tr><td>윤수철</td><td class='num '>21,160</td></tr><tr><td>킁식</td><td class='num '>1,242</td></tr><tr><td>김상곤</td><td class='num '>0</td></tr></tbody>
-        </table>
-        <table>
-          <thead><tr><th>여 멤버</th><th>별풍선</th></tr></thead>
-          <tbody><tr><td>지우리  🎂</td><td class='num '>126,492</td></tr><tr><td>혜냥</td><td class='num '>105,575</td></tr><tr><td>김설</td><td class='num '>44,116</td></tr><tr><td>예실</td><td class='num '>43,556</td></tr><tr><td>밤하밍</td><td class='num '>42,443</td></tr><tr><td>요시</td><td class='num '>29,880</td></tr><tr><td>또봉순</td><td class='num '>19,132</td></tr><tr><td>연애인</td><td class='num '>14,681</td></tr></tbody>
-        </table>
-      </div>
-      <table class="summary">
-        <tr><td>남자 합계</td><td class="num">137,062</td><td>여자 합계</td><td class="num">425,875</td></tr>
-        <tr><td>남자 평균</td><td class="num">27,412</td><td>여자 평균</td><td class="num">53,234</td></tr>
-        <tr><td>전체 합계</td><td class="num total">562,937</td><td>전체 평균</td><td class="num total">43,303</td></tr>
-        <tr><td>인원</td><td colspan="3">총 14명 (집계 13명 · 수장/전력외 제외)</td></tr>
+      <table>
+        <thead><tr><th>이름</th><th>성별</th><th>별풍선</th></tr></thead>
+        <tbody>
+          <tr><td class='name-td'><div class='name-cell'><span class='name-left'>지우리 </span><span class='bday-mark'>🎂</span></div></td><td class='gender-td'>여자</td><td class='num '>126,492</td></tr><tr><td class='name-td'><div class='name-cell'><span class='name-left'>혜냥 </span></div></td><td class='gender-td'>여자</td><td class='num '>105,575</td></tr><tr><td class='name-td'><div class='name-cell'><span class='name-left'>설영욱 <span class='role'>수장</span></span></div></td><td class='gender-td'>남자</td><td class='num excluded'>100,657</td></tr><tr><td class='name-td'><div class='name-cell'><span class='name-left'>권혁진 </span></div></td><td class='gender-td'>남자</td><td class='num '>75,875</td></tr><tr><td class='name-td'><div class='name-cell'><span class='name-left'>김설 </span></div></td><td class='gender-td'>여자</td><td class='num '>44,116</td></tr><tr><td class='name-td'><div class='name-cell'><span class='name-left'>예실 </span></div></td><td class='gender-td'>여자</td><td class='num '>43,556</td></tr><tr><td class='name-td'><div class='name-cell'><span class='name-left'>밤하밍 </span></div></td><td class='gender-td'>여자</td><td class='num '>42,443</td></tr><tr><td class='name-td'><div class='name-cell'><span class='name-left'>몽군 </span></div></td><td class='gender-td'>남자</td><td class='num '>38,785</td></tr><tr><td class='name-td'><div class='name-cell'><span class='name-left'>요시 </span></div></td><td class='gender-td'>여자</td><td class='num '>29,880</td></tr><tr><td class='name-td'><div class='name-cell'><span class='name-left'>윤수철 </span></div></td><td class='gender-td'>남자</td><td class='num '>21,160</td></tr><tr><td class='name-td'><div class='name-cell'><span class='name-left'>또봉순 </span></div></td><td class='gender-td'>여자</td><td class='num '>19,132</td></tr><tr><td class='name-td'><div class='name-cell'><span class='name-left'>연애인 </span></div></td><td class='gender-td'>여자</td><td class='num '>14,681</td></tr><tr><td class='name-td'><div class='name-cell'><span class='name-left'>킁식 </span></div></td><td class='gender-td'>남자</td><td class='num '>1,242</td></tr><tr><td class='name-td'><div class='name-cell'><span class='name-left'>김상곤 </span></div></td><td class='gender-td'>남자</td><td class='num '>0</td></tr>
+          
+      <tr class="summary-row"><td colspan="2">남자 합계</td><td class="num">137,062</td></tr>
+      <tr class="summary-row"><td colspan="2">남자 평균</td><td class="num">27,412</td></tr>
+      <tr class="summary-row"><td colspan="2">여자 합계</td><td class="num">425,875</td></tr>
+      <tr class="summary-row"><td colspan="2">여자 평균</td><td class="num female-avg">53,234</td></tr>
+      <tr class="summary-row"><td colspan="2">전체 합계</td><td class="num total">562,937</td></tr>
+      <tr class="summary-row"><td colspan="2">전체 평균</td><td class="num total">43,303</td></tr>
+      <tr class="summary-row"><td colspan="2">인원</td><td>총 14명 (집계 13명)</td></tr>
+    
+        </tbody>
       </table>
     </div>
     
     <div class="team-card">
-      <div class="team-title">엠비대 <span class="team-avg">전체평균 32,915</span></div>
-      <div class="table-pair">
-        <table>
-          <thead><tr><th>남 멤버</th><th>별풍선</th></tr></thead>
-          <tbody><tr><td>병하 <span class='role'>수장</span></td><td class='num excluded tier5'>286,296</td></tr><tr><td>이영한  🎂</td><td class='num '>78,388</td></tr><tr><td>마예준 <span class='role'>수장</span></td><td class='num excluded'>48,560</td></tr><tr><td>정경두</td><td class='num '>35,106</td></tr><tr><td>이창우</td><td class='num '>19,836</td></tr><tr><td>빡죠스</td><td class='num '>12,346</td></tr><tr><td>토스봇</td><td class='num '>8,281</td></tr><tr><td>얍삽e</td><td class='num '>5,977</td></tr><tr><td>최재성</td><td class='num '>4,811</td></tr><tr><td>만두호성  🎂</td><td class='num '>2,933</td></tr></tbody>
-        </table>
-        <table>
-          <thead><tr><th>여 멤버</th><th>별풍선</th></tr></thead>
-          <tbody><tr><td>구보라</td><td class='num '>65,016</td></tr><tr><td>김채이</td><td class='num '>56,517</td></tr><tr><td>최세상</td><td class='num '>55,931</td></tr><tr><td>오하얀</td><td class='num '>55,725</td></tr><tr><td>정다닝</td><td class='num '>50,234</td></tr><tr><td>연수</td><td class='num '>50,053</td></tr><tr><td>요구리</td><td class='num '>32,127</td></tr><tr><td>시녕뭉</td><td class='num '>26,883</td></tr><tr><td>카히리</td><td class='num '>23,595</td></tr><tr><td>권아온</td><td class='num '>21,526</td></tr><tr><td>햄희</td><td class='num '>20,107</td></tr></tbody>
-        </table>
-      </div>
-      <table class="summary">
-        <tr><td>남자 합계</td><td class="num">167,678</td><td>여자 합계</td><td class="num">457,714</td></tr>
-        <tr><td>남자 평균</td><td class="num">20,960</td><td>여자 평균</td><td class="num">41,610</td></tr>
-        <tr><td>전체 합계</td><td class="num total">625,392</td><td>전체 평균</td><td class="num total">32,915</td></tr>
-        <tr><td>인원</td><td colspan="3">총 21명 (집계 19명 · 수장/전력외 제외)</td></tr>
+      <div class="team-title">엠비대 <span class="team-avg">전체평균 32,916</span></div>
+      <table>
+        <thead><tr><th>이름</th><th>성별</th><th>별풍선</th></tr></thead>
+        <tbody>
+          <tr><td class='name-td'><div class='name-cell'><span class='name-left'>병하 <span class='role'>수장</span></span></div></td><td class='gender-td'>남자</td><td class='num excluded tier5'>286,296</td></tr><tr><td class='name-td'><div class='name-cell'><span class='name-left'>이영한 </span><span class='bday-mark'>🎂</span></div></td><td class='gender-td'>남자</td><td class='num '>78,398</td></tr><tr><td class='name-td'><div class='name-cell'><span class='name-left'>구보라 </span></div></td><td class='gender-td'>여자</td><td class='num '>65,016</td></tr><tr><td class='name-td'><div class='name-cell'><span class='name-left'>김채이 </span></div></td><td class='gender-td'>여자</td><td class='num '>56,517</td></tr><tr><td class='name-td'><div class='name-cell'><span class='name-left'>최세상 </span></div></td><td class='gender-td'>여자</td><td class='num '>55,931</td></tr><tr><td class='name-td'><div class='name-cell'><span class='name-left'>오하얀 </span></div></td><td class='gender-td'>여자</td><td class='num '>55,725</td></tr><tr><td class='name-td'><div class='name-cell'><span class='name-left'>정다닝 </span></div></td><td class='gender-td'>여자</td><td class='num '>50,234</td></tr><tr><td class='name-td'><div class='name-cell'><span class='name-left'>연수 </span></div></td><td class='gender-td'>여자</td><td class='num '>50,053</td></tr><tr><td class='name-td'><div class='name-cell'><span class='name-left'>마예준 <span class='role'>수장</span></span></div></td><td class='gender-td'>남자</td><td class='num excluded'>48,560</td></tr><tr><td class='name-td'><div class='name-cell'><span class='name-left'>정경두 </span></div></td><td class='gender-td'>남자</td><td class='num '>35,106</td></tr><tr><td class='name-td'><div class='name-cell'><span class='name-left'>요구리 </span></div></td><td class='gender-td'>여자</td><td class='num '>32,127</td></tr><tr><td class='name-td'><div class='name-cell'><span class='name-left'>시녕뭉 </span></div></td><td class='gender-td'>여자</td><td class='num '>26,883</td></tr><tr><td class='name-td'><div class='name-cell'><span class='name-left'>카히리 </span></div></td><td class='gender-td'>여자</td><td class='num '>23,595</td></tr><tr><td class='name-td'><div class='name-cell'><span class='name-left'>권아온 </span></div></td><td class='gender-td'>여자</td><td class='num '>21,526</td></tr><tr><td class='name-td'><div class='name-cell'><span class='name-left'>햄희 </span></div></td><td class='gender-td'>여자</td><td class='num '>20,107</td></tr><tr><td class='name-td'><div class='name-cell'><span class='name-left'>이창우 </span></div></td><td class='gender-td'>남자</td><td class='num '>19,836</td></tr><tr><td class='name-td'><div class='name-cell'><span class='name-left'>빡죠스 </span></div></td><td class='gender-td'>남자</td><td class='num '>12,346</td></tr><tr><td class='name-td'><div class='name-cell'><span class='name-left'>토스봇 </span></div></td><td class='gender-td'>남자</td><td class='num '>8,281</td></tr><tr><td class='name-td'><div class='name-cell'><span class='name-left'>얍삽e </span></div></td><td class='gender-td'>남자</td><td class='num '>5,977</td></tr><tr><td class='name-td'><div class='name-cell'><span class='name-left'>최재성 </span></div></td><td class='gender-td'>남자</td><td class='num '>4,811</td></tr><tr><td class='name-td'><div class='name-cell'><span class='name-left'>만두호성 </span><span class='bday-mark'>🎂</span></div></td><td class='gender-td'>남자</td><td class='num '>2,933</td></tr>
+          
+      <tr class="summary-row"><td colspan="2">남자 합계</td><td class="num">167,688</td></tr>
+      <tr class="summary-row"><td colspan="2">남자 평균</td><td class="num">20,961</td></tr>
+      <tr class="summary-row"><td colspan="2">여자 합계</td><td class="num">457,714</td></tr>
+      <tr class="summary-row"><td colspan="2">여자 평균</td><td class="num female-avg">41,610</td></tr>
+      <tr class="summary-row"><td colspan="2">전체 합계</td><td class="num total">625,402</td></tr>
+      <tr class="summary-row"><td colspan="2">전체 평균</td><td class="num total">32,916</td></tr>
+      <tr class="summary-row"><td colspan="2">인원</td><td>총 21명 (집계 19명)</td></tr>
+    
+        </tbody>
       </table>
     </div>
     
     <div class="team-card">
-      <div class="team-title">와플대 <span class="team-avg">전체평균 32,393</span></div>
-      <div class="table-pair">
-        <table>
-          <thead><tr><th>남 멤버</th><th>별풍선</th></tr></thead>
-          <tbody><tr><td>와이퍼 <span class='role'>수장</span></td><td class='num excluded'>116,962</td></tr><tr><td>허유</td><td class='num '>39,591</td></tr><tr><td>쿨지지</td><td class='num '>24,046</td></tr><tr><td>전상욱</td><td class='num '>22,889</td></tr><tr><td>김수식</td><td class='num '>19,353</td></tr><tr><td>박성준</td><td class='num '>18,131</td></tr></tbody>
-        </table>
-        <table>
-          <thead><tr><th>여 멤버</th><th>별풍선</th></tr></thead>
-          <tbody><tr><td>삐약삐약</td><td class='num '>122,138</td></tr><tr><td>비재희</td><td class='num '>77,243</td></tr><tr><td>구키</td><td class='num '>50,815</td></tr><tr><td>하이현</td><td class='num '>30,889</td></tr><tr><td>루다</td><td class='num '>29,181</td></tr><tr><td>얌쭈</td><td class='num '>23,131</td></tr><tr><td>태린</td><td class='num '>14,517</td></tr><tr><td>여지니</td><td class='num '>7,950</td></tr><tr><td>금선2</td><td class='num '>6,027</td></tr><tr><td>최하니</td><td class='num '>0</td></tr></tbody>
-        </table>
-      </div>
-      <table class="summary">
-        <tr><td>남자 합계</td><td class="num">124,010</td><td>여자 합계</td><td class="num">361,891</td></tr>
-        <tr><td>남자 평균</td><td class="num">24,802</td><td>여자 평균</td><td class="num">36,189</td></tr>
-        <tr><td>전체 합계</td><td class="num total">485,901</td><td>전체 평균</td><td class="num total">32,393</td></tr>
-        <tr><td>인원</td><td colspan="3">총 16명 (집계 15명 · 수장/전력외 제외)</td></tr>
+      <div class="team-title">와플대 <span class="team-avg">전체평균 32,394</span></div>
+      <table>
+        <thead><tr><th>이름</th><th>성별</th><th>별풍선</th></tr></thead>
+        <tbody>
+          <tr><td class='name-td'><div class='name-cell'><span class='name-left'>삐약삐약 </span></div></td><td class='gender-td'>여자</td><td class='num '>122,143</td></tr><tr><td class='name-td'><div class='name-cell'><span class='name-left'>와이퍼 <span class='role'>수장</span></span></div></td><td class='gender-td'>남자</td><td class='num excluded'>116,962</td></tr><tr><td class='name-td'><div class='name-cell'><span class='name-left'>비재희 </span></div></td><td class='gender-td'>여자</td><td class='num '>77,243</td></tr><tr><td class='name-td'><div class='name-cell'><span class='name-left'>구키 </span></div></td><td class='gender-td'>여자</td><td class='num '>50,815</td></tr><tr><td class='name-td'><div class='name-cell'><span class='name-left'>허유 </span></div></td><td class='gender-td'>남자</td><td class='num '>39,591</td></tr><tr><td class='name-td'><div class='name-cell'><span class='name-left'>하이현 </span></div></td><td class='gender-td'>여자</td><td class='num '>30,889</td></tr><tr><td class='name-td'><div class='name-cell'><span class='name-left'>루다 </span></div></td><td class='gender-td'>여자</td><td class='num '>29,181</td></tr><tr><td class='name-td'><div class='name-cell'><span class='name-left'>쿨지지 </span></div></td><td class='gender-td'>남자</td><td class='num '>24,046</td></tr><tr><td class='name-td'><div class='name-cell'><span class='name-left'>얌쭈 </span></div></td><td class='gender-td'>여자</td><td class='num '>23,131</td></tr><tr><td class='name-td'><div class='name-cell'><span class='name-left'>전상욱 </span></div></td><td class='gender-td'>남자</td><td class='num '>22,889</td></tr><tr><td class='name-td'><div class='name-cell'><span class='name-left'>김수식 </span></div></td><td class='gender-td'>남자</td><td class='num '>19,353</td></tr><tr><td class='name-td'><div class='name-cell'><span class='name-left'>박성준 </span></div></td><td class='gender-td'>남자</td><td class='num '>18,131</td></tr><tr><td class='name-td'><div class='name-cell'><span class='name-left'>태린 </span></div></td><td class='gender-td'>여자</td><td class='num '>14,517</td></tr><tr><td class='name-td'><div class='name-cell'><span class='name-left'>여지니 </span></div></td><td class='gender-td'>여자</td><td class='num '>7,950</td></tr><tr><td class='name-td'><div class='name-cell'><span class='name-left'>금선2 </span></div></td><td class='gender-td'>여자</td><td class='num '>6,027</td></tr><tr><td class='name-td'><div class='name-cell'><span class='name-left'>최하니 </span></div></td><td class='gender-td'>여자</td><td class='num '>0</td></tr>
+          
+      <tr class="summary-row"><td colspan="2">남자 합계</td><td class="num">124,010</td></tr>
+      <tr class="summary-row"><td colspan="2">남자 평균</td><td class="num">24,802</td></tr>
+      <tr class="summary-row"><td colspan="2">여자 합계</td><td class="num">361,896</td></tr>
+      <tr class="summary-row"><td colspan="2">여자 평균</td><td class="num female-avg">36,190</td></tr>
+      <tr class="summary-row"><td colspan="2">전체 합계</td><td class="num total">485,906</td></tr>
+      <tr class="summary-row"><td colspan="2">전체 평균</td><td class="num total">32,394</td></tr>
+      <tr class="summary-row"><td colspan="2">인원</td><td>총 16명 (집계 15명)</td></tr>
+    
+        </tbody>
       </table>
     </div>
     
     <div class="team-card">
       <div class="team-title">HM <span class="team-avg">전체평균 20,480</span></div>
-      <div class="table-pair">
-        <table>
-          <thead><tr><th>남 멤버</th><th>별풍선</th></tr></thead>
-          <tbody><tr><td>혁민 <span class='role'>수장</span></td><td class='num excluded tier5'>2,421,575</td></tr><tr><td>방태수</td><td class='num '>21,724</td></tr><tr><td>카리스</td><td class='num '>14,192</td></tr><tr><td>파메</td><td class='num '>11,925</td></tr><tr><td>박준혁</td><td class='num '>6,290</td></tr><tr><td>최호선</td><td class='num '>5,445</td></tr><tr><td>강민</td><td class='num '>1,308</td></tr></tbody>
-        </table>
-        <table>
-          <thead><tr><th>여 멤버</th><th>별풍선</th></tr></thead>
-          <tbody><tr><td>연블비</td><td class='num '>46,206</td></tr><tr><td>설둥이</td><td class='num '>36,786</td></tr><tr><td>사랑e</td><td class='num '>33,389</td></tr><tr><td>슬아  🎂</td><td class='num '>27,761</td></tr><tr><td>세월</td><td class='num '>25,473</td></tr><tr><td>이응씨</td><td class='num '>18,361</td></tr><tr><td>이아라</td><td class='num '>17,380</td></tr></tbody>
-        </table>
-      </div>
-      <table class="summary">
-        <tr><td>남자 합계</td><td class="num">60,884</td><td>여자 합계</td><td class="num">205,356</td></tr>
-        <tr><td>남자 평균</td><td class="num">10,147</td><td>여자 평균</td><td class="num">29,337</td></tr>
-        <tr><td>전체 합계</td><td class="num total">266,240</td><td>전체 평균</td><td class="num total">20,480</td></tr>
-        <tr><td>인원</td><td colspan="3">총 14명 (집계 13명 · 수장/전력외 제외)</td></tr>
+      <table>
+        <thead><tr><th>이름</th><th>성별</th><th>별풍선</th></tr></thead>
+        <tbody>
+          <tr><td class='name-td'><div class='name-cell'><span class='name-left'>혁민 <span class='role'>수장</span></span></div></td><td class='gender-td'>남자</td><td class='num excluded tier5'>2,421,575</td></tr><tr><td class='name-td'><div class='name-cell'><span class='name-left'>연블비 </span></div></td><td class='gender-td'>여자</td><td class='num '>46,206</td></tr><tr><td class='name-td'><div class='name-cell'><span class='name-left'>설둥이 </span></div></td><td class='gender-td'>여자</td><td class='num '>36,786</td></tr><tr><td class='name-td'><div class='name-cell'><span class='name-left'>사랑e </span></div></td><td class='gender-td'>여자</td><td class='num '>33,389</td></tr><tr><td class='name-td'><div class='name-cell'><span class='name-left'>슬아 </span><span class='bday-mark'>🎂</span></div></td><td class='gender-td'>여자</td><td class='num '>27,761</td></tr><tr><td class='name-td'><div class='name-cell'><span class='name-left'>세월 </span></div></td><td class='gender-td'>여자</td><td class='num '>25,473</td></tr><tr><td class='name-td'><div class='name-cell'><span class='name-left'>방태수 </span></div></td><td class='gender-td'>남자</td><td class='num '>21,724</td></tr><tr><td class='name-td'><div class='name-cell'><span class='name-left'>이응씨 </span></div></td><td class='gender-td'>여자</td><td class='num '>18,361</td></tr><tr><td class='name-td'><div class='name-cell'><span class='name-left'>이아라 </span></div></td><td class='gender-td'>여자</td><td class='num '>17,380</td></tr><tr><td class='name-td'><div class='name-cell'><span class='name-left'>카리스 </span></div></td><td class='gender-td'>남자</td><td class='num '>14,192</td></tr><tr><td class='name-td'><div class='name-cell'><span class='name-left'>파메 </span></div></td><td class='gender-td'>남자</td><td class='num '>11,925</td></tr><tr><td class='name-td'><div class='name-cell'><span class='name-left'>박준혁 </span></div></td><td class='gender-td'>남자</td><td class='num '>6,290</td></tr><tr><td class='name-td'><div class='name-cell'><span class='name-left'>최호선 </span></div></td><td class='gender-td'>남자</td><td class='num '>5,445</td></tr><tr><td class='name-td'><div class='name-cell'><span class='name-left'>강민 </span></div></td><td class='gender-td'>남자</td><td class='num '>1,308</td></tr>
+          
+      <tr class="summary-row"><td colspan="2">남자 합계</td><td class="num">60,884</td></tr>
+      <tr class="summary-row"><td colspan="2">남자 평균</td><td class="num">10,147</td></tr>
+      <tr class="summary-row"><td colspan="2">여자 합계</td><td class="num">205,356</td></tr>
+      <tr class="summary-row"><td colspan="2">여자 평균</td><td class="num female-avg">29,337</td></tr>
+      <tr class="summary-row"><td colspan="2">전체 합계</td><td class="num total">266,240</td></tr>
+      <tr class="summary-row"><td colspan="2">전체 평균</td><td class="num total">20,480</td></tr>
+      <tr class="summary-row"><td colspan="2">인원</td><td>총 14명 (집계 13명)</td></tr>
+    
+        </tbody>
       </table>
     </div>
     
   </div>
   <div class="legend">
-    <span><span class="sw" style="background:#ffd54f;"></span>상위 1%</span>
-    <span><span class="sw" style="background:#ffe9a8;"></span>상위 5%</span>
-    <span><span class="sw" style="background:#fff6dc;"></span>상위 10%</span>
+    <span><span class="sw" style="background:#90caf9;"></span>상위 1%</span>
+    <span><span class="sw" style="background:#a5d6a7;"></span>상위 5%</span>
+    <span><span class="sw" style="background:#fff59d;"></span>상위 10%</span>
     <span><span class="sw" style="background:#fdeaea;"></span>수장/전력외 (집계 제외)</span>
+    <span><span class="sw" style="background:#b2ebe4;"></span>여자 평균</span>
     <span>🎂 이번 달 생일</span>
   </div>
 </body>
