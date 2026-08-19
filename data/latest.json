@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-08-19 20:19:31",
+  "updated_at": "2026-08-19 20:35:58",
   "year": 2026,
   "month": 8,
   "members": [
@@ -172,7 +172,7 @@
       "birthdate": "1999-12-09",
       "role": "",
       "team": "JSA",
-      "balloons": 56636
+      "balloons": 56647
     },
     {
       "id": "littlekim12",
@@ -442,7 +442,7 @@
       "birthdate": "1989-04-23",
       "role": "",
       "team": "케이대",
-      "balloons": 192106
+      "balloons": 192706
     },
     {
       "id": "minyoo3972",
@@ -478,7 +478,7 @@
       "birthdate": "1993-03-16",
       "role": "",
       "team": "케이대",
-      "balloons": 155516
+      "balloons": 156116
     },
     {
       "id": "clclcl8888",
@@ -523,7 +523,7 @@
       "birthdate": "2001-09-24",
       "role": "",
       "team": "케이대",
-      "balloons": 198680
+      "balloons": 198780
     },
     {
       "id": "seols2",
@@ -568,7 +568,7 @@
       "birthdate": "1989-06-13",
       "role": "수장",
       "team": "캄몬스타즈",
-      "balloons": 352211
+      "balloons": 353146
     },
     {
       "id": "minchul",
@@ -577,7 +577,7 @@
       "birthdate": "1991-12-10",
       "role": "",
       "team": "캄몬스타즈",
-      "balloons": 178644
+      "balloons": 178844
     },
     {
       "id": "bye1013",
@@ -595,7 +595,7 @@
       "birthdate": "1992-07-16",
       "role": "",
       "team": "캄몬스타즈",
-      "balloons": 135110
+      "balloons": 135610
     },
     {
       "id": "h78ert",
@@ -649,7 +649,7 @@
       "birthdate": "1994-02-27",
       "role": "",
       "team": "캄몬스타즈",
-      "balloons": 153174
+      "balloons": 153494
     },
     {
       "id": "wjswlgns09",
@@ -667,7 +667,7 @@
       "birthdate": "1999-08-05",
       "role": "",
       "team": "캄몬스타즈",
-      "balloons": 459074
+      "balloons": 459175
     },
     {
       "id": "thelddl",
@@ -676,7 +676,7 @@
       "birthdate": "1996-11-21",
       "role": "",
       "team": "캄몬스타즈",
-      "balloons": 143761
+      "balloons": 143863
     },
     {
       "id": "alaelddl97",
@@ -694,7 +694,7 @@
       "birthdate": "1999-02-22",
       "role": "",
       "team": "캄몬스타즈",
-      "balloons": 108496
+      "balloons": 108595
     },
     {
       "id": "db001202",
@@ -730,7 +730,7 @@
       "birthdate": "1998-11-11",
       "role": "",
       "team": "캄몬스타즈",
-      "balloons": 116360
+      "balloons": 116361
     },
     {
       "id": "vldpfm2",
@@ -739,7 +739,7 @@
       "birthdate": "1999-01-02",
       "role": "",
       "team": "캄몬스타즈",
-      "balloons": 152623
+      "balloons": 153023
     },
     {
       "id": "2meonjin",
@@ -766,7 +766,7 @@
       "birthdate": "1992-12-27",
       "role": "수장",
       "team": "엠비대",
-      "balloons": 286429
+      "balloons": 286439
     },
     {
       "id": "tiger3006",
@@ -784,7 +784,7 @@
       "birthdate": "1991-08-24",
       "role": "",
       "team": "엠비대",
-      "balloons": 78832
+      "balloons": 79033
     },
     {
       "id": "rlarnfk24",
@@ -811,7 +811,7 @@
       "birthdate": "1994-11-08",
       "role": "",
       "team": "엠비대",
-      "balloons": 19836
+      "balloons": 20171
     },
     {
       "id": "paralyze92",
@@ -901,7 +901,7 @@
       "birthdate": "1996-12-02",
       "role": "",
       "team": "엠비대",
-      "balloons": 52917
+      "balloons": 53517
     },
     {
       "id": "have1y",
@@ -973,7 +973,7 @@
       "birthdate": "1997-12-08",
       "role": "",
       "team": "와플대",
-      "balloons": 24189
+      "balloons": 24389
     },
     {
       "id": "isangwk",
@@ -1036,7 +1036,7 @@
       "birthdate": "1996-06-08",
       "role": "",
       "team": "와플대",
-      "balloons": 123484
+      "balloons": 123584
     },
     {
       "id": "jjjjeong",
@@ -1081,7 +1081,7 @@
       "birthdate": "1996-11-16",
       "role": "",
       "team": "와플대",
-      "balloons": 53237
+      "balloons": 53337
     },
     {
       "id": "e2003jin",
@@ -1576,7 +1576,7 @@
       "birthdate": "1993-01-06",
       "role": "",
       "team": "BGM",
-      "balloons": 33324
+      "balloons": 33424
     },
     {
       "id": "eeceec",
@@ -1666,7 +1666,7 @@
       "birthdate": "1997-04-29",
       "role": "",
       "team": "BGM",
-      "balloons": 56353
+      "balloons": 56793
     },
     {
       "id": "janjanoo",
@@ -1783,7 +1783,7 @@
       "birthdate": "1996-04-14",
       "role": "",
       "team": "HM",
-      "balloons": 27184
+      "balloons": 27484
     },
     {
       "id": "onzzang",
@@ -1792,7 +1792,7 @@
       "birthdate": "1993-05-13",
       "role": "",
       "team": "HM",
-      "balloons": 18793
+      "balloons": 19133
     },
     {
       "id": "ara9687",
@@ -1927,7 +1927,7 @@
       "birthdate": "체크",
       "role": "수장",
       "team": "신세계",
-      "balloons": 106803
+      "balloons": 108362
     },
     {
       "id": "cksgmldbs",
@@ -2026,7 +2026,7 @@
       "birthdate": "1997-01-21",
       "role": "",
       "team": "신세계",
-      "balloons": 30013
+      "balloons": 30135
     },
     {
       "id": "haeun5513",
@@ -2044,7 +2044,7 @@
       "birthdate": "1997-03-27",
       "role": "",
       "team": "신세계",
-      "balloons": 112743
+      "balloons": 113097
     },
     {
       "id": "vlfvlf789",
@@ -2089,7 +2089,7 @@
       "birthdate": "1993-12-13",
       "role": "",
       "team": "더블비",
-      "balloons": 98063
+      "balloons": 98064
     },
     {
       "id": "dptmfl1258",
@@ -2116,7 +2116,7 @@
       "birthdate": "1999-01-17",
       "role": "",
       "team": "더블비",
-      "balloons": 26016
+      "balloons": 26128
     },
     {
       "id": "jk890202",
@@ -2143,7 +2143,7 @@
       "birthdate": "1992-09-24",
       "role": "",
       "team": "드림즈",
-      "balloons": 41635
+      "balloons": 42499
     },
     {
       "id": "dbsdydx",
@@ -2179,7 +2179,7 @@
       "birthdate": "1998-05-08",
       "role": "",
       "team": "드림즈",
-      "balloons": 70368
+      "balloons": 71575
     },
     {
       "id": "wlswn6565",
