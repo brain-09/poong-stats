@@ -1,14 +1,12 @@
 """
 data/latest.json 을 읽어서 docs/index.html 로 렌더링하는 스크립트.
 
-추가 반영 사항:
-1. 별풍선 값이 0인 사람은 합계/평균 집계에서 제외
-2. 이름 칸에서 수장/전력외 텍스트 배지 제거 (빨간 배경 하이라이트는 유지)
-3. 이름 칸 가운데 정렬
-4. 이름 칸에 헤더와 같은 옅은 회색 배경
-5. 상위 1%/5%/10% 계산 시 수장/전력외 + 0인 사람 제외하고 매김
-6. 인원 행을 "인원 | 총 00명 남자 00명 여자 00명"(3칸 통합)으로 변경
-7. 상위 1%/5%/10% 하이라이트 색을 더 옅게 조정
+이번 수정 사항:
+1. 합계/평균 행에서 라벨 칸과 값 칸을 분리 (4열 그대로 활용)
+2. 여자 평균 값 #CDE1E1, 전체 합계/평균 값 #CDD7F5 배경
+3. 인원 행: "총 00명 / 남자 00명 / 여자 00명" + 흰 배경
+4. 별풍선 값이 0이면 숫자 대신 빈 칸으로 표시
+5. 상위 1%/5%/10% 하이라이트 칸은 볼드 처리
 
 실행: python scripts/generate_html.py
 """
@@ -108,6 +106,10 @@ def value_class(m, tiers):
     return " ".join(classes)
 
 
+def value_text(m):
+    return fmt(m["balloons"]) if m["balloons"] != 0 else ""
+
+
 def build_team_card(team_name: str, members: list, current_month: int, tiers: dict):
     counted = [m for m in members if is_counted(m)]
     males_counted = [m for m in counted if m["gender"] == "m"]
@@ -130,7 +132,7 @@ def build_team_card(team_name: str, members: list, current_month: int, tiers: di
         if i < len(males_all):
             m = males_all[i]
             m_name = f"<td class='name-td'>{name_cell(m, current_month)}</td>"
-            m_val = f"<td class='num {value_class(m, tiers)}'>{fmt(m['balloons'])}</td>"
+            m_val = f"<td class='num {value_class(m, tiers)}'>{value_text(m)}</td>"
         else:
             m_name = "<td class='name-td empty'>-</td>"
             m_val = "<td class='num empty'>-</td>"
@@ -138,7 +140,7 @@ def build_team_card(team_name: str, members: list, current_month: int, tiers: di
         if i < len(females_all):
             f_ = females_all[i]
             f_name = f"<td class='name-td'>{name_cell(f_, current_month)}</td>"
-            f_val = f"<td class='num {value_class(f_, tiers)}'>{fmt(f_['balloons'])}</td>"
+            f_val = f"<td class='num {value_class(f_, tiers)}'>{value_text(f_)}</td>"
         else:
             f_name = "<td class='name-td empty'>-</td>"
             f_val = "<td class='num empty'>-</td>"
@@ -151,10 +153,22 @@ def build_team_card(team_name: str, members: list, current_month: int, tiers: di
     total_n = male_n + female_n
 
     summary_html = f"""
-      <tr class="summary-row"><td colspan="2">남자 합계 {fmt(male_sum)}</td><td colspan="2">여자 합계 {fmt(female_sum)}</td></tr>
-      <tr class="summary-row"><td colspan="2">남자 평균 {fmt(male_avg)}</td><td colspan="2" class="female-avg">여자 평균 {fmt(female_avg)}</td></tr>
-      <tr class="summary-row total"><td colspan="2">전체 합계 {fmt(total_sum)}</td><td colspan="2">전체 평균 {fmt(total_avg)}</td></tr>
-      <tr class="summary-row"><td>인원</td><td colspan="3">총 {total_n}명 · 남자 {male_n}명 · 여자 {female_n}명</td></tr>
+      <tr class="summary-row">
+        <td>남자 합계</td><td class="num">{fmt(male_sum)}</td>
+        <td>여자 합계</td><td class="num">{fmt(female_sum)}</td>
+      </tr>
+      <tr class="summary-row">
+        <td>남자 평균</td><td class="num">{fmt(male_avg)}</td>
+        <td>여자 평균</td><td class="num female-avg">{fmt(female_avg)}</td>
+      </tr>
+      <tr class="summary-row">
+        <td>전체 합계</td><td class="num total-sum">{fmt(total_sum)}</td>
+        <td>전체 평균</td><td class="num total-avg">{fmt(total_avg)}</td>
+      </tr>
+      <tr class="summary-row personnel-row">
+        <td>인원</td>
+        <td colspan="3">총 {total_n}명 / 남자 {male_n}명 / 여자 {female_n}명</td>
+      </tr>
     """
 
     return total_avg, f"""
@@ -325,7 +339,8 @@ def main():
     color: #c0392b;
     font-weight: 700;
   }}
-  /* 상위 1% / 5% / 10% - 옅은 톤 */
+  /* 상위 1% / 5% / 10% - 옅은 톤 + 볼드 */
+  td.tier1, td.tier5, td.tier10 {{ font-weight: 700; }}
   td.tier1 {{ background: #d6e9fb; }}
   td.tier5 {{ background: #dcefdd; }}
   td.tier10 {{ background: #fbf3cf; }}
@@ -334,8 +349,9 @@ def main():
   }}
 
   tr.summary-row td {{ font-size: 12px; background: #fafbfc; font-weight: 600; text-align: center; }}
-  tr.summary-row.total td {{ font-weight: 700; background: #e3e7fb; }}
-  tr.summary-row td.female-avg {{ background: #b2ebe4; }}
+  td.total-sum, td.total-avg {{ background: #CDD7F5 !important; font-weight: 700; }}
+  td.female-avg {{ background: #CDE1E1 !important; font-weight: 700; }}
+  tr.personnel-row td {{ background: #ffffff !important; }}
 
   .legend {{
     max-width: 1240px;
@@ -368,7 +384,8 @@ def main():
     <span><span class="sw" style="background:#dcefdd;"></span>상위 5%</span>
     <span><span class="sw" style="background:#fbf3cf;"></span>상위 10%</span>
     <span><span class="sw" style="background:#fdeaea;"></span>수장/전력외 (집계 제외)</span>
-    <span><span class="sw" style="background:#b2ebe4;"></span>여자 평균</span>
+    <span><span class="sw" style="background:#CDE1E1;"></span>여자 평균</span>
+    <span><span class="sw" style="background:#CDD7F5;"></span>전체 합계·평균</span>
     <span>🎂 이번 달 생일</span>
   </div>
 </body>
