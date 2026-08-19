@@ -196,7 +196,14 @@ PAGE_CSS = """
     background: #fadada !important;
   }
 
-  tr.summary-row td { font-size: 11px; background: #fafbfc; font-weight: 600; text-align: center; }
+  tr.summary-row td {
+    font-size: 11px;
+    background: #fafbfc;
+    font-weight: 600;
+    text-align: center;
+    height: 22px;
+    vertical-align: middle;
+  }
   td.total-sum, td.total-avg { background: #CDD7F5 !important; font-weight: 700; }
   td.female-avg { background: #CDE1E1 !important; font-weight: 700; }
   td.personnel-label { background: #f7f8fa !important; }
@@ -246,7 +253,7 @@ PAGE_CSS = """
     }
     table { font-size: 7px; }
     th, td { padding: 1px 1px; height: 13px; }
-    tr.summary-row td { font-size: 7px; padding: 1px 1px; }
+    tr.summary-row td { font-size: 7px; padding: 1px 1px; height: 13px; }
     .name-left { font-size: 7px; }
     .bday-mark { font-size: 6px; }
     .team-logo { height: 9px; width: 9px; }
@@ -464,9 +471,6 @@ def build_team_card(team_name: str, members: list, current_month: int, tiers: di
     return total_avg, f"""
     <div class="team-card">
       <table>
-        <colgroup>
-          <col style="width:23%"><col style="width:27%"><col style="width:23%"><col style="width:27%">
-        </colgroup>
         <thead>
           <tr><th colspan="4" class="team-name-row">{name_row_inner}</th></tr>
           <tr><th class="col-header">남자 멤버</th><th class="col-header">별풍선</th><th class="col-header">여자 멤버</th><th class="col-header">별풍선</th></tr>
