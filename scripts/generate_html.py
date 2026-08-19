@@ -105,12 +105,16 @@ PAGE_CSS = """
     align-items: center;
     justify-content: center;
     gap: 6px;
+    overflow: hidden;
+    min-width: 0;
   }
   .team-name-flex {
     display: flex;
     align-items: center;
     justify-content: space-between;
     gap: 6px;
+    flex-wrap: nowrap;
+    overflow: hidden;
   }
   .rank-change {
     font-size: 11px;
@@ -145,6 +149,9 @@ PAGE_CSS = """
     text-align: center;
     vertical-align: middle;
     height: 22px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
   th {
     background: #f7f8fa;
@@ -457,6 +464,9 @@ def build_team_card(team_name: str, members: list, current_month: int, tiers: di
     return total_avg, f"""
     <div class="team-card">
       <table>
+        <colgroup>
+          <col style="width:23%"><col style="width:27%"><col style="width:23%"><col style="width:27%">
+        </colgroup>
         <thead>
           <tr><th colspan="4" class="team-name-row">{name_row_inner}</th></tr>
           <tr><th class="col-header">남자 멤버</th><th class="col-header">별풍선</th><th class="col-header">여자 멤버</th><th class="col-header">별풍선</th></tr>
