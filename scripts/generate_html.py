@@ -253,18 +253,18 @@ PAGE_CSS = """
       padding: 5px;
       border-radius: 7px;
     }
-    table { font-size: 7px; }
+    table { font-size: 6px; }
     th, td { padding: 1px 1px; height: 15px; }
-    tr.summary-row td { font-size: 7px; padding: 1px 1px; height: 15px; }
+    tr.summary-row td { font-size: 6px; padding: 1px 1px; height: 15px; }
     .name-cell { min-height: 8px; }
-    .name-left { font-size: 7px; }
-    .bday-mark { font-size: 6px; }
+    .name-left { font-size: 6px; }
+    .bday-mark { font-size: 5px; }
     .team-logo { height: 9px; width: 9px; }
-    .rank-change { font-size: 7px; padding: 1px 4px; }
+    .rank-change { font-size: 6px; padding: 1px 4px; }
     .top-bar { padding: 10px 14px; }
-    .top-date-select { font-size: 13px; }
-    .top-meta { font-size: 9px; }
-    .legend { font-size: 8px; }
+    .top-date-select { font-size: 12px; }
+    .top-meta { font-size: 8px; }
+    .legend { font-size: 7px; }
   }
 """
 
