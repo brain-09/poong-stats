@@ -1,22 +1,41 @@
 # poong-stats
 
-풍투데이(poong.today)에서 팀별 멤버들의 이번달 별풍선 데이터를 12시간마다 자동으로
-가져와서 표 페이지(`docs/index.html`)를 갱신하는 프로젝트입니다.
+풍투데이(poong.today)에서 팀별 멤버들의 이번 달 별풍선 데이터를 12시간마다 자동으로
+가져와서 표 페이지(`docs/index.html`)를 갱신하는 프로젝트입니다. 달이 바뀌면 그 이전
+달 데이터는 자동으로 보관되어 `docs/archive/YYYY-MM.html`에서 볼 수 있습니다.
 
 ## 폴더 구조
 
 ```
 poong-stats/
 ├── data/
-│   └── members.json     ← 팀-멤버 목록 (직접 관리하는 파일)
+│   ├── members.json      ← 팀-멤버 목록 (직접 관리하는 파일)
+│   ├── latest.json        ← 이번 달 크롤링 결과 (자동 생성)
+│   └── archive/
+│       └── YYYY-MM.json   ← 지난 달들의 스냅샷 (자동 생성, 그 당시 팀 구성 그대로 보존)
 ├── scripts/
-│   ├── fetch_data.py     ← poong.today API 호출해서 data/latest.json 생성
-│   └── generate_html.py  ← latest.json으로 docs/index.html 생성
+│   ├── fetch_data.py      ← poong.today API 호출 + 월 전환 시 자동 보관
+│   └── generate_html.py   ← latest.json/archive → docs/index.html + docs/archive/*.html 생성
 ├── docs/
-│   └── index.html        ← 최종 결과 페이지 (GitHub Pages가 이 폴더를 서빙)
+│   ├── index.html         ← 이번 달 표 (GitHub Pages가 이 폴더를 서빙)
+│   └── archive/
+│       └── YYYY-MM.html   ← 지난 달 표
 └── .github/workflows/
-    └── update.yml         ← 12시간마다 자동 실행 설정
+    └── update.yml          ← 12시간마다 자동 실행 설정
 ```
+
+## 과거 데이터는 어떻게 보존되나요
+
+`members.json`은 팀/인원이 계속 바뀌는 파일이라, 단순히 "그때의 별풍선 숫자"만 저장하면
+나중에 "그때는 누가 어느 팀이었는지"를 알 수 없게 됩니다. 그래서 `fetch_data.py`는
+매번 실행될 때 이번 달 멤버 각각의 **팀/성별/직책/생일까지 통째로** `data/latest.json`에
+같이 저장합니다.
+
+달이 바뀌는 시점(예: 8월→9월로 넘어가는 첫 실행)에는, 새 데이터를 받기 직전에
+그 전 `latest.json`(8월의 마지막 스냅샷)을 `data/archive/2026-08.json`으로 그대로
+복사해둡니다. 그래서 나중에 팀 구성이 바뀌어도, 과거 페이지에는 항상 "그 당시의 팀 배정"
+그대로 보여집니다. 참고로 자동 실행이 하루 2번(9시/21시)이라, 보관되는 시점은 월말
+23:59 정각이 아니라 그 달의 마지막 실행 시점(최대 약 12시간 전) 기준입니다.
 
 ## 최초 설정 (한 번만 하면 됨)
 
@@ -34,6 +53,8 @@ git push -u origin main
 ```
 
 또는 GitHub 웹사이트에서 "Add file → Upload files"로 폴더 내용을 그대로 드래그해서 올려도 됩니다.
+(`.github` 폴더는 숨김 폴더라 드래그 업로드 시 누락되기 쉬우니, GitHub 웹의
+"Create new file"에서 `.github/workflows/update.yml` 경로로 직접 만드는 것도 방법입니다.)
 
 ### 2. GitHub Pages 활성화
 
@@ -50,31 +71,29 @@ git push -u origin main
 
 ## 멤버 관리 (팀/인원이 바뀔 때)
 
-`data/members.json` 파일을 직접 수정하면 됩니다.
+`data/members.json`은 flat 구조입니다. 멤버 한 명이 배열의 항목 하나이고,
+그 안에 `team` 필드로 소속을 표시합니다.
 
 ```json
 {
-  "teams": [
+  "members": [
     {
-      "name": "팀이름",
-      "members": [
-        {
-          "id": "poong.today의 SOOP ID",
-          "nickname": "표시할 닉네임",
-          "gender": "m 또는 f",
-          "birthdate": "YYYY-MM-DD (모르면 null)",
-          "role": "수장 등 직책 (없으면 이 줄 자체를 생략 가능)"
-        }
-      ]
+      "id": "poong.today의 SOOP ID",
+      "nickname": "표시할 닉네임",
+      "gender": "m 또는 f",
+      "birthdate": "YYYY-MM-DD (모르면 null)",
+      "role": "수장 / 전력외 (없으면 이 줄 자체를 생략 가능)",
+      "team": "소속 팀 이름"
     }
   ]
 }
 ```
 
 - `id`는 `https://poong.today/broadcast/여기부분` 의 마지막 부분(SOOP ID)입니다.
-- `birthdate`는 상단 페이지의 "이달의 생일" 섹션에 쓰입니다. 모르면 `null`로 두면 생일란에서 자동 제외됩니다.
-- 수정 후 GitHub에 커밋/푸시하면, 다음 자동 실행(또는 수동 실행) 때부터 반영됩니다.
-- 현재 14팀 243명이 이미 채워져 있습니다. 팀/인원 변동 시 이 파일에서 직접 추가·삭제·수정하세요.
+- `role`이 `수장` 또는 `전력외`인 사람은 표에서 빨간 배경으로 표시되고, 팀 합계/평균/상위% 계산에서 제외됩니다.
+- `birthdate`는 이름 옆 🎂 표시에 쓰입니다. 모르면 `null`.
+- 수정 후 GitHub에 커밋/푸시하면 다음 자동 실행(또는 수동 실행) 때부터 반영됩니다.
+- **이미 지나간 과거 달의 페이지(`docs/archive/*.html`)는 이 파일을 고쳐도 영향받지 않습니다** — 과거 데이터는 각 시점의 스냅샷(`data/archive/*.json`)에서만 읽어오기 때문입니다.
 
 ## 수동으로 즉시 갱신하고 싶을 때
 
@@ -82,10 +101,16 @@ git push -u origin main
 
 ## 와이고수 게시글에 넣는 법
 
-게시글 작성 시 (에디터가 HTML 삽입을 지원하는 경우) 아래처럼 iframe을 넣으면 됩니다.
-
+와이고수 에디터가 `<iframe>` 태그를 그대로 두면:
 ```html
 <iframe src="https://본인아이디.github.io/poong-stats/" width="100%" height="2000" frameborder="0"></iframe>
+```
+
+에디터가 iframe을 필터링해서 지워버리는 경우, `srcdoc` + meta refresh로 우회할 수 있습니다:
+```html
+<div style="max-width:1000px;margin:20px auto;">
+  <iframe width="100%" height="1000" frameborder="0" scrolling="yes" srcdoc="&lt;meta http-equiv='refresh' content='0;url=https://본인아이디.github.io/poong-stats/'&gt;"></iframe>
+</div>
 ```
 
 높이는 팀 개수/레이아웃에 맞게 조절하세요.
@@ -93,14 +118,12 @@ git push -u origin main
 ## 로컬 테스트
 
 ```bash
-pip install --break-system-packages requests  # 없어도 동작하지만 있으면 편함
 python scripts/fetch_data.py
 python scripts/generate_html.py
-# docs/index.html 을 브라우저로 열어서 확인
+# docs/index.html, docs/archive/*.html 을 브라우저로 열어서 확인
 ```
 
 ## 참고
 
-- 데이터 출처: poong.today (`static.poong.today/bj/detail/get` API)
-- 요청 간 0.5초 간격을 두어 대상 서버에 부담을 최소화하도록 설정되어 있습니다.
-- 242명 기준 전체 수집에 약 2~3분 정도 소요될 수 있습니다.
+- 데이터 출처: poong.today (`static.poong.today/chart/get` 월간 전체 랭킹 API, 1회 호출로 전체 멤버 처리)
+- 별풍선 값이 0이거나 직책이 수장/전력외인 멤버는 팀 합계·평균·상위 1%/5%/10% 계산에서 제외됩니다.

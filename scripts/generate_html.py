@@ -1,10 +1,16 @@
 """
-data/latest.json 을 읽어서 docs/index.html 로 렌더링하는 스크립트.
+data/latest.json (이번 달) 과 data/archive/*.json (과거 달)을 읽어서
+docs/index.html (이번 달) + docs/archive/YYYY-MM.html (과거 달) 로 렌더링하는 스크립트.
+
+과거 달 데이터는 fetch_data.py가 달이 바뀔 때 latest.json을 통째로 복사해서
+data/archive/에 보관해둔 것 - 그 시점의 team/gender/role이 멤버마다 그대로 들어있어서
+팀 구성이 바뀌어도 "그 당시 배정" 그대로 재현된다.
 
 팀별 표: 표 1개, [남자 멤버 | 별풍선 | 여자 멤버 | 별풍선] 4열, 각각 별풍선 내림차순 정렬.
 하단에 합계/평균/인원 행 포함. 별풍선 0이거나 직책이 수장/전력외인 사람은 집계·상위% 계산에서 제외
 (수장/전력외는 표에 빨간 배경으로 표시, 0인 사람은 빈 칸으로 표시).
-이름 옆에는 이번 달 생일이면 🎂 표시.
+이름 옆에는 그 달의 생일이면 🎂 표시.
+모든 페이지 상단에 "이번 달 / 과거 달들" 이동 링크가 붙는다.
 
 실행: python scripts/generate_html.py
 """
@@ -15,7 +21,9 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
 DATA_PATH = ROOT / "data" / "latest.json"
+ARCHIVE_DIR = ROOT / "data" / "archive"
 OUTPUT_PATH = ROOT / "docs" / "index.html"
+OUTPUT_ARCHIVE_DIR = ROOT / "docs" / "archive"
 
 EXCLUDED_ROLES = {"수장", "전력외"}
 
@@ -161,13 +169,42 @@ def build_team_card(team_name: str, members: list, current_month: int, tiers: di
     """
 
 
-def main():
-    if not DATA_PATH.exists():
-        raise SystemExit(f"[오류] {DATA_PATH} 가 없습니다. 먼저 fetch_data.py를 실행하세요.")
+def list_archive_slugs() -> list:
+    """data/archive/YYYY-MM.json 파일들에서 'YYYY-MM' 슬러그 목록을 최신순으로 반환"""
+    if not ARCHIVE_DIR.exists():
+        return []
+    slugs = [p.stem for p in ARCHIVE_DIR.glob("*.json")]
+    return sorted(slugs, reverse=True)
 
-    with open(DATA_PATH, "r", encoding="utf-8") as f:
-        data = json.load(f)
 
+def build_nav_html(archive_slugs: list, current_slug: str, is_archive_page: bool) -> str:
+    """
+    페이지 상단 월 이동 링크. current_slug는 "current"(이번 달) 또는 "YYYY-MM".
+    is_archive_page: 지금 만들고 있는 페이지가 docs/archive/ 안에 있는지 여부 (상대경로 계산용).
+    """
+    items = []
+
+    # 이번 달 링크
+    if current_slug == "current":
+        items.append("<span class='nav-current'>이번 달</span>")
+    else:
+        href = "../index.html" if is_archive_page else "index.html"
+        items.append(f"<a href='{href}'>이번 달</a>")
+
+    # 과거 달 링크들
+    for slug in archive_slugs:
+        year, month = slug.split("-")
+        label = f"{year}년 {int(month)}월"
+        if slug == current_slug:
+            items.append(f"<span class='nav-current'>{label}</span>")
+        else:
+            href = f"{slug}.html" if is_archive_page else f"archive/{slug}.html"
+            items.append(f"<a href='{href}'>{label}</a>")
+
+    return "<div class='month-nav'>" + " ".join(items) + "</div>"
+
+
+def render_page(data: dict, nav_html: str, is_archive: bool = False) -> str:
     members = data["members"]
 
     teams = OrderedDict()
@@ -316,6 +353,39 @@ def main():
     vertical-align: middle;
   }}
 
+  /* 월 이동 네비게이션 */
+  .month-nav {{
+    max-width: 1080px;
+    margin: 0 auto 12px;
+    text-align: center;
+    font-size: 12px;
+  }}
+  .month-nav a, .month-nav .nav-current {{
+    display: inline-block;
+    margin: 2px 4px;
+    padding: 4px 10px;
+    border-radius: 14px;
+    text-decoration: none;
+    color: #555;
+    background: #eceef1;
+  }}
+  .month-nav .nav-current {{
+    background: #25528F;
+    color: #fff;
+    font-weight: 700;
+  }}
+  .archive-banner {{
+    max-width: 1080px;
+    margin: 0 auto 14px;
+    text-align: center;
+    font-size: 12px;
+    color: #a15c1f;
+    background: #fff3e0;
+    border: 1px solid #f0cf9a;
+    border-radius: 8px;
+    padding: 6px;
+  }}
+
   /* 모바일: 한 줄에 2팀씩 보이도록 강제 2열 + 여백/폰트 축소 */
   @media (max-width: 600px) {{
     body {{ padding: 12px 6px; }}
@@ -340,10 +410,13 @@ def main():
     .bday-mark {{ font-size: 8px; }}
     .header {{ font-size: 10px; gap: 8px; flex-wrap: wrap; }}
     .legend {{ font-size: 9px; }}
+    .month-nav {{ font-size: 10px; }}
   }}
 </style>
 </head>
 <body>
+  {nav_html}
+  {"<div class='archive-banner'>📁 이 페이지는 지난 기록입니다 (당시 팀 구성 기준)</div>" if is_archive else ""}
   <div class="header">
     <span>업데이트: {data['updated_at']} (KST)</span>
     <span>{data['year']}년 {data['month']}월 기준</span>
@@ -358,17 +431,47 @@ def main():
     <span><span class="sw" style="background:#dcefdd;"></span>상위 5%</span>
     <span><span class="sw" style="background:#fbf3cf;"></span>상위 10%</span>
     <span><span class="sw" style="background:#fadada;"></span>수장/전력외</span>
-    <span>🎂 이번 달 생일</span>
+    <span>🎂 그 달의 생일</span>
   </div>
 </body>
 </html>
 """
+    return html
+
+
+def main():
+    archive_slugs = list_archive_slugs()
+
+    # 이번 달 페이지
+    if not DATA_PATH.exists():
+        raise SystemExit(f"[오류] {DATA_PATH} 가 없습니다. 먼저 fetch_data.py를 실행하세요.")
+
+    with open(DATA_PATH, "r", encoding="utf-8") as f:
+        current_data = json.load(f)
+
+    nav_html = build_nav_html(archive_slugs, "current", is_archive_page=False)
+    html = render_page(current_data, nav_html, is_archive=False)
 
     OUTPUT_PATH.parent.mkdir(parents=True, exist_ok=True)
     with open(OUTPUT_PATH, "w", encoding="utf-8") as f:
         f.write(html)
-
     print(f"완료: {OUTPUT_PATH} 생성됨")
+
+    # 과거 달 페이지들
+    if archive_slugs:
+        OUTPUT_ARCHIVE_DIR.mkdir(parents=True, exist_ok=True)
+        for slug in archive_slugs:
+            archive_json_path = ARCHIVE_DIR / f"{slug}.json"
+            with open(archive_json_path, "r", encoding="utf-8") as f:
+                archive_data = json.load(f)
+
+            a_nav_html = build_nav_html(archive_slugs, slug, is_archive_page=True)
+            a_html = render_page(archive_data, a_nav_html, is_archive=True)
+
+            out_path = OUTPUT_ARCHIVE_DIR / f"{slug}.html"
+            with open(out_path, "w", encoding="utf-8") as f:
+                f.write(a_html)
+            print(f"완료: {out_path} 생성됨")
 
 
 if __name__ == "__main__":
