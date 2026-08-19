@@ -12,8 +12,6 @@ data/archive/에 보관해둔 것 - 그 시점의 team/gender/role이 멤버마�
 (수장/전력외는 표에 빨간 배경으로 표시, 0인 사람은 빈 칸으로 표시).
 이름 옆에는 그 달의 생일이면 🎂 표시.
 상단 왼쪽의 "YYYY년 MM월" 글씨가 드롭다운 역할을 해서 다른 달로 바로 이동 가능.
-모든 페이지는 iframe으로 삽입됐을 때 부모 창에 실제 높이를 알려주는 스크립트를 포함한다
-(postMessage 방식, 커뮤니티 글에 iframe 자동 높이조절 스크립트가 있으면 딱 맞게 표시됨).
 
 실행: python scripts/generate_html.py
 """
@@ -248,21 +246,6 @@ PAGE_CSS = """
     .top-meta { font-size: 10px; }
     .legend { font-size: 9px; }
   }
-"""
-
-# iframe에 삽입됐을 때 실제 높이를 부모 창(커뮤니티 글)에 전달하는 스크립트.
-HEIGHT_SCRIPT = """
-    (function () {
-      function sendHeight() {
-        var h = document.documentElement.scrollHeight;
-        window.parent.postMessage({ source: 'poong-stats', height: h }, '*');
-      }
-      window.addEventListener('load', sendHeight);
-      window.addEventListener('resize', sendHeight);
-      // 폰트/이미지 로딩이 늦게 끝나는 경우를 대비해 약간의 지연 후 재전송
-      setTimeout(sendHeight, 300);
-      setTimeout(sendHeight, 1000);
-    })();
 """
 
 
@@ -544,9 +527,6 @@ def page_shell(*, top_bar_html: str, body_html: str, extra_banner: str = "") -> 
     <span><span class="sw" style="background:#fadada;"></span>수장/전력외</span>
     <span>🎂 그 달의 생일</span>
   </div>
-  <script>
-{HEIGHT_SCRIPT}
-  </script>
 </body>
 </html>
 """
