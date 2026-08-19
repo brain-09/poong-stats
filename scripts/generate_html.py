@@ -329,7 +329,7 @@ def main():
   td.empty {{ background: #fff; }}
 
   td.excluded {{
-    background: #fdeaea !important;
+    background: #fadada !important;
     color: #222;
     font-weight: 700;
   }}
@@ -338,7 +338,7 @@ def main():
   td.tier5 {{ background: #dcefdd; }}
   td.tier10 {{ background: #fbf3cf; }}
   td.excluded.tier1, td.excluded.tier5, td.excluded.tier10 {{
-    background: #fdeaea !important;
+    background: #fadada !important;
   }}
 
   tr.summary-row td {{ font-size: 11px; background: #fafbfc; font-weight: 600; text-align: center; }}
@@ -404,7 +404,7 @@ def main():
     <span><span class="sw" style="background:#d6e9fb;"></span>상위 1%</span>
     <span><span class="sw" style="background:#dcefdd;"></span>상위 5%</span>
     <span><span class="sw" style="background:#fbf3cf;"></span>상위 10%</span>
-    <span><span class="sw" style="background:#fdeaea;"></span>수장/전력외 (집계 제외)</span>
+    <span><span class="sw" style="background:#fadada;"></span>수장/전력외</span>
     <span>🎂 이번 달 생일</span>
   </div>
 </body>
