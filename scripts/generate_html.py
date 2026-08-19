@@ -2,11 +2,11 @@
 data/latest.json 을 읽어서 docs/index.html 로 렌더링하는 스크립트.
 
 이번 수정 사항:
-1. 합계/평균 행에서 라벨 칸과 값 칸을 분리 (4열 그대로 활용)
-2. 여자 평균 값 #CDE1E1, 전체 합계/평균 값 #CDD7F5 배경
-3. 인원 행: "총 00명 / 남자 00명 / 여자 00명" + 흰 배경
-4. 별풍선 값이 0이면 숫자 대신 빈 칸으로 표시
-5. 상위 1%/5%/10% 하이라이트 칸은 볼드 처리
+1. 이름 텍스트 볼드 처리
+2. 빈 칸(인원수 안 맞는 경우) '-' 대신 완전히 빈 칸으로
+3. '인원' 라벨 칸도 옅은 회색 배경
+4. 팀 이름 옆 '전체평균 000' 표시 제거
+5. 표 전체 너비를 좁게 (패딩/폰트 축소)
 
 실행: python scripts/generate_html.py
 """
@@ -42,7 +42,6 @@ def parse_birthdate(bd):
 
 
 def is_counted(m):
-    """합계/평균/퍼센타일 집계에 포함할지 여부: 수장/전력외 아니고, 별풍선이 0이 아닌 경우"""
     return m.get("role") not in EXCLUDED_ROLES and m["balloons"] != 0
 
 
@@ -134,16 +133,16 @@ def build_team_card(team_name: str, members: list, current_month: int, tiers: di
             m_name = f"<td class='name-td'>{name_cell(m, current_month)}</td>"
             m_val = f"<td class='num {value_class(m, tiers)}'>{value_text(m)}</td>"
         else:
-            m_name = "<td class='name-td empty'>-</td>"
-            m_val = "<td class='num empty'>-</td>"
+            m_name = "<td class='name-td empty'></td>"
+            m_val = "<td class='num empty'></td>"
 
         if i < len(females_all):
             f_ = females_all[i]
             f_name = f"<td class='name-td'>{name_cell(f_, current_month)}</td>"
             f_val = f"<td class='num {value_class(f_, tiers)}'>{value_text(f_)}</td>"
         else:
-            f_name = "<td class='name-td empty'>-</td>"
-            f_val = "<td class='num empty'>-</td>"
+            f_name = "<td class='name-td empty'></td>"
+            f_val = "<td class='num empty'></td>"
 
         body_rows.append(f"<tr>{m_name}{m_val}{f_name}{f_val}</tr>")
 
@@ -166,14 +165,14 @@ def build_team_card(team_name: str, members: list, current_month: int, tiers: di
         <td>전체 평균</td><td class="num total-avg">{fmt(total_avg)}</td>
       </tr>
       <tr class="summary-row personnel-row">
-        <td>인원</td>
-        <td colspan="3">총 {total_n}명 / 남자 {male_n}명 / 여자 {female_n}명</td>
+        <td class="personnel-label">인원</td>
+        <td colspan="3" class="personnel-value">총 {total_n}명 / 남자 {male_n}명 / 여자 {female_n}명</td>
       </tr>
     """
 
     return total_avg, f"""
     <div class="team-card">
-      <div class="team-title">{team_name} <span class="team-avg">전체평균 {fmt(total_avg)}</span></div>
+      <div class="team-title">{team_name}</div>
       <table>
         <thead><tr><th>남자 멤버</th><th>별풍선</th><th>여자 멤버</th><th>별풍선</th></tr></thead>
         <tbody>
@@ -233,14 +232,14 @@ def main():
     display: flex;
     justify-content: center;
     gap: 24px;
-    max-width: 1240px;
+    max-width: 1080px;
     margin: 0 auto 16px;
     font-size: 13px;
     color: #888;
     text-align: center;
   }}
   .birthday-box {{
-    max-width: 1240px;
+    max-width: 1080px;
     margin: 0 auto 20px;
     background: linear-gradient(135deg, #fff4d6, #ffe9ec);
     border: 1px solid #f2cf8a;
@@ -264,16 +263,16 @@ def main():
 
   .grid {{
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(420px, 1fr));
-    gap: 18px;
-    max-width: 1240px;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 14px;
+    max-width: 1080px;
     margin: 0 auto;
   }}
   .team-card {{
     background: #fff;
     border: 1px solid #e5e6ea;
-    border-radius: 12px;
-    padding: 14px;
+    border-radius: 10px;
+    padding: 10px;
     box-shadow: 0 1px 3px rgba(0,0,0,0.04);
   }}
   .team-title {{
@@ -281,27 +280,21 @@ def main():
     text-align: center;
     background: #2f3542;
     color: #fff;
-    padding: 10px;
-    margin: -14px -14px 10px -14px;
-    border-radius: 12px 12px 0 0;
-    font-size: 16px;
+    padding: 8px;
+    margin: -10px -10px 8px -10px;
+    border-radius: 10px 10px 0 0;
+    font-size: 15px;
     letter-spacing: 0.3px;
-  }}
-  .team-avg {{
-    font-weight: 400;
-    font-size: 12px;
-    color: #cfd3e0;
-    margin-left: 6px;
   }}
   table {{
     width: 100%;
     border-collapse: collapse;
-    font-size: 12.5px;
+    font-size: 11px;
     table-layout: fixed;
   }}
   th, td {{
     border: 1px solid #eceef1;
-    padding: 5px 6px;
+    padding: 3px 4px;
     text-align: center;
   }}
   th {{
@@ -316,15 +309,15 @@ def main():
   .name-cell {{
     position: relative;
     text-align: center;
-    min-height: 16px;
+    min-height: 14px;
   }}
-  .name-left {{ white-space: nowrap; }}
+  .name-left {{ white-space: nowrap; font-weight: 700; }}
   .bday-mark {{
     position: absolute;
     right: 0;
     top: 50%;
     transform: translateY(-50%);
-    font-size: 11px;
+    font-size: 10px;
   }}
 
   td.num {{
@@ -332,14 +325,13 @@ def main():
     font-variant-numeric: tabular-nums;
     font-weight: 500;
   }}
-  td.empty {{ color: #ccc; background: #fff; }}
+  td.empty {{ background: #fff; }}
 
   td.excluded {{
     background: #fdeaea !important;
     color: #c0392b;
     font-weight: 700;
   }}
-  /* 상위 1% / 5% / 10% - 옅은 톤 + 볼드 */
   td.tier1, td.tier5, td.tier10 {{ font-weight: 700; }}
   td.tier1 {{ background: #d6e9fb; }}
   td.tier5 {{ background: #dcefdd; }}
@@ -348,15 +340,16 @@ def main():
     background: #fdeaea !important;
   }}
 
-  tr.summary-row td {{ font-size: 12px; background: #fafbfc; font-weight: 600; text-align: center; }}
+  tr.summary-row td {{ font-size: 11px; background: #fafbfc; font-weight: 600; text-align: center; }}
   td.total-sum, td.total-avg {{ background: #CDD7F5 !important; font-weight: 700; }}
   td.female-avg {{ background: #CDE1E1 !important; font-weight: 700; }}
-  tr.personnel-row td {{ background: #ffffff !important; }}
+  td.personnel-label {{ background: #f7f8fa !important; }}
+  td.personnel-value {{ background: #ffffff !important; }}
 
   .legend {{
-    max-width: 1240px;
+    max-width: 1080px;
     margin: 14px auto 0;
-    font-size: 11.5px;
+    font-size: 11px;
     color: #888;
     text-align: center;
   }}
