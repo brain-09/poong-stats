@@ -34,6 +34,8 @@ EXCLUDED_ROLES = {"수장", "전력외"}
 # 팀별 단독 페이지(docs/teams/)를 만들 팀 목록. 필요한 팀 이름만 여기 추가하면 됨.
 SINGLE_TEAM_PAGES = ["캄몬스타즈"]
 
+ARCHIVE_BANNER_HTML = "<div class='archive-banner'>📁 이 페이지는 지난 기록입니다 (당시 팀 구성 기준)</div>"
+
 # 모든 페이지가 공유하는 스타일. f-string이 아니라 일반 문자열이라 중괄호를 그대로 쓴다.
 PAGE_CSS = """
   @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&display=swap');
@@ -450,7 +452,7 @@ def build_team_card(team_name: str, members: list, current_month: int, tiers: di
         <td>전체 합계</td><td class="num total-sum">{fmt(total_sum)}</td>
         <td>전체 평균</td><td class="num total-avg">{fmt(total_avg)}</td>
       </tr>
-      <tr class="summary-row personnel-row">
+      <tr class="summary-row">
         <td class="personnel-label">인원</td>
         <td colspan="3" class="personnel-value">총 {total_n}명 / 남자 {male_n}명 / 여자 {female_n}명</td>
       </tr>
@@ -492,32 +494,40 @@ def list_archive_slugs() -> list:
     return sorted(slugs, reverse=True)
 
 
-def build_month_select(archive_slugs: list, current_year: int, current_month: int,
-                        active_slug: str, is_archive_page: bool) -> str:
+def _build_select_html(archive_slugs: list, current_year: int, current_month: int,
+                        active_slug: str, current_href_fn, archive_href_fn) -> str:
     """
-    상단 왼쪽 'YYYY년 MM월' 큰 글씨 자리를 대신하는 월 선택 드롭다운.
-    선택하면 해당 달 페이지로 바로 이동한다 (option value = 상대경로).
+    'YYYY년 MM월' 드롭다운 공통 로직. current_href_fn()/archive_href_fn(slug)로
+    페이지 종류(전체/팀별)에 따라 다른 링크 계산 방식만 바꿔 끼운다.
     """
     current_slug = f"{current_year:04d}-{current_month:02d}"
     options = []
 
     label = f"{current_year}년 {current_month:02d}월"
-    href = "../index.html" if is_archive_page else "index.html"
     selected = " selected" if active_slug == current_slug else ""
-    options.append(f"<option value='{href}'{selected}>{label}</option>")
+    options.append(f"<option value='{current_href_fn()}'{selected}>{label}</option>")
 
     for slug in archive_slugs:
         year, month = slug.split("-")
         label = f"{year}년 {int(month):02d}월"
-        href = f"{slug}.html" if is_archive_page else f"archive/{slug}.html"
         selected = " selected" if slug == active_slug else ""
-        options.append(f"<option value='{href}'{selected}>{label}</option>")
+        options.append(f"<option value='{archive_href_fn(slug)}'{selected}>{label}</option>")
 
     options_html = "".join(options)
     return (
         "<select class='top-date-select' "
         "onchange=\"if(this.value) window.location.href=this.value;\">"
         f"{options_html}</select>"
+    )
+
+
+def build_month_select(archive_slugs: list, current_year: int, current_month: int,
+                        active_slug: str, is_archive_page: bool) -> str:
+    """상단 왼쪽 'YYYY년 MM월' 자리를 대신하는 전체 페이지용 월 선택 드롭다운"""
+    return _build_select_html(
+        archive_slugs, current_year, current_month, active_slug,
+        current_href_fn=lambda: "../index.html" if is_archive_page else "index.html",
+        archive_href_fn=lambda slug: f"{slug}.html" if is_archive_page else f"archive/{slug}.html",
     )
 
 
@@ -588,7 +598,7 @@ def render_page(data: dict, archive_slugs: list, current_year: int, current_mont
   </div>
     """
 
-    banner = "<div class='archive-banner'>📁 이 페이지는 지난 기록입니다 (당시 팀 구성 기준)</div>" if is_archive else ""
+    banner = ARCHIVE_BANNER_HTML if is_archive else ""
 
     return page_shell(top_bar_html=top_bar_html, body_html=body_html, extra_banner=banner)
 
@@ -596,27 +606,13 @@ def render_page(data: dict, archive_slugs: list, current_year: int, current_mont
 def build_team_month_select(team_name: str, archive_slugs: list, current_year: int, current_month: int,
                              active_slug: str) -> str:
     """
-    팀 단독 페이지 상단의 월 선택 드롭다운. 같은 docs/teams/ 폴더 안에 파일명으로만
+    팀 단독 페이지용 월 선택 드롭다운. 같은 docs/teams/ 폴더 안에 파일명으로만
     구분해서 저장하므로(이번달: {팀}.html, 과거달: {팀}__YYYY-MM.html) 상대경로 계산이 필요없다.
     """
-    current_slug = f"{current_year:04d}-{current_month:02d}"
-    options = []
-
-    label = f"{current_year}년 {current_month:02d}월"
-    selected = " selected" if active_slug == current_slug else ""
-    options.append(f"<option value='{team_name}.html'{selected}>{label}</option>")
-
-    for slug in archive_slugs:
-        year, month = slug.split("-")
-        label = f"{year}년 {int(month):02d}월"
-        selected = " selected" if slug == active_slug else ""
-        options.append(f"<option value='{team_name}__{slug}.html'{selected}>{label}</option>")
-
-    options_html = "".join(options)
-    return (
-        "<select class='top-date-select' "
-        "onchange=\"if(this.value) window.location.href=this.value;\">"
-        f"{options_html}</select>"
+    return _build_select_html(
+        archive_slugs, current_year, current_month, active_slug,
+        current_href_fn=lambda: f"{team_name}.html",
+        archive_href_fn=lambda slug: f"{team_name}__{slug}.html",
     )
 
 
@@ -646,7 +642,7 @@ def render_team_page(data: dict, team_name: str, team_members: list, tiers: dict
   </div>
     """
 
-    banner = "<div class='archive-banner'>📁 이 페이지는 지난 기록입니다 (당시 팀 구성 기준)</div>" if is_archive else ""
+    banner = ARCHIVE_BANNER_HTML if is_archive else ""
 
     return page_shell(top_bar_html=top_bar_html, body_html=body_html, extra_banner=banner)
 
