@@ -1,15 +1,14 @@
 """
 data/latest.json 을 읽어서 docs/index.html 로 렌더링하는 스크립트.
 
-팀별 표 구성: 표 1개, 열은 [남자 멤버 | 별풍선 | 여자 멤버 | 별풍선] 4열로 나란히 배치.
-남/여 각각 별풍선 내림차순 정렬. 하단에는 합계/평균/인원 행 포함.
-
-기타 반영 사항:
-- 상위 1% 파랑 / 5% 초록 / 10% 노랑 하이라이트
-- Noto Sans KR 폰트, 별풍선 값 가운데 정렬
-- 생일 표시는 이름 칸 오른쪽 끝에 작게
-- 여자 평균 행 청록 하이라이트
-- 수장/전력외는 집계 제외 + 빨간 배경
+추가 반영 사항:
+1. 별풍선 값이 0인 사람은 합계/평균 집계에서 제외
+2. 이름 칸에서 수장/전력외 텍스트 배지 제거 (빨간 배경 하이라이트는 유지)
+3. 이름 칸 가운데 정렬
+4. 이름 칸에 헤더와 같은 옅은 회색 배경
+5. 상위 1%/5%/10% 계산 시 수장/전력외 + 0인 사람 제외하고 매김
+6. 인원 행을 "인원 | 총 00명 남자 00명 여자 00명"(3칸 통합)으로 변경
+7. 상위 1%/5%/10% 하이라이트 색을 더 옅게 조정
 
 실행: python scripts/generate_html.py
 """
@@ -44,8 +43,14 @@ def parse_birthdate(bd):
         return None
 
 
+def is_counted(m):
+    """합계/평균/퍼센타일 집계에 포함할지 여부: 수장/전력외 아니고, 별풍선이 0이 아닌 경우"""
+    return m.get("role") not in EXCLUDED_ROLES and m["balloons"] != 0
+
+
 def compute_percentile_tiers(members: list):
-    ranked = sorted(members, key=lambda m: -m["balloons"])
+    pool = [m for m in members if is_counted(m)]
+    ranked = sorted(pool, key=lambda m: -m["balloons"])
     n = len(ranked)
     if n == 0:
         return {}
@@ -83,13 +88,11 @@ def build_today_birthday_section(members: list, today):
 
 
 def name_cell(m, current_month):
-    role = m.get("role")
-    role_html = f"<span class='role'>{role}</span>" if role else ""
     bday = parse_birthdate(m.get("birthdate"))
     bday_html = "<span class='bday-mark'>🎂</span>" if bday and bday[0] == current_month else ""
     return (
         f"<div class='name-cell'>"
-        f"<span class='name-left'>{m['nickname']} {role_html}</span>"
+        f"<span class='name-left'>{m['nickname']}</span>"
         f"{bday_html}"
         f"</div>"
     )
@@ -106,7 +109,7 @@ def value_class(m, tiers):
 
 
 def build_team_card(team_name: str, members: list, current_month: int, tiers: dict):
-    counted = [m for m in members if m.get("role") not in EXCLUDED_ROLES]
+    counted = [m for m in members if is_counted(m)]
     males_counted = [m for m in counted if m["gender"] == "m"]
     females_counted = [m for m in counted if m["gender"] == "f"]
 
@@ -144,11 +147,14 @@ def build_team_card(team_name: str, members: list, current_month: int, tiers: di
 
     body_html = "".join(body_rows)
 
+    male_n, female_n = len(males_all), len(females_all)
+    total_n = male_n + female_n
+
     summary_html = f"""
       <tr class="summary-row"><td colspan="2">남자 합계 {fmt(male_sum)}</td><td colspan="2">여자 합계 {fmt(female_sum)}</td></tr>
       <tr class="summary-row"><td colspan="2">남자 평균 {fmt(male_avg)}</td><td colspan="2" class="female-avg">여자 평균 {fmt(female_avg)}</td></tr>
       <tr class="summary-row total"><td colspan="2">전체 합계 {fmt(total_sum)}</td><td colspan="2">전체 평균 {fmt(total_avg)}</td></tr>
-      <tr class="summary-row"><td colspan="4">인원 총 {len(members)}명 (집계 {len(counted)}명 · 남 {len(males_all)} / 여 {len(females_all)})</td></tr>
+      <tr class="summary-row"><td>인원</td><td colspan="3">총 {total_n}명 · 남자 {male_n}명 · 여자 {female_n}명</td></tr>
     """
 
     return total_avg, f"""
@@ -289,40 +295,40 @@ def main():
     font-weight: 700;
     color: #555;
   }}
-  td.name-td {{ text-align: left; }}
-  .name-cell {{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 4px;
+  td.name-td {{
+    text-align: center;
+    background: #f7f8fa;
   }}
-  .name-left {{ white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }}
-  .bday-mark {{ font-size: 11px; flex-shrink: 0; }}
+  .name-cell {{
+    position: relative;
+    text-align: center;
+    min-height: 16px;
+  }}
+  .name-left {{ white-space: nowrap; }}
+  .bday-mark {{
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 11px;
+  }}
 
   td.num {{
     text-align: center;
     font-variant-numeric: tabular-nums;
     font-weight: 500;
   }}
-  td.empty {{ color: #ccc; }}
-
-  .role {{
-    font-size: 10px;
-    color: #d34c4c;
-    border: 1px solid #f0a8a8;
-    border-radius: 3px;
-    padding: 0 3px;
-    margin-left: 2px;
-  }}
+  td.empty {{ color: #ccc; background: #fff; }}
 
   td.excluded {{
     background: #fdeaea !important;
     color: #c0392b;
     font-weight: 700;
   }}
-  td.tier1 {{ background: #90caf9; }}
-  td.tier5 {{ background: #a5d6a7; }}
-  td.tier10 {{ background: #fff59d; }}
+  /* 상위 1% / 5% / 10% - 옅은 톤 */
+  td.tier1 {{ background: #d6e9fb; }}
+  td.tier5 {{ background: #dcefdd; }}
+  td.tier10 {{ background: #fbf3cf; }}
   td.excluded.tier1, td.excluded.tier5, td.excluded.tier10 {{
     background: #fdeaea !important;
   }}
@@ -358,9 +364,9 @@ def main():
     {cards_html}
   </div>
   <div class="legend">
-    <span><span class="sw" style="background:#90caf9;"></span>상위 1%</span>
-    <span><span class="sw" style="background:#a5d6a7;"></span>상위 5%</span>
-    <span><span class="sw" style="background:#fff59d;"></span>상위 10%</span>
+    <span><span class="sw" style="background:#d6e9fb;"></span>상위 1%</span>
+    <span><span class="sw" style="background:#dcefdd;"></span>상위 5%</span>
+    <span><span class="sw" style="background:#fbf3cf;"></span>상위 10%</span>
     <span><span class="sw" style="background:#fdeaea;"></span>수장/전력외 (집계 제외)</span>
     <span><span class="sw" style="background:#b2ebe4;"></span>여자 평균</span>
     <span>🎂 이번 달 생일</span>
