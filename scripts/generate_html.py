@@ -177,31 +177,35 @@ def list_archive_slugs() -> list:
     return sorted(slugs, reverse=True)
 
 
-def build_nav_html(archive_slugs: list, current_slug: str, is_archive_page: bool) -> str:
+def build_nav_html(archive_slugs: list, current_year: int, current_month: int,
+                    active_slug: str, is_archive_page: bool) -> str:
     """
-    페이지 상단 월 이동 링크. current_slug는 "current"(이번 달) 또는 "YYYY-MM".
+    페이지 상단 월 이동 링크. 항상 실제 "YYYY년 M월" 라벨을 쓰고, 지금 보고 있는 페이지만
+    강조 표시(링크 없음)한다. active_slug는 "YYYY-MM" 형식 (이번 달 포함).
     is_archive_page: 지금 만들고 있는 페이지가 docs/archive/ 안에 있는지 여부 (상대경로 계산용).
     """
+    current_slug = f"{current_year:04d}-{current_month:02d}"
     items = []
 
-    # 이번 달 링크
-    if current_slug == "current":
-        items.append("<span class='nav-current'>이번 달</span>")
+    # 이번 달
+    label = f"{current_year}년 {current_month}월"
+    if active_slug == current_slug:
+        items.append(f"<span class='nav-current'>{label}</span>")
     else:
         href = "../index.html" if is_archive_page else "index.html"
-        items.append(f"<a href='{href}'>이번 달</a>")
+        items.append(f"<a href='{href}'>{label}</a>")
 
-    # 과거 달 링크들
+    # 과거 달들
     for slug in archive_slugs:
         year, month = slug.split("-")
         label = f"{year}년 {int(month)}월"
-        if slug == current_slug:
+        if slug == active_slug:
             items.append(f"<span class='nav-current'>{label}</span>")
         else:
             href = f"{slug}.html" if is_archive_page else f"archive/{slug}.html"
             items.append(f"<a href='{href}'>{label}</a>")
 
-    return "<div class='month-nav'>" + " ".join(items) + "</div>"
+    return "<div class='month-nav'>" + "".join(items) + "</div>"
 
 
 def render_page(data: dict, nav_html: str, is_archive: bool = False) -> str:
@@ -356,23 +360,31 @@ def render_page(data: dict, nav_html: str, is_archive: bool = False) -> str:
   /* 월 이동 네비게이션 */
   .month-nav {{
     max-width: 1080px;
-    margin: 0 auto 12px;
+    margin: 0 auto 18px;
     text-align: center;
-    font-size: 12px;
   }}
   .month-nav a, .month-nav .nav-current {{
     display: inline-block;
-    margin: 2px 4px;
-    padding: 4px 10px;
-    border-radius: 14px;
+    margin: 4px 6px;
+    padding: 10px 22px;
+    border-radius: 24px;
     text-decoration: none;
-    color: #555;
-    background: #eceef1;
+    font-size: 16px;
+    font-weight: 700;
+    transition: background 0.15s ease, transform 0.1s ease;
+  }}
+  .month-nav a {{
+    background: #eef1f5;
+    color: #444;
+  }}
+  .month-nav a:hover {{
+    background: #dfe4ea;
+    transform: translateY(-1px);
   }}
   .month-nav .nav-current {{
     background: #25528F;
     color: #fff;
-    font-weight: 700;
+    box-shadow: 0 3px 8px rgba(37,82,143,0.35);
   }}
   .archive-banner {{
     max-width: 1080px;
@@ -410,7 +422,11 @@ def render_page(data: dict, nav_html: str, is_archive: bool = False) -> str:
     .bday-mark {{ font-size: 8px; }}
     .header {{ font-size: 10px; gap: 8px; flex-wrap: wrap; }}
     .legend {{ font-size: 9px; }}
-    .month-nav {{ font-size: 10px; }}
+    .month-nav a, .month-nav .nav-current {{
+      font-size: 12px;
+      padding: 6px 12px;
+      margin: 3px 3px;
+    }}
   }}
 </style>
 </head>
@@ -419,7 +435,6 @@ def render_page(data: dict, nav_html: str, is_archive: bool = False) -> str:
   {"<div class='archive-banner'>📁 이 페이지는 지난 기록입니다 (당시 팀 구성 기준)</div>" if is_archive else ""}
   <div class="header">
     <span>업데이트: {data['updated_at']} (KST)</span>
-    <span>{data['year']}년 {data['month']}월 기준</span>
     <span>총 {team_count}개 팀 · 총 {member_count}명</span>
     <span>출처: 풍투데이(poong.today)</span>
   </div>
@@ -449,7 +464,10 @@ def main():
     with open(DATA_PATH, "r", encoding="utf-8") as f:
         current_data = json.load(f)
 
-    nav_html = build_nav_html(archive_slugs, "current", is_archive_page=False)
+    current_year, current_month = current_data["year"], current_data["month"]
+    current_slug = f"{current_year:04d}-{current_month:02d}"
+
+    nav_html = build_nav_html(archive_slugs, current_year, current_month, current_slug, is_archive_page=False)
     html = render_page(current_data, nav_html, is_archive=False)
 
     OUTPUT_PATH.parent.mkdir(parents=True, exist_ok=True)
@@ -465,7 +483,7 @@ def main():
             with open(archive_json_path, "r", encoding="utf-8") as f:
                 archive_data = json.load(f)
 
-            a_nav_html = build_nav_html(archive_slugs, slug, is_archive_page=True)
+            a_nav_html = build_nav_html(archive_slugs, current_year, current_month, slug, is_archive_page=True)
             a_html = render_page(archive_data, a_nav_html, is_archive=True)
 
             out_path = OUTPUT_ARCHIVE_DIR / f"{slug}.html"
