@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-08-19 16:03:07",
+  "updated_at": "2026-08-19 16:10:39",
   "year": 2026,
   "month": 8,
   "members": [
@@ -559,7 +559,7 @@
       "birthdate": "2002-10-13",
       "role": null,
       "team": "케이대",
-      "balloons": 54358
+      "balloons": 55328
     },
     {
       "id": "brainzerg7",
@@ -1855,7 +1855,7 @@
       "birthdate": "1998-10-01",
       "role": null,
       "team": "DM",
-      "balloons": 41763
+      "balloons": 41771
     },
     {
       "id": "jscando77",
@@ -1927,7 +1927,7 @@
       "birthdate": null,
       "role": "수장",
       "team": "신세계",
-      "balloons": 100657
+      "balloons": 100800
     },
     {
       "id": "cksgmldbs",
@@ -1954,7 +1954,7 @@
       "birthdate": "1991-11-23",
       "role": null,
       "team": "신세계",
-      "balloons": 75881
+      "balloons": 75884
     },
     {
       "id": "byspire",
