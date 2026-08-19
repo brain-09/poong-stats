@@ -124,8 +124,8 @@ PAGE_CSS = """
   .rank-change.same { color: #888; background: #eceef1; }
   .rank-change.new { color: #25528F; background: #e3e7fb; }
   .team-logo {
-    height: 20px;
-    width: 20px;
+    height: 14px;
+    width: 14px;
     object-fit: contain;
     vertical-align: middle;
   }
@@ -138,6 +138,7 @@ PAGE_CSS = """
     border-collapse: collapse;
     font-size: 11px;
     table-layout: fixed;
+    line-height: 1.2;
   }
   th, td {
     border: 1px solid #eceef1;
@@ -156,7 +157,7 @@ PAGE_CSS = """
   .name-cell {
     position: relative;
     text-align: center;
-    min-height: 14px;
+    min-height: 12px;
   }
   .name-left { white-space: nowrap; font-weight: 700; }
   .bday-mark {
@@ -164,7 +165,7 @@ PAGE_CSS = """
     right: 0;
     top: 50%;
     transform: translateY(-50%);
-    font-size: 10px;
+    font-size: 9px;
   }
 
   td.num {
@@ -235,13 +236,14 @@ PAGE_CSS = """
       padding: 5px;
       border-radius: 7px;
     }
-    table { font-size: 7px; }
-    th, td { padding: 1px 1px; }
-    tr.summary-row td { font-size: 7px; padding: 1px 1px; }
+    table { font-size: 7px; line-height: 1; }
+    th, td { padding: 0px 1px; }
+    tr.summary-row td { font-size: 7px; padding: 0px 1px; }
+    .name-cell { min-height: 8px; }
     .name-left { font-size: 7px; }
-    .bday-mark { font-size: 7px; }
-    .team-logo { height: 12px; width: 12px; }
-    .rank-change { font-size: 7px; padding: 1px 4px; }
+    .bday-mark { font-size: 6px; }
+    .team-logo { height: 9px; width: 9px; }
+    .rank-change { font-size: 7px; padding: 0px 4px; }
     .top-bar { padding: 10px 14px; }
     .top-date-select { font-size: 13px; }
     .top-meta { font-size: 9px; }
