@@ -2,10 +2,7 @@
 poong.today의 월간 전체 랭킹 API를 '한 번만' 호출해서, members.json에 등록된
 멤버들의 이번달 별풍선 데이터를 뽑아 data/latest.json 으로 저장하는 스크립트.
 
-기존에는 멤버 1명당 1번씩(243번) 요청했지만, /chart/get 엔드포인트가
-poong.today에 등록된 전체 스트리머의 월간 데이터를 한 번에 반환하므로
-그 안에서 우리 멤버 ID만 찾아서 쓰면 된다. 요청 횟수가 줄어서
-차단(403) 위험도 낮아지고 훨씬 빠르다.
+members.json은 flat 구조: {"members": [{"id":.., "team":.., ...}, ...]}
 
 실행: python scripts/fetch_data.py
 """
@@ -72,13 +69,14 @@ def main():
     with open(MEMBERS_PATH, "r", encoding="utf-8") as f:
         config = json.load(f)
 
+    members = config["members"]
+
     now = kst_now()
     year, month = now.year, now.month
 
     print(f"전체 랭킹 데이터 요청 중... ({year}년 {month}월)")
     chart = fetch_chart(year, month)
 
-    # chart["b"] 는 [{"i": 아이디, "n": 닉네임, "b": 이번달 별풍선, ...}, ...] 형태
     balloon_by_id = {}
     for entry in chart.get("b", []):
         member_id = entry.get("i")
@@ -87,32 +85,24 @@ def main():
 
     print(f"전체 {len(balloon_by_id)}명의 데이터 수신 완료")
 
-    result = {
-        "updated_at": now.strftime("%Y-%m-%d %H:%M:%S"),
-        "year": year,
-        "month": month,
-        "teams": [],
-    }
-
     not_found = []
+    out_members = []
 
-    for team in config["teams"]:
-        team_out = {"name": team["name"], "members": []}
-        for m in team["members"]:
-            member_id = m.get("id")
-            balloons = balloon_by_id.get(member_id, 0) if member_id else 0
-            if member_id and member_id not in balloon_by_id:
-                not_found.append(f"{m['nickname']}({member_id})")
+    for m in members:
+        member_id = m.get("id")
+        balloons = balloon_by_id.get(member_id, 0) if member_id else 0
+        if member_id and member_id not in balloon_by_id:
+            not_found.append(f"{m['nickname']}({member_id})")
 
-            team_out["members"].append({
-                "id": member_id,
-                "nickname": m["nickname"],
-                "gender": m.get("gender", "m"),
-                "birthdate": m.get("birthdate"),
-                "role": m.get("role"),
-                "balloons": balloons,
-            })
-        result["teams"].append(team_out)
+        out_members.append({
+            "id": member_id,
+            "nickname": m["nickname"],
+            "gender": m.get("gender", "m"),
+            "birthdate": m.get("birthdate"),
+            "role": m.get("role"),
+            "team": m.get("team"),
+            "balloons": balloons,
+        })
 
     if not_found:
         print(
@@ -121,6 +111,13 @@ def main():
             + (" ..." if len(not_found) > 20 else ""),
             file=sys.stderr,
         )
+
+    result = {
+        "updated_at": now.strftime("%Y-%m-%d %H:%M:%S"),
+        "year": year,
+        "month": month,
+        "members": out_members,
+    }
 
     OUTPUT_PATH.parent.mkdir(parents=True, exist_ok=True)
     with open(OUTPUT_PATH, "w", encoding="utf-8") as f:
