@@ -160,7 +160,7 @@ def build_team_card(team_name: str, members: list, current_month: int, tiers: di
       <table>
         <thead>
           <tr><th colspan="4" class="team-name-row">{team_name}</th></tr>
-          <tr><th class="male-col">남자 멤버</th><th class="male-col">별풍선</th><th>여자 멤버</th><th>별풍선</th></tr>
+          <tr><th class="col-header">남자 멤버</th><th class="col-header">별풍선</th><th class="col-header">여자 멤버</th><th class="col-header">별풍선</th></tr>
         </thead>
         <tbody>
           {body_html}
@@ -295,14 +295,11 @@ def render_page(data: dict, archive_slugs: list, current_year: int, current_mont
     box-shadow: 0 1px 3px rgba(0,0,0,0.04);
   }}
   th.team-name-row {{
-    background: #eceef1;
-    color: #333;
-    font-size: 15px;
+    background: #f7f8fa;
+    color: #222;
     font-weight: 700;
-    letter-spacing: 0.3px;
-    padding: 8px;
   }}
-  th.male-col {{
+  th.col-header {{
     background: #25528F;
     color: #fff;
   }}
@@ -404,10 +401,6 @@ def render_page(data: dict, archive_slugs: list, current_year: int, current_mont
     .team-card {{
       padding: 5px;
       border-radius: 7px;
-    }}
-    th.team-name-row {{
-      font-size: 11px;
-      padding: 5px;
     }}
     table {{ font-size: 8px; }}
     th, td {{ padding: 2px 1px; }}
