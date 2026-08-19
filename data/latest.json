@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-08-19 16:10:39",
+  "updated_at": "2026-08-19 16:20:34",
   "year": 2026,
   "month": 8,
   "members": [
@@ -1927,7 +1927,7 @@
       "birthdate": null,
       "role": "수장",
       "team": "신세계",
-      "balloons": 100800
+      "balloons": 100813
     },
     {
       "id": "cksgmldbs",
@@ -1954,7 +1954,7 @@
       "birthdate": "1991-11-23",
       "role": null,
       "team": "신세계",
-      "balloons": 75884
+      "balloons": 79220
     },
     {
       "id": "byspire",
@@ -2017,7 +2017,7 @@
       "birthdate": "2004-08-05",
       "role": null,
       "team": "신세계",
-      "balloons": 126492
+      "balloons": 126493
     },
     {
       "id": "khl1589",
