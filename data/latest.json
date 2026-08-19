@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-08-19 11:10:41",
+  "updated_at": "2026-08-19 15:18:13",
   "year": 2026,
   "month": 8,
   "teams": [
@@ -12,7 +12,7 @@
           "gender": "m",
           "birthdate": "1995-12-09",
           "role": "수장",
-          "balloons": 2886394
+          "balloons": 2892440
         },
         {
           "id": "sharpragu",
@@ -257,7 +257,7 @@
           "gender": "f",
           "birthdate": "1995-05-30",
           "role": null,
-          "balloons": 127647
+          "balloons": 130517
         },
         {
           "id": "lingolinga",
@@ -337,7 +337,7 @@
           "gender": "f",
           "birthdate": "1997-04-11",
           "role": null,
-          "balloons": 71952
+          "balloons": 73032
         }
       ]
     },
@@ -366,7 +366,7 @@
           "gender": "m",
           "birthdate": "1993-04-01",
           "role": null,
-          "balloons": 24158
+          "balloons": 24181
         },
         {
           "id": "kkmkhh1234",
@@ -720,7 +720,7 @@
           "gender": "m",
           "birthdate": "1991-08-24",
           "role": null,
-          "balloons": 74905
+          "balloons": 78388
         },
         {
           "id": "rlarnfk24",
@@ -877,7 +877,7 @@
           "gender": "m",
           "birthdate": "1994-06-28",
           "role": "수장",
-          "balloons": 116917
+          "balloons": 116962
         },
         {
           "id": "kss33325",
@@ -1492,7 +1492,7 @@
           "gender": "f",
           "birthdate": "1996-04-03",
           "role": null,
-          "balloons": 70323
+          "balloons": 72936
         },
         {
           "id": "ghlidhjgioew",
@@ -1702,7 +1702,7 @@
           "gender": "f",
           "birthdate": "1998-10-01",
           "role": null,
-          "balloons": 40548
+          "balloons": 41763
         },
         {
           "id": "jscando77",
@@ -1726,7 +1726,7 @@
           "gender": "f",
           "birthdate": "1997-06-20",
           "role": null,
-          "balloons": 52270
+          "balloons": 54370
         },
         {
           "id": "5eulgii",
@@ -1795,7 +1795,7 @@
           "gender": "m",
           "birthdate": "1991-11-23",
           "role": null,
-          "balloons": 75716
+          "balloons": 75875
         },
         {
           "id": "byspire",
@@ -1867,7 +1867,7 @@
           "gender": "f",
           "birthdate": "2006-06-24",
           "role": null,
-          "balloons": 42344
+          "balloons": 42443
         },
         {
           "id": "finepearls",
@@ -1888,7 +1888,7 @@
           "gender": "m",
           "birthdate": "1994-02-18",
           "role": "수장",
-          "balloons": 362190
+          "balloons": 367884
         },
         {
           "id": "mede1234",
@@ -1949,7 +1949,7 @@
           "gender": "m",
           "birthdate": "1990-07-04",
           "role": "수장",
-          "balloons": 430435
+          "balloons": 430670
         },
         {
           "id": "hby0724",
@@ -2005,7 +2005,7 @@
           "gender": "f",
           "birthdate": null,
           "role": null,
-          "balloons": 139814
+          "balloons": 140928
         },
         {
           "id": "nmirifo7795",
