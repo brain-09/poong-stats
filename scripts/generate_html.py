@@ -1,7 +1,8 @@
 """
 data/latest.json (이번 달) 과 data/archive/*.json (과거 달)을 읽어서
-docs/index.html (이번 달) + docs/archive/YYYY-MM.html (과거 달) +
-docs/teams/{팀이름}.html (팀별 단독 페이지, 이번 달 기준) 로 렌더링하는 스크립트.
+docs/index.html (이번 달) + docs/archive/YYYY-MM.html (과거 달) 로 렌더링하는 스크립트.
+추가로 SINGLE_TEAM_PAGES에 지정된 팀만 docs/teams/{팀이름}.html (이번 달) +
+docs/teams/{팀이름}__YYYY-MM.html (과거 달) 단독 페이지로도 생성한다.
 
 과거 달 데이터는 fetch_data.py가 달이 바뀔 때 latest.json을 통째로 복사해서
 data/archive/에 보관해둔 것 - 그 시점의 team/gender/role이 멤버마다 그대로 들어있어서
@@ -234,17 +235,17 @@ PAGE_CSS = """
       padding: 5px;
       border-radius: 7px;
     }
-    table { font-size: 8px; }
-    th, td { padding: 2px 1px; }
-    tr.summary-row td { font-size: 8px; padding: 2px 1px; }
-    .name-left { font-size: 8px; }
-    .bday-mark { font-size: 8px; }
-    .team-logo { height: 14px; width: 14px; }
-    .rank-change { font-size: 8px; padding: 1px 5px; }
+    table { font-size: 7px; }
+    th, td { padding: 1px 1px; }
+    tr.summary-row td { font-size: 7px; padding: 1px 1px; }
+    .name-left { font-size: 7px; }
+    .bday-mark { font-size: 7px; }
+    .team-logo { height: 12px; width: 12px; }
+    .rank-change { font-size: 7px; padding: 1px 4px; }
     .top-bar { padding: 10px 14px; }
-    .top-date-select { font-size: 14px; }
-    .top-meta { font-size: 10px; }
-    .legend { font-size: 9px; }
+    .top-date-select { font-size: 13px; }
+    .top-meta { font-size: 9px; }
+    .legend { font-size: 8px; }
   }
 """
 
@@ -505,7 +506,7 @@ def build_month_select(archive_slugs: list, current_year: int, current_month: in
 
 
 def page_shell(*, top_bar_html: str, body_html: str, extra_banner: str = "") -> str:
-    """모든 페이지 공통 뼈대 (head/style/legend/height-script)"""
+    """모든 페이지 공통 뼈대 (head/style/legend)"""
     return f"""<!DOCTYPE html>
 <html lang="ko">
 <head>
