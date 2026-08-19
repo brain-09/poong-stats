@@ -1,19 +1,16 @@
 """
 data/latest.json 을 읽어서 docs/index.html 로 렌더링하는 스크립트.
 
-이번 수정 사항:
-1. 이름 텍스트 볼드 처리
-2. 빈 칸(인원수 안 맞는 경우) '-' 대신 완전히 빈 칸으로
-3. '인원' 라벨 칸도 옅은 회색 배경
-4. 팀 이름 옆 '전체평균 000' 표시 제거
-5. 표 전체 너비를 좁게 (패딩/폰트 축소)
+팀별 표: 표 1개, [남자 멤버 | 별풍선 | 여자 멤버 | 별풍선] 4열, 각각 별풍선 내림차순 정렬.
+하단에 합계/평균/인원 행 포함. 별풍선 0이거나 직책이 수장/전력외인 사람은 집계·상위% 계산에서 제외
+(수장/전력외는 표에 빨간 배경으로 표시, 0인 사람은 빈 칸으로 표시).
+이름 옆에는 이번 달 생일이면 🎂 표시.
 
 실행: python scripts/generate_html.py
 """
 
 import json
 from collections import OrderedDict
-from datetime import datetime, timezone, timedelta
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -25,10 +22,6 @@ EXCLUDED_ROLES = {"수장", "전력외"}
 
 def fmt(n: int) -> str:
     return f"{n:,}"
-
-
-def kst_today():
-    return (datetime.now(timezone.utc) + timedelta(hours=9)).date()
 
 
 def parse_birthdate(bd):
@@ -66,22 +59,6 @@ def compute_percentile_tiers(members: list):
         elif idx < top10_n:
             tiers[key] = "tier10"
     return tiers
-
-
-def build_today_birthday_section(members: list, today):
-    todays = [m for m in members if parse_birthdate(m.get("birthdate")) == (today.month, today.day)]
-    if not todays:
-        return ""
-    items = "".join(
-        f"<span class='bday-item'>🎉 <b>{m['nickname']}</b> <small>({m['team']})</small></span>"
-        for m in todays
-    )
-    return f"""
-    <div class="birthday-box">
-      <div class="birthday-title">🎂 오늘 생일</div>
-      <div class="birthday-list">{items}</div>
-    </div>
-    """
 
 
 def name_cell(m, current_month):
@@ -192,7 +169,6 @@ def main():
         data = json.load(f)
 
     members = data["members"]
-    today = kst_today()
 
     teams = OrderedDict()
     for m in members:
@@ -239,29 +215,6 @@ def main():
     color: #888;
     text-align: center;
   }}
-  .birthday-box {{
-    max-width: 1080px;
-    margin: 0 auto 20px;
-    background: linear-gradient(135deg, #fff4d6, #ffe9ec);
-    border: 1px solid #f2cf8a;
-    border-radius: 10px;
-    padding: 12px 18px;
-    text-align: center;
-  }}
-  .birthday-title {{
-    font-weight: 700;
-    margin-bottom: 6px;
-    font-size: 15px;
-  }}
-  .birthday-list {{
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 6px 18px;
-    font-size: 13px;
-  }}
-  .bday-item small {{ color: #999; }}
-
   .grid {{
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
