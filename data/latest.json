@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-08-19 15:40:25",
+  "updated_at": "2026-08-19 15:50:01",
   "year": 2026,
   "month": 8,
   "members": [
@@ -559,7 +559,7 @@
       "birthdate": "2002-10-13",
       "role": null,
       "team": "케이대",
-      "balloons": 53968
+      "balloons": 54358
     },
     {
       "id": "brainzerg7",
@@ -1954,7 +1954,7 @@
       "birthdate": "1991-11-23",
       "role": null,
       "team": "신세계",
-      "balloons": 75878
+      "balloons": 75881
     },
     {
       "id": "byspire",
