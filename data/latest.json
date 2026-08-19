@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-08-20 03:07:56",
+  "updated_at": "2026-08-20 03:21:11",
   "year": 2026,
   "month": 8,
   "members": [
@@ -568,7 +568,7 @@
       "birthdate": "1989-06-13",
       "role": "수장",
       "team": "캄몬스타즈",
-      "balloons": 376537
+      "balloons": 376548
     },
     {
       "id": "minchul",
@@ -685,7 +685,7 @@
       "birthdate": "1997-05-14",
       "role": "",
       "team": "캄몬스타즈",
-      "balloons": 170160
+      "balloons": 170679
     },
     {
       "id": "soju2022",
@@ -2026,7 +2026,7 @@
       "birthdate": "1997-01-21",
       "role": "",
       "team": "신세계",
-      "balloons": 32442
+      "balloons": 33900
     },
     {
       "id": "haeun5513",
@@ -2080,7 +2080,7 @@
       "birthdate": "1997-08-04",
       "role": "",
       "team": "더블비",
-      "balloons": 257202
+      "balloons": 258059
     },
     {
       "id": "aram1213",
