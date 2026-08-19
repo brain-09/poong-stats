@@ -384,6 +384,7 @@ def main():
     }}
     table {{ font-size: 8px; }}
     th, td {{ padding: 2px 1px; }}
+    tr.summary-row td {{ font-size: 8px; padding: 2px 1px; }}
     .name-left {{ font-size: 8px; }}
     .bday-mark {{ font-size: 8px; }}
     .header {{ font-size: 10px; gap: 8px; flex-wrap: wrap; }}
