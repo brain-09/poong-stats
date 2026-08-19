@@ -210,6 +210,9 @@ def main():
 
     birthday_html = build_today_birthday_section(members, today)
 
+    team_count = len(teams)
+    member_count = len(members)
+
     html = f"""<!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -367,6 +370,7 @@ def main():
   <div class="header">
     <span>업데이트: {data['updated_at']} (KST)</span>
     <span>{data['year']}년 {data['month']}월 기준</span>
+    <span>총 {team_count}개 팀 · 총 {member_count}명</span>
   </div>
   {birthday_html}
   <div class="grid">
@@ -377,8 +381,6 @@ def main():
     <span><span class="sw" style="background:#dcefdd;"></span>상위 5%</span>
     <span><span class="sw" style="background:#fbf3cf;"></span>상위 10%</span>
     <span><span class="sw" style="background:#fdeaea;"></span>수장/전력외 (집계 제외)</span>
-    <span><span class="sw" style="background:#CDE1E1;"></span>여자 평균</span>
-    <span><span class="sw" style="background:#CDD7F5;"></span>전체 합계·평균</span>
     <span>🎂 이번 달 생일</span>
   </div>
 </body>
