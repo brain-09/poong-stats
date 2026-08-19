@@ -30,6 +30,7 @@ CHART_API_URL = (
 
 TIMEOUT_SEC = 30
 MAX_RETRIES = 3
+DATETIME_FORMAT = "%Y-%m-%d %H:%M:%S"
 
 
 def kst_now():
@@ -121,7 +122,7 @@ def archive_previous_month_if_needed(new_year: int, new_month: int):
                 if new_value != m.get("balloons"):
                     updated_count += 1
                 m["balloons"] = new_value
-        prev["updated_at"] = kst_now().strftime("%Y-%m-%d %H:%M:%S") + " (말일 확정치)"
+        prev["updated_at"] = kst_now().strftime(DATETIME_FORMAT) + " (말일 확정치)"
         print(f"[보관] 확정치로 갱신된 인원: {updated_count}명")
     else:
         print(f"[경고] {prev_year}년 {prev_month}월 확정 데이터 재조회 실패 - 마지막 스냅샷 값을 그대로 보관합니다.", file=sys.stderr)
@@ -183,7 +184,7 @@ def main():
         )
 
     result = {
-        "updated_at": now.strftime("%Y-%m-%d %H:%M:%S"),
+        "updated_at": now.strftime(DATETIME_FORMAT),
         "year": year,
         "month": month,
         "members": out_members,

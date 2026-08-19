@@ -1,8 +1,9 @@
 # poong-stats
 
-풍투데이(poong.today)에서 팀별 멤버들의 이번 달 별풍선 데이터를 12시간마다 자동으로
+풍투데이(poong.today)에서 팀별 멤버들의 이번 달 별풍선 데이터를 6시간마다 자동으로
 가져와서 표 페이지(`docs/index.html`)를 갱신하는 프로젝트입니다. 달이 바뀌면 그 이전
-달 데이터는 자동으로 보관되어 `docs/archive/YYYY-MM.html`에서 볼 수 있습니다.
+달 데이터는 자동으로 보관되어 `docs/archive/YYYY-MM.html`에서 볼 수 있고,
+`SINGLE_TEAM_PAGES`에 지정한 팀은 `docs/teams/`에 그 팀만 담은 단독 페이지도 생성됩니다.
 
 ## 폴더 구조
 
@@ -14,14 +15,19 @@ poong-stats/
 │   └── archive/
 │       └── YYYY-MM.json   ← 지난 달들의 스냅샷 (자동 생성, 그 당시 팀 구성 그대로 보존)
 ├── scripts/
-│   ├── fetch_data.py      ← poong.today API 호출 + 월 전환 시 자동 보관
-│   └── generate_html.py   ← latest.json/archive → docs/index.html + docs/archive/*.html 생성
+│   ├── fetch_data.py      ← poong.today API 호출 + 월 전환 시 확정치 재조회 후 보관
+│   └── generate_html.py   ← latest.json/archive → index/archive/teams html 생성
 ├── docs/
-│   ├── index.html         ← 이번 달 표 (GitHub Pages가 이 폴더를 서빙)
-│   └── archive/
-│       └── YYYY-MM.html   ← 지난 달 표
+│   ├── index.html         ← 이번 달 전체 표 (GitHub Pages가 이 폴더를 서빙)
+│   ├── archive/
+│   │   └── YYYY-MM.html   ← 지난 달 전체 표
+│   ├── teams/
+│   │   ├── {팀이름}.html            ← 팀 단독 페이지 (이번 달)
+│   │   └── {팀이름}__YYYY-MM.html   ← 팀 단독 페이지 (지난 달)
+│   └── logos/
+│       └── {팀이름}.webp  ← 팀 로고 (있으면 자동 표시, 없으면 텍스트만)
 └── .github/workflows/
-    └── update.yml          ← 12시간마다 자동 실행 설정
+    └── update.yml          ← 6시간마다 자동 실행 설정
 ```
 
 ## 과거 데이터는 어떻게 보존되나요
@@ -31,11 +37,33 @@ poong-stats/
 매번 실행될 때 이번 달 멤버 각각의 **팀/성별/직책/생일까지 통째로** `data/latest.json`에
 같이 저장합니다.
 
-달이 바뀌는 시점(예: 8월→9월로 넘어가는 첫 실행)에는, 새 데이터를 받기 직전에
-그 전 `latest.json`(8월의 마지막 스냅샷)을 `data/archive/2026-08.json`으로 그대로
-복사해둡니다. 그래서 나중에 팀 구성이 바뀌어도, 과거 페이지에는 항상 "그 당시의 팀 배정"
-그대로 보여집니다. 참고로 자동 실행이 하루 2번(9시/21시)이라, 보관되는 시점은 월말
-23:59 정각이 아니라 그 달의 마지막 실행 시점(최대 약 12시간 전) 기준입니다.
+달이 바뀌는 시점(예: 8월→9월로 넘어가는 첫 실행)에는, 마지막 스냅샷을 그냥 복사하지 않고
+**그 달(8월) 기준으로 API를 한 번 더 호출**해 확정된 별풍선 값으로 갱신한 뒤
+`data/archive/2026-08.json`으로 보관합니다 (풍투데이가 월말 데이터를 다음 달 초에
+한 번 더 갱신하는 경우가 있어서). 팀/성별/직책 등 "그 당시 소속 정보"는 재조회 API가
+알려주지 않으므로 기존 스냅샷 값을 그대로 유지합니다.
+
+## 팀별 순위와 전달 대비 변동
+
+전체 페이지에서 각 팀은 "전체 평균" 기준으로 정렬되고, 팀 이름 옆에 전달 대비
+순위 변동이 함께 표시됩니다 (▲상승 / ▼하락 / - 동일 / NEW 신규). 비교할 전달 데이터가
+아직 없으면(아카이브가 없으면) 표시되지 않습니다.
+
+## 팀별 단독 페이지 (`docs/teams/`)
+
+`scripts/generate_html.py` 상단의 `SINGLE_TEAM_PAGES` 리스트에 있는 팀만
+`docs/teams/{팀이름}.html` (이번 달) + `docs/teams/{팀이름}__YYYY-MM.html` (지난 달)로
+따로 생성됩니다. 다른 팀도 단독 페이지가 필요하면 이 리스트에 이름만 추가하면 됩니다.
+
+```python
+SINGLE_TEAM_PAGES = ["캄몬스타즈"]
+```
+
+## 팀 로고 (`docs/logos/`)
+
+`docs/logos/{팀이름}.webp` 파일이 있으면 표 상단 팀 이름 옆에 자동으로 로고가 붙습니다.
+파일명은 `members.json`의 `team` 값과 정확히 일치해야 합니다. 파일이 없는 팀은
+그냥 텍스트만 표시되며 오류가 나지 않습니다.
 
 ## 최초 설정 (한 번만 하면 됨)
 
@@ -91,9 +119,10 @@ git push -u origin main
 
 - `id`는 `https://poong.today/broadcast/여기부분` 의 마지막 부분(SOOP ID)입니다.
 - `role`이 `수장` 또는 `전력외`인 사람은 표에서 빨간 배경으로 표시되고, 팀 합계/평균/상위% 계산에서 제외됩니다.
+- 이 팀에 새로 추가된 사람/팀은 전체 페이지에 **자동으로** 반영됩니다. 단, `docs/teams/` 단독 페이지가 필요하면 `SINGLE_TEAM_PAGES`에 별도로 추가해야 합니다.
 - `birthdate`는 이름 옆 🎂 표시에 쓰입니다. 모르면 `null`.
 - 수정 후 GitHub에 커밋/푸시하면 다음 자동 실행(또는 수동 실행) 때부터 반영됩니다.
-- **이미 지나간 과거 달의 페이지(`docs/archive/*.html`)는 이 파일을 고쳐도 영향받지 않습니다** — 과거 데이터는 각 시점의 스냅샷(`data/archive/*.json`)에서만 읽어오기 때문입니다.
+- **이미 지나간 과거 달의 페이지(`docs/archive/*.html`, `docs/teams/*__YYYY-MM.html`)는 이 파일을 고쳐도 영향받지 않습니다** — 과거 데이터는 각 시점의 스냅샷(`data/archive/*.json`)에서만 읽어오기 때문입니다.
 
 ## 수동으로 즉시 갱신하고 싶을 때
 
@@ -109,8 +138,13 @@ git push -u origin main
 에디터가 iframe을 필터링해서 지워버리는 경우, `srcdoc` + meta refresh로 우회할 수 있습니다:
 ```html
 <div style="max-width:1000px;margin:20px auto;">
-  <iframe width="100%" height="1000" frameborder="0" scrolling="yes" srcdoc="&lt;meta http-equiv='refresh' content='0;url=https://본인아이디.github.io/poong-stats/'&gt;"></iframe>
+  <iframe width="100%" height="1000" frameborder="0" scrolling="no" srcdoc="&lt;meta http-equiv='refresh' content='0;url=https://본인아이디.github.io/poong-stats/'&gt;"></iframe>
 </div>
+```
+
+특정 팀 하나만 올리고 싶으면 URL을 그 팀 페이지로 바꾸면 됩니다:
+```
+url=https://본인아이디.github.io/poong-stats/teams/캄몬스타즈.html
 ```
 
 높이는 팀 개수/레이아웃에 맞게 조절하세요.
@@ -120,10 +154,11 @@ git push -u origin main
 ```bash
 python scripts/fetch_data.py
 python scripts/generate_html.py
-# docs/index.html, docs/archive/*.html 을 브라우저로 열어서 확인
+# docs/index.html, docs/archive/*.html, docs/teams/*.html 을 브라우저로 열어서 확인
 ```
 
 ## 참고
 
 - 데이터 출처: poong.today (`static.poong.today/chart/get` 월간 전체 랭킹 API, 1회 호출로 전체 멤버 처리)
 - 별풍선 값이 0이거나 직책이 수장/전력외인 멤버는 팀 합계·평균·상위 1%/5%/10% 계산에서 제외됩니다.
+- 실행 주기는 KST 기준 오전 9시 / 오후 3시 / 오후 9시 / 새벽 3시 (6시간마다)입니다.
