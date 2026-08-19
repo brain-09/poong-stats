@@ -157,9 +157,11 @@ def build_team_card(team_name: str, members: list, current_month: int, tiers: di
 
     return total_avg, f"""
     <div class="team-card">
-      <div class="team-title">{team_name}</div>
       <table>
-        <thead><tr><th>남자 멤버</th><th>별풍선</th><th>여자 멤버</th><th>별풍선</th></tr></thead>
+        <thead>
+          <tr><th colspan="4" class="team-name-row">{team_name}</th></tr>
+          <tr><th class="male-col">남자 멤버</th><th class="male-col">별풍선</th><th>여자 멤버</th><th>별풍선</th></tr>
+        </thead>
         <tbody>
           {body_html}
           {summary_html}
@@ -177,38 +179,40 @@ def list_archive_slugs() -> list:
     return sorted(slugs, reverse=True)
 
 
-def build_nav_html(archive_slugs: list, current_year: int, current_month: int,
-                    active_slug: str, is_archive_page: bool) -> str:
+def build_month_select(archive_slugs: list, current_year: int, current_month: int,
+                        active_slug: str, is_archive_page: bool) -> str:
     """
-    페이지 상단 월 이동 링크. 항상 실제 "YYYY년 M월" 라벨을 쓰고, 지금 보고 있는 페이지만
-    강조 표시(링크 없음)한다. active_slug는 "YYYY-MM" 형식 (이번 달 포함).
-    is_archive_page: 지금 만들고 있는 페이지가 docs/archive/ 안에 있는지 여부 (상대경로 계산용).
+    상단 왼쪽 '2026년 08월' 큰 글씨 자리를 대신하는 월 선택 드롭다운.
+    선택하면 해당 달 페이지로 바로 이동한다 (option value = 상대경로).
     """
     current_slug = f"{current_year:04d}-{current_month:02d}"
-    items = []
+    options = []
 
-    # 이번 달
-    label = f"{current_year}년 {current_month}월"
-    if active_slug == current_slug:
-        items.append(f"<span class='nav-current'>{label}</span>")
-    else:
-        href = "../index.html" if is_archive_page else "index.html"
-        items.append(f"<a href='{href}'>{label}</a>")
+    label = f"{current_year}년 {current_month:02d}월"
+    href = "../index.html" if is_archive_page else "index.html"
+    selected = " selected" if active_slug == current_slug else ""
+    options.append(f"<option value='{href}'{selected}>{label}</option>")
 
-    # 과거 달들
     for slug in archive_slugs:
         year, month = slug.split("-")
-        label = f"{year}년 {int(month)}월"
-        if slug == active_slug:
-            items.append(f"<span class='nav-current'>{label}</span>")
-        else:
-            href = f"{slug}.html" if is_archive_page else f"archive/{slug}.html"
-            items.append(f"<a href='{href}'>{label}</a>")
+        label = f"{year}년 {int(month):02d}월"
+        href = f"{slug}.html" if is_archive_page else f"archive/{slug}.html"
+        selected = " selected" if slug == active_slug else ""
+        options.append(f"<option value='{href}'{selected}>{label}</option>")
 
-    return "<div class='month-nav'>" + "".join(items) + "</div>"
+    options_html = "".join(options)
+    return (
+        "<select class='top-date-select' "
+        "onchange=\"if(this.value) window.location.href=this.value;\">"
+        f"{options_html}</select>"
+    )
 
 
-def render_page(data: dict, nav_html: str, is_archive: bool = False) -> str:
+def render_page(data: dict, archive_slugs: list, current_year: int, current_month: int,
+                 is_archive: bool = False) -> str:
+    active_slug = f"{data['year']:04d}-{data['month']:02d}"
+    month_select_html = build_month_select(archive_slugs, current_year, current_month, active_slug, is_archive)
+
     members = data["members"]
 
     teams = OrderedDict()
@@ -261,11 +265,17 @@ def render_page(data: dict, nav_html: str, is_archive: bool = False) -> str:
     gap: 6px;
     box-shadow: 0 1px 3px rgba(0,0,0,0.04);
   }}
-  .top-date {{
+  .top-date-select {{
     font-size: 18px;
     font-weight: 700;
     color: #222;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    font-family: inherit;
+    padding: 2px 0;
   }}
+  .top-date-select:hover {{ color: #25528F; }}
   .top-meta {{
     font-size: 13px;
     color: #888;
@@ -284,16 +294,17 @@ def render_page(data: dict, nav_html: str, is_archive: bool = False) -> str:
     padding: 10px;
     box-shadow: 0 1px 3px rgba(0,0,0,0.04);
   }}
-  .team-title {{
+  th.team-name-row {{
+    background: #eceef1;
+    color: #333;
+    font-size: 15px;
     font-weight: 700;
-    text-align: center;
+    letter-spacing: 0.3px;
+    padding: 8px;
+  }}
+  th.male-col {{
     background: #25528F;
     color: #fff;
-    padding: 8px;
-    margin: -10px -10px 8px -10px;
-    border-radius: 10px 10px 0 0;
-    font-size: 15px;
-    letter-spacing: 0.3px;
   }}
   table {{
     width: 100%;
@@ -371,35 +382,6 @@ def render_page(data: dict, nav_html: str, is_archive: bool = False) -> str:
     vertical-align: middle;
   }}
 
-  /* 월 이동 네비게이션 */
-  .month-nav {{
-    max-width: 1080px;
-    margin: 0 auto 18px;
-    text-align: center;
-  }}
-  .month-nav a, .month-nav .nav-current {{
-    display: inline-block;
-    margin: 4px 6px;
-    padding: 10px 22px;
-    border-radius: 24px;
-    text-decoration: none;
-    font-size: 16px;
-    font-weight: 700;
-    transition: background 0.15s ease, transform 0.1s ease;
-  }}
-  .month-nav a {{
-    background: #eef1f5;
-    color: #444;
-  }}
-  .month-nav a:hover {{
-    background: #dfe4ea;
-    transform: translateY(-1px);
-  }}
-  .month-nav .nav-current {{
-    background: #25528F;
-    color: #fff;
-    box-shadow: 0 3px 8px rgba(37,82,143,0.35);
-  }}
   .archive-banner {{
     max-width: 1080px;
     margin: 0 auto 14px;
@@ -423,11 +405,9 @@ def render_page(data: dict, nav_html: str, is_archive: bool = False) -> str:
       padding: 5px;
       border-radius: 7px;
     }}
-    .team-title {{
+    th.team-name-row {{
       font-size: 11px;
       padding: 5px;
-      margin: -5px -5px 5px -5px;
-      border-radius: 7px 7px 0 0;
     }}
     table {{ font-size: 8px; }}
     th, td {{ padding: 2px 1px; }}
@@ -435,22 +415,16 @@ def render_page(data: dict, nav_html: str, is_archive: bool = False) -> str:
     .name-left {{ font-size: 8px; }}
     .bday-mark {{ font-size: 8px; }}
     .top-bar {{ padding: 10px 14px; }}
-    .top-date {{ font-size: 14px; }}
+    .top-date-select {{ font-size: 14px; }}
     .top-meta {{ font-size: 10px; }}
     .legend {{ font-size: 9px; }}
-    .month-nav a, .month-nav .nav-current {{
-      font-size: 12px;
-      padding: 6px 12px;
-      margin: 3px 3px;
-    }}
   }}
 </style>
 </head>
 <body>
-  {nav_html}
   {"<div class='archive-banner'>📁 이 페이지는 지난 기록입니다 (당시 팀 구성 기준)</div>" if is_archive else ""}
   <div class="top-bar">
-    <span class="top-date">{data['year']}년 {data['month']:02d}월</span>
+    {month_select_html}
     <span class="top-meta">총인원 {member_count} / 팀 {team_count} / 업데이트 {data['updated_at']} / 출처: 풍투데이</span>
   </div>
   <div class="grid">
@@ -480,10 +454,8 @@ def main():
         current_data = json.load(f)
 
     current_year, current_month = current_data["year"], current_data["month"]
-    current_slug = f"{current_year:04d}-{current_month:02d}"
 
-    nav_html = build_nav_html(archive_slugs, current_year, current_month, current_slug, is_archive_page=False)
-    html = render_page(current_data, nav_html, is_archive=False)
+    html = render_page(current_data, archive_slugs, current_year, current_month, is_archive=False)
 
     OUTPUT_PATH.parent.mkdir(parents=True, exist_ok=True)
     with open(OUTPUT_PATH, "w", encoding="utf-8") as f:
@@ -498,8 +470,7 @@ def main():
             with open(archive_json_path, "r", encoding="utf-8") as f:
                 archive_data = json.load(f)
 
-            a_nav_html = build_nav_html(archive_slugs, current_year, current_month, slug, is_archive_page=True)
-            a_html = render_page(archive_data, a_nav_html, is_archive=True)
+            a_html = render_page(archive_data, archive_slugs, current_year, current_month, is_archive=True)
 
             out_path = OUTPUT_ARCHIVE_DIR / f"{slug}.html"
             with open(out_path, "w", encoding="utf-8") as f:
