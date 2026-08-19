@@ -138,7 +138,6 @@ PAGE_CSS = """
     border-collapse: collapse;
     font-size: 11px;
     table-layout: fixed;
-    line-height: 1.2;
   }
   th, td {
     border: 1px solid #eceef1;
@@ -157,7 +156,7 @@ PAGE_CSS = """
   .name-cell {
     position: relative;
     text-align: center;
-    min-height: 12px;
+    min-height: 14px;
   }
   .name-left { white-space: nowrap; font-weight: 700; }
   .bday-mark {
@@ -236,14 +235,13 @@ PAGE_CSS = """
       padding: 5px;
       border-radius: 7px;
     }
-    table { font-size: 7px; line-height: 1; }
-    th, td { padding: 0px 1px; }
-    tr.summary-row td { font-size: 7px; padding: 0px 1px; }
-    .name-cell { min-height: 8px; }
+    table { font-size: 7px; }
+    th, td { padding: 1px 1px; }
+    tr.summary-row td { font-size: 7px; padding: 1px 1px; }
     .name-left { font-size: 7px; }
     .bday-mark { font-size: 6px; }
     .team-logo { height: 9px; width: 9px; }
-    .rank-change { font-size: 7px; padding: 0px 4px; }
+    .rank-change { font-size: 7px; padding: 1px 4px; }
     .top-bar { padding: 10px 14px; }
     .top-date-select { font-size: 13px; }
     .top-meta { font-size: 9px; }
