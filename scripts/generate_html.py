@@ -208,8 +208,6 @@ def main():
     team_cards.sort(key=lambda x: -x[0])
     cards_html = "".join(html for _, html in team_cards)
 
-    birthday_html = build_today_birthday_section(members, today)
-
     team_count = len(teams)
     member_count = len(members)
 
@@ -397,8 +395,8 @@ def main():
     <span>업데이트: {data['updated_at']} (KST)</span>
     <span>{data['year']}년 {data['month']}월 기준</span>
     <span>총 {team_count}개 팀 · 총 {member_count}명</span>
+    <span>출처: 풍투데이(poong.today)</span>
   </div>
-  {birthday_html}
   <div class="grid">
     {cards_html}
   </div>
