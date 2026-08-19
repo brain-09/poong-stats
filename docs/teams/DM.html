@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>팀별 별풍선 랭킹</title>
+<style>
+
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&display=swap');
+
+  * { box-sizing: border-box; }
+
+  body {
+    font-family: 'Noto Sans KR', -apple-system, "Malgun Gothic", sans-serif;
+    background: #f2f3f5;
+    margin: 0;
+    padding: 24px 16px;
+    color: #222;
+  }
+  .top-bar {
+    max-width: 1080px;
+    margin: 0 auto 18px;
+    background: #fff;
+    border: 1px solid #e2e4e9;
+    border-left: 5px solid #25528F;
+    border-radius: 8px;
+    padding: 14px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 6px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+  }
+  .top-date-select {
+    font-size: 18px;
+    font-weight: 700;
+    color: #222;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    font-family: inherit;
+    padding: 2px 0;
+  }
+  .top-date-select:hover { color: #25528F; }
+  .top-title {
+    font-size: 18px;
+    font-weight: 700;
+    color: #222;
+  }
+  .top-meta {
+    font-size: 13px;
+    color: #888;
+  }
+  .back-link {
+    max-width: 1080px;
+    margin: 0 auto 12px;
+    font-size: 13px;
+  }
+  .back-link a {
+    color: #25528F;
+    text-decoration: none;
+    font-weight: 700;
+  }
+  .back-link a:hover { text-decoration: underline; }
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 14px;
+    max-width: 1080px;
+    margin: 0 auto;
+  }
+  .grid.single-team {
+    grid-template-columns: 1fr;
+    max-width: 480px;
+  }
+  .team-card {
+    background: #fff;
+    border: 1px solid #e5e6ea;
+    border-radius: 10px;
+    padding: 10px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+  }
+  th.team-name-row {
+    background: #f7f8fa;
+    color: #222;
+    font-weight: 700;
+  }
+  .team-name-inner {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+  }
+  .team-name-flex {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 6px;
+  }
+  .rank-change {
+    font-size: 11px;
+    font-weight: 700;
+    padding: 1px 7px;
+    border-radius: 10px;
+    white-space: nowrap;
+  }
+  .rank-change.up { color: #1a7f37; background: #e6f4ea; }
+  .rank-change.down { color: #c0392b; background: #fdeaea; }
+  .rank-change.same { color: #888; background: #eceef1; }
+  .rank-change.new { color: #25528F; background: #e3e7fb; }
+  .team-logo {
+    height: 20px;
+    width: 20px;
+    object-fit: contain;
+    vertical-align: middle;
+  }
+  th.col-header {
+    background: #25528F;
+    color: #fff;
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 11px;
+    table-layout: fixed;
+  }
+  th, td {
+    border: 1px solid #eceef1;
+    padding: 3px 4px;
+    text-align: center;
+  }
+  th {
+    background: #f7f8fa;
+    font-weight: 700;
+    color: #555;
+  }
+  td.name-td {
+    text-align: center;
+    background: #f7f8fa;
+  }
+  .name-cell {
+    position: relative;
+    text-align: center;
+    min-height: 14px;
+  }
+  .name-left { white-space: nowrap; font-weight: 700; }
+  .bday-mark {
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 10px;
+  }
+
+  td.num {
+    text-align: center;
+    font-variant-numeric: tabular-nums;
+    font-weight: 500;
+  }
+  td.empty { background: #fff; }
+
+  td.excluded {
+    background: #fadada !important;
+    color: #222;
+    font-weight: 700;
+  }
+  td.tier1, td.tier5, td.tier10 { font-weight: 700; }
+  td.tier1 { background: #d6e9fb; }
+  td.tier5 { background: #dcefdd; }
+  td.tier10 { background: #fbf3cf; }
+  td.excluded.tier1, td.excluded.tier5, td.excluded.tier10 {
+    background: #fadada !important;
+  }
+
+  tr.summary-row td { font-size: 11px; background: #fafbfc; font-weight: 600; text-align: center; }
+  td.total-sum, td.total-avg { background: #CDD7F5 !important; font-weight: 700; }
+  td.female-avg { background: #CDE1E1 !important; font-weight: 700; }
+  td.personnel-label { background: #f7f8fa !important; }
+  td.personnel-value { background: #ffffff !important; }
+
+  .legend {
+    max-width: 1080px;
+    margin: 14px auto 0;
+    font-size: 11px;
+    color: #888;
+    text-align: center;
+  }
+  .legend span { margin: 0 8px; }
+  .legend .sw {
+    display: inline-block;
+    width: 10px; height: 10px;
+    border-radius: 2px;
+    margin-right: 3px;
+    vertical-align: middle;
+  }
+
+  .archive-banner {
+    max-width: 1080px;
+    margin: 0 auto 14px;
+    text-align: center;
+    font-size: 12px;
+    color: #a15c1f;
+    background: #fff3e0;
+    border: 1px solid #f0cf9a;
+    border-radius: 8px;
+    padding: 6px;
+  }
+
+  /* 모바일: 한 줄에 2팀씩 보이도록 강제 2열 + 여백/폰트 축소 */
+  @media (max-width: 600px) {
+    body { padding: 12px 6px; }
+    .grid {
+      grid-template-columns: 1fr 1fr;
+      gap: 6px;
+    }
+    .grid.single-team {
+      grid-template-columns: 1fr;
+    }
+    .team-card {
+      padding: 5px;
+      border-radius: 7px;
+    }
+    table { font-size: 8px; }
+    th, td { padding: 2px 1px; }
+    tr.summary-row td { font-size: 8px; padding: 2px 1px; }
+    .name-left { font-size: 8px; }
+    .bday-mark { font-size: 8px; }
+    .team-logo { height: 14px; width: 14px; }
+    .rank-change { font-size: 8px; padding: 1px 5px; }
+    .top-bar { padding: 10px 14px; }
+    .top-date-select, .top-title { font-size: 14px; }
+    .top-meta { font-size: 10px; }
+    .legend { font-size: 9px; }
+  }
+
+</style>
+</head>
+<body>
+  
+  
+  <div class="top-bar">
+    <span class="top-title">DM</span>
+    <span class="top-meta">2026년 08월 / 인원 13명 / 업데이트 2026-08-19 22:43:58 / 출처: 풍투데이</span>
+  </div>
+    
+  
+  <div class="back-link"><a href="../index.html">← 전체 팀 보기</a></div>
+  <div class="grid single-team">
+    
+    <div class="team-card">
+      <table>
+        <thead>
+          <tr><th colspan="4" class="team-name-row"><span class='team-name-inner'><img src='../logos/DM.webp' class='team-logo' alt=''>DM</span></th></tr>
+          <tr><th class="col-header">남자 멤버</th><th class="col-header">별풍선</th><th class="col-header">여자 멤버</th><th class="col-header">별풍선</th></tr>
+        </thead>
+        <tbody>
+          <tr><td class='name-td'><div class='name-cell'><span class='name-left'>전태규</span></div></td><td class='num excluded'>127,491</td><td class='name-td'><div class='name-cell'><span class='name-left'>다뉴</span></div></td><td class='num tier10'>175,507</td></tr><tr><td class='name-td'><div class='name-cell'><span class='name-left'>임진묵</span></div></td><td class='num excluded'>57,234</td><td class='name-td'><div class='name-cell'><span class='name-left'>은서</span></div></td><td class='num '>136,228</td></tr><tr><td class='name-td'><div class='name-cell'><span class='name-left'>이예훈</span></div></td><td class='num '>33,623</td><td class='name-td'><div class='name-cell'><span class='name-left'>은조</span></div></td><td class='num '>123,962</td></tr><tr><td class='name-td'><div class='name-cell'><span class='name-left'>원선재</span></div></td><td class='num '>27,961</td><td class='name-td'><div class='name-cell'><span class='name-left'>서지수</span></div></td><td class='num '>123,395</td></tr><tr><td class='name-td empty'></td><td class='num empty'></td><td class='name-td'><div class='name-cell'><span class='name-left'>빵리나</span></div></td><td class='num '>66,640</td></tr><tr><td class='name-td empty'></td><td class='num empty'></td><td class='name-td'><div class='name-cell'><span class='name-left'>정소이</span></div></td><td class='num '>65,002</td></tr><tr><td class='name-td empty'></td><td class='num empty'></td><td class='name-td'><div class='name-cell'><span class='name-left'>수니양</span></div></td><td class='num '>54,770</td></tr><tr><td class='name-td empty'></td><td class='num empty'></td><td class='name-td'><div class='name-cell'><span class='name-left'>김말랑</span></div></td><td class='num '>51,355</td></tr><tr><td class='name-td empty'></td><td class='num empty'></td><td class='name-td'><div class='name-cell'><span class='name-left'>다나짱</span></div></td><td class='num '>41,776</td></tr>
+          
+      <tr class="summary-row">
+        <td>남자 합계</td><td class="num">61,584</td>
+        <td>여자 합계</td><td class="num">838,635</td>
+      </tr>
+      <tr class="summary-row">
+        <td>남자 평균</td><td class="num">30,792</td>
+        <td>여자 평균</td><td class="num female-avg">93,182</td>
+      </tr>
+      <tr class="summary-row">
+        <td>전체 합계</td><td class="num total-sum">900,219</td>
+        <td>전체 평균</td><td class="num total-avg">81,838</td>
+      </tr>
+      <tr class="summary-row personnel-row">
+        <td class="personnel-label">인원</td>
+        <td colspan="3" class="personnel-value">총 13명 / 남자 4명 / 여자 9명</td>
+      </tr>
+    
+        </tbody>
+      </table>
+    </div>
+    
+  </div>
+    
+  <div class="legend">
+    <span><span class="sw" style="background:#d6e9fb;"></span>상위 1%</span>
+    <span><span class="sw" style="background:#dcefdd;"></span>상위 5%</span>
+    <span><span class="sw" style="background:#fbf3cf;"></span>상위 10%</span>
+    <span><span class="sw" style="background:#fadada;"></span>수장/전력외</span>
+    <span>🎂 그 달의 생일</span>
+  </div>
+  <script>
+
+    (function () {
+      function sendHeight() {
+        var h = document.documentElement.scrollHeight;
+        window.parent.postMessage({ source: 'poong-stats', height: h }, '*');
+      }
+      window.addEventListener('load', sendHeight);
+      window.addEventListener('resize', sendHeight);
+      // 폰트/이미지 로딩이 늦게 끝나는 경우를 대비해 약간의 지연 후 재전송
+      setTimeout(sendHeight, 300);
+      setTimeout(sendHeight, 1000);
+    })();
+
+  </script>
+</body>
+</html>
