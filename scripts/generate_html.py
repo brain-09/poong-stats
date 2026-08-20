@@ -239,15 +239,16 @@ PAGE_CSS = """
     padding: 6px;
   }
 
+  /* 팀 단독 페이지에는 이 블록을 넣지 않음 (모바일에서도 PC와 동일한 크기로 표시) */
+"""
+
+MOBILE_CSS = """
   /* 모바일: 한 줄에 2팀씩 보이도록 강제 2열 + 여백/폰트 축소 */
   @media (max-width: 600px) {
     body { padding: 12px 6px; }
     .grid {
       grid-template-columns: 1fr 1fr;
       gap: 6px;
-    }
-    .grid.single-team {
-      grid-template-columns: 1fr;
     }
     .team-card {
       padding: 5px;
@@ -532,8 +533,11 @@ def build_month_select(archive_slugs: list, current_year: int, current_month: in
     )
 
 
-def page_shell(*, top_bar_html: str, body_html: str, extra_banner: str = "") -> str:
-    """모든 페이지 공통 뼈대 (head/style/legend)"""
+def page_shell(*, top_bar_html: str, body_html: str, extra_banner: str = "",
+               include_mobile_css: bool = True) -> str:
+    """모든 페이지 공통 뼈대 (head/style/legend). 팀 단독 페이지는 카드 1개뿐이라
+    모바일 압축 스타일이 필요없어서 include_mobile_css=False로 뺄 수 있음."""
+    style = PAGE_CSS + (MOBILE_CSS if include_mobile_css else "")
     return f"""<!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -541,7 +545,7 @@ def page_shell(*, top_bar_html: str, body_html: str, extra_banner: str = "") -> 
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>팀별 별풍선 랭킹</title>
 <style>
-{PAGE_CSS}
+{style}
 </style>
 </head>
 <body>
@@ -645,7 +649,8 @@ def render_team_page(data: dict, team_name: str, team_members: list, tiers: dict
 
     banner = ARCHIVE_BANNER_HTML if is_archive else ""
 
-    return page_shell(top_bar_html=top_bar_html, body_html=body_html, extra_banner=banner)
+    return page_shell(top_bar_html=top_bar_html, body_html=body_html, extra_banner=banner,
+                       include_mobile_css=False)
 
 
 def generate_team_pages(data: dict, is_archive: bool, archive_slugs: list,
