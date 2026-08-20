@@ -218,7 +218,7 @@ PAGE_CSS = """
     color: #888;
     text-align: center;
   }
-  .legend span { margin: 0 6px; }
+  .legend span { margin: 0 5px; }
   .legend .sw {
     display: inline-block;
     width: 10px; height: 10px;
