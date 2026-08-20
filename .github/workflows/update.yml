@@ -2,8 +2,8 @@ name: Update poong stats
 
 on:
   schedule:
-    # UTC 기준 0,6,12,18시 = KST 오전 9시, 오후 3시, 오후 9시, 새벽 3시 (6시간마다)
-    - cron: "0 0,6,12,18 * * *"
+    # UTC 기준 0,4,8,12,16,20시 = KST 오전 9시, 오후 1시, 오후 5시, 오후 9시, 새벽 1시, 새벽 5시 (4시간마다)
+    - cron: "0 0,4,8,12,16,20 * * *"
   workflow_dispatch: {}  # 수동 실행 버튼도 사용 가능
 
 permissions:
