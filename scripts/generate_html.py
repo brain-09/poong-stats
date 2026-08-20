@@ -76,7 +76,7 @@ PAGE_CSS = """
   }
   .top-date-select:hover { color: #25528F; }
   .top-meta {
-    font-size: 13px;
+    font-size: 10px;
     color: #888;
   }
   .grid {
@@ -214,7 +214,7 @@ PAGE_CSS = """
   .legend {
     max-width: 1080px;
     margin: 14px auto 0;
-    font-size: 11px;
+    font-size: 10px;
     color: #888;
     text-align: center;
   }
@@ -264,8 +264,8 @@ MOBILE_CSS = """
     .rank-change { font-size: 6px; padding: 1px 4px; }
     .top-bar { padding: 10px 14px; }
     .top-date-select { font-size: 10px; }
-    .top-meta { font-size: 7px; }
-    .legend { font-size: 6px; }
+    .top-meta { font-size: 5px; }
+    .legend { font-size: 5px; }
   }
 """
 
@@ -593,7 +593,7 @@ def render_page(data: dict, archive_slugs: list, current_year: int, current_mont
     top_bar_html = f"""
   <div class="top-bar">
     {month_select_html}
-    <span class="top-meta">총인원 {member_count} / 팀 {team_count} / 업데이트 {data['updated_at']} / 출처: 풍투데이</span>
+    <span class="top-meta">{team_count}팀 / {member_count}명 / 업데이트 {data['updated_at']} / 출처: 풍투데이</span>
   </div>
     """
 
@@ -637,7 +637,7 @@ def render_team_page(data: dict, team_name: str, team_members: list, tiers: dict
     top_bar_html = f"""
   <div class="top-bar">
     {month_select_html}
-    <span class="top-meta">{team_name} / 인원 {len(team_members)}명 / 업데이트 {data['updated_at']} / 출처: 풍투데이</span>
+    <span class="top-meta">{team_name} / {len(team_members)}명 / 업데이트 {data['updated_at']} / 출처: 풍투데이</span>
   </div>
     """
 
