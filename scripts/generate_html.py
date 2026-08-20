@@ -214,7 +214,7 @@ PAGE_CSS = """
   .legend {
     max-width: 1080px;
     margin: 14px auto 0;
-    font-size: 10px;
+    font-size: 9px;
     color: #888;
     text-align: center;
   }
@@ -265,7 +265,7 @@ MOBILE_CSS = """
     .top-bar { padding: 10px 14px; }
     .top-date-select { font-size: 10px; }
     .top-meta { font-size: 5px; }
-    .legend { font-size: 5px; }
+    .legend { font-size: 4px; }
   }
 """
 
