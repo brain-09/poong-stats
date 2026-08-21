@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-08-21 18:05:53",
+  "updated_at": "2026-08-21 18:32:57",
   "year": 2026,
   "month": 8,
   "members": [
@@ -11,7 +11,7 @@
       "role": "수장",
       "team": "JSA",
       "balloons": 2915197,
-      "broadcast_seconds": 521778
+      "broadcast_seconds": 523398
     },
     {
       "id": "sharpragu",
@@ -261,7 +261,7 @@
       "role": "",
       "team": "흑카데미",
       "balloons": 27635,
-      "broadcast_seconds": 291080
+      "broadcast_seconds": 292700
     },
     {
       "id": "skarbwhgc",
@@ -280,8 +280,8 @@
       "birthdate": "1991-07-11",
       "role": "",
       "team": "흑카데미",
-      "balloons": 68184,
-      "broadcast_seconds": 618548
+      "balloons": 68700,
+      "broadcast_seconds": 620168
     },
     {
       "id": "ehgmldud1233",
@@ -310,8 +310,8 @@
       "birthdate": "1995-05-30",
       "role": "",
       "team": "흑카데미",
-      "balloons": 139953,
-      "broadcast_seconds": 548733
+      "balloons": 140364,
+      "broadcast_seconds": 550353
     },
     {
       "id": "lingolinga",
@@ -330,8 +330,8 @@
       "birthdate": "1991-11-21",
       "role": "",
       "team": "흑카데미",
-      "balloons": 68851,
-      "broadcast_seconds": 263212
+      "balloons": 70904,
+      "broadcast_seconds": 264832
     },
     {
       "id": "maeong2",
@@ -360,8 +360,8 @@
       "birthdate": "1999-05-16",
       "role": "",
       "team": "흑카데미",
-      "balloons": 43211,
-      "broadcast_seconds": 340371
+      "balloons": 43511,
+      "broadcast_seconds": 341991
     },
     {
       "id": "gangeda",
@@ -370,8 +370,8 @@
       "birthdate": "2002-05-04",
       "role": "",
       "team": "흑카데미",
-      "balloons": 69072,
-      "broadcast_seconds": 483074
+      "balloons": 69315,
+      "broadcast_seconds": 484694
     },
     {
       "id": "dollooo",
@@ -671,7 +671,7 @@
       "role": "",
       "team": "캄몬스타즈",
       "balloons": 103758,
-      "broadcast_seconds": 260890
+      "broadcast_seconds": 262510
     },
     {
       "id": "rondobba",
@@ -691,7 +691,7 @@
       "role": "",
       "team": "캄몬스타즈",
       "balloons": 231178,
-      "broadcast_seconds": 294523
+      "broadcast_seconds": 296143
     },
     {
       "id": "jmc06170",
@@ -720,8 +720,8 @@
       "birthdate": "1994-02-27",
       "role": "",
       "team": "캄몬스타즈",
-      "balloons": 169509,
-      "broadcast_seconds": 247703
+      "balloons": 172661,
+      "broadcast_seconds": 248484
     },
     {
       "id": "wjswlgns09",
@@ -730,8 +730,8 @@
       "birthdate": "1997-09-01",
       "role": "",
       "team": "캄몬스타즈",
-      "balloons": 324555,
-      "broadcast_seconds": 428936
+      "balloons": 327703,
+      "broadcast_seconds": 430556
     },
     {
       "id": "freshtomato",
@@ -751,7 +751,7 @@
       "role": "",
       "team": "캄몬스타즈",
       "balloons": 153352,
-      "broadcast_seconds": 317573
+      "broadcast_seconds": 319193
     },
     {
       "id": "alaelddl97",
@@ -761,7 +761,7 @@
       "role": "",
       "team": "캄몬스타즈",
       "balloons": 176652,
-      "broadcast_seconds": 402043
+      "broadcast_seconds": 402212
     },
     {
       "id": "soju2022",
@@ -800,8 +800,8 @@
       "birthdate": "2000-01-20",
       "role": "",
       "team": "캄몬스타즈",
-      "balloons": 208525,
-      "broadcast_seconds": 454273
+      "balloons": 208528,
+      "broadcast_seconds": 455893
     },
     {
       "id": "dlaguswl501",
@@ -830,8 +830,8 @@
       "birthdate": "2001-01-13",
       "role": "",
       "team": "캄몬스타즈",
-      "balloons": 245667,
-      "broadcast_seconds": 389984
+      "balloons": 248558,
+      "broadcast_seconds": 391604
     },
     {
       "id": "sksmsskdsl10",
@@ -860,8 +860,8 @@
       "birthdate": "1984-12-19",
       "role": "수장",
       "team": "엠비대",
-      "balloons": 50476,
-      "broadcast_seconds": 213307
+      "balloons": 50487,
+      "broadcast_seconds": 214927
     },
     {
       "id": "lyh8808",
@@ -1151,7 +1151,7 @@
       "role": "",
       "team": "와플대",
       "balloons": 137373,
-      "broadcast_seconds": 321750
+      "broadcast_seconds": 323370
     },
     {
       "id": "jjjjeong",
@@ -1231,7 +1231,7 @@
       "role": "",
       "team": "수술대",
       "balloons": 46100,
-      "broadcast_seconds": 433724
+      "broadcast_seconds": 435344
     },
     {
       "id": "palko1",
@@ -1240,8 +1240,8 @@
       "birthdate": "1989-11-21",
       "role": "",
       "team": "수술대",
-      "balloons": 89718,
-      "broadcast_seconds": 273332
+      "balloons": 89738,
+      "broadcast_seconds": 274952
     },
     {
       "id": "dohyeon97",
@@ -1310,8 +1310,8 @@
       "birthdate": "1998-11-22",
       "role": "",
       "team": "수술대",
-      "balloons": 56123,
-      "broadcast_seconds": 229235
+      "balloons": 56415,
+      "broadcast_seconds": 230855
     },
     {
       "id": "pazzy1",
@@ -1321,7 +1321,7 @@
       "role": "",
       "team": "수술대",
       "balloons": 191998,
-      "broadcast_seconds": 318393
+      "broadcast_seconds": 320013
     },
     {
       "id": "rlsk0705",
@@ -1331,7 +1331,7 @@
       "role": "",
       "team": "수술대",
       "balloons": 150484,
-      "broadcast_seconds": 344515
+      "broadcast_seconds": 346135
     },
     {
       "id": "totlllsz",
@@ -1351,7 +1351,7 @@
       "role": "",
       "team": "수술대",
       "balloons": 76646,
-      "broadcast_seconds": 287625
+      "broadcast_seconds": 289245
     },
     {
       "id": "wlgua7272",
@@ -1361,7 +1361,7 @@
       "role": "",
       "team": "수술대",
       "balloons": 103006,
-      "broadcast_seconds": 309948
+      "broadcast_seconds": 311534
     },
     {
       "id": "nreupne",
@@ -1370,8 +1370,8 @@
       "birthdate": "1999-02-15",
       "role": "",
       "team": "수술대",
-      "balloons": 71011,
-      "broadcast_seconds": 328778
+      "balloons": 71021,
+      "broadcast_seconds": 330398
     },
     {
       "id": "tato1104",
@@ -1381,7 +1381,7 @@
       "role": "",
       "team": "수술대",
       "balloons": 73012,
-      "broadcast_seconds": 310104
+      "broadcast_seconds": 310910
     },
     {
       "id": "jiinii000",
@@ -1391,7 +1391,7 @@
       "role": "",
       "team": "수술대",
       "balloons": 64719,
-      "broadcast_seconds": 360157
+      "broadcast_seconds": 361777
     },
     {
       "id": "min030606",
@@ -1451,7 +1451,7 @@
       "role": "수장",
       "team": "뉴캣슬",
       "balloons": 400871,
-      "broadcast_seconds": 280035
+      "broadcast_seconds": 281655
     },
     {
       "id": "peros777",
@@ -1681,7 +1681,7 @@
       "role": "수장",
       "team": "BGM",
       "balloons": 258649,
-      "broadcast_seconds": 219052
+      "broadcast_seconds": 219099
     },
     {
       "id": "lky6407",
@@ -1721,7 +1721,7 @@
       "role": "",
       "team": "BGM",
       "balloons": 16228,
-      "broadcast_seconds": 125788
+      "broadcast_seconds": 126060
     },
     {
       "id": "wkddudrms15",
@@ -1741,7 +1741,7 @@
       "role": "",
       "team": "BGM",
       "balloons": 80218,
-      "broadcast_seconds": 493882
+      "broadcast_seconds": 495502
     },
     {
       "id": "s1on0106",
@@ -2151,7 +2151,7 @@
       "role": "",
       "team": "신세계",
       "balloons": 44976,
-      "broadcast_seconds": 309123
+      "broadcast_seconds": 310231
     },
     {
       "id": "snfjdro369",
@@ -2171,7 +2171,7 @@
       "role": "",
       "team": "신세계",
       "balloons": 90003,
-      "broadcast_seconds": 520360
+      "broadcast_seconds": 520409
     },
     {
       "id": "byspire",
@@ -2201,7 +2201,7 @@
       "role": "",
       "team": "신세계",
       "balloons": 27907,
-      "broadcast_seconds": 368779
+      "broadcast_seconds": 370399
     },
     {
       "id": "djathekd",
@@ -2220,8 +2220,8 @@
       "birthdate": "2000-12-05",
       "role": "",
       "team": "신세계",
-      "balloons": 50239,
-      "broadcast_seconds": 386488
+      "balloons": 50769,
+      "broadcast_seconds": 388146
     },
     {
       "id": "rnfma14",
@@ -2240,8 +2240,8 @@
       "birthdate": "2004-08-05",
       "role": "",
       "team": "신세계",
-      "balloons": 135477,
-      "broadcast_seconds": 353962
+      "balloons": 135478,
+      "broadcast_seconds": 355582
     },
     {
       "id": "khl1589",
@@ -2250,8 +2250,8 @@
       "birthdate": "1997-01-21",
       "role": "",
       "team": "신세계",
-      "balloons": 45224,
-      "broadcast_seconds": 297375
+      "balloons": 45226,
+      "broadcast_seconds": 298995
     },
     {
       "id": "haeun5513",
@@ -2341,7 +2341,7 @@
       "role": "",
       "team": "더블비",
       "balloons": 60152,
-      "broadcast_seconds": 270835
+      "broadcast_seconds": 272156
     },
     {
       "id": "fidfidfid",
@@ -2351,7 +2351,7 @@
       "role": "",
       "team": "더블비",
       "balloons": 56014,
-      "broadcast_seconds": 173371
+      "broadcast_seconds": 174991
     },
     {
       "id": "jk890202",
@@ -2360,8 +2360,8 @@
       "birthdate": "1990-07-04",
       "role": "수장",
       "team": "드림즈",
-      "balloons": 462872,
-      "broadcast_seconds": 501628
+      "balloons": 462962,
+      "broadcast_seconds": 502351
     },
     {
       "id": "hby0724",
@@ -2371,7 +2371,7 @@
       "role": "",
       "team": "드림즈",
       "balloons": 60256,
-      "broadcast_seconds": 274206
+      "broadcast_seconds": 275352
     },
     {
       "id": "djdbstn",
@@ -2381,7 +2381,7 @@
       "role": "",
       "team": "드림즈",
       "balloons": 50927,
-      "broadcast_seconds": 387648
+      "broadcast_seconds": 389268
     },
     {
       "id": "dbsdydx",
@@ -2400,8 +2400,8 @@
       "birthdate": "2000-09-22",
       "role": "",
       "team": "드림즈",
-      "balloons": 344319,
-      "broadcast_seconds": 408921
+      "balloons": 344986,
+      "broadcast_seconds": 410541
     },
     {
       "id": "moguleave",
@@ -2421,7 +2421,7 @@
       "role": "",
       "team": "드림즈",
       "balloons": 118200,
-      "broadcast_seconds": 179409
+      "broadcast_seconds": 181029
     },
     {
       "id": "wlswn6565",
@@ -2430,8 +2430,8 @@
       "birthdate": "2001-01-13",
       "role": "",
       "team": "드림즈",
-      "balloons": 167337,
-      "broadcast_seconds": 302060
+      "balloons": 167625,
+      "broadcast_seconds": 303680
     },
     {
       "id": "j4141h",
@@ -2451,7 +2451,7 @@
       "role": "",
       "team": "드림즈",
       "balloons": 104631,
-      "broadcast_seconds": 390283
+      "broadcast_seconds": 391903
     }
   ]
 }
