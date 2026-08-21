@@ -1,10 +1,16 @@
 """
-poong.today의 월간 전체 랭킹 API를 '한 번만' 호출해서, members.json에 등록된
-멤버들의 이번달 별풍선 데이터를 뽑아 data/latest.json 으로 저장하는 스크립트.
+풍고(poonggo.com) 공식 API를 사용해서, members.json에 등록된 멤버들의 이번달
+별풍선 데이터를 뽑아 data/latest.json 으로 저장하는 스크립트.
+
+이 API는 풍고 운영진에게 정식으로 이용 허가를 받아 사용 중이며 (문의 회신 기준),
+ids 파라미터에 아이디를 콤마로 최대 300개까지 묶어 한 번에 조회할 수 있다.
+운영진 안내에 따라 별도 rate limit은 없지만 서버 부담을 줄이기 위해 자동 실행
+주기(몇 시간에 1회) 자체를 캐싱/버퍼링 수단으로 삼고, 요청 횟수를 최소화한다
+(멤버가 300명을 넘지 않는 한 이번달 조회는 딱 1번의 API 호출로 끝난다).
 
 달이 바뀐 첫 실행에서는, 이전 달을 단순 복사하지 않고 그 달 기준으로 API를
 한 번 더 호출해 확정된 별풍선 값으로 갱신한 뒤 data/archive/YYYY-MM.json 으로
-보관한다 (풍투데이가 월말 데이터를 다음 달 초에 한 번 더 갱신하는 경우 대응).
+보관한다.
 
 members.json은 flat 구조: {"members": [{"id":.., "team":.., ...}, ...]}
 
@@ -23,70 +29,84 @@ MEMBERS_PATH = ROOT / "data" / "members.json"
 OUTPUT_PATH = ROOT / "data" / "latest.json"
 ARCHIVE_DIR = ROOT / "data" / "archive"
 
-CHART_API_URL = (
-    "https://static.poong.today/chart/get"
-    "?ctype=month&ks=false&year={year}&month={month}&day=undefined"
-)
+POONGGO_MONTHLY_URL = "https://poonggo.com/api/monthly"
+IDS_PER_REQUEST = 300  # 풍고 API가 허용하는 최대 아이디 개수
 
 TIMEOUT_SEC = 30
 MAX_RETRIES = 3
 DATETIME_FORMAT = "%Y-%m-%d %H:%M:%S"
+
+# 풍고 쪽에서 요청을 구분할 수 있도록, 자동화된 요청임을 정직하게 밝히는 User-Agent
+# (사전에 정식으로 이용 허가를 받은 상태이므로 브라우저로 위장하지 않음)
+REQUEST_HEADERS = {
+    "User-Agent": "poong-stats-bot/1.0 (+https://brain-09.github.io/poong-stats/)",
+    "Accept": "application/json",
+}
 
 
 def kst_now():
     return datetime.now(timezone.utc) + timedelta(hours=9)
 
 
-def fetch_chart(year: int, month: int):
-    """성공 시 dict, 모든 재시도 실패 시 None 반환 (호출부에서 실패 처리 방식을 다르게 가져가기 위함)"""
-    url = CHART_API_URL.format(year=year, month=month)
-    headers = {
-        "User-Agent": (
-            "Mozilla/5.0 (Windows NT 10.0; Win64; x64) "
-            "AppleWebKit/537.36 (KHTML, like Gecko) "
-            "Chrome/124.0.0.0 Safari/537.36"
-        ),
-        "Referer": "https://poong.today/",
-        "Origin": "https://poong.today",
-        "Accept": "application/json, text/plain, */*",
-    }
-    req = Request(url, headers=headers)
-
-    last_err = None
-    for attempt in range(1, MAX_RETRIES + 1):
-        try:
-            with urlopen(req, timeout=TIMEOUT_SEC) as resp:
-                raw = resp.read().decode("utf-8")
-                return json.loads(raw)
-        except (URLError, HTTPError, TimeoutError) as e:
-            last_err = e
-            print(f"[경고] {year}년 {month}월 랭킹 요청 실패 (시도 {attempt}/{MAX_RETRIES}): {e}", file=sys.stderr)
-        except json.JSONDecodeError as e:
-            last_err = e
-            print(f"[경고] {year}년 {month}월 응답 파싱 실패 (시도 {attempt}/{MAX_RETRIES}): {e}", file=sys.stderr)
-
-    print(f"[오류] {year}년 {month}월 랭킹 데이터를 가져오지 못했습니다: {last_err}", file=sys.stderr)
-    return None
+def _chunked(seq: list, size: int):
+    for i in range(0, len(seq), size):
+        yield seq[i:i + size]
 
 
-def chart_to_balloon_map(chart: dict) -> dict:
+def fetch_poonggo_monthly(year: int, month: int, ids: list):
+    """
+    풍고 월별 API를 호출해 {SOOP아이디: 별풍선합계} 딕셔너리를 반환.
+    ids가 300개를 넘으면 여러 번 나눠서 호출한다. 실패 시 None 반환.
+    """
+    if not ids:
+        return {}
+
+    date_str = f"{year:04d}-{month:02d}-01"
     balloon_by_id = {}
-    for entry in chart.get("b", []):
-        member_id = entry.get("i")
-        if member_id:
-            balloon_by_id[member_id] = entry.get("b", 0) or 0
+
+    for chunk in _chunked(ids, IDS_PER_REQUEST):
+        ids_param = ",".join(chunk)
+        url = f"{POONGGO_MONTHLY_URL}?date={date_str}&ids={ids_param}"
+        req = Request(url, headers=REQUEST_HEADERS)
+
+        last_err = None
+        parsed = None
+        for attempt in range(1, MAX_RETRIES + 1):
+            try:
+                with urlopen(req, timeout=TIMEOUT_SEC) as resp:
+                    raw = resp.read().decode("utf-8")
+                    parsed = json.loads(raw)
+                    break
+            except (URLError, HTTPError, TimeoutError) as e:
+                last_err = e
+                print(f"[경고] 풍고 API 요청 실패 (시도 {attempt}/{MAX_RETRIES}): {e}", file=sys.stderr)
+            except json.JSONDecodeError as e:
+                last_err = e
+                print(f"[경고] 풍고 API 응답 파싱 실패 (시도 {attempt}/{MAX_RETRIES}): {e}", file=sys.stderr)
+
+        if parsed is None:
+            print(f"[오류] 풍고 API 조회 실패 ({date_str}, {len(chunk)}명분): {last_err}", file=sys.stderr)
+            return None
+
+        # 응답이 배열이거나, {"data": [...]} 같은 형태로 감싸져 있을 수 있어 둘 다 처리
+        entries = parsed if isinstance(parsed, list) else parsed.get("data", parsed.get("list", []))
+
+        for entry in entries:
+            member_id = entry.get("id")
+            if member_id:
+                balloon_by_id[member_id] = entry.get("amt", 0) or 0
+
     return balloon_by_id
 
 
-def archive_previous_month_if_needed(new_year: int, new_month: int):
+def archive_previous_month_if_needed(new_year: int, new_month: int, all_ids: list):
     """
     기존 data/latest.json이 있고, 그 안의 연/월이 이번에 새로 가져올 연/월과 다르면
     (=달이 바뀌었으면) 그 이전 달을 보관한다.
 
-    풍투데이는 월말 데이터를 다음 달 초에 한 번 더 갱신(확정)하는 경우가 있어서,
-    단순히 마지막 스냅샷을 복사하지 않고 지난달 기준으로 API를 한 번 더 호출해
-    확정된 별풍선 값으로 갱신한 뒤 보관한다. 팀/성별/직책 등 '그 당시 소속 정보'는
-    기존 스냅샷 값을 그대로 유지한다 (재조회 API는 별풍선 숫자만 알려주기 때문).
+    풍고 데이터가 월말 이후 갱신될 가능성에 대비해, 단순히 마지막 스냅샷을 복사하지
+    않고 지난달 기준으로 API를 한 번 더 호출해 확정된 별풍선 값으로 갱신한 뒤 보관한다.
+    팀/성별/직책 등 '그 당시 소속 정보'는 기존 스냅샷 값을 그대로 유지한다.
     """
     if not OUTPUT_PATH.exists():
         return
@@ -110,10 +130,9 @@ def archive_previous_month_if_needed(new_year: int, new_month: int):
         return  # 이미 보관 완료된 달이면 다시 건드리지 않음
 
     print(f"[보관] {prev_year}년 {prev_month}월 확정 데이터 재조회 중...")
-    chart = fetch_chart(prev_year, prev_month)
+    balloon_by_id = fetch_poonggo_monthly(prev_year, prev_month, all_ids)
 
-    if chart is not None:
-        balloon_by_id = chart_to_balloon_map(chart)
+    if balloon_by_id is not None:
         updated_count = 0
         for m in prev.get("members", []):
             member_id = m.get("id")
@@ -141,18 +160,17 @@ def main():
         config = json.load(f)
 
     members = config["members"]
+    all_ids = [m["id"] for m in members if m.get("id")]
 
     now = kst_now()
     year, month = now.year, now.month
 
-    archive_previous_month_if_needed(year, month)
+    archive_previous_month_if_needed(year, month, all_ids)
 
-    print(f"전체 랭킹 데이터 요청 중... ({year}년 {month}월)")
-    chart = fetch_chart(year, month)
-    if chart is None:
-        raise SystemExit(f"[오류] {year}년 {month}월 전체 랭킹 데이터를 가져오지 못했습니다.")
-
-    balloon_by_id = chart_to_balloon_map(chart)
+    print(f"풍고 API 요청 중... ({year}년 {month}월, {len(all_ids)}명)")
+    balloon_by_id = fetch_poonggo_monthly(year, month, all_ids)
+    if balloon_by_id is None:
+        raise SystemExit(f"[오류] {year}년 {month}월 별풍선 데이터를 가져오지 못했습니다.")
 
     print(f"전체 {len(balloon_by_id)}명의 데이터 수신 완료")
 
@@ -177,7 +195,7 @@ def main():
 
     if not_found:
         print(
-            f"[참고] 이번달 방송 기록이 없거나 랭킹에 없는 {len(not_found)}명은 0으로 처리됨: "
+            f"[참고] 이번달 데이터가 없는 {len(not_found)}명은 0으로 처리됨: "
             + ", ".join(not_found[:20])
             + (" ..." if len(not_found) > 20 else ""),
             file=sys.stderr,

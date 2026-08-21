@@ -79,6 +79,11 @@ PAGE_CSS = """
     font-size: 10px;
     color: #888;
   }
+  .source-link {
+    color: #888;
+    text-decoration: underline;
+  }
+  .source-link:hover { color: #25528F; }
   .grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
@@ -593,7 +598,7 @@ def render_page(data: dict, archive_slugs: list, current_year: int, current_mont
     top_bar_html = f"""
   <div class="top-bar">
     {month_select_html}
-    <span class="top-meta">{team_count}팀 / {member_count}명 / 업데이트 {data['updated_at']} / 출처: 풍투데이</span>
+    <span class="top-meta">{team_count}팀 / {member_count}명 / 업데이트 {data['updated_at']} / 출처: <a href="https://poonggo.com" target="_blank" rel="noopener" class="source-link">풍고</a></span>
   </div>
     """
 
@@ -637,7 +642,7 @@ def render_team_page(data: dict, team_name: str, team_members: list, tiers: dict
     top_bar_html = f"""
   <div class="top-bar">
     {month_select_html}
-    <span class="top-meta">{team_name} / {len(team_members)}명 / 업데이트 {data['updated_at']} / 출처: 풍투데이</span>
+    <span class="top-meta">{team_name} / {len(team_members)}명 / 업데이트 {data['updated_at']} / 출처: <a href="https://poonggo.com" target="_blank" rel="noopener" class="source-link">풍고</a></span>
   </div>
     """
 
