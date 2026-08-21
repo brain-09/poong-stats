@@ -32,8 +32,10 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git add data/latest.json docs/index.html
+          [ -f docs/broadcast.html ] && git add docs/broadcast.html
           [ -d data/archive ] && git add data/archive
           [ -d docs/archive ] && git add docs/archive
+          [ -d docs/archive-broadcast ] && git add docs/archive-broadcast
           [ -d docs/teams ] && git add docs/teams
           [ -d docs/logos ] && git add docs/logos
           git diff --quiet --cached || git commit -m "자동 업데이트: $(date -u +'%Y-%m-%d %H:%M UTC')"
