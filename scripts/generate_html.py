@@ -263,7 +263,7 @@ PAGE_CSS = """
   .team-footer {
     display: flex;
     gap: 4px;
-    padding: 10px 12px 12px;
+    padding: 10px 8px 12px;
     background: #fafbfc;
     border-top: 1px solid #f2f3f5;
   }
@@ -313,6 +313,7 @@ MOBILE_CSS = """
     .team-card { border-radius: 10px; }
     .team-card-topbar { height: 3px; }
     .team-header { padding: 6px 7px; gap: 3px; }
+    .team-header-left, .team-link { gap: 5px; }
     .team-logo { width: 12px; height: 12px; border-radius: 4px; }
     .team-name { font-size: 8px; }
     .team-count { font-size: 6px; }
@@ -323,7 +324,7 @@ MOBILE_CSS = """
     .member-name { font-size: 7px; gap: 2px; }
     .bday-mark { font-size: 5px; }
     .member-value { font-size: 7px; padding-left: 3px; }
-    .team-footer { padding: 6px 7px 7px; gap: 2px; }
+    .team-footer { padding: 6px 5px 7px; gap: 2px; }
     .stat-card { padding: 6px 4px; border-radius: 7px; }
     .stat-label { font-size: 6px; margin-bottom: 1px; }
     .stat-value { font-size: 8px; }
