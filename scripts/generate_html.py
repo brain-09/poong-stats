@@ -29,9 +29,12 @@ docs/archive/YYYY-MM.html, docs/broadcast.html, docs/archive-broadcast/YYYY-MM.h
 실행: python scripts/generate_html.py
 """
 
+import colorsys
 import json
 from collections import OrderedDict
 from pathlib import Path
+
+from PIL import Image
 
 ROOT = Path(__file__).resolve().parent.parent
 DATA_PATH = ROOT / "data" / "latest.json"
@@ -41,6 +44,44 @@ OUTPUT_TEAMS_DIR = ROOT / "docs" / "teams"
 LOGOS_DIR = ROOT / "docs" / "logos"
 
 EXCLUDED_ROLES = {"수장", "전력외"}
+DEFAULT_TOPBAR_COLOR = "#4a5ce0"
+_topbar_color_cache: dict = {}
+
+
+def get_team_topbar_color(team_name: str) -> str:
+    """팀 로고(docs/logos/{팀}.webp)에서 대표 색을 뽑아 카드 상단 바 색으로 쓴다.
+    로고가 없거나 읽기에 실패하면 기존 파란색(DEFAULT_TOPBAR_COLOR)을 그대로 쓴다.
+    흰색/검은색(배경·테두리로 흔함)은 후보에서 제외하고, 자주 등장하는 색상들 중
+    채도가 가장 높은 색을 '브랜드 색'으로 간주해 고른다. 팀당 한 번만 계산하고 캐시."""
+    if team_name in _topbar_color_cache:
+        return _topbar_color_cache[team_name]
+
+    color = DEFAULT_TOPBAR_COLOR
+    logo_path = LOGOS_DIR / f"{team_name}.webp"
+    if logo_path.exists():
+        try:
+            img = Image.open(logo_path).convert("RGBA").resize((40, 40))
+            buckets: dict = {}  # 양자화된 RGB -> [등장횟수, 채도 합]
+            for r, g, b, a in img.getdata():
+                if a < 128:
+                    continue
+                if (r > 235 and g > 235 and b > 235) or (r < 20 and g < 20 and b < 20):
+                    continue
+                h, s, v = colorsys.rgb_to_hsv(r / 255, g / 255, b / 255)
+                key = (r // 20 * 20, g // 20 * 20, b // 20 * 20)
+                bucket = buckets.setdefault(key, [0, 0.0])
+                bucket[0] += 1
+                bucket[1] += s
+
+            if buckets:
+                top_buckets = sorted(buckets.items(), key=lambda kv: -kv[1][0])[:6]
+                best_key = max(top_buckets, key=lambda kv: kv[1][1] / kv[1][0])[0]
+                color = f"#{best_key[0]:02x}{best_key[1]:02x}{best_key[2]:02x}"
+        except Exception:
+            color = DEFAULT_TOPBAR_COLOR
+
+    _topbar_color_cache[team_name] = color
+    return color
 
 
 def normalize_balloons(members: list) -> list:
@@ -535,9 +576,11 @@ def build_team_card(team_name: str, members: list, current_month: int, tiers: di
     else:
         header_left = f"<div class='team-header-left'>{header_left_content}</div>"
 
+    topbar_color = get_team_topbar_color(team_name)
+
     return total_avg, f"""
     <div class="team-card">
-      <div class="team-card-topbar"></div>
+      <div class="team-card-topbar" style="background:{topbar_color};"></div>
       <div class="team-header">
         {header_left}
         {rank_badge}
