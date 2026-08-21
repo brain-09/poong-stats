@@ -208,7 +208,7 @@ PAGE_CSS = """
   .member-col-label {
     display: flex;
     justify-content: space-between;
-    align-items: baseline;
+    align-items: center;
     font-size: 10.8px;
     font-weight: 700;
     color: #a4a8b2;
@@ -216,7 +216,8 @@ PAGE_CSS = """
     padding: 7.2px 12.6px 5.4px;
     background: #fafbfc;
   }
-  .member-col-label .unit-label { color: #c2c5cc; font-weight: 700; text-align: right; }
+  .member-col-label .col-label-text { font-size: 10.8px; font-weight: 700; line-height: 1; }
+  .member-col-label .unit-label { font-size: 10.8px; font-weight: 700; line-height: 1; color: #c2c5cc; text-align: right; }
   .member-row {
     display: flex;
     justify-content: space-between;
@@ -331,6 +332,7 @@ MOBILE_CSS = """
     .team-count { font-size: 6px; }
     .rank-change { font-size: 6px; padding: 1px 5px; }
     .member-col-label { font-size: 6px; padding: 4px 7px 3px; }
+    .member-col-label .col-label-text, .member-col-label .unit-label { font-size: 6px; }
     .member-row { padding: 3px 7px; min-height: 15px; border-left-width: 2px; }
     .member-name { font-size: 7px; gap: 2px; }
     .bday-mark { font-size: 5px; }
