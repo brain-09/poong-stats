@@ -326,7 +326,7 @@ MOBILE_CSS = """
     .rank-change { font-size: 6px; padding: 1px 5px; }
     .member-col-label { font-size: 6px; padding: 4px 7px 3px; }
     .member-col-label .unit-label { margin-left: 2px; }
-    .member-row { padding: 2px 7px; min-height: 12px; border-left-width: 2px; }
+    .member-row { padding: 3px 7px; min-height: 14px; border-left-width: 2px; }
     .member-name { font-size: 7px; gap: 2px; }
     .role-tag { font-size: 6px; }
     .bday-mark { font-size: 6px; }
