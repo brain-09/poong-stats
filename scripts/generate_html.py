@@ -217,17 +217,18 @@ PAGE_CSS = """
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 7px 16px;
+    padding: 5.2px 12.13px;
     border-left: 3px solid transparent;
-    min-height: 28px;
+    min-height: 26px;
   }
   .member-row.tier1 { border-left-color: #4a5ce0; background: #f4f6fe; }
   .member-row.tier5 { border-left-color: #1c9e6e; background: #effbf5; }
   .member-row.tier10 { border-left-color: #d9a71b; background: #fdf6e0; }
   .member-row.excluded { border-left-color: #d64545; background: #fdeaea; }
   .member-name {
-    font-size: 13px;
+    font-size: 12.13px;
     color: #3a3d47;
+    font-weight: 700;
     display: flex;
     align-items: center;
     gap: 4px;
@@ -240,11 +241,12 @@ PAGE_CSS = """
   .member-row.tier5 .member-name,
   .member-row.tier10 .member-name,
   .member-row.excluded .member-name { font-weight: 700; color: #1a1d29; }
-  .role-tag { font-size: 9px; font-weight: 700; color: #b23a3a; flex-shrink: 0; }
-  .bday-mark { font-size: 8px; opacity: 0.75; flex-shrink: 0; }
+  .bday-mark { font-size: 8.67px; opacity: 0.75; flex-shrink: 0; }
   .member-value {
-    font-size: 13px;
+    font-size: 12.13px;
     color: #6b6f79;
+    font-weight: 700;
+    text-align: right;
     font-variant-numeric: tabular-nums;
     flex-shrink: 0;
     padding-left: 6px;
@@ -328,7 +330,6 @@ MOBILE_CSS = """
     .member-col-label .unit-label { margin-left: 2px; }
     .member-row { padding: 3px 7px; min-height: 15px; border-left-width: 2px; }
     .member-name { font-size: 7px; gap: 2px; }
-    .role-tag { font-size: 5px; }
     .bday-mark { font-size: 5px; }
     .member-value { font-size: 7px; padding-left: 3px; }
     .team-footer { padding: 6px 7px 7px; gap: 4px; }
@@ -515,14 +516,12 @@ def build_team_card(team_name: str, members: list, current_month: int, tiers: di
     male_n, female_n = len(males_all), len(females_all)
 
     def member_row(m):
-        role = m.get("role")
-        role_html = f"<span class='role-tag'>{role}</span>" if role else ""
         bday = parse_birthdate(m.get("birthdate"))
         bday_html = "<span class='bday-mark'>🎂</span>" if bday and bday[0] == current_month else ""
         row_class = value_class(m, tiers, metric)
         return (
             f"<div class='member-row {row_class}'>"
-            f"<span class='member-name'>{m['nickname']}{role_html}{bday_html}</span>"
+            f"<span class='member-name'>{m['nickname']}{bday_html}</span>"
             f"<span class='member-value'>{metric.text(m)}</span>"
             f"</div>"
         )
