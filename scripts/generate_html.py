@@ -61,64 +61,67 @@ def normalize_balloons(members: list) -> list:
 
 # 모든 페이지가 공유하는 스타일. f-string이 아니라 일반 문자열이라 중괄호를 그대로 쓴다.
 PAGE_CSS = """
-  @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&display=swap');
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;800;900&display=swap');
 
   * { box-sizing: border-box; }
 
   body {
     font-family: 'Noto Sans KR', -apple-system, "Malgun Gothic", sans-serif;
-    background: #f2f3f5;
+    background: #f4f5f7;
     margin: 0;
     padding: 24px 16px;
-    color: #222;
+    color: #1a1d29;
   }
   .top-bar {
     max-width: 1080px;
-    margin: 0 auto 18px;
+    margin: 0 auto 16px;
     background: #fff;
-    border: 1px solid #e2e4e9;
-    border-left: 5px solid #25528F;
-    border-radius: 8px;
-    padding: 14px 20px;
+    border-radius: 16px;
+    padding: 16px 20px;
     display: flex;
     justify-content: space-between;
     align-items: center;
     flex-wrap: wrap;
-    gap: 6px;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+    gap: 8px;
+    box-shadow: 0 1px 2px rgba(20,20,30,0.04), 0 4px 12px rgba(20,20,30,0.05);
   }
   .month-select-group {
     display: inline-flex;
     align-items: center;
-    gap: 6px;
+    gap: 2px;
   }
   .top-date-select {
-    font-size: 18px;
-    font-weight: 700;
-    color: #222;
+    font-size: 19px;
+    font-weight: 800;
+    color: #141821;
+    letter-spacing: -0.2px;
     border: none;
     background: transparent;
     cursor: pointer;
     font-family: inherit;
-    padding: 2px 16px 2px 0;
+    padding: 2px 0;
     appearance: none;
     -webkit-appearance: none;
     -moz-appearance: none;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23888' stroke-width='2' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
-    background-repeat: no-repeat;
-    background-position: right center;
-    background-size: 10px 7px;
   }
-  .top-date-select:hover { color: #25528F; }
+  .top-date-select:hover { color: #4a5ce0; }
+  .nav-chevron {
+    font-size: 12px;
+    color: #c2c5cc;
+    margin: 0 4px;
+    user-select: none;
+  }
   .top-meta {
-    font-size: 10px;
-    color: #888;
+    font-size: 11px;
+    color: #a4a8b2;
+    white-space: nowrap;
   }
   .source-link {
-    color: #888;
-    text-decoration: underline;
+    color: #4a5ce0;
+    font-weight: 600;
+    text-decoration: none;
   }
-  .source-link:hover { color: #25528F; }
+  .source-link:hover { text-decoration: underline; }
   .grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
@@ -132,138 +135,156 @@ PAGE_CSS = """
   }
   .team-card {
     background: #fff;
-    border: 1px solid #e5e6ea;
-    border-radius: 10px;
-    padding: 10px;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
-  }
-  th.team-name-row {
-    background: #f7f8fa;
-    color: #222;
-    font-weight: 700;
-  }
-  .team-name-inner {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: 6px;
+    border-radius: 20px;
     overflow: hidden;
-    min-width: 0;
+    box-shadow: 0 1px 2px rgba(20,20,30,0.04), 0 8px 24px rgba(20,20,30,0.06);
   }
-  .team-link {
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    color: inherit;
-    text-decoration: none;
-  }
-  .team-link:hover { text-decoration: underline; }
-  .team-name-flex {
+  .team-card-topbar { height: 4px; background: #4a5ce0; }
+  .team-header {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: 6px;
-    flex-wrap: nowrap;
-    overflow: hidden;
+    padding: 16px 20px;
+    border-bottom: 1px solid #f2f3f5;
+    gap: 8px;
+    flex-wrap: wrap;
   }
-  .rank-change {
-    font-size: 11px;
-    font-weight: 700;
-    padding: 1px 7px;
-    border-radius: 10px;
-    white-space: nowrap;
+  .team-header-left {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    min-width: 0;
   }
-  .rank-change.up { color: #1a7f37; background: #e6f4ea; }
-  .rank-change.down { color: #c0392b; background: #fdeaea; }
-  .rank-change.same { color: #888; background: #eceef1; }
-  .rank-change.new { color: #25528F; background: #e3e7fb; }
+  .team-link {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    min-width: 0;
+    color: inherit;
+    text-decoration: none;
+  }
+  .team-link:hover .team-name { text-decoration: underline; }
   .team-logo {
-    height: 14px;
-    width: 14px;
+    width: 22px;
+    height: 22px;
+    border-radius: 7px;
     object-fit: contain;
-    vertical-align: middle;
+    flex-shrink: 0;
   }
-  th.col-header {
-    background: #25528F;
-    color: #fff;
-  }
-  table {
-    width: 100%;
-    border-collapse: collapse;
-    font-size: 11px;
-    table-layout: fixed;
-  }
-  th, td {
-    border: 1px solid #eceef1;
-    padding: 3px 4px;
-    text-align: center;
-    vertical-align: middle;
-    height: 25px;
+  .team-name {
+    font-size: 16px;
+    font-weight: 800;
+    color: #141821;
+    letter-spacing: -0.2px;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
   }
-  th {
-    background: #f7f8fa;
-    font-weight: 700;
-    color: #555;
-  }
-  td.name-td {
-    text-align: center;
-    background: #f7f8fa;
-  }
-  .name-cell {
-    position: relative;
-    text-align: center;
-    min-height: 14px;
-  }
-  .name-left { white-space: nowrap; font-weight: 700; }
-  .bday-mark {
-    position: absolute;
-    right: 0;
-    top: 50%;
-    transform: translateY(-50%);
-    font-size: 9px;
-  }
-
-  td.num {
-    text-align: center;
-    font-variant-numeric: tabular-nums;
-    font-weight: 500;
-  }
-  td.empty { background: #fff; }
-
-  td.excluded {
-    background: #fadada !important;
-    color: #222;
-    font-weight: 700;
-  }
-  td.tier1, td.tier5, td.tier10 { font-weight: 700; }
-  td.tier1 { background: #d6e9fb; }
-  td.tier5 { background: #dcefdd; }
-  td.tier10 { background: #fbf3cf; }
-  td.excluded.tier1, td.excluded.tier5, td.excluded.tier10 {
-    background: #fadada !important;
-  }
-
-  tr.summary-row td {
+  .team-count {
     font-size: 11px;
-    background: #fafbfc;
-    font-weight: 600;
-    text-align: center;
-    height: 25px;
-    vertical-align: middle;
+    color: #a4a8b2;
+    font-weight: 500;
+    white-space: nowrap;
   }
-  td.total-sum, td.total-avg { background: #CDD7F5 !important; font-weight: 700; }
-  td.female-avg { background: #CDE1E1 !important; font-weight: 700; }
-  td.personnel-label { background: #f7f8fa !important; }
-  td.personnel-value { background: #ffffff !important; }
+  .rank-change {
+    font-size: 11px;
+    font-weight: 700;
+    padding: 4px 10px;
+    border-radius: 20px;
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+  .rank-change.up { color: #0f8a4c; background: #e6f8ee; }
+  .rank-change.down { color: #c0392b; background: #fdeaea; }
+  .rank-change.same { color: #888; background: #eceef1; }
+  .rank-change.new { color: #4a5ce0; background: #e6e9fb; }
+
+  .member-columns {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+  .member-col:first-child { border-right: 1px solid #f2f3f5; }
+  .member-col-label {
+    font-size: 10.5px;
+    font-weight: 700;
+    color: #a4a8b2;
+    letter-spacing: 0.3px;
+    padding: 10px 16px 8px;
+    background: #fafbfc;
+  }
+  .member-col-label .unit-label { color: #c2c5cc; font-weight: 500; margin-left: 4px; }
+  .member-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 16px;
+    border-left: 3px solid transparent;
+    min-height: 34px;
+  }
+  .member-row.tier1 { border-left-color: #4a5ce0; background: #f4f6fe; }
+  .member-row.tier5 { border-left-color: #1c9e6e; background: #effbf5; }
+  .member-row.tier10 { border-left-color: #d9a71b; background: #fdf6e0; }
+  .member-row.excluded { border-left-color: #d64545; background: #fdeaea; }
+  .member-name {
+    font-size: 13px;
+    color: #3a3d47;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    min-width: 0;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
+  .member-row.tier1 .member-name,
+  .member-row.tier5 .member-name,
+  .member-row.tier10 .member-name,
+  .member-row.excluded .member-name { font-weight: 700; color: #1a1d29; }
+  .role-tag { font-size: 9px; font-weight: 700; color: #b23a3a; flex-shrink: 0; }
+  .bday-mark { font-size: 8px; opacity: 0.75; flex-shrink: 0; }
+  .member-value {
+    font-size: 13px;
+    color: #6b6f79;
+    font-variant-numeric: tabular-nums;
+    flex-shrink: 0;
+    padding-left: 6px;
+  }
+  .member-row.tier1 .member-value { color: #4a5ce0; font-weight: 700; }
+  .member-row.tier5 .member-value { color: #0f8a5c; font-weight: 700; }
+  .member-row.tier10 .member-value { color: #8a6d1a; font-weight: 700; }
+  .member-row.excluded .member-value { color: #1a1d29; font-weight: 700; }
+  .member-row.empty .member-name, .member-row.empty .member-value { color: #ccc; }
+
+  .team-footer {
+    display: flex;
+    gap: 8px;
+    padding: 14px 18px 16px;
+    background: #fafbfc;
+    border-top: 1px solid #f2f3f5;
+  }
+  .stat-card {
+    flex: 1;
+    text-align: center;
+    padding: 9px 6px;
+    border-radius: 12px;
+    background: #fff;
+    border: 1px solid #eef0f2;
+    min-width: 0;
+  }
+  .stat-label { font-size: 10px; color: #a4a8b2; margin-bottom: 3px; font-weight: 600; }
+  .stat-value { font-size: 14px; font-weight: 800; color: #1a1d29; font-variant-numeric: tabular-nums; }
+  .stat-card.female-avg { background: #d9f2f2; border: none; }
+  .stat-card.female-avg .stat-label { color: #0e6b6b; }
+  .stat-card.female-avg .stat-value { color: #0a4d4d; }
+  .stat-card.total-avg { background: #efe9fc; border: none; }
+  .stat-card.total-avg .stat-label { color: #6a3fb0; }
+  .stat-card.total-avg .stat-value { color: #4a2984; }
 
   .legend {
     max-width: 1080px;
     margin: 14px auto 0;
     font-size: 9px;
-    color: #888;
+    color: #a4a8b2;
     text-align: center;
   }
   .legend span { margin: 0 5px; }
@@ -296,22 +317,29 @@ MOBILE_CSS = """
       grid-template-columns: 1fr 1fr;
       gap: 6px;
     }
-    .team-card {
-      padding: 5px;
-      border-radius: 7px;
-    }
-    table { font-size: 6px; }
-    th, td { padding: 1px 1px; height: 14px; }
-    tr.summary-row td { font-size: 6px; padding: 1px 1px; height: 14px; }
-    .name-cell { min-height: 8px; }
-    .name-left { font-size: 6px; }
-    .bday-mark { font-size: 5px; }
-    .team-logo { height: 8px; width: 8px; }
-    .rank-change { font-size: 6px; padding: 1px 4px; }
+    .team-card { border-radius: 10px; }
+    .team-card-topbar { height: 3px; }
+    .team-header { padding: 6px 7px; gap: 3px; }
+    .team-logo { width: 12px; height: 12px; border-radius: 4px; }
+    .team-name { font-size: 8px; }
+    .team-count { font-size: 6px; }
+    .rank-change { font-size: 6px; padding: 1px 5px; }
+    .member-col-label { font-size: 6px; padding: 4px 7px 3px; }
+    .member-col-label .unit-label { margin-left: 2px; }
+    .member-row { padding: 3px 7px; min-height: 14px; border-left-width: 2px; }
+    .member-name { font-size: 7px; gap: 2px; }
+    .role-tag { font-size: 6px; }
+    .bday-mark { font-size: 6px; }
+    .member-value { font-size: 7px; padding-left: 3px; }
+    .team-footer { padding: 6px 7px 7px; gap: 4px; }
+    .stat-card { padding: 4px 3px; border-radius: 7px; }
+    .stat-label { font-size: 6px; margin-bottom: 1px; }
+    .stat-value { font-size: 8px; }
     .top-bar { padding: 10px 14px; }
-    .month-select-group { gap: 3px; }
-    .top-date-select { font-size: 10px; min-width: 0; padding: 2px 12px 2px 2px; background-size: 8px 6px; }
-    .top-meta { font-size: 5px; }
+    .month-select-group { gap: 0; }
+    .top-date-select { font-size: 11px; }
+    .nav-chevron { font-size: 9px; margin: 0 2px; }
+    .top-meta { font-size: 6px; white-space: normal; }
     .legend { font-size: 4px; }
   }
 """
@@ -448,17 +476,6 @@ def rank_change_badge(current_rank: int, prev_ranks, team_name: str) -> str:
     return "<span class='rank-change same'>-</span>"
 
 
-def name_cell(m, current_month):
-    bday = parse_birthdate(m.get("birthdate"))
-    bday_html = "<span class='bday-mark'>🎂</span>" if bday and bday[0] == current_month else ""
-    return (
-        f"<div class='name-cell'>"
-        f"<span class='name-left'>{m['nickname']}</span>"
-        f"{bday_html}"
-        f"</div>"
-    )
-
-
 def value_class(m, tiers, metric: Metric = BALLOON_METRIC):
     """metric.exclude_roles가 True인 페이지(별풍선)에서만 수장/전력외를 빨간 배경으로
     강조한다 - 방송시간 페이지는 집계에 포함되므로 굳이 예외처럼 표시하지 않는다."""
@@ -492,81 +509,72 @@ def build_team_card(team_name: str, members: list, current_month: int, tiers: di
     male_sum = sum(metric.raw_value(m) for m in males_counted)
     female_sum = sum(metric.raw_value(m) for m in females_counted)
     total_sum = male_sum + female_sum
-    male_avg = round(male_sum / len(males_counted)) if males_counted else 0
     female_avg = round(female_sum / len(females_counted)) if females_counted else 0
     total_avg = team_total_avg(members, metric)  # 순위 계산과 동일한 공식(team_total_avg)을 그대로 재사용
 
-    max_rows = max(len(males_all), len(females_all), 1)
-
-    body_rows = []
-    for i in range(max_rows):
-        if i < len(males_all):
-            m = males_all[i]
-            m_name = f"<td class='name-td'>{name_cell(m, current_month)}</td>"
-            m_val = f"<td class='num {value_class(m, tiers, metric)}'>{metric.text(m)}</td>"
-        else:
-            m_name = "<td class='name-td empty'></td>"
-            m_val = "<td class='num empty'></td>"
-
-        if i < len(females_all):
-            f_ = females_all[i]
-            f_name = f"<td class='name-td'>{name_cell(f_, current_month)}</td>"
-            f_val = f"<td class='num {value_class(f_, tiers, metric)}'>{metric.text(f_)}</td>"
-        else:
-            f_name = "<td class='name-td empty'></td>"
-            f_val = "<td class='num empty'></td>"
-
-        body_rows.append(f"<tr>{m_name}{m_val}{f_name}{f_val}</tr>")
-
-    body_html = "".join(body_rows)
-
     male_n, female_n = len(males_all), len(females_all)
-    total_n = male_n + female_n
 
-    logo_html = team_logo_html(team_name, logo_prefix)
-    name_content = f"<a class='team-link' href='{team_link}'>{logo_html}{team_name}</a>" if team_link else f"{logo_html}{team_name}"
-
-    if rank_badge:
-        name_row_inner = (
-            f"<div class='team-name-flex'>"
-            f"<span class='team-name-inner'>{name_content}</span>"
-            f"{rank_badge}"
+    def member_row(m):
+        role = m.get("role")
+        role_html = f"<span class='role-tag'>{role}</span>" if role else ""
+        bday = parse_birthdate(m.get("birthdate"))
+        bday_html = "<span class='bday-mark'>🎂</span>" if bday and bday[0] == current_month else ""
+        row_class = value_class(m, tiers, metric)
+        return (
+            f"<div class='member-row {row_class}'>"
+            f"<span class='member-name'>{m['nickname']}{role_html}{bday_html}</span>"
+            f"<span class='member-value'>{metric.text(m)}</span>"
             f"</div>"
         )
-    else:
-        name_row_inner = f"<span class='team-name-inner'>{name_content}</span>"
 
-    summary_html = f"""
-      <tr class="summary-row">
-        <td>남자 합계</td><td class="num">{metric.format_fn(male_sum)}</td>
-        <td>여자 합계</td><td class="num">{metric.format_fn(female_sum)}</td>
-      </tr>
-      <tr class="summary-row">
-        <td>남자 평균</td><td class="num">{metric.format_fn(male_avg)}</td>
-        <td>여자 평균</td><td class="num female-avg">{metric.format_fn(female_avg)}</td>
-      </tr>
-      <tr class="summary-row">
-        <td>전체 합계</td><td class="num total-sum">{metric.format_fn(total_sum)}</td>
-        <td>전체 평균</td><td class="num total-avg">{metric.format_fn(total_avg)}</td>
-      </tr>
-      <tr class="summary-row">
-        <td class="personnel-label">인원</td>
-        <td colspan="3" class="personnel-value">총 {total_n}명 / 남자 {male_n}명 / 여자 {female_n}명</td>
-      </tr>
-    """
+    def member_col(name_list, other_len):
+        rows = [member_row(m) for m in name_list]
+        # 남녀 인원수가 다르면, 적은 쪽에 빈 줄을 채워서 줄 높이를 맞춘다
+        for _ in range(max(0, other_len - len(name_list))):
+            rows.append("<div class='member-row empty'><span class='member-name'>-</span><span class='member-value'></span></div>")
+        return "".join(rows)
+
+    males_html = member_col(males_all, female_n)
+    females_html = member_col(females_all, male_n)
+
+    logo_html = team_logo_html(team_name, logo_prefix)
+    header_left_content = f"{logo_html}<span class='team-name'>{team_name}</span><span class='team-count'>총 {male_n + female_n}명 · 남 {male_n} · 여 {female_n}</span>"
+    if team_link:
+        header_left = f"<a class='team-link' href='{team_link}'>{header_left_content}</a>"
+    else:
+        header_left = f"<div class='team-header-left'>{header_left_content}</div>"
 
     return total_avg, f"""
     <div class="team-card">
-      <table>
-        <thead>
-          <tr><th colspan="4" class="team-name-row">{name_row_inner}</th></tr>
-          <tr><th class="col-header">남자 멤버</th><th class="col-header">{metric.unit_label}</th><th class="col-header">여자 멤버</th><th class="col-header">{metric.unit_label}</th></tr>
-        </thead>
-        <tbody>
-          {body_html}
-          {summary_html}
-        </tbody>
-      </table>
+      <div class="team-card-topbar"></div>
+      <div class="team-header">
+        {header_left}
+        {rank_badge}
+      </div>
+      <div class="member-columns">
+        <div class="member-col">
+          <div class="member-col-label">남자 멤버<span class="unit-label">{metric.unit_label}</span></div>
+          {males_html}
+        </div>
+        <div class="member-col">
+          <div class="member-col-label">여자 멤버<span class="unit-label">{metric.unit_label}</span></div>
+          {females_html}
+        </div>
+      </div>
+      <div class="team-footer">
+        <div class="stat-card">
+          <div class="stat-label">전체 합계</div>
+          <div class="stat-value">{metric.format_fn(total_sum)}</div>
+        </div>
+        <div class="stat-card female-avg">
+          <div class="stat-label">여자 평균</div>
+          <div class="stat-value">{metric.format_fn(female_avg)}</div>
+        </div>
+        <div class="stat-card total-avg">
+          <div class="stat-label">전체 평균</div>
+          <div class="stat-value">{metric.format_fn(total_avg)}</div>
+        </div>
+      </div>
     </div>
     """
 
@@ -728,8 +736,11 @@ def assemble_single_page(all_data: list, current_year: int, current_month: int,
     nav_html = f"""
   <span class="month-select-group">
     <select class="top-date-select" id="ms-year-select">{year_options}</select>
+    <span class="nav-chevron">⌄</span>
     <select class="top-date-select" id="ms-month-select">{month_options}</select>
+    <span class="nav-chevron">⌄</span>
     <select class="top-date-select" id="ms-metric-select">{metric_options}</select>
+    <span class="nav-chevron">⌄</span>
   </span>
     """
 
@@ -784,7 +795,7 @@ def assemble_single_page(all_data: list, current_year: int, current_month: int,
     var m = meta[key];
     if (!m) return;
 
-    metaSpan.textContent = m.teamCount + '팀 / ' + m.memberCount + '명 / 업데이트 ' + m.updatedAt + ' / 출처: ';
+    metaSpan.textContent = m.teamCount + '팀 · ' + m.memberCount + '명 · 업데이트 ' + m.updatedAt + ' · 출처: ';
     var link = document.createElement('a');
     link.href = 'https://poonggo.com';
     link.target = '_blank';
