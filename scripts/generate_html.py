@@ -69,7 +69,7 @@ PAGE_CSS = """
     font-family: 'Noto Sans KR', -apple-system, "Malgun Gothic", sans-serif;
     background: #f4f5f7;
     margin: 0;
-    padding: 24px 16px;
+    padding: 21.6px 10.8px;
     color: #1a1d29;
   }
   .top-bar {
@@ -77,7 +77,7 @@ PAGE_CSS = """
     margin: 0 auto 16px;
     background: #fff;
     border-radius: 16px;
-    padding: 16px 20px;
+    padding: 18px 25.2px;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -91,7 +91,7 @@ PAGE_CSS = """
     gap: 2px;
   }
   .top-date-select {
-    font-size: 19px;
+    font-size: 19.8px;
     font-weight: 800;
     color: #141821;
     letter-spacing: -0.2px;
@@ -106,13 +106,13 @@ PAGE_CSS = """
   }
   .top-date-select:hover { color: #4a5ce0; }
   .nav-chevron {
-    font-size: 12px;
+    font-size: 16.2px;
     color: #c2c5cc;
-    margin: 0 4px;
+    margin: 0 3.6px;
     user-select: none;
   }
   .top-meta {
-    font-size: 11px;
+    font-size: 10.8px;
     color: #a4a8b2;
     white-space: nowrap;
   }
@@ -125,7 +125,7 @@ PAGE_CSS = """
   .grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-    gap: 14px;
+    gap: 10.8px;
     max-width: 1080px;
     margin: 0 auto;
   }
@@ -135,18 +135,18 @@ PAGE_CSS = """
   }
   .team-card {
     background: #fff;
-    border-radius: 20px;
+    border-radius: 18px;
     overflow: hidden;
     box-shadow: 0 1px 2px rgba(20,20,30,0.04), 0 8px 24px rgba(20,20,30,0.06);
   }
-  .team-card-topbar { height: 4px; background: #4a5ce0; }
+  .team-card-topbar { height: 5.4px; background: #4a5ce0; }
   .team-header {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 16px 20px;
+    padding: 10.8px 12.6px;
     border-bottom: 1px solid #f2f3f5;
-    gap: 8px;
+    gap: 5.4px;
     flex-wrap: wrap;
   }
   .team-header-left {
@@ -165,14 +165,14 @@ PAGE_CSS = """
   }
   .team-link:hover .team-name { text-decoration: underline; }
   .team-logo {
-    width: 22px;
-    height: 22px;
-    border-radius: 7px;
+    width: 21.6px;
+    height: 21.6px;
+    border-radius: 7.2px;
     object-fit: contain;
     flex-shrink: 0;
   }
   .team-name {
-    font-size: 16px;
+    font-size: 14.4px;
     font-weight: 800;
     color: #141821;
     letter-spacing: -0.2px;
@@ -181,15 +181,15 @@ PAGE_CSS = """
     text-overflow: ellipsis;
   }
   .team-count {
-    font-size: 11px;
+    font-size: 10.8px;
     color: #a4a8b2;
     font-weight: 500;
     white-space: nowrap;
   }
   .rank-change {
-    font-size: 11px;
+    font-size: 10.8px;
     font-weight: 700;
-    padding: 4px 10px;
+    padding: 1.8px 9px;
     border-radius: 20px;
     white-space: nowrap;
     flex-shrink: 0;
@@ -205,33 +205,36 @@ PAGE_CSS = """
   }
   .member-col:first-child { border-right: 1px solid #f2f3f5; }
   .member-col-label {
-    font-size: 10.5px;
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    font-size: 10.8px;
     font-weight: 700;
     color: #a4a8b2;
     letter-spacing: 0.3px;
-    padding: 10px 16px 8px;
+    padding: 7.2px 12.6px 5.4px;
     background: #fafbfc;
   }
-  .member-col-label .unit-label { color: #c2c5cc; font-weight: 500; margin-left: 4px; }
+  .member-col-label .unit-label { color: #c2c5cc; font-weight: 700; text-align: right; }
   .member-row {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 5.2px 12.13px;
-    border-left: 3px solid transparent;
-    min-height: 26px;
+    padding: 5.4px 12.6px;
+    border-left: 3.6px solid transparent;
+    min-height: 27px;
   }
   .member-row.tier1 { border-left-color: #4a5ce0; background: #f4f6fe; }
   .member-row.tier5 { border-left-color: #1c9e6e; background: #effbf5; }
   .member-row.tier10 { border-left-color: #d9a71b; background: #fdf6e0; }
   .member-row.excluded { border-left-color: #d64545; background: #fdeaea; }
   .member-name {
-    font-size: 12.13px;
+    font-size: 12.6px;
     color: #3a3d47;
     font-weight: 700;
     display: flex;
     align-items: center;
-    gap: 4px;
+    gap: 3.6px;
     min-width: 0;
     overflow: hidden;
     white-space: nowrap;
@@ -241,15 +244,15 @@ PAGE_CSS = """
   .member-row.tier5 .member-name,
   .member-row.tier10 .member-name,
   .member-row.excluded .member-name { font-weight: 700; color: #1a1d29; }
-  .bday-mark { font-size: 8.67px; opacity: 0.75; flex-shrink: 0; }
+  .bday-mark { font-size: 9px; opacity: 0.75; flex-shrink: 0; }
   .member-value {
-    font-size: 12.13px;
+    font-size: 12.6px;
     color: #6b6f79;
     font-weight: 700;
     text-align: right;
     font-variant-numeric: tabular-nums;
     flex-shrink: 0;
-    padding-left: 6px;
+    padding-left: 5.4px;
   }
   .member-row.tier1 .member-value { color: #4a5ce0; font-weight: 700; }
   .member-row.tier5 .member-value { color: #0f8a5c; font-weight: 700; }
@@ -259,22 +262,22 @@ PAGE_CSS = """
 
   .team-footer {
     display: flex;
-    gap: 8px;
-    padding: 14px 18px 16px;
+    gap: 7.2px;
+    padding: 10.8px 12.6px 12.6px;
     background: #fafbfc;
     border-top: 1px solid #f2f3f5;
   }
   .stat-card {
     flex: 1;
     text-align: center;
-    padding: 9px 6px;
-    border-radius: 12px;
+    padding: 7.2px 5.4px;
+    border-radius: 12.6px;
     background: #fff;
     border: 1px solid #eef0f2;
     min-width: 0;
   }
-  .stat-label { font-size: 10px; color: #a4a8b2; margin-bottom: 3px; font-weight: 600; }
-  .stat-value { font-size: 14px; font-weight: 800; color: #1a1d29; font-variant-numeric: tabular-nums; }
+  .stat-label { font-size: 10.8px; color: #a4a8b2; margin-bottom: 1.8px; font-weight: 600; }
+  .stat-value { font-size: 14.4px; font-weight: 800; color: #1a1d29; font-variant-numeric: tabular-nums; }
   .stat-card.female-avg { background: #d9f2f2; border: none; }
   .stat-card.female-avg .stat-label { color: #0e6b6b; }
   .stat-card.female-avg .stat-value { color: #0a4d4d; }
@@ -285,7 +288,7 @@ PAGE_CSS = """
   .legend {
     max-width: 1080px;
     margin: 14px auto 0;
-    font-size: 9px;
+    font-size: 7.2px;
     color: #a4a8b2;
     text-align: center;
   }
@@ -327,7 +330,6 @@ MOBILE_CSS = """
     .team-count { font-size: 6px; }
     .rank-change { font-size: 6px; padding: 1px 5px; }
     .member-col-label { font-size: 6px; padding: 4px 7px 3px; }
-    .member-col-label .unit-label { margin-left: 2px; }
     .member-row { padding: 3px 7px; min-height: 15px; border-left-width: 2px; }
     .member-name { font-size: 7px; gap: 2px; }
     .bday-mark { font-size: 5px; }
@@ -552,11 +554,11 @@ def build_team_card(team_name: str, members: list, current_month: int, tiers: di
       </div>
       <div class="member-columns">
         <div class="member-col">
-          <div class="member-col-label">남자 멤버<span class="unit-label">{metric.unit_label}</span></div>
+          <div class="member-col-label"><span class="col-label-text">남자 멤버</span><span class="unit-label">{metric.unit_label}</span></div>
           {males_html}
         </div>
         <div class="member-col">
-          <div class="member-col-label">여자 멤버<span class="unit-label">{metric.unit_label}</span></div>
+          <div class="member-col-label"><span class="col-label-text">여자 멤버</span><span class="unit-label">{metric.unit_label}</span></div>
           {females_html}
         </div>
       </div>
