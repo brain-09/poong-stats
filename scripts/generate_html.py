@@ -217,7 +217,7 @@ PAGE_CSS = """
     background: #fafbfc;
   }
   .member-col-label .col-label-text { font-size: 11px; font-weight: 700; line-height: 1; }
-  .member-col-label .unit-label { font-size: 11px; font-weight: 700; line-height: 1; color: #c2c5cc; text-align: right; }
+  .member-col-label .unit-label { font-size: 11px; font-weight: 700; line-height: 1; text-align: right; }
   .member-row {
     display: flex;
     justify-content: space-between;
@@ -231,7 +231,7 @@ PAGE_CSS = """
   .member-row.tier10 { border-left-color: #d9a71b; background: #fdf6e0; }
   .member-row.excluded { border-left-color: #d64545; background: #fdeaea; }
   .member-name {
-    font-size: 13px;
+    font-size: 12px;
     color: #3a3d47;
     font-weight: 700;
     display: flex;
@@ -248,7 +248,7 @@ PAGE_CSS = """
   .member-row.excluded .member-name { font-weight: 700; color: #1a1d29; }
   .bday-mark { font-size: 9px; opacity: 0.75; flex-shrink: 0; }
   .member-value {
-    font-size: 13px;
+    font-size: 12px;
     color: #6b6f79;
     font-weight: 700;
     text-align: right;
