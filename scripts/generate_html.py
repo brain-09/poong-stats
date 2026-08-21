@@ -304,7 +304,7 @@ def format_broadcast_time(seconds: int) -> str:
     hours = seconds // 3600
     minutes = (seconds % 3600) // 60
     secs = seconds % 60
-    return f"{hours:03d}:{minutes:02d}:{secs:02d}"
+    return f"{hours:02d}:{minutes:02d}:{secs:02d}"
 
 
 class Metric:
@@ -435,10 +435,11 @@ def name_cell(m, current_month):
     )
 
 
-def value_class(m, tiers):
-    """수장/전력외는 집계 제외 여부와 무관하게 항상 시각적으로 강조(빨간 배경)한다."""
+def value_class(m, tiers, metric: Metric = BALLOON_METRIC):
+    """metric.exclude_roles가 True인 페이지(별풍선)에서만 수장/전력외를 빨간 배경으로
+    강조한다 - 방송시간 페이지는 집계에 포함되므로 굳이 예외처럼 표시하지 않는다."""
     classes = []
-    if m.get("role") in EXCLUDED_ROLES:
+    if metric.exclude_roles and m.get("role") in EXCLUDED_ROLES:
         classes.append("excluded")
     tier = tiers.get((m["nickname"], m["team"]))
     if tier:
@@ -477,7 +478,7 @@ def build_team_card(team_name: str, members: list, current_month: int, tiers: di
         if i < len(males_all):
             m = males_all[i]
             m_name = f"<td class='name-td'>{name_cell(m, current_month)}</td>"
-            m_val = f"<td class='num {value_class(m, tiers)}'>{metric.text(m)}</td>"
+            m_val = f"<td class='num {value_class(m, tiers, metric)}'>{metric.text(m)}</td>"
         else:
             m_name = "<td class='name-td empty'></td>"
             m_val = "<td class='num empty'></td>"
@@ -485,7 +486,7 @@ def build_team_card(team_name: str, members: list, current_month: int, tiers: di
         if i < len(females_all):
             f_ = females_all[i]
             f_name = f"<td class='name-td'>{name_cell(f_, current_month)}</td>"
-            f_val = f"<td class='num {value_class(f_, tiers)}'>{metric.text(f_)}</td>"
+            f_val = f"<td class='num {value_class(f_, tiers, metric)}'>{metric.text(f_)}</td>"
         else:
             f_name = "<td class='name-td empty'></td>"
             f_val = "<td class='num empty'></td>"
@@ -593,10 +594,14 @@ def build_month_select(archive_slugs: list, current_year: int, current_month: in
 
 
 def page_shell(*, top_bar_html: str, body_html: str, extra_banner: str = "",
-               include_mobile_css: bool = True, title: str = "팀별 별풍선 랭킹") -> str:
+               include_mobile_css: bool = True, title: str = "팀별 별풍선 랭킹",
+               show_role_legend: bool = True) -> str:
     """모든 페이지 공통 뼈대 (head/style/legend). 팀 단독 페이지는 카드 1개뿐이라
-    모바일 압축 스타일이 필요없어서 include_mobile_css=False로 뺄 수 있음."""
+    모바일 압축 스타일이 필요없어서 include_mobile_css=False로 뺄 수 있음.
+    show_role_legend=False면 '수장/전력외' 범례 항목을 빼는데, 방송시간 페이지처럼
+    해당 강조 표시 자체가 없는 페이지에 쓴다."""
     style = PAGE_CSS + (MOBILE_CSS if include_mobile_css else "")
+    role_legend = '<span><span class="sw" style="background:#fadada;"></span>수장/전력외</span>' if show_role_legend else ""
     return f"""<!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -615,7 +620,7 @@ def page_shell(*, top_bar_html: str, body_html: str, extra_banner: str = "",
     <span><span class="sw" style="background:#d6e9fb;"></span>상위 1%</span>
     <span><span class="sw" style="background:#dcefdd;"></span>상위 5%</span>
     <span><span class="sw" style="background:#fbf3cf;"></span>상위 10%</span>
-    <span><span class="sw" style="background:#fadada;"></span>수장/전력외</span>
+    {role_legend}
     <span>🎂 이달의 생일</span>
   </div>
 </body>
@@ -667,7 +672,7 @@ def render_page(data: dict, archive_slugs: list, current_year: int, current_mont
     banner = ARCHIVE_BANNER_HTML if is_archive else ""
 
     return page_shell(top_bar_html=top_bar_html, body_html=body_html, extra_banner=banner,
-                       title=f"팀별 {metric.unit_label} 랭킹")
+                       title=f"팀별 {metric.unit_label} 랭킹", show_role_legend=metric.exclude_roles)
 
 
 def build_team_month_select(team_name: str, archive_slugs: list, current_year: int, current_month: int,
@@ -722,7 +727,8 @@ def render_team_page(data: dict, team_name: str, team_members: list, tiers: dict
     banner = ARCHIVE_BANNER_HTML if is_archive else ""
 
     return page_shell(top_bar_html=top_bar_html, body_html=body_html, extra_banner=banner,
-                       include_mobile_css=False, title=f"{team_name} {metric.unit_label}")
+                       include_mobile_css=False, title=f"{team_name} {metric.unit_label}",
+                       show_role_legend=metric.exclude_roles)
 
 
 def generate_team_pages(data: dict, is_archive: bool, archive_slugs: list,
