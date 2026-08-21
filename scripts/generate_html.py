@@ -290,7 +290,7 @@ PAGE_CSS = """
   .legend {
     max-width: 1080px;
     margin: 14px auto 0;
-    font-size: 7px;
+    font-size: 11px;
     color: #a4a8b2;
     text-align: center;
   }
@@ -346,7 +346,7 @@ MOBILE_CSS = """
     .top-date-select { font-size: 11px; }
     .nav-chevron { font-size: 9px; margin: 0 2px; }
     .top-meta { font-size: 6px; white-space: normal; }
-    .legend { font-size: 4px; }
+    .legend { font-size: 6px; }
   }
 """
 
