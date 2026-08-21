@@ -514,18 +514,18 @@ def build_team_card(team_name: str, members: list, current_month: int, tiers: di
 
     male_n, female_n = len(males_all), len(females_all)
 
-    def member_row(m):
-        role = m.get("role")
-        role_html = f"<span class='role-tag'>{role}</span>" if role else ""
-        bday = parse_birthdate(m.get("birthdate"))
-        bday_html = "<span class='bday-mark'>🎂</span>" if bday and bday[0] == current_month else ""
-        row_class = value_class(m, tiers, metric)
-        return (
-            f"<div class='member-row {row_class}'>"
-            f"<span class='member-name'>{m['nickname']}{role_html}{bday_html}</span>"
-            f"<span class='member-value'>{metric.text(m)}</span>"
-            f"</div>"
-        )
+def member_row(m):
+
+    bday = parse_birthdate(m.get("birthdate"))
+    bday_html = "<span class='bday-mark'>🎂</span>" if bday and bday[0] == current_month else ""
+    row_class = value_class(m, tiers, metric)
+    return (
+        f"<div class='member-row {row_class}'>"
+        f"<span class='member-name'>{html.escape(m['nickname'])}{bday_html}</span>"
+        f"<span class='member-value'>{metric.text(m)}</span>"
+        f"</div>"
+    )
+
 
     def member_col(name_list, other_len):
         rows = [member_row(m) for m in name_list]
