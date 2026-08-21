@@ -42,8 +42,6 @@ LOGOS_DIR = ROOT / "docs" / "logos"
 
 EXCLUDED_ROLES = {"수장", "전력외"}
 
-ARCHIVE_BANNER_HTML = "<div class='archive-banner'>📁 이 페이지는 지난 기록입니다 (당시 팀 구성 기준)</div>"
-
 
 def normalize_balloons(members: list) -> list:
     """balloons/broadcast_seconds 값이 문자열 등으로 저장돼있어도 항상 int로 안전하게
@@ -301,18 +299,6 @@ PAGE_CSS = """
     border-radius: 2px;
     margin-right: 3px;
     vertical-align: middle;
-  }
-
-  .archive-banner {
-    max-width: 1080px;
-    margin: 0 auto 14px;
-    text-align: center;
-    font-size: 12px;
-    color: #a15c1f;
-    background: #fff3e0;
-    border: 1px solid #f0cf9a;
-    border-radius: 8px;
-    padding: 6px;
   }
 """
 
@@ -700,7 +686,6 @@ def assemble_single_page(all_data: list, current_year: int, current_month: int,
 
     for data in all_data:
         y, m = data["year"], data["month"]
-        is_archive = not (y == current_year and m == current_month)
         years_months.setdefault(y, set()).add(m)
 
         for metric in METRICS:
@@ -713,7 +698,6 @@ def assemble_single_page(all_data: list, current_year: int, current_month: int,
                 "teamCount": len(group_teams(data["members"])),
                 "memberCount": len(data["members"]),
                 "updatedAt": data["updated_at"],
-                "isArchive": is_archive,
                 "excludeRoles": metric.exclude_roles,
                 "title": f"{page_title_base} {metric.unit_label}",
             }
@@ -735,7 +719,6 @@ def assemble_single_page(all_data: list, current_year: int, current_month: int,
 
     months_by_year_json = json.dumps({str(y): sorted(ms, reverse=True) for y, ms in years_months.items()})
     metadata_json = json.dumps(metadata, ensure_ascii=False)
-    archive_banner_json = json.dumps(ARCHIVE_BANNER_HTML)
 
     nav_html = f"""
   <span class="month-select-group">
@@ -756,7 +739,6 @@ def assemble_single_page(all_data: list, current_year: int, current_month: int,
     """
 
     body_html = f"""
-  <div id="archive-banner-slot"></div>
   {"".join(panels_html)}
     """
 
@@ -764,13 +746,10 @@ def assemble_single_page(all_data: list, current_year: int, current_month: int,
 (function () {{
   var meta = {metadata_json};
   var monthsByYear = {months_by_year_json};
-  var archiveBannerHtml = {archive_banner_json};
-
   var yearSel = document.getElementById('ms-year-select');
   var monthSel = document.getElementById('ms-month-select');
   var metricSel = document.getElementById('ms-metric-select');
   var metaSpan = document.getElementById('top-meta-text');
-  var bannerSlot = document.getElementById('archive-banner-slot');
   var roleLegendItem = document.getElementById('role-legend-item');
 
   function pad(n) {{ n = parseInt(n, 10); return (n < 10 ? '0' : '') + n; }}
@@ -808,7 +787,6 @@ def assemble_single_page(all_data: list, current_year: int, current_month: int,
     link.textContent = '풍고';
     metaSpan.appendChild(link);
 
-    bannerSlot.innerHTML = m.isArchive ? archiveBannerHtml : '';
     if (roleLegendItem) roleLegendItem.style.display = m.excludeRoles ? '' : 'none';
     document.title = m.title;
   }}
