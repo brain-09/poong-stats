@@ -1,6 +1,6 @@
 # poong-stats
 
-풍투데이(poong.today)에서 팀별 멤버들의 이번 달 별풍선 데이터를 6시간마다 자동으로
+풍고(poonggo.com)의 정식 API를 통해 팀별 멤버들의 이번 달 별풍선 데이터를 4시간마다 자동으로
 가져와서 표 페이지(`docs/index.html`)를 갱신하는 프로젝트입니다. 달이 바뀌면 그 이전
 달 데이터는 자동으로 보관되어 `docs/archive/YYYY-MM.html`에서 볼 수 있고,
 `SINGLE_TEAM_PAGES`에 지정한 팀은 `docs/teams/`에 그 팀만 담은 단독 페이지도 생성됩니다.
@@ -15,7 +15,7 @@ poong-stats/
 │   └── archive/
 │       └── YYYY-MM.json   ← 지난 달들의 스냅샷 (자동 생성, 그 당시 팀 구성 그대로 보존)
 ├── scripts/
-│   ├── fetch_data.py      ← poong.today API 호출 + 월 전환 시 확정치 재조회 후 보관
+│   ├── fetch_data.py      ← 풍고 API 호출 + 월 전환 시 확정치 재조회 후 보관
 │   └── generate_html.py   ← latest.json/archive → index/archive/teams html 생성
 ├── docs/
 │   ├── index.html         ← 이번 달 전체 표 (GitHub Pages가 이 폴더를 서빙)
@@ -27,7 +27,7 @@ poong-stats/
 │   └── logos/
 │       └── {팀이름}.webp  ← 팀 로고 (있으면 자동 표시, 없으면 텍스트만)
 └── .github/workflows/
-    └── update.yml          ← 6시간마다 자동 실행 설정
+    └── update.yml          ← 4시간마다 자동 실행 설정
 ```
 
 ## 과거 데이터는 어떻게 보존되나요
@@ -39,7 +39,7 @@ poong-stats/
 
 달이 바뀌는 시점(예: 8월→9월로 넘어가는 첫 실행)에는, 마지막 스냅샷을 그냥 복사하지 않고
 **그 달(8월) 기준으로 API를 한 번 더 호출**해 확정된 별풍선 값으로 갱신한 뒤
-`data/archive/2026-08.json`으로 보관합니다 (풍투데이가 월말 데이터를 다음 달 초에
+`data/archive/2026-08.json`으로 보관합니다 (풍고 데이터가 월말 이후 갱신될 가능성에
 한 번 더 갱신하는 경우가 있어서). 팀/성별/직책 등 "그 당시 소속 정보"는 재조회 API가
 알려주지 않으므로 기존 스냅샷 값을 그대로 유지합니다.
 
@@ -106,7 +106,7 @@ git push -u origin main
 {
   "members": [
     {
-      "id": "poong.today의 SOOP ID",
+      "id": "SOOP 아이디",
       "nickname": "표시할 닉네임",
       "gender": "m 또는 f",
       "birthdate": "YYYY-MM-DD (모르면 null)",
@@ -117,7 +117,7 @@ git push -u origin main
 }
 ```
 
-- `id`는 `https://poong.today/broadcast/여기부분` 의 마지막 부분(SOOP ID)입니다.
+- `id`는 SOOP(구 아프리카TV) 아이디입니다.
 - `role`이 `수장` 또는 `전력외`인 사람은 표에서 빨간 배경으로 표시되고, 팀 합계/평균/상위% 계산에서 제외됩니다.
 - 이 팀에 새로 추가된 사람/팀은 전체 페이지에 **자동으로** 반영됩니다. 단, `docs/teams/` 단독 페이지가 필요하면 `SINGLE_TEAM_PAGES`에 별도로 추가해야 합니다.
 - `birthdate`는 이름 옆 🎂 표시에 쓰입니다. 모르면 `null`.
@@ -159,6 +159,6 @@ python scripts/generate_html.py
 
 ## 참고
 
-- 데이터 출처: poong.today (`static.poong.today/chart/get` 월간 전체 랭킹 API, 1회 호출로 전체 멤버 처리)
+- 데이터 출처: 풍고(poonggo.com) 공식 API (`/api/monthly`, ids 파라미터로 최대 300명씩 일괄 조회 가능 - 사전에 이용 허가를 받아 사용 중)
 - 별풍선 값이 0이거나 직책이 수장/전력외인 멤버는 팀 합계·평균·상위 1%/5%/10% 계산에서 제외됩니다.
-- 실행 주기는 KST 기준 오전 9시 / 오후 3시 / 오후 9시 / 새벽 3시 (6시간마다)입니다.
+- 실행 주기는 KST 기준 오전 9시 / 오후 1시 / 오후 5시 / 오후 9시 / 새벽 1시 / 새벽 5시 (4시간마다)입니다.
