@@ -1,23 +1,30 @@
 """
-data/latest.json (이번 달) 과 data/archive/*.json (과거 달)을 읽어서, 지표별(별풍선/방송시간)로
-docs/index.html·docs/broadcast.html (이번 달) + docs/archive/YYYY-MM.html·
-docs/archive-broadcast/YYYY-MM.html (과거 달) 로 렌더링하는 스크립트.
-추가로 SINGLE_TEAM_PAGES에 지정된 팀만 docs/teams/{팀이름}[-broadcast].html (이번 달) +
-docs/teams/{팀이름}[-broadcast]__YYYY-MM.html (과거 달) 단독 페이지로도 생성한다.
+data/latest.json (이번 달) 과 data/archive/*.json (과거 달)을 전부 읽어서, 지표별(별풍선/방송시간)
+로 렌더링한 결과를 "하나의 HTML 파일" 안에 전부 넣어두고, 자바스크립트로 연도/월/지표를
+선택하면 해당 부분만 보여주는(나머지는 숨김) 방식으로 만드는 스크립트.
+
+예전에는 이번 달/과거 달/별풍선/방송시간 조합마다 별도 파일(docs/index.html,
+docs/archive/YYYY-MM.html, docs/broadcast.html, docs/archive-broadcast/YYYY-MM.html ...)을
+만들었지만, 이제는 docs/index.html 하나(그리고 등장하는 모든 팀마다 docs/teams/{팀}.html
+하나씩)에 모든 조합을 "패널"로 미리 렌더링해서 넣어두고, 상단의 연도/월/지표 select
+3개가 자바스크립트로 어느 패널을 보여줄지 전환한다. 페이지 이동(새로고침) 없이 즉시 바뀐다.
+전체 페이지에서 팀 이름을 누르면, 보고 있던 연/월/지표를 쿼리 파라미터로 이어받아
+그 팀의 단독 페이지가 같은 상태로 열린다.
 
 별풍선(BALLOON_METRIC)과 방송시간(BROADCAST_METRIC) 페이지는 레이아웃이 동일하지만,
 방송시간 페이지는 수장/전력외 직책도 합계·평균 집계에 포함한다는 점만 다르다
-(Metric.exclude_roles 값으로 제어).
+(Metric.exclude_roles 값으로 제어) - 이에 따라 하단 범례의 "수장/전력외" 항목도
+지표를 바꿀 때마다 자바스크립트로 보였다 숨겨졌다 한다.
 
 과거 달 데이터는 fetch_data.py가 달이 바뀔 때 그 달 기준으로 API를 한 번 더 호출해
 확정된 별풍선 값으로 갱신한 뒤 data/archive/에 보관해둔 것 - 그 시점의 team/gender/role이
 멤버마다 그대로 들어있어서 팀 구성이 바뀌어도 "그 당시 배정" 그대로 재현된다.
 
-팀별 표: 표 1개, [남자 멤버 | 별풍선 | 여자 멤버 | 별풍선] 4열, 각각 별풍선 내림차순 정렬.
-하단에 합계/평균/인원 행 포함. 별풍선 0이거나 직책이 수장/전력외인 사람은 집계·상위% 계산에서 제외
-(수장/전력외는 표에 빨간 배경으로 표시, 0인 사람은 빈 칸으로 표시).
+팀별 표: 표 1개, [남자 멤버 | 값 | 여자 멤버 | 값] 4열, 각각 내림차순 정렬.
+하단에 합계/평균/인원 행 포함. 값이 0이거나(방송시간 페이지는 추가로 수장/전력외까지)
+집계·상위% 계산에서 제외되며, 수장/전력외는 표에 빨간 배경으로 표시(방송시간 페이지는
+집계에 포함되므로 이 강조 표시를 하지 않음), 0인 사람은 빈 칸으로 표시.
 이름 옆에는 그 달의 생일이면 🎂 표시.
-상단 왼쪽의 "YYYY년 MM월" 글씨가 드롭다운 역할을 해서 다른 달로 바로 이동 가능.
 
 실행: python scripts/generate_html.py
 """
@@ -30,16 +37,10 @@ ROOT = Path(__file__).resolve().parent.parent
 DATA_PATH = ROOT / "data" / "latest.json"
 ARCHIVE_DIR = ROOT / "data" / "archive"
 OUTPUT_PATH = ROOT / "docs" / "index.html"
-OUTPUT_ARCHIVE_DIR = ROOT / "docs" / "archive"
-OUTPUT_BROADCAST_PATH = ROOT / "docs" / "broadcast.html"
-OUTPUT_ARCHIVE_BROADCAST_DIR = ROOT / "docs" / "archive-broadcast"
 OUTPUT_TEAMS_DIR = ROOT / "docs" / "teams"
 LOGOS_DIR = ROOT / "docs" / "logos"
 
 EXCLUDED_ROLES = {"수장", "전력외"}
-
-# 팀별 단독 페이지(docs/teams/)를 만들 팀 목록. 필요한 팀 이름만 여기 추가하면 됨.
-SINGLE_TEAM_PAGES = ["캄몬스타즈"]
 
 ARCHIVE_BANNER_HTML = "<div class='archive-banner'>📁 이 페이지는 지난 기록입니다 (당시 팀 구성 기준)</div>"
 
@@ -56,6 +57,7 @@ def normalize_balloons(members: list) -> list:
                 except (ValueError, TypeError):
                     m[field] = 0
     return members
+
 
 # 모든 페이지가 공유하는 스타일. f-string이 아니라 일반 문자열이라 중괄호를 그대로 쓴다.
 PAGE_CSS = """
@@ -148,6 +150,14 @@ PAGE_CSS = """
     overflow: hidden;
     min-width: 0;
   }
+  .team-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    color: inherit;
+    text-decoration: none;
+  }
+  .team-link:hover { text-decoration: underline; }
   .team-name-flex {
     display: flex;
     align-items: center;
@@ -276,8 +286,6 @@ PAGE_CSS = """
     border-radius: 8px;
     padding: 6px;
   }
-
-  /* 팀 단독 페이지에는 이 블록을 넣지 않음 (모바일에서도 PC와 동일한 크기로 표시) */
 """
 
 MOBILE_CSS = """
@@ -325,7 +333,8 @@ class Metric:
     표시용 포맷터, 표에 쓸 이름을 갖는다. 새 지표를 추가하고 싶으면 이 클래스의
     인스턴스를 하나 더 만들면 된다."""
 
-    def __init__(self, field: str, exclude_roles: bool, format_fn, unit_label: str):
+    def __init__(self, key: str, field: str, exclude_roles: bool, format_fn, unit_label: str):
+        self.key = key  # JS에서 쓰는 짧은 식별자 ("balloon" / "broadcast")
         self.field = field
         self.exclude_roles = exclude_roles
         self.format_fn = format_fn
@@ -340,9 +349,11 @@ class Metric:
 
 
 # 별풍선 페이지(기존): 수장/전력외 직책은 집계에서 제외
-BALLOON_METRIC = Metric(field="balloons", exclude_roles=True, format_fn=fmt, unit_label="별풍선")
+BALLOON_METRIC = Metric(key="balloon", field="balloons", exclude_roles=True, format_fn=fmt, unit_label="별풍선")
 # 방송시간 페이지(신규): 수장/전력외도 집계에 포함
-BROADCAST_METRIC = Metric(field="broadcast_seconds", exclude_roles=False, format_fn=format_broadcast_time, unit_label="방송시간")
+BROADCAST_METRIC = Metric(key="broadcast", field="broadcast_seconds", exclude_roles=False,
+                           format_fn=format_broadcast_time, unit_label="방송시간")
+METRICS = [BALLOON_METRIC, BROADCAST_METRIC]
 
 
 def parse_birthdate(bd):
@@ -470,7 +481,8 @@ def team_logo_html(team_name: str, logo_prefix: str) -> str:
 
 
 def build_team_card(team_name: str, members: list, current_month: int, tiers: dict,
-                     logo_prefix: str = "", rank_badge: str = "", metric: Metric = BALLOON_METRIC):
+                     logo_prefix: str = "", rank_badge: str = "", metric: Metric = BALLOON_METRIC,
+                     team_link: str = ""):
     males_all = sorted([m for m in members if m["gender"] == "m"], key=lambda x: -metric.raw_value(x))
     females_all = sorted([m for m in members if m["gender"] == "f"], key=lambda x: -metric.raw_value(x))
 
@@ -511,6 +523,19 @@ def build_team_card(team_name: str, members: list, current_month: int, tiers: di
     male_n, female_n = len(males_all), len(females_all)
     total_n = male_n + female_n
 
+    logo_html = team_logo_html(team_name, logo_prefix)
+    name_content = f"<a class='team-link' href='{team_link}'>{logo_html}{team_name}</a>" if team_link else f"{logo_html}{team_name}"
+
+    if rank_badge:
+        name_row_inner = (
+            f"<div class='team-name-flex'>"
+            f"<span class='team-name-inner'>{name_content}</span>"
+            f"{rank_badge}"
+            f"</div>"
+        )
+    else:
+        name_row_inner = f"<span class='team-name-inner'>{name_content}</span>"
+
     summary_html = f"""
       <tr class="summary-row">
         <td>남자 합계</td><td class="num">{metric.format_fn(male_sum)}</td>
@@ -529,18 +554,6 @@ def build_team_card(team_name: str, members: list, current_month: int, tiers: di
         <td colspan="3" class="personnel-value">총 {total_n}명 / 남자 {male_n}명 / 여자 {female_n}명</td>
       </tr>
     """
-
-    logo_html = team_logo_html(team_name, logo_prefix)
-
-    if rank_badge:
-        name_row_inner = (
-            f"<div class='team-name-flex'>"
-            f"<span class='team-name-inner'>{logo_html}{team_name}</span>"
-            f"{rank_badge}"
-            f"</div>"
-        )
-    else:
-        name_row_inner = f"<span class='team-name-inner'>{logo_html}{team_name}</span>"
 
     return total_avg, f"""
     <div class="team-card">
@@ -566,101 +579,53 @@ def list_archive_slugs() -> list:
     return sorted(slugs, reverse=True)
 
 
-def _build_select_html(archive_slugs: list, current_year: int, current_month: int,
-                        active_slug: str, current_href_fn, archive_href_fn) -> str:
-    """
-    연도 select + 월 select 2단계 드롭다운. current_href_fn()/archive_href_fn(slug)로
-    페이지 종류(전체/팀별)에 따라 다른 링크 계산 방식만 바꿔 끼운다.
-    연도를 먼저 고르면 그 연도의 월 목록만 두 번째 select에 채워지므로,
-    몇 년치가 쌓여도 화면에 보이는 옵션 개수는 항상 짧게 유지된다 (자바스크립트로 연동).
-    """
-    current_slug = f"{current_year:04d}-{current_month:02d}"
+def build_grid_panel(data: dict, metric: Metric, logo_prefix: str) -> str:
+    """전체 팀 그리드 패널 (모든 팀 카드, 전체 평균 내림차순 정렬). 팀 이름을 누르면
+    현재 보고 있던 연/월/지표를 그대로 유지한 채 그 팀의 단독 페이지로 이동한다."""
+    members = data["members"]
+    teams = group_teams(members)
+    tiers = compute_percentile_tiers(members, metric)
+    current_ranks = compute_team_ranks(members, metric)
+    prev_ranks = load_previous_ranks(data["year"], data["month"], metric)
 
-    # (연도, 월, 슬러그, 링크) 목록을 이번달+과거달 합쳐서 구성 후 연도/월 내림차순 정렬
-    entries = [(current_year, current_month, current_slug, current_href_fn())]
-    for slug in archive_slugs:
-        year, month = slug.split("-")
-        entries.append((int(year), int(month), slug, archive_href_fn(slug)))
-    entries.sort(key=lambda e: (-e[0], -e[1]))
+    team_cards = []
+    for team_name, team_members in teams.items():
+        badge = rank_change_badge(current_ranks[team_name], prev_ranks, team_name)
+        link = f"teams/{team_name}.html?y={data['year']}&m={data['month']}&metric={metric.key}"
+        avg, html = build_team_card(team_name, team_members, data["month"], tiers, logo_prefix, badge, metric,
+                                     team_link=link)
+        team_cards.append((avg, html))
 
-    active_year, active_month = current_year, current_month
-    for year, month, slug, _ in entries:
-        if slug == active_slug:
-            active_year, active_month = year, month
-            break
-
-    data_json = json.dumps([{"y": y, "m": m, "h": href} for y, m, _, href in entries], ensure_ascii=False)
-
-    return f"""<span class="month-select-group">
-  <select class="top-date-select" id="ms-year-select"></select>
-  <select class="top-date-select" id="ms-month-select"></select>
-</span>
-<script>
-(function () {{
-  var data = {data_json};
-  var activeYear = {active_year};
-  var activeMonth = {active_month};
-  var yearSel = document.getElementById('ms-year-select');
-  var monthSel = document.getElementById('ms-month-select');
-
-  var years = [];
-  data.forEach(function (e) {{ if (years.indexOf(e.y) === -1) years.push(e.y); }});
-  years.forEach(function (y) {{
-    var opt = document.createElement('option');
-    opt.value = y;
-    opt.textContent = y + '년';
-    if (y === activeYear) opt.selected = true;
-    yearSel.appendChild(opt);
-  }});
-
-  function populateMonths(year, preselectMonth) {{
-    monthSel.innerHTML = '';
-    data.filter(function (e) {{ return e.y === year; }}).forEach(function (e) {{
-      var opt = document.createElement('option');
-      opt.value = e.h;
-      opt.textContent = (e.m < 10 ? '0' : '') + e.m + '월';
-      if (e.m === preselectMonth) opt.selected = true;
-      monthSel.appendChild(opt);
-    }});
-  }}
-  populateMonths(activeYear, activeMonth);
-
-  yearSel.addEventListener('change', function () {{
-    var year = parseInt(yearSel.value, 10);
-    var monthsInYear = data.filter(function (e) {{ return e.y === year; }});
-    var newestMonth = monthsInYear.length ? monthsInYear[0].m : null;
-    populateMonths(year, newestMonth);
-    if (monthSel.value) window.location.href = monthSel.value;
-  }});
-  monthSel.addEventListener('change', function () {{
-    if (monthSel.value) window.location.href = monthSel.value;
-  }});
-}})();
-</script>"""
+    team_cards.sort(key=lambda x: -x[0])
+    cards_html = "".join(html for _, html in team_cards)
+    return f'<div class="grid">{cards_html}</div>'
 
 
-def build_month_select(archive_slugs: list, current_year: int, current_month: int,
-                        active_slug: str, is_archive_page: bool,
-                        base_name: str = "index", archive_dir: str = "archive") -> str:
-    """상단 왼쪽 'YYYY년 MM월' 자리를 대신하는 전체 페이지용 월 선택 드롭다운.
-    base_name/archive_dir로 별풍선(index/archive) vs 방송시간(broadcast/archive-broadcast)
-    페이지 세트를 구분한다."""
-    return _build_select_html(
-        archive_slugs, current_year, current_month, active_slug,
-        current_href_fn=lambda: f"../{base_name}.html" if is_archive_page else f"{base_name}.html",
-        archive_href_fn=lambda slug: f"{slug}.html" if is_archive_page else f"{archive_dir}/{slug}.html",
-    )
+def build_single_team_panel(data: dict, team_name: str, metric: Metric, logo_prefix: str) -> str:
+    """특정 팀 하나만 담은 패널. 그 달에 팀이 없으면 안내 문구만 표시."""
+    teams = group_teams(data["members"])
+    team_members = teams.get(team_name)
+    if team_members is None:
+        return (
+            '<div class="grid single-team"><div class="team-card" '
+            'style="padding:24px;text-align:center;color:#999;font-size:13px;">'
+            '이 달에는 팀 정보가 없습니다.</div></div>'
+        )
+
+    tiers = compute_percentile_tiers(data["members"], metric)
+    current_ranks = compute_team_ranks(data["members"], metric)
+    prev_ranks = load_previous_ranks(data["year"], data["month"], metric)
+    badge = rank_change_badge(current_ranks[team_name], prev_ranks, team_name)
+    _, card_html = build_team_card(team_name, team_members, data["month"], tiers, logo_prefix, badge, metric)
+    return f'<div class="grid single-team">{card_html}</div>'
 
 
-def page_shell(*, top_bar_html: str, body_html: str, extra_banner: str = "",
-               include_mobile_css: bool = True, title: str = "팀별 별풍선 랭킹",
-               show_role_legend: bool = True) -> str:
-    """모든 페이지 공통 뼈대 (head/style/legend). 팀 단독 페이지는 카드 1개뿐이라
-    모바일 압축 스타일이 필요없어서 include_mobile_css=False로 뺄 수 있음.
-    show_role_legend=False면 '수장/전력외' 범례 항목을 빼는데, 방송시간 페이지처럼
-    해당 강조 표시 자체가 없는 페이지에 쓴다."""
+def page_shell(*, top_bar_html: str, body_html: str, include_mobile_css: bool = True,
+               title: str, extra_script: str) -> str:
+    """모든 페이지 공통 뼈대. 팀 단독 페이지는 카드 1개뿐이라 모바일 압축 스타일이
+    필요없어서 include_mobile_css=False로 뺄 수 있음. '수장/전력외' 범례 항목은
+    id로 표시해두고, 지표 전환 시 자바스크립트가 보였다/숨겼다 한다."""
     style = PAGE_CSS + (MOBILE_CSS if include_mobile_css else "")
-    role_legend = '<span><span class="sw" style="background:#fadada;"></span>수장/전력외</span>' if show_role_legend else ""
     return f"""<!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -672,159 +637,23 @@ def page_shell(*, top_bar_html: str, body_html: str, extra_banner: str = "",
 </style>
 </head>
 <body>
-  {extra_banner}
   {top_bar_html}
   {body_html}
   <div class="legend">
     <span><span class="sw" style="background:#d6e9fb;"></span>상위 1%</span>
     <span><span class="sw" style="background:#dcefdd;"></span>상위 5%</span>
     <span><span class="sw" style="background:#fbf3cf;"></span>상위 10%</span>
-    {role_legend}
+    <span id="role-legend-item"><span class="sw" style="background:#fadada;"></span>수장/전력외</span>
     <span>🎂 이달의 생일</span>
   </div>
+{extra_script}
 </body>
 </html>
 """
 
 
-def render_page(data: dict, archive_slugs: list, current_year: int, current_month: int,
-                 is_archive: bool = False, metric: Metric = BALLOON_METRIC,
-                 base_name: str = "index", archive_dir: str = "archive") -> str:
-    active_slug = f"{data['year']:04d}-{data['month']:02d}"
-    month_select_html = build_month_select(archive_slugs, current_year, current_month, active_slug, is_archive,
-                                            base_name=base_name, archive_dir=archive_dir)
-
-    members = data["members"]
-    teams = group_teams(members)
-    tiers = compute_percentile_tiers(members, metric)
-
-    logo_prefix = "../" if is_archive else ""
-
-    current_ranks = compute_team_ranks(members, metric)
-    prev_ranks = load_previous_ranks(data["year"], data["month"], metric)
-
-    team_cards = []
-    for team_name, team_members in teams.items():
-        badge = rank_change_badge(current_ranks[team_name], prev_ranks, team_name)
-        avg, html = build_team_card(team_name, team_members, data["month"], tiers, logo_prefix, badge, metric)
-        team_cards.append((avg, html))
-
-    team_cards.sort(key=lambda x: -x[0])
-    cards_html = "".join(html for _, html in team_cards)
-
-    team_count = len(teams)
-    member_count = len(members)
-
-    top_bar_html = f"""
-  <div class="top-bar">
-    {month_select_html}
-    <span class="top-meta">{team_count}팀 / {member_count}명 / 업데이트 {data['updated_at']} / 출처: <a href="https://poonggo.com" target="_blank" rel="noopener" class="source-link">풍고</a></span>
-  </div>
-    """
-
-    body_html = f"""
-  <div class="grid">
-    {cards_html}
-  </div>
-    """
-
-    banner = ARCHIVE_BANNER_HTML if is_archive else ""
-
-    return page_shell(top_bar_html=top_bar_html, body_html=body_html, extra_banner=banner,
-                       title=f"팀별 {metric.unit_label} 랭킹", show_role_legend=metric.exclude_roles)
-
-
-def build_team_month_select(team_name: str, archive_slugs: list, current_year: int, current_month: int,
-                             active_slug: str) -> str:
-    """
-    팀 단독 페이지용 월 선택 드롭다운. 같은 docs/teams/ 폴더 안에 파일명으로만
-    구분해서 저장하므로(이번달: {팀}.html, 과거달: {팀}__YYYY-MM.html) 상대경로 계산이 필요없다.
-    """
-def build_team_month_select(team_name: str, archive_slugs: list, current_year: int, current_month: int,
-                             active_slug: str, file_suffix: str = "") -> str:
-    """
-    팀 단독 페이지용 월 선택 드롭다운. 같은 docs/teams/ 폴더 안에 파일명으로만
-    구분해서 저장하므로(이번달: {팀}{suffix}.html, 과거달: {팀}{suffix}__YYYY-MM.html)
-    상대경로 계산이 필요없다. file_suffix로 별풍선("")/방송시간("-broadcast") 페이지를 구분한다.
-    """
-    return _build_select_html(
-        archive_slugs, current_year, current_month, active_slug,
-        current_href_fn=lambda: f"{team_name}{file_suffix}.html",
-        archive_href_fn=lambda slug: f"{team_name}{file_suffix}__{slug}.html",
-    )
-
-
-def render_team_page(data: dict, team_name: str, team_members: list, tiers: dict,
-                      archive_slugs: list, current_year: int, current_month: int,
-                      is_archive: bool = False, metric: Metric = BALLOON_METRIC,
-                      file_suffix: str = "") -> str:
-    """특정 팀 하나만 담은 단독 페이지. iframe으로 그 팀만 따로 게시할 때 사용."""
-    active_slug = f"{data['year']:04d}-{data['month']:02d}"
-    month_select_html = build_team_month_select(team_name, archive_slugs, current_year, current_month, active_slug,
-                                                 file_suffix=file_suffix)
-
-    current_ranks = compute_team_ranks(data["members"], metric)
-    prev_ranks = load_previous_ranks(data["year"], data["month"], metric)
-    badge = rank_change_badge(current_ranks[team_name], prev_ranks, team_name)
-
-    _, card_html = build_team_card(team_name, team_members, data["month"], tiers, logo_prefix="../",
-                                    rank_badge=badge, metric=metric)
-
-    top_bar_html = f"""
-  <div class="top-bar">
-    {month_select_html}
-    <span class="top-meta">{team_name} / {len(team_members)}명 / 업데이트 {data['updated_at']} / 출처: <a href="https://poonggo.com" target="_blank" rel="noopener" class="source-link">풍고</a></span>
-  </div>
-    """
-
-    body_html = f"""
-  <div class="grid single-team">
-    {card_html}
-  </div>
-    """
-
-    banner = ARCHIVE_BANNER_HTML if is_archive else ""
-
-    return page_shell(top_bar_html=top_bar_html, body_html=body_html, extra_banner=banner,
-                       include_mobile_css=False, title=f"{team_name} {metric.unit_label}",
-                       show_role_legend=metric.exclude_roles)
-
-
-def generate_team_pages(data: dict, is_archive: bool, archive_slugs: list,
-                         current_year: int, current_month: int,
-                         metric: Metric = BALLOON_METRIC, file_suffix: str = ""):
-    """SINGLE_TEAM_PAGES에 지정된 팀들만 docs/teams/ 에 단독 페이지로 생성"""
-    if not SINGLE_TEAM_PAGES:
-        return
-
-    members = data["members"]
-    teams = group_teams(members)
-    tiers = compute_percentile_tiers(members, metric)
-    slug = f"{data['year']:04d}-{data['month']:02d}"
-
-    OUTPUT_TEAMS_DIR.mkdir(parents=True, exist_ok=True)
-
-    for team_name in SINGLE_TEAM_PAGES:
-        team_members = teams.get(team_name)
-        if team_members is None:
-            continue  # 그 달에 해당 팀이 없으면 건너뜀
-
-        html = render_team_page(
-            data, team_name, team_members, tiers,
-            archive_slugs, current_year, current_month, is_archive=is_archive,
-            metric=metric, file_suffix=file_suffix,
-        )
-        filename = f"{team_name}{file_suffix}.html" if not is_archive else f"{team_name}{file_suffix}__{slug}.html"
-        out_path = OUTPUT_TEAMS_DIR / filename
-        with open(out_path, "w", encoding="utf-8") as f:
-            f.write(html)
-        print(f"완료: {out_path} 생성됨")
-
-
-def main():
-    archive_slugs = list_archive_slugs()
-
-    # 이번 달 데이터 로드
+def load_all_month_data():
+    """이번 달 + 과거 모든 달의 데이터를 리스트로 로드 (이번 달이 맨 앞)"""
     if not DATA_PATH.exists():
         raise SystemExit(f"[오류] {DATA_PATH} 가 없습니다. 먼저 fetch_data.py를 실행하세요.")
 
@@ -832,48 +661,218 @@ def main():
         current_data = json.load(f)
     current_data["members"] = normalize_balloons(current_data["members"])
 
+    all_data = [current_data]
+    for slug in list_archive_slugs():
+        path = ARCHIVE_DIR / f"{slug}.json"
+        with open(path, "r", encoding="utf-8") as f:
+            d = json.load(f)
+        d["members"] = normalize_balloons(d["members"])
+        all_data.append(d)
+
+    return current_data, all_data
+
+
+def assemble_single_page(all_data: list, current_year: int, current_month: int,
+                          panel_builder, logo_prefix: str, include_mobile_css: bool,
+                          page_title_base: str) -> str:
+    """
+    all_data의 모든 (연,월) x (별풍선/방송시간) 조합을 패널로 미리 렌더링해서
+    하나의 페이지에 담고, 연도/월/지표 select 3개 + 자바스크립트로 전환하게 만든다.
+    panel_builder(data, metric, logo_prefix) -> 패널 안쪽 HTML (grid div)
+    """
+    default_key = f"{current_year:04d}-{current_month:02d}-{BALLOON_METRIC.key}"
+
+    metadata = {}
+    panels_html = []
+    years_months = {}  # {연도: {월, 월, ...}}
+
+    for data in all_data:
+        y, m = data["year"], data["month"]
+        is_archive = not (y == current_year and m == current_month)
+        years_months.setdefault(y, set()).add(m)
+
+        for metric in METRICS:
+            key = f"{y:04d}-{m:02d}-{metric.key}"
+            panel_inner = panel_builder(data, metric, logo_prefix)
+            style_attr = "" if key == default_key else " style=\"display:none;\""
+            panels_html.append(f"<div class='page-panel' data-key='{key}'{style_attr}>{panel_inner}</div>")
+
+            metadata[key] = {
+                "teamCount": len(group_teams(data["members"])),
+                "memberCount": len(data["members"]),
+                "updatedAt": data["updated_at"],
+                "isArchive": is_archive,
+                "excludeRoles": metric.exclude_roles,
+                "title": f"{page_title_base} {metric.unit_label}",
+            }
+
+    years_sorted = sorted(years_months.keys(), reverse=True)
+    year_options = "".join(
+        f"<option value='{y}'{' selected' if y == current_year else ''}>{y}년</option>"
+        for y in years_sorted
+    )
+    months_for_current_year = sorted(years_months[current_year], reverse=True)
+    month_options = "".join(
+        f"<option value='{m}'{' selected' if m == current_month else ''}>{m:02d}월</option>"
+        for m in months_for_current_year
+    )
+    metric_options = "".join(
+        f"<option value='{metric.key}'{' selected' if metric is BALLOON_METRIC else ''}>{metric.unit_label}</option>"
+        for metric in METRICS
+    )
+
+    months_by_year_json = json.dumps({str(y): sorted(ms, reverse=True) for y, ms in years_months.items()})
+    metadata_json = json.dumps(metadata, ensure_ascii=False)
+    archive_banner_json = json.dumps(ARCHIVE_BANNER_HTML)
+
+    nav_html = f"""
+  <span class="month-select-group">
+    <select class="top-date-select" id="ms-year-select">{year_options}</select>
+    <select class="top-date-select" id="ms-month-select">{month_options}</select>
+    <select class="top-date-select" id="ms-metric-select">{metric_options}</select>
+  </span>
+    """
+
+    top_bar_html = f"""
+  <div class="top-bar">
+    {nav_html}
+    <span class="top-meta" id="top-meta-text"></span>
+  </div>
+    """
+
+    body_html = f"""
+  <div id="archive-banner-slot"></div>
+  {"".join(panels_html)}
+    """
+
+    extra_script = f"""<script>
+(function () {{
+  var meta = {metadata_json};
+  var monthsByYear = {months_by_year_json};
+  var archiveBannerHtml = {archive_banner_json};
+
+  var yearSel = document.getElementById('ms-year-select');
+  var monthSel = document.getElementById('ms-month-select');
+  var metricSel = document.getElementById('ms-metric-select');
+  var metaSpan = document.getElementById('top-meta-text');
+  var bannerSlot = document.getElementById('archive-banner-slot');
+  var roleLegendItem = document.getElementById('role-legend-item');
+
+  function pad(n) {{ n = parseInt(n, 10); return (n < 10 ? '0' : '') + n; }}
+
+  function populateMonths(year, preselectMonth) {{
+    monthSel.innerHTML = '';
+    (monthsByYear[year] || []).forEach(function (m) {{
+      var opt = document.createElement('option');
+      opt.value = m;
+      opt.textContent = pad(m) + '월';
+      if (m === preselectMonth) opt.selected = true;
+      monthSel.appendChild(opt);
+    }});
+  }}
+
+  function currentKey() {{
+    return yearSel.value + '-' + pad(monthSel.value) + '-' + metricSel.value;
+  }}
+
+  function apply() {{
+    var key = currentKey();
+    var panels = document.querySelectorAll('.page-panel');
+    for (var i = 0; i < panels.length; i++) {{
+      panels[i].style.display = (panels[i].getAttribute('data-key') === key) ? '' : 'none';
+    }}
+    var m = meta[key];
+    if (!m) return;
+
+    metaSpan.textContent = m.teamCount + '팀 / ' + m.memberCount + '명 / 업데이트 ' + m.updatedAt + ' / 출처: ';
+    var link = document.createElement('a');
+    link.href = 'https://poonggo.com';
+    link.target = '_blank';
+    link.rel = 'noopener';
+    link.className = 'source-link';
+    link.textContent = '풍고';
+    metaSpan.appendChild(link);
+
+    bannerSlot.innerHTML = m.isArchive ? archiveBannerHtml : '';
+    if (roleLegendItem) roleLegendItem.style.display = m.excludeRoles ? '' : 'none';
+    document.title = m.title;
+  }}
+
+  yearSel.addEventListener('change', function () {{
+    var year = yearSel.value;
+    var monthsInYear = monthsByYear[year] || [];
+    populateMonths(year, monthsInYear.length ? monthsInYear[0] : null);
+    apply();
+  }});
+  monthSel.addEventListener('change', apply);
+  metricSel.addEventListener('change', apply);
+
+  // 전체 페이지에서 팀 이름을 눌러 넘어온 경우, 그때 보고 있던 연/월/지표를
+  // 쿼리 파라미터(?y=&m=&metric=)로 이어받아 초기 선택 상태를 맞춘다.
+  (function applyQueryParams() {{
+    var params = new URLSearchParams(window.location.search);
+    var qy = params.get('y');
+    var qm = params.get('m');
+    var qmetric = params.get('metric');
+
+    if (qy && yearSel.querySelector("option[value='" + qy + "']")) {{
+      yearSel.value = qy;
+      var monthsInYear = monthsByYear[qy] || [];
+      var preselect = qm && monthsInYear.indexOf(parseInt(qm, 10)) !== -1
+        ? parseInt(qm, 10)
+        : (monthsInYear.length ? monthsInYear[0] : null);
+      populateMonths(qy, preselect);
+    }}
+    if (qmetric && (qmetric === 'balloon' || qmetric === 'broadcast')) {{
+      metricSel.value = qmetric;
+    }}
+  }})();
+
+  apply();
+}})();
+</script>"""
+
+    return page_shell(
+        top_bar_html=top_bar_html, body_html=body_html, include_mobile_css=include_mobile_css,
+        title=f"{page_title_base} {BALLOON_METRIC.unit_label}", extra_script=extra_script,
+    )
+
+
+def main():
+    current_data, all_data = load_all_month_data()
     current_year, current_month = current_data["year"], current_data["month"]
 
-    # 지표별로 (전체 페이지 출력경로, 과거달 폴더, 파일명 베이스, 과거달 폴더명, 팀페이지 파일명 접미사)
-    page_sets = [
-        (BALLOON_METRIC, OUTPUT_PATH, OUTPUT_ARCHIVE_DIR, "index", "archive", ""),
-        (BROADCAST_METRIC, OUTPUT_BROADCAST_PATH, OUTPUT_ARCHIVE_BROADCAST_DIR, "broadcast", "archive-broadcast", "-broadcast"),
-    ]
+    # 전체 페이지 (모든 팀)
+    html = assemble_single_page(
+        all_data, current_year, current_month,
+        panel_builder=build_grid_panel, logo_prefix="",
+        include_mobile_css=True, page_title_base="팀별",
+    )
+    OUTPUT_PATH.parent.mkdir(parents=True, exist_ok=True)
+    with open(OUTPUT_PATH, "w", encoding="utf-8") as f:
+        f.write(html)
+    print(f"완료: {OUTPUT_PATH} 생성됨")
 
-    for metric, output_path, output_archive_dir, base_name, archive_dir_name, file_suffix in page_sets:
-        # 이번 달 전체 페이지
-        html = render_page(current_data, archive_slugs, current_year, current_month, is_archive=False,
-                            metric=metric, base_name=base_name, archive_dir=archive_dir_name)
-        output_path.parent.mkdir(parents=True, exist_ok=True)
-        with open(output_path, "w", encoding="utf-8") as f:
-            f.write(html)
-        print(f"완료: {output_path} 생성됨")
+    # 팀별 단독 페이지 - 이번 달이든 과거 달이든, 한 번이라도 등장한 팀은 전부 생성
+    all_team_names = set()
+    for data in all_data:
+        all_team_names.update(group_teams(data["members"]).keys())
 
-        # 팀별 단독 페이지 (이번 달)
-        generate_team_pages(current_data, is_archive=False, archive_slugs=archive_slugs,
-                             current_year=current_year, current_month=current_month,
-                             metric=metric, file_suffix=file_suffix)
+    if all_team_names:
+        OUTPUT_TEAMS_DIR.mkdir(parents=True, exist_ok=True)
+        for team_name in sorted(all_team_names):
+            def _panel_builder(data, metric, logo_prefix, _team=team_name):
+                return build_single_team_panel(data, _team, metric, logo_prefix)
 
-        # 과거 달 페이지들 (전체 페이지 + 팀별 단독 페이지)
-        if archive_slugs:
-            output_archive_dir.mkdir(parents=True, exist_ok=True)
-            for slug in archive_slugs:
-                archive_json_path = ARCHIVE_DIR / f"{slug}.json"
-                with open(archive_json_path, "r", encoding="utf-8") as f:
-                    archive_data = json.load(f)
-                archive_data["members"] = normalize_balloons(archive_data["members"])
-
-                a_html = render_page(archive_data, archive_slugs, current_year, current_month, is_archive=True,
-                                      metric=metric, base_name=base_name, archive_dir=archive_dir_name)
-
-                out_path = output_archive_dir / f"{slug}.html"
-                with open(out_path, "w", encoding="utf-8") as f:
-                    f.write(a_html)
-                print(f"완료: {out_path} 생성됨")
-
-                generate_team_pages(archive_data, is_archive=True, archive_slugs=archive_slugs,
-                                     current_year=current_year, current_month=current_month,
-                                     metric=metric, file_suffix=file_suffix)
+            team_html = assemble_single_page(
+                all_data, current_year, current_month,
+                panel_builder=_panel_builder, logo_prefix="../",
+                include_mobile_css=False, page_title_base=team_name,
+            )
+            out_path = OUTPUT_TEAMS_DIR / f"{team_name}.html"
+            with open(out_path, "w", encoding="utf-8") as f:
+                f.write(team_html)
+            print(f"완료: {out_path} 생성됨")
 
 
 if __name__ == "__main__":
