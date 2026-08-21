@@ -330,7 +330,7 @@ PAGE_CSS = """
     max-width: 1080px;
     margin: 16px auto 0;
     font-size: 10px;
-    color: #a4a8b2;
+    color: #6b6f79;
     text-align: center;
   }
   .legend span { margin: 0 6px; }
