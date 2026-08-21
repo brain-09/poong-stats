@@ -32,6 +32,11 @@
     gap: 6px;
     box-shadow: 0 1px 3px rgba(0,0,0,0.04);
   }
+  .month-select-group {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+  }
   .top-date-select {
     font-size: 18px;
     font-weight: 700;
@@ -220,8 +225,53 @@
   
   
   <div class="top-bar">
-    <select class='top-date-select' onchange="if(this.value) window.location.href=this.value;"><optgroup label='2026년'><option value='캄몬스타즈-broadcast.html' selected>08월</option></optgroup></select>
-    <span class="top-meta">캄몬스타즈 / 22명 / 업데이트 2026-08-21 13:51:59 / 출처: <a href="https://poonggo.com" target="_blank" rel="noopener" class="source-link">풍고</a></span>
+    <span class="month-select-group">
+  <select class="top-date-select" id="ms-year-select"></select>
+  <select class="top-date-select" id="ms-month-select"></select>
+</span>
+<script>
+(function () {
+  var data = [{"y": 2026, "m": 8, "h": "캄몬스타즈-broadcast.html"}];
+  var activeYear = 2026;
+  var activeMonth = 8;
+  var yearSel = document.getElementById('ms-year-select');
+  var monthSel = document.getElementById('ms-month-select');
+
+  var years = [];
+  data.forEach(function (e) { if (years.indexOf(e.y) === -1) years.push(e.y); });
+  years.forEach(function (y) {
+    var opt = document.createElement('option');
+    opt.value = y;
+    opt.textContent = y + '년';
+    if (y === activeYear) opt.selected = true;
+    yearSel.appendChild(opt);
+  });
+
+  function populateMonths(year, preselectMonth) {
+    monthSel.innerHTML = '';
+    data.filter(function (e) { return e.y === year; }).forEach(function (e) {
+      var opt = document.createElement('option');
+      opt.value = e.h;
+      opt.textContent = (e.m < 10 ? '0' : '') + e.m + '월';
+      if (e.m === preselectMonth) opt.selected = true;
+      monthSel.appendChild(opt);
+    });
+  }
+  populateMonths(activeYear, activeMonth);
+
+  yearSel.addEventListener('change', function () {
+    var year = parseInt(yearSel.value, 10);
+    var monthsInYear = data.filter(function (e) { return e.y === year; });
+    var newestMonth = monthsInYear.length ? monthsInYear[0].m : null;
+    populateMonths(year, newestMonth);
+    if (monthSel.value) window.location.href = monthSel.value;
+  });
+  monthSel.addEventListener('change', function () {
+    if (monthSel.value) window.location.href = monthSel.value;
+  });
+})();
+</script>
+    <span class="top-meta">캄몬스타즈 / 22명 / 업데이트 2026-08-21 14:00:44 / 출처: <a href="https://poonggo.com" target="_blank" rel="noopener" class="source-link">풍고</a></span>
   </div>
     
   

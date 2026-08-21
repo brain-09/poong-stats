@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-08-21 13:51:59",
+  "updated_at": "2026-08-21 14:00:44",
   "year": 2026,
   "month": 8,
   "members": [
@@ -360,8 +360,8 @@
       "birthdate": "1999-05-16",
       "role": "",
       "team": "흑카데미",
-      "balloons": 41854,
-      "broadcast_seconds": 325131
+      "balloons": 42450,
+      "broadcast_seconds": 325671
     },
     {
       "id": "gangeda",
@@ -1271,7 +1271,7 @@
       "role": "",
       "team": "수술대",
       "balloons": 31792,
-      "broadcast_seconds": 312160
+      "broadcast_seconds": 312700
     },
     {
       "id": "comcmxx",
@@ -1321,7 +1321,7 @@
       "role": "",
       "team": "수술대",
       "balloons": 190494,
-      "broadcast_seconds": 303153
+      "broadcast_seconds": 303693
     },
     {
       "id": "rlsk0705",
@@ -2170,8 +2170,8 @@
       "birthdate": "1991-11-23",
       "role": "",
       "team": "신세계",
-      "balloons": 89928,
-      "broadcast_seconds": 512566
+      "balloons": 89937,
+      "broadcast_seconds": 513106
     },
     {
       "id": "byspire",
@@ -2281,7 +2281,7 @@
       "role": "수장",
       "team": "더블비",
       "balloons": 394652,
-      "broadcast_seconds": 419276
+      "broadcast_seconds": 419816
     },
     {
       "id": "mede1234",
