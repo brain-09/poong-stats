@@ -20,21 +20,15 @@ jobs:
         uses: actions/setup-python@v5
         with:
           python-version: "3.11"
+          
+      - name: Install dependencies
+        run: pip install pillow
 
       - name: Fetch data
         run: python scripts/fetch_data.py
 
-      - name: Install dependencies
-        run: pip install pillow
-
       - name: Generate HTML
         run: python scripts/generate_html.py
-
-      - name: Remove old multi-file outputs (구조 변경 이전 잔재 정리)
-        run: |
-          rm -f docs/broadcast.html
-          rm -rf docs/archive docs/archive-broadcast
-          find docs/teams -maxdepth 1 -type f \( -name "*__*.html" -o -name "*-broadcast*.html" \) -delete 2>/dev/null || true
 
       - name: Commit and push if changed
         run: |
