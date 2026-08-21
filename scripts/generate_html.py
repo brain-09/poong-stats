@@ -69,7 +69,7 @@ PAGE_CSS = """
     font-family: 'Noto Sans KR', -apple-system, "Malgun Gothic", sans-serif;
     background: #f4f5f7;
     margin: 0;
-    padding: 21.6px 10.8px;
+    padding: 22px 11px;
     color: #1a1d29;
   }
   .top-bar {
@@ -77,7 +77,7 @@ PAGE_CSS = """
     margin: 0 auto 16px;
     background: #fff;
     border-radius: 16px;
-    padding: 18px 25.2px;
+    padding: 18px 25px;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -91,10 +91,10 @@ PAGE_CSS = """
     gap: 2px;
   }
   .top-date-select {
-    font-size: 19.8px;
+    font-size: 20px;
     font-weight: 800;
     color: #141821;
-    letter-spacing: -0.2px;
+    letter-spacing: 0px;
     border: none;
     background: transparent;
     cursor: pointer;
@@ -106,13 +106,13 @@ PAGE_CSS = """
   }
   .top-date-select:hover { color: #4a5ce0; }
   .nav-chevron {
-    font-size: 16.2px;
+    font-size: 16px;
     color: #c2c5cc;
-    margin: 0 3.6px;
+    margin: 0 4px;
     user-select: none;
   }
   .top-meta {
-    font-size: 10.8px;
+    font-size: 11px;
     color: #a4a8b2;
     white-space: nowrap;
   }
@@ -126,7 +126,7 @@ PAGE_CSS = """
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
     align-items: start;
-    gap: 10.8px;
+    gap: 11px;
     max-width: 1080px;
     margin: 0 auto;
   }
@@ -140,14 +140,14 @@ PAGE_CSS = """
     overflow: hidden;
     box-shadow: 0 1px 2px rgba(20,20,30,0.04), 0 8px 24px rgba(20,20,30,0.06);
   }
-  .team-card-topbar { height: 5.4px; background: #4a5ce0; }
+  .team-card-topbar { height: 5px; background: #4a5ce0; }
   .team-header {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 10.8px 12.6px;
+    padding: 11px 13px;
     border-bottom: 1px solid #f2f3f5;
-    gap: 5.4px;
+    gap: 5px;
     flex-wrap: wrap;
   }
   .team-header-left {
@@ -166,31 +166,31 @@ PAGE_CSS = """
   }
   .team-link:hover .team-name { text-decoration: underline; }
   .team-logo {
-    width: 21.6px;
-    height: 21.6px;
-    border-radius: 7.2px;
+    width: 22px;
+    height: 22px;
+    border-radius: 7px;
     object-fit: contain;
     flex-shrink: 0;
   }
   .team-name {
-    font-size: 14.4px;
+    font-size: 14px;
     font-weight: 800;
     color: #141821;
-    letter-spacing: -0.2px;
+    letter-spacing: 0px;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
   }
   .team-count {
-    font-size: 10.8px;
+    font-size: 11px;
     color: #a4a8b2;
     font-weight: 500;
     white-space: nowrap;
   }
   .rank-change {
-    font-size: 10.8px;
+    font-size: 11px;
     font-weight: 700;
-    padding: 1.8px 9px;
+    padding: 2px 9px;
     border-radius: 20px;
     white-space: nowrap;
     flex-shrink: 0;
@@ -209,21 +209,21 @@ PAGE_CSS = """
     display: flex;
     justify-content: space-between;
     align-items: center;
-    font-size: 10.8px;
+    font-size: 11px;
     font-weight: 700;
     color: #a4a8b2;
-    letter-spacing: 0.3px;
-    padding: 7.2px 12.6px 5.4px;
+    letter-spacing: 0px;
+    padding: 7px 13px 5px;
     background: #fafbfc;
   }
-  .member-col-label .col-label-text { font-size: 10.8px; font-weight: 700; line-height: 1; }
-  .member-col-label .unit-label { font-size: 10.8px; font-weight: 700; line-height: 1; color: #c2c5cc; text-align: right; }
+  .member-col-label .col-label-text { font-size: 11px; font-weight: 700; line-height: 1; }
+  .member-col-label .unit-label { font-size: 11px; font-weight: 700; line-height: 1; color: #c2c5cc; text-align: right; }
   .member-row {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 5.4px 12.6px;
-    border-left: 3.6px solid transparent;
+    padding: 5px 13px;
+    border-left: 4px solid transparent;
     min-height: 27px;
   }
   .member-row.tier1 { border-left-color: #4a5ce0; background: #f4f6fe; }
@@ -231,12 +231,12 @@ PAGE_CSS = """
   .member-row.tier10 { border-left-color: #d9a71b; background: #fdf6e0; }
   .member-row.excluded { border-left-color: #d64545; background: #fdeaea; }
   .member-name {
-    font-size: 12.6px;
+    font-size: 13px;
     color: #3a3d47;
     font-weight: 700;
     display: flex;
     align-items: center;
-    gap: 3.6px;
+    gap: 4px;
     min-width: 0;
     overflow: hidden;
     white-space: nowrap;
@@ -248,13 +248,13 @@ PAGE_CSS = """
   .member-row.excluded .member-name { font-weight: 700; color: #1a1d29; }
   .bday-mark { font-size: 9px; opacity: 0.75; flex-shrink: 0; }
   .member-value {
-    font-size: 12.6px;
+    font-size: 13px;
     color: #6b6f79;
     font-weight: 700;
     text-align: right;
     font-variant-numeric: tabular-nums;
     flex-shrink: 0;
-    padding-left: 5.4px;
+    padding-left: 5px;
   }
   .member-row.tier1 .member-value { color: #4a5ce0; font-weight: 700; }
   .member-row.tier5 .member-value { color: #0f8a5c; font-weight: 700; }
@@ -264,22 +264,22 @@ PAGE_CSS = """
 
   .team-footer {
     display: flex;
-    gap: 7.2px;
-    padding: 10.8px 12.6px 12.6px;
+    gap: 7px;
+    padding: 11px 13px 13px;
     background: #fafbfc;
     border-top: 1px solid #f2f3f5;
   }
   .stat-card {
     flex: 1;
     text-align: center;
-    padding: 7.2px 5.4px;
-    border-radius: 12.6px;
+    padding: 7px 5px;
+    border-radius: 13px;
     background: #fff;
     border: 1px solid #eef0f2;
     min-width: 0;
   }
-  .stat-label { font-size: 10.8px; color: #a4a8b2; margin-bottom: 1.8px; font-weight: 600; }
-  .stat-value { font-size: 14.4px; font-weight: 800; color: #1a1d29; font-variant-numeric: tabular-nums; }
+  .stat-label { font-size: 11px; color: #a4a8b2; margin-bottom: 2px; font-weight: 600; }
+  .stat-value { font-size: 14px; font-weight: 800; color: #1a1d29; font-variant-numeric: tabular-nums; }
   .stat-card.female-avg { background: #d9f2f2; border: none; }
   .stat-card.female-avg .stat-label { color: #0e6b6b; }
   .stat-card.female-avg .stat-value { color: #0a4d4d; }
@@ -290,7 +290,7 @@ PAGE_CSS = """
   .legend {
     max-width: 1080px;
     margin: 14px auto 0;
-    font-size: 7.2px;
+    font-size: 7px;
     color: #a4a8b2;
     text-align: center;
   }
