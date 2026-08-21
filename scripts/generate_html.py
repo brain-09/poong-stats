@@ -4,9 +4,9 @@ docs/index.html (이번 달) + docs/archive/YYYY-MM.html (과거 달) 로 렌더
 추가로 SINGLE_TEAM_PAGES에 지정된 팀만 docs/teams/{팀이름}.html (이번 달) +
 docs/teams/{팀이름}__YYYY-MM.html (과거 달) 단독 페이지로도 생성한다.
 
-과거 달 데이터는 fetch_data.py가 달이 바뀔 때 latest.json을 통째로 복사해서
-data/archive/에 보관해둔 것 - 그 시점의 team/gender/role이 멤버마다 그대로 들어있어서
-팀 구성이 바뀌어도 "그 당시 배정" 그대로 재현된다.
+과거 달 데이터는 fetch_data.py가 달이 바뀔 때 그 달 기준으로 API를 한 번 더 호출해
+확정된 별풍선 값으로 갱신한 뒤 data/archive/에 보관해둔 것 - 그 시점의 team/gender/role이
+멤버마다 그대로 들어있어서 팀 구성이 바뀌어도 "그 당시 배정" 그대로 재현된다.
 
 팀별 표: 표 1개, [남자 멤버 | 별풍선 | 여자 멤버 | 별풍선] 4열, 각각 별풍선 내림차순 정렬.
 하단에 합계/평균/인원 행 포함. 별풍선 0이거나 직책이 수장/전력외인 사람은 집계·상위% 계산에서 제외
@@ -35,6 +35,19 @@ EXCLUDED_ROLES = {"수장", "전력외"}
 SINGLE_TEAM_PAGES = ["캄몬스타즈"]
 
 ARCHIVE_BANNER_HTML = "<div class='archive-banner'>📁 이 페이지는 지난 기록입니다 (당시 팀 구성 기준)</div>"
+
+
+def normalize_balloons(members: list) -> list:
+    """balloons 값이 문자열 등으로 저장돼있어도 항상 int로 안전하게 맞춰준다
+    (크롤링 스크립트가 정수로 저장해도, 예전 데이터 파일이 남아있는 경우 대비)."""
+    for m in members:
+        raw = m.get("balloons", 0)
+        if not isinstance(raw, int):
+            try:
+                m["balloons"] = int(str(raw).replace(",", "").strip() or 0)
+            except (ValueError, TypeError):
+                m["balloons"] = 0
+    return members
 
 # 모든 페이지가 공유하는 스타일. f-string이 아니라 일반 문자열이라 중괄호를 그대로 쓴다.
 PAGE_CSS = """
@@ -352,7 +365,7 @@ def load_previous_ranks(year: int, month: int):
         return None
     with open(path, "r", encoding="utf-8") as f:
         prev_data = json.load(f)
-    return compute_team_ranks(prev_data["members"])
+    return compute_team_ranks(normalize_balloons(prev_data["members"]))
 
 
 def rank_change_badge(current_rank: int, prev_ranks, team_name: str) -> str:
@@ -405,19 +418,18 @@ def team_logo_html(team_name: str, logo_prefix: str) -> str:
 
 def build_team_card(team_name: str, members: list, current_month: int, tiers: dict,
                      logo_prefix: str = "", rank_badge: str = ""):
-    counted = [m for m in members if is_counted(m)]
-    males_counted = [m for m in counted if m["gender"] == "m"]
-    females_counted = [m for m in counted if m["gender"] == "f"]
+    males_all = sorted([m for m in members if m["gender"] == "m"], key=lambda x: -x["balloons"])
+    females_all = sorted([m for m in members if m["gender"] == "f"], key=lambda x: -x["balloons"])
+
+    males_counted = [m for m in males_all if is_counted(m)]
+    females_counted = [m for m in females_all if is_counted(m)]
 
     male_sum = sum(m["balloons"] for m in males_counted)
     female_sum = sum(m["balloons"] for m in females_counted)
     total_sum = male_sum + female_sum
     male_avg = round(male_sum / len(males_counted)) if males_counted else 0
     female_avg = round(female_sum / len(females_counted)) if females_counted else 0
-    total_avg = round(total_sum / len(counted)) if counted else 0
-
-    males_all = sorted([m for m in members if m["gender"] == "m"], key=lambda x: -x["balloons"])
-    females_all = sorted([m for m in members if m["gender"] == "f"], key=lambda x: -x["balloons"])
+    total_avg = team_total_avg(members)  # 순위 계산과 동일한 공식(team_total_avg)을 그대로 재사용
 
     max_rows = max(len(males_all), len(females_all), 1)
 
@@ -696,6 +708,7 @@ def main():
 
     with open(DATA_PATH, "r", encoding="utf-8") as f:
         current_data = json.load(f)
+    current_data["members"] = normalize_balloons(current_data["members"])
 
     current_year, current_month = current_data["year"], current_data["month"]
 
@@ -717,6 +730,7 @@ def main():
             archive_json_path = ARCHIVE_DIR / f"{slug}.json"
             with open(archive_json_path, "r", encoding="utf-8") as f:
                 archive_data = json.load(f)
+            archive_data["members"] = normalize_balloons(archive_data["members"])
 
             a_html = render_page(archive_data, archive_slugs, current_year, current_month, is_archive=True)
 

@@ -44,6 +44,19 @@ REQUEST_HEADERS = {
 }
 
 
+def _to_int(value) -> int:
+    """풍고 API가 숫자를 문자열로 줄 수도 있어서, 어떤 형태로 오든 안전하게 정수로 변환.
+    콤마가 섞여 있거나(예: "301,480") 비어있거나 None이어도 0으로 처리."""
+    if value is None:
+        return 0
+    if isinstance(value, (int, float)):
+        return int(value)
+    try:
+        return int(str(value).replace(",", "").strip() or 0)
+    except (ValueError, TypeError):
+        return 0
+
+
 def kst_now():
     return datetime.now(timezone.utc) + timedelta(hours=9)
 
@@ -94,7 +107,7 @@ def fetch_poonggo_monthly(year: int, month: int, ids: list):
         for entry in entries:
             member_id = entry.get("id")
             if member_id:
-                balloon_by_id[member_id] = entry.get("amt", 0) or 0
+                balloon_by_id[member_id] = _to_int(entry.get("amt"))
 
     return balloon_by_id
 
