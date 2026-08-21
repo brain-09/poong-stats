@@ -24,6 +24,7 @@ docs/teams/{팀이름}[-broadcast]__YYYY-MM.html (과거 달) 단독 페이지�
 
 import json
 from collections import OrderedDict
+from itertools import groupby
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -558,25 +559,29 @@ def _build_select_html(archive_slugs: list, current_year: int, current_month: in
     """
     'YYYY년 MM월' 드롭다운 공통 로직. current_href_fn()/archive_href_fn(slug)로
     페이지 종류(전체/팀별)에 따라 다른 링크 계산 방식만 바꿔 끼운다.
+    연도별로 <optgroup>으로 묶어서, 몇 년치가 쌓여도 드롭다운이 스캔하기 쉽게 유지한다.
     """
     current_slug = f"{current_year:04d}-{current_month:02d}"
-    options = []
 
-    label = f"{current_year}년 {current_month:02d}월"
-    selected = " selected" if active_slug == current_slug else ""
-    options.append(f"<option value='{current_href_fn()}'{selected}>{label}</option>")
-
+    # (연도, 월, 슬러그, 링크) 목록을 이번달+과거달 합쳐서 구성 후 연도/월 내림차순 정렬
+    entries = [(current_year, current_month, current_slug, current_href_fn())]
     for slug in archive_slugs:
         year, month = slug.split("-")
-        label = f"{year}년 {int(month):02d}월"
-        selected = " selected" if slug == active_slug else ""
-        options.append(f"<option value='{archive_href_fn(slug)}'{selected}>{label}</option>")
+        entries.append((int(year), int(month), slug, archive_href_fn(slug)))
+    entries.sort(key=lambda e: (-e[0], -e[1]))
 
-    options_html = "".join(options)
+    groups_html = []
+    for year, group in groupby(entries, key=lambda e: e[0]):
+        options = []
+        for _, month, slug, href in group:
+            selected = " selected" if slug == active_slug else ""
+            options.append(f"<option value='{href}'{selected}>{month:02d}월</option>")
+        groups_html.append(f"<optgroup label='{year}년'>" + "".join(options) + "</optgroup>")
+
     return (
         "<select class='top-date-select' "
         "onchange=\"if(this.value) window.location.href=this.value;\">"
-        f"{options_html}</select>"
+        + "".join(groups_html) + "</select>"
     )
 
 
