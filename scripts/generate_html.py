@@ -318,7 +318,7 @@ PAGE_CSS = """
     min-width: 0;
   }
   .stat-label { font-size: 12px; color: #a4a8b2; margin-bottom: 4px; font-weight: 600; }
-  .stat-value { font-size: 12px; font-weight: 800; color: #1a1d29; font-variant-numeric: tabular-nums; }
+  .stat-value { font-size: 14px; font-weight: 800; color: #1a1d29; font-variant-numeric: tabular-nums; }
   .stat-card.female-avg { background: #d9f2f2; border: none; }
   .stat-card.female-avg .stat-label { color: #0e6b6b; }
   .stat-card.female-avg .stat-value { color: #0a4d4d; }
@@ -333,7 +333,7 @@ PAGE_CSS = """
     color: #a4a8b2;
     text-align: center;
   }
-  .legend span { margin: 0 8px; }
+  .legend span { margin: 0 6px; }
   .legend .sw {
     display: inline-block;
     width: 12px; height: 12px;
@@ -375,9 +375,9 @@ MOBILE_CSS = """
     .team-footer { padding: 6px 5px 7px; gap: 3px; }
     .stat-card { padding: 6px 4px; border-radius: 8px; }
     .stat-label { font-size: 6px; margin-bottom: 2px; }
-    .stat-value { font-size: 6px; }
+    .stat-value { font-size: 7px; }
     .legend { font-size: 5px; margin-top: 8px; }
-    .legend span { margin: 0 4px; }
+    .legend span { margin: 0 3px; }
     .legend .sw { width: 6px; height: 6px; margin-right: 2px; }
   }
 """
