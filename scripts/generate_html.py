@@ -656,7 +656,7 @@ def page_shell(*, top_bar_html: str, body_html: str, include_mobile_css: bool = 
     <span><span class="sw" style="background:#dcefdd;"></span>상위 5%</span>
     <span><span class="sw" style="background:#fbf3cf;"></span>상위 10%</span>
     <span id="role-legend-item"><span class="sw" style="background:#fadada;"></span>수장/전력외</span>
-    <span>🎂 이달의 생일</span>
+    <span>🎂 생일</span>
   </div>
 {extra_script}
 </body>
