@@ -1,6 +1,6 @@
 """
 풍고(poonggo.com) 공식 API를 사용해서, members.json에 등록된 멤버들의 이번달
-별풍선 데이터를 뽑아 data/latest.json 으로 저장하는 스크립트.
+별풍선 합계와 방송시간(초)을 뽑아 data/latest.json 으로 저장하는 스크립트.
 
 이 API는 풍고 운영진에게 정식으로 이용 허가를 받아 사용 중이며 (문의 회신 기준),
 ids 파라미터에 아이디를 콤마로 최대 300개까지 묶어 한 번에 조회할 수 있다.
@@ -68,14 +68,14 @@ def _chunked(seq: list, size: int):
 
 def fetch_poonggo_monthly(year: int, month: int, ids: list):
     """
-    풍고 월별 API를 호출해 {SOOP아이디: 별풍선합계} 딕셔너리를 반환.
-    ids가 300개를 넘으면 여러 번 나눠서 호출한다. 실패 시 None 반환.
+    풍고 월별 API를 호출해 {SOOP아이디: {"balloons": 별풍선합계, "broadcast_seconds": 방송시간(초)}}
+    딕셔너리를 반환한다. ids가 300개를 넘으면 여러 번 나눠서 호출한다. 실패 시 None 반환.
     """
     if not ids:
         return {}
 
     date_str = f"{year:04d}-{month:02d}-01"
-    balloon_by_id = {}
+    data_by_id = {}
 
     for chunk in _chunked(ids, IDS_PER_REQUEST):
         ids_param = ",".join(chunk)
@@ -107,9 +107,12 @@ def fetch_poonggo_monthly(year: int, month: int, ids: list):
         for entry in entries:
             member_id = entry.get("id")
             if member_id:
-                balloon_by_id[member_id] = _to_int(entry.get("amt"))
+                data_by_id[member_id] = {
+                    "balloons": _to_int(entry.get("amt")),
+                    "broadcast_seconds": _to_int(entry.get("broadTime")),
+                }
 
-    return balloon_by_id
+    return data_by_id
 
 
 def archive_previous_month_if_needed(new_year: int, new_month: int, all_ids: list):
@@ -143,17 +146,18 @@ def archive_previous_month_if_needed(new_year: int, new_month: int, all_ids: lis
         return  # 이미 보관 완료된 달이면 다시 건드리지 않음
 
     print(f"[보관] {prev_year}년 {prev_month}월 확정 데이터 재조회 중...")
-    balloon_by_id = fetch_poonggo_monthly(prev_year, prev_month, all_ids)
+    data_by_id = fetch_poonggo_monthly(prev_year, prev_month, all_ids)
 
-    if balloon_by_id is not None:
+    if data_by_id is not None:
         updated_count = 0
         for m in prev.get("members", []):
             member_id = m.get("id")
-            if member_id and member_id in balloon_by_id:
-                new_value = balloon_by_id[member_id]
-                if new_value != m.get("balloons"):
+            if member_id and member_id in data_by_id:
+                new_data = data_by_id[member_id]
+                if new_data["balloons"] != m.get("balloons") or new_data["broadcast_seconds"] != m.get("broadcast_seconds"):
                     updated_count += 1
-                m["balloons"] = new_value
+                m["balloons"] = new_data["balloons"]
+                m["broadcast_seconds"] = new_data["broadcast_seconds"]
         prev["updated_at"] = kst_now().strftime(DATETIME_FORMAT) + " (말일 확정치)"
         print(f"[보관] 확정치로 갱신된 인원: {updated_count}명")
     else:
@@ -181,19 +185,19 @@ def main():
     archive_previous_month_if_needed(year, month, all_ids)
 
     print(f"풍고 API 요청 중... ({year}년 {month}월, {len(all_ids)}명)")
-    balloon_by_id = fetch_poonggo_monthly(year, month, all_ids)
-    if balloon_by_id is None:
-        raise SystemExit(f"[오류] {year}년 {month}월 별풍선 데이터를 가져오지 못했습니다.")
+    data_by_id = fetch_poonggo_monthly(year, month, all_ids)
+    if data_by_id is None:
+        raise SystemExit(f"[오류] {year}년 {month}월 데이터를 가져오지 못했습니다.")
 
-    print(f"전체 {len(balloon_by_id)}명의 데이터 수신 완료")
+    print(f"전체 {len(data_by_id)}명의 데이터 수신 완료")
 
     not_found = []
     out_members = []
 
     for m in members:
         member_id = m.get("id")
-        balloons = balloon_by_id.get(member_id, 0) if member_id else 0
-        if member_id and member_id not in balloon_by_id:
+        member_data = data_by_id.get(member_id) if member_id else None
+        if member_id and member_data is None:
             not_found.append(f"{m['nickname']}({member_id})")
 
         out_members.append({
@@ -203,7 +207,8 @@ def main():
             "birthdate": m.get("birthdate"),
             "role": m.get("role"),
             "team": m.get("team"),
-            "balloons": balloons,
+            "balloons": member_data["balloons"] if member_data else 0,
+            "broadcast_seconds": member_data["broadcast_seconds"] if member_data else 0,
         })
 
     if not_found:

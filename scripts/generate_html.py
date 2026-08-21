@@ -1,8 +1,13 @@
 """
-data/latest.json (이번 달) 과 data/archive/*.json (과거 달)을 읽어서
-docs/index.html (이번 달) + docs/archive/YYYY-MM.html (과거 달) 로 렌더링하는 스크립트.
-추가로 SINGLE_TEAM_PAGES에 지정된 팀만 docs/teams/{팀이름}.html (이번 달) +
-docs/teams/{팀이름}__YYYY-MM.html (과거 달) 단독 페이지로도 생성한다.
+data/latest.json (이번 달) 과 data/archive/*.json (과거 달)을 읽어서, 지표별(별풍선/방송시간)로
+docs/index.html·docs/broadcast.html (이번 달) + docs/archive/YYYY-MM.html·
+docs/archive-broadcast/YYYY-MM.html (과거 달) 로 렌더링하는 스크립트.
+추가로 SINGLE_TEAM_PAGES에 지정된 팀만 docs/teams/{팀이름}[-broadcast].html (이번 달) +
+docs/teams/{팀이름}[-broadcast]__YYYY-MM.html (과거 달) 단독 페이지로도 생성한다.
+
+별풍선(BALLOON_METRIC)과 방송시간(BROADCAST_METRIC) 페이지는 레이아웃이 동일하지만,
+방송시간 페이지는 수장/전력외 직책도 합계·평균 집계에 포함한다는 점만 다르다
+(Metric.exclude_roles 값으로 제어).
 
 과거 달 데이터는 fetch_data.py가 달이 바뀔 때 그 달 기준으로 API를 한 번 더 호출해
 확정된 별풍선 값으로 갱신한 뒤 data/archive/에 보관해둔 것 - 그 시점의 team/gender/role이
@@ -26,6 +31,8 @@ DATA_PATH = ROOT / "data" / "latest.json"
 ARCHIVE_DIR = ROOT / "data" / "archive"
 OUTPUT_PATH = ROOT / "docs" / "index.html"
 OUTPUT_ARCHIVE_DIR = ROOT / "docs" / "archive"
+OUTPUT_BROADCAST_PATH = ROOT / "docs" / "broadcast.html"
+OUTPUT_ARCHIVE_BROADCAST_DIR = ROOT / "docs" / "archive-broadcast"
 OUTPUT_TEAMS_DIR = ROOT / "docs" / "teams"
 LOGOS_DIR = ROOT / "docs" / "logos"
 
@@ -38,15 +45,16 @@ ARCHIVE_BANNER_HTML = "<div class='archive-banner'>📁 이 페이지는 지난 
 
 
 def normalize_balloons(members: list) -> list:
-    """balloons 값이 문자열 등으로 저장돼있어도 항상 int로 안전하게 맞춰준다
-    (크롤링 스크립트가 정수로 저장해도, 예전 데이터 파일이 남아있는 경우 대비)."""
+    """balloons/broadcast_seconds 값이 문자열 등으로 저장돼있어도 항상 int로 안전하게
+    맞춰준다 (크롤링 스크립트가 정수로 저장해도, 예전 데이터 파일이 남아있는 경우 대비)."""
     for m in members:
-        raw = m.get("balloons", 0)
-        if not isinstance(raw, int):
-            try:
-                m["balloons"] = int(str(raw).replace(",", "").strip() or 0)
-            except (ValueError, TypeError):
-                m["balloons"] = 0
+        for field in ("balloons", "broadcast_seconds"):
+            raw = m.get(field, 0)
+            if not isinstance(raw, int):
+                try:
+                    m[field] = int(str(raw).replace(",", "").strip() or 0)
+                except (ValueError, TypeError):
+                    m[field] = 0
     return members
 
 # 모든 페이지가 공유하는 스타일. f-string이 아니라 일반 문자열이라 중괄호를 그대로 쓴다.
@@ -292,6 +300,38 @@ def fmt(n: int) -> str:
     return f"{n:,}"
 
 
+def format_broadcast_time(seconds: int) -> str:
+    hours = seconds // 3600
+    minutes = (seconds % 3600) // 60
+    secs = seconds % 60
+    return f"{hours:03d}:{minutes:02d}:{secs:02d}"
+
+
+class Metric:
+    """페이지가 다루는 지표(별풍선/방송시간)를 표현. 값 필드명, 집계시 직책 제외 여부,
+    표시용 포맷터, 표에 쓸 이름을 갖는다. 새 지표를 추가하고 싶으면 이 클래스의
+    인스턴스를 하나 더 만들면 된다."""
+
+    def __init__(self, field: str, exclude_roles: bool, format_fn, unit_label: str):
+        self.field = field
+        self.exclude_roles = exclude_roles
+        self.format_fn = format_fn
+        self.unit_label = unit_label
+
+    def raw_value(self, m) -> int:
+        return m.get(self.field, 0) or 0
+
+    def text(self, m) -> str:
+        v = self.raw_value(m)
+        return self.format_fn(v) if v else ""
+
+
+# 별풍선 페이지(기존): 수장/전력외 직책은 집계에서 제외
+BALLOON_METRIC = Metric(field="balloons", exclude_roles=True, format_fn=fmt, unit_label="별풍선")
+# 방송시간 페이지(신규): 수장/전력외도 집계에 포함
+BROADCAST_METRIC = Metric(field="broadcast_seconds", exclude_roles=False, format_fn=format_broadcast_time, unit_label="방송시간")
+
+
 def parse_birthdate(bd):
     if not bd:
         return None
@@ -302,13 +342,15 @@ def parse_birthdate(bd):
         return None
 
 
-def is_counted(m):
-    return m.get("role") not in EXCLUDED_ROLES and m["balloons"] != 0
+def is_counted(m, metric: Metric = BALLOON_METRIC):
+    if metric.exclude_roles and m.get("role") in EXCLUDED_ROLES:
+        return False
+    return metric.raw_value(m) != 0
 
 
-def compute_percentile_tiers(members: list):
-    pool = [m for m in members if is_counted(m)]
-    ranked = sorted(pool, key=lambda m: -m["balloons"])
+def compute_percentile_tiers(members: list, metric: Metric = BALLOON_METRIC):
+    pool = [m for m in members if is_counted(m, metric)]
+    ranked = sorted(pool, key=lambda m: -metric.raw_value(m))
     n = len(ranked)
     if n == 0:
         return {}
@@ -336,17 +378,17 @@ def group_teams(members: list) -> OrderedDict:
     return teams
 
 
-def team_total_avg(team_members: list) -> int:
-    """전체 평균 계산 - build_team_card와 동일 로직(수장/전력외/0값 제외)"""
-    counted = [m for m in team_members if is_counted(m)]
-    total_sum = sum(m["balloons"] for m in counted)
+def team_total_avg(team_members: list, metric: Metric = BALLOON_METRIC) -> int:
+    """전체 평균 계산 - build_team_card와 동일 로직(지표별 집계 규칙 적용)"""
+    counted = [m for m in team_members if is_counted(m, metric)]
+    total_sum = sum(metric.raw_value(m) for m in counted)
     return round(total_sum / len(counted)) if counted else 0
 
 
-def compute_team_ranks(members: list) -> dict:
+def compute_team_ranks(members: list, metric: Metric = BALLOON_METRIC) -> dict:
     """팀별 전체 평균 기준 순위 (1위가 가장 높음)"""
     teams = group_teams(members)
-    avgs = [(team_name, team_total_avg(team_members)) for team_name, team_members in teams.items()]
+    avgs = [(team_name, team_total_avg(team_members, metric)) for team_name, team_members in teams.items()]
     avgs.sort(key=lambda x: -x[1])
     return {team_name: idx + 1 for idx, (team_name, _) in enumerate(avgs)}
 
@@ -357,7 +399,7 @@ def previous_month_slug(year: int, month: int) -> str:
     return f"{year:04d}-{month - 1:02d}"
 
 
-def load_previous_ranks(year: int, month: int):
+def load_previous_ranks(year: int, month: int, metric: Metric = BALLOON_METRIC):
     """해당 연/월의 '전달'에 해당하는 보관 데이터를 찾아 팀 순위를 계산. 없으면 None."""
     slug = previous_month_slug(year, month)
     path = ARCHIVE_DIR / f"{slug}.json"
@@ -365,7 +407,7 @@ def load_previous_ranks(year: int, month: int):
         return None
     with open(path, "r", encoding="utf-8") as f:
         prev_data = json.load(f)
-    return compute_team_ranks(normalize_balloons(prev_data["members"]))
+    return compute_team_ranks(normalize_balloons(prev_data["members"]), metric)
 
 
 def rank_change_badge(current_rank: int, prev_ranks, team_name: str) -> str:
@@ -394,6 +436,7 @@ def name_cell(m, current_month):
 
 
 def value_class(m, tiers):
+    """수장/전력외는 집계 제외 여부와 무관하게 항상 시각적으로 강조(빨간 배경)한다."""
     classes = []
     if m.get("role") in EXCLUDED_ROLES:
         classes.append("excluded")
@@ -401,10 +444,6 @@ def value_class(m, tiers):
     if tier:
         classes.append(tier)
     return " ".join(classes)
-
-
-def value_text(m):
-    return fmt(m["balloons"]) if m["balloons"] != 0 else ""
 
 
 def team_logo_html(team_name: str, logo_prefix: str) -> str:
@@ -417,19 +456,19 @@ def team_logo_html(team_name: str, logo_prefix: str) -> str:
 
 
 def build_team_card(team_name: str, members: list, current_month: int, tiers: dict,
-                     logo_prefix: str = "", rank_badge: str = ""):
-    males_all = sorted([m for m in members if m["gender"] == "m"], key=lambda x: -x["balloons"])
-    females_all = sorted([m for m in members if m["gender"] == "f"], key=lambda x: -x["balloons"])
+                     logo_prefix: str = "", rank_badge: str = "", metric: Metric = BALLOON_METRIC):
+    males_all = sorted([m for m in members if m["gender"] == "m"], key=lambda x: -metric.raw_value(x))
+    females_all = sorted([m for m in members if m["gender"] == "f"], key=lambda x: -metric.raw_value(x))
 
-    males_counted = [m for m in males_all if is_counted(m)]
-    females_counted = [m for m in females_all if is_counted(m)]
+    males_counted = [m for m in males_all if is_counted(m, metric)]
+    females_counted = [m for m in females_all if is_counted(m, metric)]
 
-    male_sum = sum(m["balloons"] for m in males_counted)
-    female_sum = sum(m["balloons"] for m in females_counted)
+    male_sum = sum(metric.raw_value(m) for m in males_counted)
+    female_sum = sum(metric.raw_value(m) for m in females_counted)
     total_sum = male_sum + female_sum
     male_avg = round(male_sum / len(males_counted)) if males_counted else 0
     female_avg = round(female_sum / len(females_counted)) if females_counted else 0
-    total_avg = team_total_avg(members)  # 순위 계산과 동일한 공식(team_total_avg)을 그대로 재사용
+    total_avg = team_total_avg(members, metric)  # 순위 계산과 동일한 공식(team_total_avg)을 그대로 재사용
 
     max_rows = max(len(males_all), len(females_all), 1)
 
@@ -438,7 +477,7 @@ def build_team_card(team_name: str, members: list, current_month: int, tiers: di
         if i < len(males_all):
             m = males_all[i]
             m_name = f"<td class='name-td'>{name_cell(m, current_month)}</td>"
-            m_val = f"<td class='num {value_class(m, tiers)}'>{value_text(m)}</td>"
+            m_val = f"<td class='num {value_class(m, tiers)}'>{metric.text(m)}</td>"
         else:
             m_name = "<td class='name-td empty'></td>"
             m_val = "<td class='num empty'></td>"
@@ -446,7 +485,7 @@ def build_team_card(team_name: str, members: list, current_month: int, tiers: di
         if i < len(females_all):
             f_ = females_all[i]
             f_name = f"<td class='name-td'>{name_cell(f_, current_month)}</td>"
-            f_val = f"<td class='num {value_class(f_, tiers)}'>{value_text(f_)}</td>"
+            f_val = f"<td class='num {value_class(f_, tiers)}'>{metric.text(f_)}</td>"
         else:
             f_name = "<td class='name-td empty'></td>"
             f_val = "<td class='num empty'></td>"
@@ -460,16 +499,16 @@ def build_team_card(team_name: str, members: list, current_month: int, tiers: di
 
     summary_html = f"""
       <tr class="summary-row">
-        <td>남자 합계</td><td class="num">{fmt(male_sum)}</td>
-        <td>여자 합계</td><td class="num">{fmt(female_sum)}</td>
+        <td>남자 합계</td><td class="num">{metric.format_fn(male_sum)}</td>
+        <td>여자 합계</td><td class="num">{metric.format_fn(female_sum)}</td>
       </tr>
       <tr class="summary-row">
-        <td>남자 평균</td><td class="num">{fmt(male_avg)}</td>
-        <td>여자 평균</td><td class="num female-avg">{fmt(female_avg)}</td>
+        <td>남자 평균</td><td class="num">{metric.format_fn(male_avg)}</td>
+        <td>여자 평균</td><td class="num female-avg">{metric.format_fn(female_avg)}</td>
       </tr>
       <tr class="summary-row">
-        <td>전체 합계</td><td class="num total-sum">{fmt(total_sum)}</td>
-        <td>전체 평균</td><td class="num total-avg">{fmt(total_avg)}</td>
+        <td>전체 합계</td><td class="num total-sum">{metric.format_fn(total_sum)}</td>
+        <td>전체 평균</td><td class="num total-avg">{metric.format_fn(total_avg)}</td>
       </tr>
       <tr class="summary-row">
         <td class="personnel-label">인원</td>
@@ -494,7 +533,7 @@ def build_team_card(team_name: str, members: list, current_month: int, tiers: di
       <table>
         <thead>
           <tr><th colspan="4" class="team-name-row">{name_row_inner}</th></tr>
-          <tr><th class="col-header">남자 멤버</th><th class="col-header">별풍선</th><th class="col-header">여자 멤버</th><th class="col-header">별풍선</th></tr>
+          <tr><th class="col-header">남자 멤버</th><th class="col-header">{metric.unit_label}</th><th class="col-header">여자 멤버</th><th class="col-header">{metric.unit_label}</th></tr>
         </thead>
         <tbody>
           {body_html}
@@ -541,17 +580,20 @@ def _build_select_html(archive_slugs: list, current_year: int, current_month: in
 
 
 def build_month_select(archive_slugs: list, current_year: int, current_month: int,
-                        active_slug: str, is_archive_page: bool) -> str:
-    """상단 왼쪽 'YYYY년 MM월' 자리를 대신하는 전체 페이지용 월 선택 드롭다운"""
+                        active_slug: str, is_archive_page: bool,
+                        base_name: str = "index", archive_dir: str = "archive") -> str:
+    """상단 왼쪽 'YYYY년 MM월' 자리를 대신하는 전체 페이지용 월 선택 드롭다운.
+    base_name/archive_dir로 별풍선(index/archive) vs 방송시간(broadcast/archive-broadcast)
+    페이지 세트를 구분한다."""
     return _build_select_html(
         archive_slugs, current_year, current_month, active_slug,
-        current_href_fn=lambda: "../index.html" if is_archive_page else "index.html",
-        archive_href_fn=lambda slug: f"{slug}.html" if is_archive_page else f"archive/{slug}.html",
+        current_href_fn=lambda: f"../{base_name}.html" if is_archive_page else f"{base_name}.html",
+        archive_href_fn=lambda slug: f"{slug}.html" if is_archive_page else f"{archive_dir}/{slug}.html",
     )
 
 
 def page_shell(*, top_bar_html: str, body_html: str, extra_banner: str = "",
-               include_mobile_css: bool = True) -> str:
+               include_mobile_css: bool = True, title: str = "팀별 별풍선 랭킹") -> str:
     """모든 페이지 공통 뼈대 (head/style/legend). 팀 단독 페이지는 카드 1개뿐이라
     모바일 압축 스타일이 필요없어서 include_mobile_css=False로 뺄 수 있음."""
     style = PAGE_CSS + (MOBILE_CSS if include_mobile_css else "")
@@ -560,7 +602,7 @@ def page_shell(*, top_bar_html: str, body_html: str, extra_banner: str = "",
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>팀별 별풍선 랭킹</title>
+<title>{title}</title>
 <style>
 {style}
 </style>
@@ -582,23 +624,25 @@ def page_shell(*, top_bar_html: str, body_html: str, extra_banner: str = "",
 
 
 def render_page(data: dict, archive_slugs: list, current_year: int, current_month: int,
-                 is_archive: bool = False) -> str:
+                 is_archive: bool = False, metric: Metric = BALLOON_METRIC,
+                 base_name: str = "index", archive_dir: str = "archive") -> str:
     active_slug = f"{data['year']:04d}-{data['month']:02d}"
-    month_select_html = build_month_select(archive_slugs, current_year, current_month, active_slug, is_archive)
+    month_select_html = build_month_select(archive_slugs, current_year, current_month, active_slug, is_archive,
+                                            base_name=base_name, archive_dir=archive_dir)
 
     members = data["members"]
     teams = group_teams(members)
-    tiers = compute_percentile_tiers(members)
+    tiers = compute_percentile_tiers(members, metric)
 
     logo_prefix = "../" if is_archive else ""
 
-    current_ranks = compute_team_ranks(members)
-    prev_ranks = load_previous_ranks(data["year"], data["month"])
+    current_ranks = compute_team_ranks(members, metric)
+    prev_ranks = load_previous_ranks(data["year"], data["month"], metric)
 
     team_cards = []
     for team_name, team_members in teams.items():
         badge = rank_change_badge(current_ranks[team_name], prev_ranks, team_name)
-        avg, html = build_team_card(team_name, team_members, data["month"], tiers, logo_prefix, badge)
+        avg, html = build_team_card(team_name, team_members, data["month"], tiers, logo_prefix, badge, metric)
         team_cards.append((avg, html))
 
     team_cards.sort(key=lambda x: -x[0])
@@ -622,7 +666,8 @@ def render_page(data: dict, archive_slugs: list, current_year: int, current_mont
 
     banner = ARCHIVE_BANNER_HTML if is_archive else ""
 
-    return page_shell(top_bar_html=top_bar_html, body_html=body_html, extra_banner=banner)
+    return page_shell(top_bar_html=top_bar_html, body_html=body_html, extra_banner=banner,
+                       title=f"팀별 {metric.unit_label} 랭킹")
 
 
 def build_team_month_select(team_name: str, archive_slugs: list, current_year: int, current_month: int,
@@ -631,25 +676,35 @@ def build_team_month_select(team_name: str, archive_slugs: list, current_year: i
     팀 단독 페이지용 월 선택 드롭다운. 같은 docs/teams/ 폴더 안에 파일명으로만
     구분해서 저장하므로(이번달: {팀}.html, 과거달: {팀}__YYYY-MM.html) 상대경로 계산이 필요없다.
     """
+def build_team_month_select(team_name: str, archive_slugs: list, current_year: int, current_month: int,
+                             active_slug: str, file_suffix: str = "") -> str:
+    """
+    팀 단독 페이지용 월 선택 드롭다운. 같은 docs/teams/ 폴더 안에 파일명으로만
+    구분해서 저장하므로(이번달: {팀}{suffix}.html, 과거달: {팀}{suffix}__YYYY-MM.html)
+    상대경로 계산이 필요없다. file_suffix로 별풍선("")/방송시간("-broadcast") 페이지를 구분한다.
+    """
     return _build_select_html(
         archive_slugs, current_year, current_month, active_slug,
-        current_href_fn=lambda: f"{team_name}.html",
-        archive_href_fn=lambda slug: f"{team_name}__{slug}.html",
+        current_href_fn=lambda: f"{team_name}{file_suffix}.html",
+        archive_href_fn=lambda slug: f"{team_name}{file_suffix}__{slug}.html",
     )
 
 
 def render_team_page(data: dict, team_name: str, team_members: list, tiers: dict,
                       archive_slugs: list, current_year: int, current_month: int,
-                      is_archive: bool = False) -> str:
+                      is_archive: bool = False, metric: Metric = BALLOON_METRIC,
+                      file_suffix: str = "") -> str:
     """특정 팀 하나만 담은 단독 페이지. iframe으로 그 팀만 따로 게시할 때 사용."""
     active_slug = f"{data['year']:04d}-{data['month']:02d}"
-    month_select_html = build_team_month_select(team_name, archive_slugs, current_year, current_month, active_slug)
+    month_select_html = build_team_month_select(team_name, archive_slugs, current_year, current_month, active_slug,
+                                                 file_suffix=file_suffix)
 
-    current_ranks = compute_team_ranks(data["members"])
-    prev_ranks = load_previous_ranks(data["year"], data["month"])
+    current_ranks = compute_team_ranks(data["members"], metric)
+    prev_ranks = load_previous_ranks(data["year"], data["month"], metric)
     badge = rank_change_badge(current_ranks[team_name], prev_ranks, team_name)
 
-    _, card_html = build_team_card(team_name, team_members, data["month"], tiers, logo_prefix="../", rank_badge=badge)
+    _, card_html = build_team_card(team_name, team_members, data["month"], tiers, logo_prefix="../",
+                                    rank_badge=badge, metric=metric)
 
     top_bar_html = f"""
   <div class="top-bar">
@@ -667,18 +722,19 @@ def render_team_page(data: dict, team_name: str, team_members: list, tiers: dict
     banner = ARCHIVE_BANNER_HTML if is_archive else ""
 
     return page_shell(top_bar_html=top_bar_html, body_html=body_html, extra_banner=banner,
-                       include_mobile_css=False)
+                       include_mobile_css=False, title=f"{team_name} {metric.unit_label}")
 
 
 def generate_team_pages(data: dict, is_archive: bool, archive_slugs: list,
-                         current_year: int, current_month: int):
+                         current_year: int, current_month: int,
+                         metric: Metric = BALLOON_METRIC, file_suffix: str = ""):
     """SINGLE_TEAM_PAGES에 지정된 팀들만 docs/teams/ 에 단독 페이지로 생성"""
     if not SINGLE_TEAM_PAGES:
         return
 
     members = data["members"]
     teams = group_teams(members)
-    tiers = compute_percentile_tiers(members)
+    tiers = compute_percentile_tiers(members, metric)
     slug = f"{data['year']:04d}-{data['month']:02d}"
 
     OUTPUT_TEAMS_DIR.mkdir(parents=True, exist_ok=True)
@@ -691,8 +747,9 @@ def generate_team_pages(data: dict, is_archive: bool, archive_slugs: list,
         html = render_team_page(
             data, team_name, team_members, tiers,
             archive_slugs, current_year, current_month, is_archive=is_archive,
+            metric=metric, file_suffix=file_suffix,
         )
-        filename = f"{team_name}.html" if not is_archive else f"{team_name}__{slug}.html"
+        filename = f"{team_name}{file_suffix}.html" if not is_archive else f"{team_name}{file_suffix}__{slug}.html"
         out_path = OUTPUT_TEAMS_DIR / filename
         with open(out_path, "w", encoding="utf-8") as f:
             f.write(html)
@@ -702,7 +759,7 @@ def generate_team_pages(data: dict, is_archive: bool, archive_slugs: list,
 def main():
     archive_slugs = list_archive_slugs()
 
-    # 이번 달 페이지
+    # 이번 달 데이터 로드
     if not DATA_PATH.exists():
         raise SystemExit(f"[오류] {DATA_PATH} 가 없습니다. 먼저 fetch_data.py를 실행하세요.")
 
@@ -712,35 +769,46 @@ def main():
 
     current_year, current_month = current_data["year"], current_data["month"]
 
-    html = render_page(current_data, archive_slugs, current_year, current_month, is_archive=False)
+    # 지표별로 (전체 페이지 출력경로, 과거달 폴더, 파일명 베이스, 과거달 폴더명, 팀페이지 파일명 접미사)
+    page_sets = [
+        (BALLOON_METRIC, OUTPUT_PATH, OUTPUT_ARCHIVE_DIR, "index", "archive", ""),
+        (BROADCAST_METRIC, OUTPUT_BROADCAST_PATH, OUTPUT_ARCHIVE_BROADCAST_DIR, "broadcast", "archive-broadcast", "-broadcast"),
+    ]
 
-    OUTPUT_PATH.parent.mkdir(parents=True, exist_ok=True)
-    with open(OUTPUT_PATH, "w", encoding="utf-8") as f:
-        f.write(html)
-    print(f"완료: {OUTPUT_PATH} 생성됨")
+    for metric, output_path, output_archive_dir, base_name, archive_dir_name, file_suffix in page_sets:
+        # 이번 달 전체 페이지
+        html = render_page(current_data, archive_slugs, current_year, current_month, is_archive=False,
+                            metric=metric, base_name=base_name, archive_dir=archive_dir_name)
+        output_path.parent.mkdir(parents=True, exist_ok=True)
+        with open(output_path, "w", encoding="utf-8") as f:
+            f.write(html)
+        print(f"완료: {output_path} 생성됨")
 
-    # 팀별 단독 페이지 (이번 달)
-    generate_team_pages(current_data, is_archive=False, archive_slugs=archive_slugs,
-                         current_year=current_year, current_month=current_month)
+        # 팀별 단독 페이지 (이번 달)
+        generate_team_pages(current_data, is_archive=False, archive_slugs=archive_slugs,
+                             current_year=current_year, current_month=current_month,
+                             metric=metric, file_suffix=file_suffix)
 
-    # 과거 달 페이지들 (전체 페이지 + 팀별 단독 페이지)
-    if archive_slugs:
-        OUTPUT_ARCHIVE_DIR.mkdir(parents=True, exist_ok=True)
-        for slug in archive_slugs:
-            archive_json_path = ARCHIVE_DIR / f"{slug}.json"
-            with open(archive_json_path, "r", encoding="utf-8") as f:
-                archive_data = json.load(f)
-            archive_data["members"] = normalize_balloons(archive_data["members"])
+        # 과거 달 페이지들 (전체 페이지 + 팀별 단독 페이지)
+        if archive_slugs:
+            output_archive_dir.mkdir(parents=True, exist_ok=True)
+            for slug in archive_slugs:
+                archive_json_path = ARCHIVE_DIR / f"{slug}.json"
+                with open(archive_json_path, "r", encoding="utf-8") as f:
+                    archive_data = json.load(f)
+                archive_data["members"] = normalize_balloons(archive_data["members"])
 
-            a_html = render_page(archive_data, archive_slugs, current_year, current_month, is_archive=True)
+                a_html = render_page(archive_data, archive_slugs, current_year, current_month, is_archive=True,
+                                      metric=metric, base_name=base_name, archive_dir=archive_dir_name)
 
-            out_path = OUTPUT_ARCHIVE_DIR / f"{slug}.html"
-            with open(out_path, "w", encoding="utf-8") as f:
-                f.write(a_html)
-            print(f"완료: {out_path} 생성됨")
+                out_path = output_archive_dir / f"{slug}.html"
+                with open(out_path, "w", encoding="utf-8") as f:
+                    f.write(a_html)
+                print(f"완료: {out_path} 생성됨")
 
-            generate_team_pages(archive_data, is_archive=True, archive_slugs=archive_slugs,
-                                 current_year=current_year, current_month=current_month)
+                generate_team_pages(archive_data, is_archive=True, archive_slugs=archive_slugs,
+                                     current_year=current_year, current_month=current_month,
+                                     metric=metric, file_suffix=file_suffix)
 
 
 if __name__ == "__main__":

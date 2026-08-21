@@ -1,8 +1,9 @@
 # poong-stats
 
-풍고(poonggo.com)의 정식 API를 통해 팀별 멤버들의 이번 달 별풍선 데이터를 4시간마다 자동으로
-가져와서 표 페이지(`docs/index.html`)를 갱신하는 프로젝트입니다. 달이 바뀌면 그 이전
-달 데이터는 자동으로 보관되어 `docs/archive/YYYY-MM.html`에서 볼 수 있고,
+풍고(poonggo.com)의 정식 API를 통해 팀별 멤버들의 이번 달 **별풍선**과 **방송시간** 데이터를
+4시간마다 자동으로 가져와서 표 페이지(`docs/index.html`, `docs/broadcast.html`)를 갱신하는
+프로젝트입니다. 달이 바뀌면 그 이전 달 데이터는 자동으로 보관되어 각각
+`docs/archive/YYYY-MM.html`, `docs/archive-broadcast/YYYY-MM.html`에서 볼 수 있고,
 `SINGLE_TEAM_PAGES`에 지정한 팀은 `docs/teams/`에 그 팀만 담은 단독 페이지도 생성됩니다.
 
 ## 폴더 구조
@@ -11,24 +12,44 @@
 poong-stats/
 ├── data/
 │   ├── members.json      ← 팀-멤버 목록 (직접 관리하는 파일)
-│   ├── latest.json        ← 이번 달 크롤링 결과 (자동 생성)
+│   ├── latest.json        ← 이번 달 크롤링 결과 (자동 생성, 별풍선+방송시간 둘 다 포함)
 │   └── archive/
 │       └── YYYY-MM.json   ← 지난 달들의 스냅샷 (자동 생성, 그 당시 팀 구성 그대로 보존)
 ├── scripts/
 │   ├── fetch_data.py      ← 풍고 API 호출 + 월 전환 시 확정치 재조회 후 보관
-│   └── generate_html.py   ← latest.json/archive → index/archive/teams html 생성
+│   └── generate_html.py   ← latest.json/archive → 별풍선/방송시간 각각의 html 생성
 ├── docs/
-│   ├── index.html         ← 이번 달 전체 표 (GitHub Pages가 이 폴더를 서빙)
+│   ├── index.html         ← 이번 달 별풍선 전체 표 (GitHub Pages가 이 폴더를 서빙)
+│   ├── broadcast.html     ← 이번 달 방송시간 전체 표
 │   ├── archive/
-│   │   └── YYYY-MM.html   ← 지난 달 전체 표
+│   │   └── YYYY-MM.html   ← 지난 달 별풍선 전체 표
+│   ├── archive-broadcast/
+│   │   └── YYYY-MM.html   ← 지난 달 방송시간 전체 표
 │   ├── teams/
-│   │   ├── {팀이름}.html            ← 팀 단독 페이지 (이번 달)
-│   │   └── {팀이름}__YYYY-MM.html   ← 팀 단독 페이지 (지난 달)
+│   │   ├── {팀이름}.html                       ← 팀 단독 페이지, 별풍선 (이번 달)
+│   │   ├── {팀이름}__YYYY-MM.html               ← 팀 단독 페이지, 별풍선 (지난 달)
+│   │   ├── {팀이름}-broadcast.html              ← 팀 단독 페이지, 방송시간 (이번 달)
+│   │   └── {팀이름}-broadcast__YYYY-MM.html     ← 팀 단독 페이지, 방송시간 (지난 달)
 │   └── logos/
-│       └── {팀이름}.webp  ← 팀 로고 (있으면 자동 표시, 없으면 텍스트만)
+│       └── {팀이름}.webp  ← 팀 로고 (있으면 자동 표시, 없으면 텍스트만. 두 지표 페이지가 공용으로 사용)
 └── .github/workflows/
     └── update.yml          ← 4시간마다 자동 실행 설정
 ```
+
+## 별풍선 vs 방송시간 - 무엇이 다른가
+
+두 페이지는 레이아웃(팀별 카드, 남녀 표, 순위 변동 뱃지, 로고 등)은 완전히 같지만
+**합계/평균 집계에서 수장·전력외를 제외하는지 여부가 다릅니다**:
+
+| | 별풍선 (`index.html`) | 방송시간 (`broadcast.html`) |
+|---|---|---|
+| 수장/전력외 | 집계에서 **제외** (기존 방식 그대로) | 집계에 **포함** |
+| 0인 사람 | 집계에서 제외 | 집계에서 제외 |
+| 표시 형식 | 1,234,567 (콤마 구분) | 12시간 34분 |
+
+이 차이는 `scripts/generate_html.py`의 `BALLOON_METRIC`/`BROADCAST_METRIC` 정의에서
+`exclude_roles` 값으로 결정됩니다. 수장/전력외 값 칸은 두 페이지 모두 빨간 배경으로
+표시되지만(시각적 구분), 방송시간 페이지에서는 그 값이 합계/평균 계산에는 실제로 포함됩니다.
 
 ## 과거 데이터는 어떻게 보존되나요
 
@@ -51,9 +72,8 @@ poong-stats/
 
 ## 팀별 단독 페이지 (`docs/teams/`)
 
-`scripts/generate_html.py` 상단의 `SINGLE_TEAM_PAGES` 리스트에 있는 팀만
-`docs/teams/{팀이름}.html` (이번 달) + `docs/teams/{팀이름}__YYYY-MM.html` (지난 달)로
-따로 생성됩니다. 다른 팀도 단독 페이지가 필요하면 이 리스트에 이름만 추가하면 됩니다.
+`scripts/generate_html.py` 상단의 `SINGLE_TEAM_PAGES` 리스트에 있는 팀만 단독 페이지가
+생성됩니다 (별풍선/방송시간 둘 다). 다른 팀도 필요하면 이 리스트에 이름만 추가하면 됩니다.
 
 ```python
 SINGLE_TEAM_PAGES = ["캄몬스타즈"]
@@ -144,7 +164,9 @@ git push -u origin main
 
 특정 팀 하나만 올리고 싶으면 URL을 그 팀 페이지로 바꾸면 됩니다:
 ```
-url=https://본인아이디.github.io/poong-stats/teams/캄몬스타즈.html
+url=https://본인아이디.github.io/poong-stats/teams/캄몬스타즈.html          (별풍선)
+url=https://본인아이디.github.io/poong-stats/teams/캄몬스타즈-broadcast.html (방송시간)
+url=https://본인아이디.github.io/poong-stats/broadcast.html                (방송시간 전체)
 ```
 
 높이는 팀 개수/레이아웃에 맞게 조절하세요.
@@ -154,11 +176,14 @@ url=https://본인아이디.github.io/poong-stats/teams/캄몬스타즈.html
 ```bash
 python scripts/fetch_data.py
 python scripts/generate_html.py
-# docs/index.html, docs/archive/*.html, docs/teams/*.html 을 브라우저로 열어서 확인
+# docs/index.html, docs/broadcast.html, docs/archive*/*.html, docs/teams/*.html 을 브라우저로 열어서 확인
 ```
 
 ## 참고
 
-- 데이터 출처: 풍고(poonggo.com) 공식 API (`/api/monthly`, ids 파라미터로 최대 300명씩 일괄 조회 가능 - 사전에 이용 허가를 받아 사용 중)
-- 별풍선 값이 0이거나 직책이 수장/전력외인 멤버는 팀 합계·평균·상위 1%/5%/10% 계산에서 제외됩니다.
+- 데이터 출처: 풍고(poonggo.com) 공식 API (`/api/monthly`, ids 파라미터로 최대 300명씩 일괄 조회 가능,
+  응답에 별풍선(`amt`)과 방송시간(`broadTime`, 초)이 함께 들어있어 API 호출 1번으로 두 지표를 모두 얻음 -
+  사전에 이용 허가를 받아 사용 중)
+- 별풍선 페이지: 값이 0이거나 직책이 수장/전력외인 멤버는 팀 합계·평균·상위 1%/5%/10% 계산에서 제외됩니다.
+- 방송시간 페이지: 값이 0인 멤버만 제외되고, 수장/전력외는 집계에 포함됩니다.
 - 실행 주기는 KST 기준 오전 9시 / 오후 1시 / 오후 5시 / 오후 9시 / 새벽 1시 / 새벽 5시 (4시간마다)입니다.
