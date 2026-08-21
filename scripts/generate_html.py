@@ -151,7 +151,7 @@ PAGE_CSS = """
     user-select: none;
   }
   .top-meta {
-    font-size: 12px;
+    font-size: 10px;
     color: #a4a8b2;
     white-space: nowrap;
   }
@@ -221,7 +221,7 @@ PAGE_CSS = """
     text-overflow: ellipsis;
   }
   .team-count {
-    font-size: 12px;
+    font-size: 10px;
     color: #a4a8b2;
     font-weight: 500;
     white-space: nowrap;
@@ -263,14 +263,14 @@ PAGE_CSS = """
     align-items: center;
     padding: 8px 16px;
     border-left: 4px solid transparent;
-    min-height: 30px;
+    min-height: 28px;
   }
   .member-row.tier1 { border-left-color: #4a5ce0; background: #f4f6fe; }
   .member-row.tier5 { border-left-color: #1c9e6e; background: #effbf5; }
   .member-row.tier10 { border-left-color: #d9a71b; background: #fdf6e0; }
   .member-row.excluded { border-left-color: #d64545; background: #fdeaea; }
   .member-name {
-    font-size: 14px;
+    font-size: 12px;
     color: #3a3d47;
     font-weight: 700;
     display: flex;
@@ -285,9 +285,9 @@ PAGE_CSS = """
   .member-row.tier5 .member-name,
   .member-row.tier10 .member-name,
   .member-row.excluded .member-name { font-weight: 700; color: #1a1d29; }
-  .bday-mark { font-size: 10px; opacity: 0.75; flex-shrink: 0; }
+  .bday-mark { font-size: 8px; opacity: 0.75; flex-shrink: 0; }
   .member-value {
-    font-size: 14px;
+    font-size: 12px;
     color: #6b6f79;
     font-weight: 700;
     text-align: right;
@@ -318,7 +318,7 @@ PAGE_CSS = """
     min-width: 0;
   }
   .stat-label { font-size: 12px; color: #a4a8b2; margin-bottom: 4px; font-weight: 600; }
-  .stat-value { font-size: 16px; font-weight: 800; color: #1a1d29; font-variant-numeric: tabular-nums; }
+  .stat-value { font-size: 12px; font-weight: 800; color: #1a1d29; font-variant-numeric: tabular-nums; }
   .stat-card.female-avg { background: #d9f2f2; border: none; }
   .stat-card.female-avg .stat-label { color: #0e6b6b; }
   .stat-card.female-avg .stat-value { color: #0a4d4d; }
@@ -329,7 +329,7 @@ PAGE_CSS = """
   .legend {
     max-width: 1080px;
     margin: 16px auto 0;
-    font-size: 12px;
+    font-size: 10px;
     color: #a4a8b2;
     text-align: center;
   }
@@ -353,7 +353,7 @@ MOBILE_CSS = """
     .month-select-group { gap: 2px; }
     .top-date-select { font-size: 10px; }
     .nav-chevron { font-size: 7px; margin: 0 2px; }
-    .top-meta { font-size: 6px; white-space: normal; }
+    .top-meta { font-size: 5px; white-space: normal; }
     .grid {
       grid-template-columns: 1fr 1fr;
       gap: 8px;
@@ -364,19 +364,19 @@ MOBILE_CSS = """
     .team-header-left, .team-link { gap: 5px; }
     .team-logo { width: 14px; height: 14px; border-radius: 5px; }
     .team-name { font-size: 8px; }
-    .team-count { font-size: 6px; }
+    .team-count { font-size: 5px; }
     .rank-change { font-size: 6px; padding: 2px 6px; border-radius: 10px; }
     .member-col-label { font-size: 6px; padding: 5px 8px 4px; }
     .member-col-label .col-label-text, .member-col-label .unit-label { font-size: 6px; }
-    .member-row { padding: 4px 8px; min-height: 15px; border-left-width: 2px; }
-    .member-name { font-size: 7px; gap: 3px; }
-    .bday-mark { font-size: 5px; }
-    .member-value { font-size: 7px; padding-left: 4px; }
+    .member-row { padding: 4px 8px; min-height: 14px; border-left-width: 2px; }
+    .member-name { font-size: 6px; gap: 3px; }
+    .bday-mark { font-size: 4px; }
+    .member-value { font-size: 6px; padding-left: 4px; }
     .team-footer { padding: 6px 5px 7px; gap: 3px; }
     .stat-card { padding: 6px 4px; border-radius: 8px; }
     .stat-label { font-size: 6px; margin-bottom: 2px; }
-    .stat-value { font-size: 8px; }
-    .legend { font-size: 6px; margin-top: 8px; }
+    .stat-value { font-size: 6px; }
+    .legend { font-size: 5px; margin-top: 8px; }
     .legend span { margin: 0 4px; }
     .legend .sw { width: 6px; height: 6px; margin-right: 2px; }
   }
