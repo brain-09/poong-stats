@@ -6,64 +6,67 @@
 <title>엠비대 별풍선</title>
 <style>
 
-  @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&display=swap');
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;800;900&display=swap');
 
   * { box-sizing: border-box; }
 
   body {
     font-family: 'Noto Sans KR', -apple-system, "Malgun Gothic", sans-serif;
-    background: #f2f3f5;
+    background: #f4f5f7;
     margin: 0;
     padding: 24px 16px;
-    color: #222;
+    color: #1a1d29;
   }
   .top-bar {
     max-width: 1080px;
-    margin: 0 auto 18px;
+    margin: 0 auto 16px;
     background: #fff;
-    border: 1px solid #e2e4e9;
-    border-left: 5px solid #25528F;
-    border-radius: 8px;
-    padding: 14px 20px;
+    border-radius: 16px;
+    padding: 16px 20px;
     display: flex;
     justify-content: space-between;
     align-items: center;
     flex-wrap: wrap;
-    gap: 6px;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+    gap: 8px;
+    box-shadow: 0 1px 2px rgba(20,20,30,0.04), 0 4px 12px rgba(20,20,30,0.05);
   }
   .month-select-group {
     display: inline-flex;
     align-items: center;
-    gap: 6px;
+    gap: 2px;
   }
   .top-date-select {
-    font-size: 18px;
-    font-weight: 700;
-    color: #222;
+    font-size: 19px;
+    font-weight: 800;
+    color: #141821;
+    letter-spacing: -0.2px;
     border: none;
     background: transparent;
     cursor: pointer;
     font-family: inherit;
-    padding: 2px 16px 2px 0;
+    padding: 2px 0;
     appearance: none;
     -webkit-appearance: none;
     -moz-appearance: none;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23888' stroke-width='2' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
-    background-repeat: no-repeat;
-    background-position: right center;
-    background-size: 10px 7px;
   }
-  .top-date-select:hover { color: #25528F; }
+  .top-date-select:hover { color: #4a5ce0; }
+  .nav-chevron {
+    font-size: 12px;
+    color: #c2c5cc;
+    margin: 0 4px;
+    user-select: none;
+  }
   .top-meta {
-    font-size: 10px;
-    color: #888;
+    font-size: 11px;
+    color: #a4a8b2;
+    white-space: nowrap;
   }
   .source-link {
-    color: #888;
-    text-decoration: underline;
+    color: #4a5ce0;
+    font-weight: 600;
+    text-decoration: none;
   }
-  .source-link:hover { color: #25528F; }
+  .source-link:hover { text-decoration: underline; }
   .grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
@@ -77,138 +80,156 @@
   }
   .team-card {
     background: #fff;
-    border: 1px solid #e5e6ea;
-    border-radius: 10px;
-    padding: 10px;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
-  }
-  th.team-name-row {
-    background: #f7f8fa;
-    color: #222;
-    font-weight: 700;
-  }
-  .team-name-inner {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: 6px;
+    border-radius: 20px;
     overflow: hidden;
-    min-width: 0;
+    box-shadow: 0 1px 2px rgba(20,20,30,0.04), 0 8px 24px rgba(20,20,30,0.06);
   }
-  .team-link {
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    color: inherit;
-    text-decoration: none;
-  }
-  .team-link:hover { text-decoration: underline; }
-  .team-name-flex {
+  .team-card-topbar { height: 4px; background: #4a5ce0; }
+  .team-header {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: 6px;
-    flex-wrap: nowrap;
-    overflow: hidden;
+    padding: 16px 20px;
+    border-bottom: 1px solid #f2f3f5;
+    gap: 8px;
+    flex-wrap: wrap;
   }
-  .rank-change {
-    font-size: 11px;
-    font-weight: 700;
-    padding: 1px 7px;
-    border-radius: 10px;
-    white-space: nowrap;
+  .team-header-left {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    min-width: 0;
   }
-  .rank-change.up { color: #1a7f37; background: #e6f4ea; }
-  .rank-change.down { color: #c0392b; background: #fdeaea; }
-  .rank-change.same { color: #888; background: #eceef1; }
-  .rank-change.new { color: #25528F; background: #e3e7fb; }
+  .team-link {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    min-width: 0;
+    color: inherit;
+    text-decoration: none;
+  }
+  .team-link:hover .team-name { text-decoration: underline; }
   .team-logo {
-    height: 14px;
-    width: 14px;
+    width: 22px;
+    height: 22px;
+    border-radius: 7px;
     object-fit: contain;
-    vertical-align: middle;
+    flex-shrink: 0;
   }
-  th.col-header {
-    background: #25528F;
-    color: #fff;
-  }
-  table {
-    width: 100%;
-    border-collapse: collapse;
-    font-size: 11px;
-    table-layout: fixed;
-  }
-  th, td {
-    border: 1px solid #eceef1;
-    padding: 3px 4px;
-    text-align: center;
-    vertical-align: middle;
-    height: 25px;
+  .team-name {
+    font-size: 16px;
+    font-weight: 800;
+    color: #141821;
+    letter-spacing: -0.2px;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
   }
-  th {
-    background: #f7f8fa;
-    font-weight: 700;
-    color: #555;
-  }
-  td.name-td {
-    text-align: center;
-    background: #f7f8fa;
-  }
-  .name-cell {
-    position: relative;
-    text-align: center;
-    min-height: 14px;
-  }
-  .name-left { white-space: nowrap; font-weight: 700; }
-  .bday-mark {
-    position: absolute;
-    right: 0;
-    top: 50%;
-    transform: translateY(-50%);
-    font-size: 9px;
-  }
-
-  td.num {
-    text-align: center;
-    font-variant-numeric: tabular-nums;
-    font-weight: 500;
-  }
-  td.empty { background: #fff; }
-
-  td.excluded {
-    background: #fadada !important;
-    color: #222;
-    font-weight: 700;
-  }
-  td.tier1, td.tier5, td.tier10 { font-weight: 700; }
-  td.tier1 { background: #d6e9fb; }
-  td.tier5 { background: #dcefdd; }
-  td.tier10 { background: #fbf3cf; }
-  td.excluded.tier1, td.excluded.tier5, td.excluded.tier10 {
-    background: #fadada !important;
-  }
-
-  tr.summary-row td {
+  .team-count {
     font-size: 11px;
-    background: #fafbfc;
-    font-weight: 600;
-    text-align: center;
-    height: 25px;
-    vertical-align: middle;
+    color: #a4a8b2;
+    font-weight: 500;
+    white-space: nowrap;
   }
-  td.total-sum, td.total-avg { background: #CDD7F5 !important; font-weight: 700; }
-  td.female-avg { background: #CDE1E1 !important; font-weight: 700; }
-  td.personnel-label { background: #f7f8fa !important; }
-  td.personnel-value { background: #ffffff !important; }
+  .rank-change {
+    font-size: 11px;
+    font-weight: 700;
+    padding: 4px 10px;
+    border-radius: 20px;
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+  .rank-change.up { color: #0f8a4c; background: #e6f8ee; }
+  .rank-change.down { color: #c0392b; background: #fdeaea; }
+  .rank-change.same { color: #888; background: #eceef1; }
+  .rank-change.new { color: #4a5ce0; background: #e6e9fb; }
+
+  .member-columns {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+  .member-col:first-child { border-right: 1px solid #f2f3f5; }
+  .member-col-label {
+    font-size: 10.5px;
+    font-weight: 700;
+    color: #a4a8b2;
+    letter-spacing: 0.3px;
+    padding: 10px 16px 8px;
+    background: #fafbfc;
+  }
+  .member-col-label .unit-label { color: #c2c5cc; font-weight: 500; margin-left: 4px; }
+  .member-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 16px;
+    border-left: 3px solid transparent;
+    min-height: 34px;
+  }
+  .member-row.tier1 { border-left-color: #4a5ce0; background: #f4f6fe; }
+  .member-row.tier5 { border-left-color: #1c9e6e; background: #effbf5; }
+  .member-row.tier10 { border-left-color: #d9a71b; background: #fdf6e0; }
+  .member-row.excluded { border-left-color: #d64545; background: #fdeaea; }
+  .member-name {
+    font-size: 13px;
+    color: #3a3d47;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    min-width: 0;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
+  .member-row.tier1 .member-name,
+  .member-row.tier5 .member-name,
+  .member-row.tier10 .member-name,
+  .member-row.excluded .member-name { font-weight: 700; color: #1a1d29; }
+  .role-tag { font-size: 9px; font-weight: 700; color: #b23a3a; flex-shrink: 0; }
+  .bday-mark { font-size: 8px; opacity: 0.75; flex-shrink: 0; }
+  .member-value {
+    font-size: 13px;
+    color: #6b6f79;
+    font-variant-numeric: tabular-nums;
+    flex-shrink: 0;
+    padding-left: 6px;
+  }
+  .member-row.tier1 .member-value { color: #4a5ce0; font-weight: 700; }
+  .member-row.tier5 .member-value { color: #0f8a5c; font-weight: 700; }
+  .member-row.tier10 .member-value { color: #8a6d1a; font-weight: 700; }
+  .member-row.excluded .member-value { color: #1a1d29; font-weight: 700; }
+  .member-row.empty .member-name, .member-row.empty .member-value { color: #ccc; }
+
+  .team-footer {
+    display: flex;
+    gap: 8px;
+    padding: 14px 18px 16px;
+    background: #fafbfc;
+    border-top: 1px solid #f2f3f5;
+  }
+  .stat-card {
+    flex: 1;
+    text-align: center;
+    padding: 9px 6px;
+    border-radius: 12px;
+    background: #fff;
+    border: 1px solid #eef0f2;
+    min-width: 0;
+  }
+  .stat-label { font-size: 10px; color: #a4a8b2; margin-bottom: 3px; font-weight: 600; }
+  .stat-value { font-size: 14px; font-weight: 800; color: #1a1d29; font-variant-numeric: tabular-nums; }
+  .stat-card.female-avg { background: #d9f2f2; border: none; }
+  .stat-card.female-avg .stat-label { color: #0e6b6b; }
+  .stat-card.female-avg .stat-value { color: #0a4d4d; }
+  .stat-card.total-avg { background: #efe9fc; border: none; }
+  .stat-card.total-avg .stat-label { color: #6a3fb0; }
+  .stat-card.total-avg .stat-value { color: #4a2984; }
 
   .legend {
     max-width: 1080px;
     margin: 14px auto 0;
     font-size: 9px;
-    color: #888;
+    color: #a4a8b2;
     text-align: center;
   }
   .legend span { margin: 0 5px; }
@@ -240,8 +261,11 @@
     
   <span class="month-select-group">
     <select class="top-date-select" id="ms-year-select"><option value='2026' selected>2026년</option></select>
+    <span class="nav-chevron">⌄</span>
     <select class="top-date-select" id="ms-month-select"><option value='8' selected>08월</option></select>
+    <span class="nav-chevron">⌄</span>
     <select class="top-date-select" id="ms-metric-select"><option value='balloon' selected>별풍선</option><option value='broadcast'>방송시간</option></select>
+    <span class="nav-chevron">⌄</span>
   </span>
     
     <span class="top-meta" id="top-meta-text"></span>
@@ -251,63 +275,67 @@
   <div id="archive-banner-slot"></div>
   <div class='page-panel' data-key='2026-08-balloon'><div class="grid single-team">
     <div class="team-card">
-      <table>
-        <thead>
-          <tr><th colspan="4" class="team-name-row"><span class='team-name-inner'><img src='../logos/엠비대.webp' class='team-logo' alt=''>엠비대</span></th></tr>
-          <tr><th class="col-header">남자 멤버</th><th class="col-header">별풍선</th><th class="col-header">여자 멤버</th><th class="col-header">별풍선</th></tr>
-        </thead>
-        <tbody>
-          <tr><td class='name-td'><div class='name-cell'><span class='name-left'>병하</span></div></td><td class='num excluded'>306,704</td><td class='name-td'><div class='name-cell'><span class='name-left'>구보라</span></div></td><td class='num '>75,018</td></tr><tr><td class='name-td'><div class='name-cell'><span class='name-left'>이영한</span><span class='bday-mark'>🎂</span></div></td><td class='num '>80,776</td><td class='name-td'><div class='name-cell'><span class='name-left'>김채이</span></div></td><td class='num '>73,269</td></tr><tr><td class='name-td'><div class='name-cell'><span class='name-left'>마예준</span></div></td><td class='num excluded'>50,476</td><td class='name-td'><div class='name-cell'><span class='name-left'>최세상</span></div></td><td class='num '>62,396</td></tr><tr><td class='name-td'><div class='name-cell'><span class='name-left'>정경두</span></div></td><td class='num '>47,385</td><td class='name-td'><div class='name-cell'><span class='name-left'>정다닝</span></div></td><td class='num '>60,750</td></tr><tr><td class='name-td'><div class='name-cell'><span class='name-left'>이창우</span></div></td><td class='num '>28,699</td><td class='name-td'><div class='name-cell'><span class='name-left'>연수</span></div></td><td class='num '>58,993</td></tr><tr><td class='name-td'><div class='name-cell'><span class='name-left'>빡죠스</span></div></td><td class='num '>12,600</td><td class='name-td'><div class='name-cell'><span class='name-left'>오하얀</span></div></td><td class='num '>57,760</td></tr><tr><td class='name-td'><div class='name-cell'><span class='name-left'>토스봇</span></div></td><td class='num '>8,882</td><td class='name-td'><div class='name-cell'><span class='name-left'>카히리</span></div></td><td class='num '>49,381</td></tr><tr><td class='name-td'><div class='name-cell'><span class='name-left'>얍삽e</span></div></td><td class='num '>6,032</td><td class='name-td'><div class='name-cell'><span class='name-left'>요구리</span></div></td><td class='num '>34,127</td></tr><tr><td class='name-td'><div class='name-cell'><span class='name-left'>최재성</span></div></td><td class='num '>5,749</td><td class='name-td'><div class='name-cell'><span class='name-left'>권아온</span></div></td><td class='num '>31,868</td></tr><tr><td class='name-td'><div class='name-cell'><span class='name-left'>만두호성</span><span class='bday-mark'>🎂</span></div></td><td class='num '>2,933</td><td class='name-td'><div class='name-cell'><span class='name-left'>시녕뭉</span></div></td><td class='num '>29,886</td></tr><tr><td class='name-td empty'></td><td class='num empty'></td><td class='name-td'><div class='name-cell'><span class='name-left'>햄희</span></div></td><td class='num '>26,220</td></tr>
-          
-      <tr class="summary-row">
-        <td>남자 합계</td><td class="num">193,056</td>
-        <td>여자 합계</td><td class="num">559,668</td>
-      </tr>
-      <tr class="summary-row">
-        <td>남자 평균</td><td class="num">24,132</td>
-        <td>여자 평균</td><td class="num female-avg">50,879</td>
-      </tr>
-      <tr class="summary-row">
-        <td>전체 합계</td><td class="num total-sum">752,724</td>
-        <td>전체 평균</td><td class="num total-avg">39,617</td>
-      </tr>
-      <tr class="summary-row">
-        <td class="personnel-label">인원</td>
-        <td colspan="3" class="personnel-value">총 21명 / 남자 10명 / 여자 11명</td>
-      </tr>
-    
-        </tbody>
-      </table>
+      <div class="team-card-topbar"></div>
+      <div class="team-header">
+        <div class='team-header-left'><img src='../logos/엠비대.webp' class='team-logo' alt=''><span class='team-name'>엠비대</span><span class='team-count'>총 21명 · 남 10 · 여 11</span></div>
+        
+      </div>
+      <div class="member-columns">
+        <div class="member-col">
+          <div class="member-col-label">남자 멤버<span class="unit-label">별풍선</span></div>
+          <div class='member-row excluded'><span class='member-name'>병하<span class='role-tag'>수장</span></span><span class='member-value'>306,704</span></div><div class='member-row '><span class='member-name'>이영한<span class='bday-mark'>🎂</span></span><span class='member-value'>80,776</span></div><div class='member-row excluded'><span class='member-name'>마예준<span class='role-tag'>수장</span></span><span class='member-value'>50,476</span></div><div class='member-row '><span class='member-name'>정경두</span><span class='member-value'>47,385</span></div><div class='member-row '><span class='member-name'>이창우</span><span class='member-value'>28,699</span></div><div class='member-row '><span class='member-name'>빡죠스</span><span class='member-value'>12,600</span></div><div class='member-row '><span class='member-name'>토스봇</span><span class='member-value'>8,882</span></div><div class='member-row '><span class='member-name'>얍삽e</span><span class='member-value'>6,032</span></div><div class='member-row '><span class='member-name'>최재성</span><span class='member-value'>5,749</span></div><div class='member-row '><span class='member-name'>만두호성<span class='bday-mark'>🎂</span></span><span class='member-value'>2,933</span></div><div class='member-row empty'><span class='member-name'>-</span><span class='member-value'></span></div>
+        </div>
+        <div class="member-col">
+          <div class="member-col-label">여자 멤버<span class="unit-label">별풍선</span></div>
+          <div class='member-row '><span class='member-name'>구보라</span><span class='member-value'>75,018</span></div><div class='member-row '><span class='member-name'>김채이</span><span class='member-value'>73,269</span></div><div class='member-row '><span class='member-name'>최세상</span><span class='member-value'>62,396</span></div><div class='member-row '><span class='member-name'>정다닝</span><span class='member-value'>60,750</span></div><div class='member-row '><span class='member-name'>연수</span><span class='member-value'>58,993</span></div><div class='member-row '><span class='member-name'>오하얀</span><span class='member-value'>57,760</span></div><div class='member-row '><span class='member-name'>카히리</span><span class='member-value'>49,381</span></div><div class='member-row '><span class='member-name'>요구리</span><span class='member-value'>34,127</span></div><div class='member-row '><span class='member-name'>권아온</span><span class='member-value'>31,868</span></div><div class='member-row '><span class='member-name'>시녕뭉</span><span class='member-value'>29,886</span></div><div class='member-row '><span class='member-name'>햄희</span><span class='member-value'>26,220</span></div>
+        </div>
+      </div>
+      <div class="team-footer">
+        <div class="stat-card">
+          <div class="stat-label">전체 합계</div>
+          <div class="stat-value">752,724</div>
+        </div>
+        <div class="stat-card female-avg">
+          <div class="stat-label">여자 평균</div>
+          <div class="stat-value">50,879</div>
+        </div>
+        <div class="stat-card total-avg">
+          <div class="stat-label">전체 평균</div>
+          <div class="stat-value">39,617</div>
+        </div>
+      </div>
     </div>
     </div></div><div class='page-panel' data-key='2026-08-broadcast' style="display:none;"><div class="grid single-team">
     <div class="team-card">
-      <table>
-        <thead>
-          <tr><th colspan="4" class="team-name-row"><span class='team-name-inner'><img src='../logos/엠비대.webp' class='team-logo' alt=''>엠비대</span></th></tr>
-          <tr><th class="col-header">남자 멤버</th><th class="col-header">방송시간</th><th class="col-header">여자 멤버</th><th class="col-header">방송시간</th></tr>
-        </thead>
-        <tbody>
-          <tr><td class='name-td'><div class='name-cell'><span class='name-left'>이창우</span></div></td><td class='num '>111:18:17</td><td class='name-td'><div class='name-cell'><span class='name-left'>햄희</span></div></td><td class='num '>111:17:50</td></tr><tr><td class='name-td'><div class='name-cell'><span class='name-left'>정경두</span></div></td><td class='num '>89:08:53</td><td class='name-td'><div class='name-cell'><span class='name-left'>요구리</span></div></td><td class='num '>93:30:26</td></tr><tr><td class='name-td'><div class='name-cell'><span class='name-left'>병하</span></div></td><td class='num '>70:40:28</td><td class='name-td'><div class='name-cell'><span class='name-left'>권아온</span></div></td><td class='num '>88:26:31</td></tr><tr><td class='name-td'><div class='name-cell'><span class='name-left'>토스봇</span></div></td><td class='num '>60:29:05</td><td class='name-td'><div class='name-cell'><span class='name-left'>구보라</span></div></td><td class='num '>86:30:03</td></tr><tr><td class='name-td'><div class='name-cell'><span class='name-left'>마예준</span></div></td><td class='num '>58:54:07</td><td class='name-td'><div class='name-cell'><span class='name-left'>정다닝</span></div></td><td class='num '>79:48:14</td></tr><tr><td class='name-td'><div class='name-cell'><span class='name-left'>이영한</span><span class='bday-mark'>🎂</span></div></td><td class='num '>55:30:30</td><td class='name-td'><div class='name-cell'><span class='name-left'>오하얀</span></div></td><td class='num '>67:26:45</td></tr><tr><td class='name-td'><div class='name-cell'><span class='name-left'>얍삽e</span></div></td><td class='num '>52:48:04</td><td class='name-td'><div class='name-cell'><span class='name-left'>시녕뭉</span></div></td><td class='num '>62:20:34</td></tr><tr><td class='name-td'><div class='name-cell'><span class='name-left'>빡죠스</span></div></td><td class='num '>49:48:14</td><td class='name-td'><div class='name-cell'><span class='name-left'>최세상</span></div></td><td class='num '>62:10:59</td></tr><tr><td class='name-td'><div class='name-cell'><span class='name-left'>최재성</span></div></td><td class='num '>39:10:14</td><td class='name-td'><div class='name-cell'><span class='name-left'>김채이</span></div></td><td class='num '>52:58:46</td></tr><tr><td class='name-td'><div class='name-cell'><span class='name-left'>만두호성</span><span class='bday-mark'>🎂</span></div></td><td class='num '>38:37:54</td><td class='name-td'><div class='name-cell'><span class='name-left'>카히리</span></div></td><td class='num '>48:17:33</td></tr><tr><td class='name-td empty'></td><td class='num empty'></td><td class='name-td'><div class='name-cell'><span class='name-left'>연수</span></div></td><td class='num '>45:14:41</td></tr>
-          
-      <tr class="summary-row">
-        <td>남자 합계</td><td class="num">626:25:46</td>
-        <td>여자 합계</td><td class="num">798:02:22</td>
-      </tr>
-      <tr class="summary-row">
-        <td>남자 평균</td><td class="num">62:38:35</td>
-        <td>여자 평균</td><td class="num female-avg">72:32:57</td>
-      </tr>
-      <tr class="summary-row">
-        <td>전체 합계</td><td class="num total-sum">1424:28:08</td>
-        <td>전체 평균</td><td class="num total-avg">67:49:55</td>
-      </tr>
-      <tr class="summary-row">
-        <td class="personnel-label">인원</td>
-        <td colspan="3" class="personnel-value">총 21명 / 남자 10명 / 여자 11명</td>
-      </tr>
-    
-        </tbody>
-      </table>
+      <div class="team-card-topbar"></div>
+      <div class="team-header">
+        <div class='team-header-left'><img src='../logos/엠비대.webp' class='team-logo' alt=''><span class='team-name'>엠비대</span><span class='team-count'>총 21명 · 남 10 · 여 11</span></div>
+        
+      </div>
+      <div class="member-columns">
+        <div class="member-col">
+          <div class="member-col-label">남자 멤버<span class="unit-label">방송시간</span></div>
+          <div class='member-row '><span class='member-name'>이창우</span><span class='member-value'>111:18:17</span></div><div class='member-row '><span class='member-name'>정경두</span><span class='member-value'>89:08:53</span></div><div class='member-row '><span class='member-name'>병하<span class='role-tag'>수장</span></span><span class='member-value'>70:40:28</span></div><div class='member-row '><span class='member-name'>토스봇</span><span class='member-value'>60:29:05</span></div><div class='member-row '><span class='member-name'>마예준<span class='role-tag'>수장</span></span><span class='member-value'>59:05:07</span></div><div class='member-row '><span class='member-name'>이영한<span class='bday-mark'>🎂</span></span><span class='member-value'>55:30:30</span></div><div class='member-row '><span class='member-name'>얍삽e</span><span class='member-value'>52:48:04</span></div><div class='member-row '><span class='member-name'>빡죠스</span><span class='member-value'>49:48:14</span></div><div class='member-row '><span class='member-name'>최재성</span><span class='member-value'>39:10:14</span></div><div class='member-row '><span class='member-name'>만두호성<span class='bday-mark'>🎂</span></span><span class='member-value'>38:37:54</span></div><div class='member-row empty'><span class='member-name'>-</span><span class='member-value'></span></div>
+        </div>
+        <div class="member-col">
+          <div class="member-col-label">여자 멤버<span class="unit-label">방송시간</span></div>
+          <div class='member-row '><span class='member-name'>햄희</span><span class='member-value'>111:17:50</span></div><div class='member-row '><span class='member-name'>요구리</span><span class='member-value'>93:30:26</span></div><div class='member-row '><span class='member-name'>권아온</span><span class='member-value'>88:26:31</span></div><div class='member-row '><span class='member-name'>구보라</span><span class='member-value'>86:30:03</span></div><div class='member-row '><span class='member-name'>정다닝</span><span class='member-value'>79:48:14</span></div><div class='member-row '><span class='member-name'>오하얀</span><span class='member-value'>67:26:45</span></div><div class='member-row '><span class='member-name'>시녕뭉</span><span class='member-value'>62:20:34</span></div><div class='member-row '><span class='member-name'>최세상</span><span class='member-value'>62:10:59</span></div><div class='member-row '><span class='member-name'>김채이</span><span class='member-value'>52:58:46</span></div><div class='member-row '><span class='member-name'>카히리</span><span class='member-value'>48:17:33</span></div><div class='member-row '><span class='member-name'>연수</span><span class='member-value'>45:14:41</span></div>
+        </div>
+      </div>
+      <div class="team-footer">
+        <div class="stat-card">
+          <div class="stat-label">전체 합계</div>
+          <div class="stat-value">1424:39:08</div>
+        </div>
+        <div class="stat-card female-avg">
+          <div class="stat-label">여자 평균</div>
+          <div class="stat-value">72:32:57</div>
+        </div>
+        <div class="stat-card total-avg">
+          <div class="stat-label">전체 평균</div>
+          <div class="stat-value">67:50:26</div>
+        </div>
+      </div>
     </div>
     </div></div>
     
@@ -320,7 +348,7 @@
   </div>
 <script>
 (function () {
-  var meta = {"2026-08-balloon": {"teamCount": 14, "memberCount": 245, "updatedAt": "2026-08-21 17:44:56", "isArchive": false, "excludeRoles": true, "title": "엠비대 별풍선"}, "2026-08-broadcast": {"teamCount": 14, "memberCount": 245, "updatedAt": "2026-08-21 17:44:56", "isArchive": false, "excludeRoles": false, "title": "엠비대 방송시간"}};
+  var meta = {"2026-08-balloon": {"teamCount": 14, "memberCount": 245, "updatedAt": "2026-08-21 17:55:39", "isArchive": false, "excludeRoles": true, "title": "엠비대 별풍선"}, "2026-08-broadcast": {"teamCount": 14, "memberCount": 245, "updatedAt": "2026-08-21 17:55:39", "isArchive": false, "excludeRoles": false, "title": "엠비대 방송시간"}};
   var monthsByYear = {"2026": [8]};
   var archiveBannerHtml = "<div class='archive-banner'>\ud83d\udcc1 \uc774 \ud398\uc774\uc9c0\ub294 \uc9c0\ub09c \uae30\ub85d\uc785\ub2c8\ub2e4 (\ub2f9\uc2dc \ud300 \uad6c\uc131 \uae30\uc900)</div>";
 
@@ -357,7 +385,7 @@
     var m = meta[key];
     if (!m) return;
 
-    metaSpan.textContent = m.teamCount + '팀 / ' + m.memberCount + '명 / 업데이트 ' + m.updatedAt + ' / 출처: ';
+    metaSpan.textContent = m.teamCount + '팀 · ' + m.memberCount + '명 · 업데이트 ' + m.updatedAt + ' · 출처: ';
     var link = document.createElement('a');
     link.href = 'https://poonggo.com';
     link.target = '_blank';
