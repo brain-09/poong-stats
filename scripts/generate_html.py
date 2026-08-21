@@ -24,7 +24,6 @@ docs/teams/{팀이름}[-broadcast]__YYYY-MM.html (과거 달) 단독 페이지�
 
 import json
 from collections import OrderedDict
-from itertools import groupby
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -85,6 +84,11 @@ PAGE_CSS = """
     flex-wrap: wrap;
     gap: 6px;
     box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+  }
+  .month-select-group {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
   }
   .top-date-select {
     font-size: 18px;
@@ -557,9 +561,10 @@ def list_archive_slugs() -> list:
 def _build_select_html(archive_slugs: list, current_year: int, current_month: int,
                         active_slug: str, current_href_fn, archive_href_fn) -> str:
     """
-    'YYYY년 MM월' 드롭다운 공통 로직. current_href_fn()/archive_href_fn(slug)로
+    연도 select + 월 select 2단계 드롭다운. current_href_fn()/archive_href_fn(slug)로
     페이지 종류(전체/팀별)에 따라 다른 링크 계산 방식만 바꿔 끼운다.
-    연도별로 <optgroup>으로 묶어서, 몇 년치가 쌓여도 드롭다운이 스캔하기 쉽게 유지한다.
+    연도를 먼저 고르면 그 연도의 월 목록만 두 번째 select에 채워지므로,
+    몇 년치가 쌓여도 화면에 보이는 옵션 개수는 항상 짧게 유지된다 (자바스크립트로 연동).
     """
     current_slug = f"{current_year:04d}-{current_month:02d}"
 
@@ -570,19 +575,60 @@ def _build_select_html(archive_slugs: list, current_year: int, current_month: in
         entries.append((int(year), int(month), slug, archive_href_fn(slug)))
     entries.sort(key=lambda e: (-e[0], -e[1]))
 
-    groups_html = []
-    for year, group in groupby(entries, key=lambda e: e[0]):
-        options = []
-        for _, month, slug, href in group:
-            selected = " selected" if slug == active_slug else ""
-            options.append(f"<option value='{href}'{selected}>{month:02d}월</option>")
-        groups_html.append(f"<optgroup label='{year}년'>" + "".join(options) + "</optgroup>")
+    active_year, active_month = current_year, current_month
+    for year, month, slug, _ in entries:
+        if slug == active_slug:
+            active_year, active_month = year, month
+            break
 
-    return (
-        "<select class='top-date-select' "
-        "onchange=\"if(this.value) window.location.href=this.value;\">"
-        + "".join(groups_html) + "</select>"
-    )
+    data_json = json.dumps([{"y": y, "m": m, "h": href} for y, m, _, href in entries], ensure_ascii=False)
+
+    return f"""<span class="month-select-group">
+  <select class="top-date-select" id="ms-year-select"></select>
+  <select class="top-date-select" id="ms-month-select"></select>
+</span>
+<script>
+(function () {{
+  var data = {data_json};
+  var activeYear = {active_year};
+  var activeMonth = {active_month};
+  var yearSel = document.getElementById('ms-year-select');
+  var monthSel = document.getElementById('ms-month-select');
+
+  var years = [];
+  data.forEach(function (e) {{ if (years.indexOf(e.y) === -1) years.push(e.y); }});
+  years.forEach(function (y) {{
+    var opt = document.createElement('option');
+    opt.value = y;
+    opt.textContent = y + '년';
+    if (y === activeYear) opt.selected = true;
+    yearSel.appendChild(opt);
+  }});
+
+  function populateMonths(year, preselectMonth) {{
+    monthSel.innerHTML = '';
+    data.filter(function (e) {{ return e.y === year; }}).forEach(function (e) {{
+      var opt = document.createElement('option');
+      opt.value = e.h;
+      opt.textContent = (e.m < 10 ? '0' : '') + e.m + '월';
+      if (e.m === preselectMonth) opt.selected = true;
+      monthSel.appendChild(opt);
+    }});
+  }}
+  populateMonths(activeYear, activeMonth);
+
+  yearSel.addEventListener('change', function () {{
+    var year = parseInt(yearSel.value, 10);
+    var monthsInYear = data.filter(function (e) {{ return e.y === year; }});
+    var newestMonth = monthsInYear.length ? monthsInYear[0].m : null;
+    populateMonths(year, newestMonth);
+    if (monthSel.value) window.location.href = monthSel.value;
+  }});
+  monthSel.addEventListener('change', function () {{
+    if (monthSel.value) window.location.href = monthSel.value;
+  }});
+}})();
+</script>"""
 
 
 def build_month_select(archive_slugs: list, current_year: int, current_month: int,
