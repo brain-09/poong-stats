@@ -125,6 +125,7 @@ PAGE_CSS = """
   .grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    align-items: start;
     gap: 10.8px;
     max-width: 1080px;
     margin: 0 auto;
