@@ -533,7 +533,7 @@ def build_team_card(team_name: str, members: list, current_month: int, tiers: di
         rows = [member_row(m) for m in name_list]
         # 남녀 인원수가 다르면, 적은 쪽에 빈 줄을 채워서 줄 높이를 맞춘다
         for _ in range(max(0, other_len - len(name_list))):
-            rows.append("<div class='member-row empty'><span class='member-name'>-</span><span class='member-value'></span></div>")
+            rows.append("<div class='member-row empty'><span class='member-name'></span><span class='member-value'></span></div>")
         return "".join(rows)
 
     males_html = member_col(males_all, female_n)
