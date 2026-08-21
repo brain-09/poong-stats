@@ -217,9 +217,9 @@ PAGE_CSS = """
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 10px 16px;
+    padding: 7px 16px;
     border-left: 3px solid transparent;
-    min-height: 34px;
+    min-height: 28px;
   }
   .member-row.tier1 { border-left-color: #4a5ce0; background: #f4f6fe; }
   .member-row.tier5 { border-left-color: #1c9e6e; background: #effbf5; }
@@ -326,7 +326,7 @@ MOBILE_CSS = """
     .rank-change { font-size: 6px; padding: 1px 5px; }
     .member-col-label { font-size: 6px; padding: 4px 7px 3px; }
     .member-col-label .unit-label { margin-left: 2px; }
-    .member-row { padding: 3px 7px; min-height: 14px; border-left-width: 2px; }
+    .member-row { padding: 2px 7px; min-height: 12px; border-left-width: 2px; }
     .member-name { font-size: 7px; gap: 2px; }
     .role-tag { font-size: 6px; }
     .bday-mark { font-size: 6px; }
