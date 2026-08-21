@@ -98,7 +98,14 @@ PAGE_CSS = """
     background: transparent;
     cursor: pointer;
     font-family: inherit;
-    padding: 2px 0;
+    padding: 2px 16px 2px 0;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23888' stroke-width='2' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right center;
+    background-size: 10px 7px;
   }
   .top-date-select:hover { color: #25528F; }
   .top-meta {
@@ -294,7 +301,8 @@ MOBILE_CSS = """
     .team-logo { height: 8px; width: 8px; }
     .rank-change { font-size: 6px; padding: 1px 4px; }
     .top-bar { padding: 10px 14px; }
-    .top-date-select { font-size: 10px; }
+    .month-select-group { gap: 3px; }
+    .top-date-select { font-size: 10px; min-width: 0; padding: 2px 12px 2px 2px; background-size: 8px 6px; }
     .top-meta { font-size: 5px; }
     .legend { font-size: 4px; }
   }
