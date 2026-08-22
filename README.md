@@ -57,7 +57,7 @@ poong-stats/
 {
   "members": [
     {
-      "id": "poong.today의 SOOP ID",
+      "id": "SOOP(구 아프리카TV) 아이디 - 풍고(poonggo.com) 조회용",
       "nickname": "표시할 닉네임",
       "gender": "m 또는 f",
       "birthdate": "YYYY-MM-DD (모르면 null)",
