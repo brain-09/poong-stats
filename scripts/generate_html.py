@@ -112,6 +112,7 @@ def normalize_balloons(members: list) -> list:
 
 # 모든 페이지가 공유하는 스타일. f-string이 아니라 일반 문자열이라 중괄호를 그대로 쓴다.
 PAGE_CSS = """
+  html { scrollbar-gutter: stable; }
   * { box-sizing: border-box; }
 
   body {
