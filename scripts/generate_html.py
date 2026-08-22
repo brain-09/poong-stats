@@ -348,7 +348,7 @@ PAGE_CSS = """
     border: 1px solid #eef0f2;
     min-width: 0;
   }
-  .stat-card-header { display: flex; align-items: center; justify-content: center; gap: 4px; margin-bottom: 5px; margin-left: -8px; }
+  .stat-card-header { display: flex; align-items: center; justify-content: center; gap: 4px; margin-bottom: 5px; margin-left: -6px; }
   .stat-label { font-size: 12px; color: #1a1d29; font-weight: 600; }
   .stat-value { font-size: 14px; font-weight: 800; color: #1a1d29; font-variant-numeric: tabular-nums; }
   .stat-icon { color: #1a1d29; flex-shrink: 0; }
@@ -405,7 +405,7 @@ MOBILE_CSS = """
     .member-value { font-size: 6px; padding-left: 4px; }
     .team-footer { padding: 6px 5px 7px; gap: 3px; }
     .stat-card { padding: 7px 4px; border-radius: 8px; }
-    .stat-card-header { gap: 2px; margin-bottom: 2px; margin-left: -4px; }
+    .stat-card-header { gap: 2px; margin-bottom: 2px; margin-left: -3px; }
     .stat-icon { width: 6px; height: 6px; }
     .stat-label { font-size: 6px; }
     .stat-value { font-size: 7px; }
