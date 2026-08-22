@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-08-22 12:08:06",
+  "updated_at": "2026-08-22 12:14:14",
   "year": 2026,
   "month": 8,
   "members": [
@@ -10,8 +10,9 @@
       "birthdate": "1995-12-09",
       "role": "수장",
       "team": "JSA",
-      "balloons": 2922577,
-      "broadcast_seconds": 542814
+      "balloons": 2922717,
+      "broadcast_seconds": 543174,
+      "cumulative_viewers": 2012580
     },
     {
       "id": "sharpragu",
@@ -20,8 +21,9 @@
       "birthdate": "1992-06-15",
       "role": "",
       "team": "JSA",
-      "balloons": 85459,
-      "broadcast_seconds": 451380
+      "balloons": 85500,
+      "broadcast_seconds": 451740,
+      "cumulative_viewers": 67304
     },
     {
       "id": "dpfgc3",
@@ -31,7 +33,8 @@
       "role": "",
       "team": "JSA",
       "balloons": 44432,
-      "broadcast_seconds": 519679
+      "broadcast_seconds": 519679,
+      "cumulative_viewers": 186382
     },
     {
       "id": "tjdeosks",
@@ -41,7 +44,8 @@
       "role": "",
       "team": "JSA",
       "balloons": 122130,
-      "broadcast_seconds": 282887
+      "broadcast_seconds": 282887,
+      "cumulative_viewers": 191838
     },
     {
       "id": "rladuddo99",
@@ -51,7 +55,8 @@
       "role": "",
       "team": "JSA",
       "balloons": 57371,
-      "broadcast_seconds": 268152
+      "broadcast_seconds": 268152,
+      "cumulative_viewers": 12518
     },
     {
       "id": "shyshy123",
@@ -61,7 +66,8 @@
       "role": "",
       "team": "JSA",
       "balloons": 77060,
-      "broadcast_seconds": 408432
+      "broadcast_seconds": 408432,
+      "cumulative_viewers": 17637
     },
     {
       "id": "dgh9641",
@@ -71,7 +77,8 @@
       "role": "",
       "team": "JSA",
       "balloons": 79912,
-      "broadcast_seconds": 326855
+      "broadcast_seconds": 326855,
+      "cumulative_viewers": 70196
     },
     {
       "id": "vhrtmspt",
@@ -81,7 +88,8 @@
       "role": "",
       "team": "JSA",
       "balloons": 82880,
-      "broadcast_seconds": 301567
+      "broadcast_seconds": 301567,
+      "cumulative_viewers": 12613
     },
     {
       "id": "gddms97",
@@ -91,7 +99,8 @@
       "role": "",
       "team": "JSA",
       "balloons": 193435,
-      "broadcast_seconds": 388990
+      "broadcast_seconds": 388990,
+      "cumulative_viewers": 98698
     },
     {
       "id": "phh95426",
@@ -101,7 +110,8 @@
       "role": "",
       "team": "JSA",
       "balloons": 94634,
-      "broadcast_seconds": 288874
+      "broadcast_seconds": 288874,
+      "cumulative_viewers": 24592
     },
     {
       "id": "dkfka8945",
@@ -111,7 +121,8 @@
       "role": "",
       "team": "JSA",
       "balloons": 90994,
-      "broadcast_seconds": 372144
+      "broadcast_seconds": 372144,
+      "cumulative_viewers": 95866
     },
     {
       "id": "ftrudals",
@@ -121,7 +132,8 @@
       "role": "",
       "team": "JSA",
       "balloons": 91774,
-      "broadcast_seconds": 390700
+      "broadcast_seconds": 390700,
+      "cumulative_viewers": 56363
     },
     {
       "id": "fudnjs0235",
@@ -131,7 +143,8 @@
       "role": "",
       "team": "JSA",
       "balloons": 131342,
-      "broadcast_seconds": 375623
+      "broadcast_seconds": 375623,
+      "cumulative_viewers": 37594
     },
     {
       "id": "wjddmstj79",
@@ -141,7 +154,8 @@
       "role": "",
       "team": "JSA",
       "balloons": 75382,
-      "broadcast_seconds": 340651
+      "broadcast_seconds": 340651,
+      "cumulative_viewers": 74039
     },
     {
       "id": "begoniah",
@@ -151,7 +165,8 @@
       "role": "",
       "team": "JSA",
       "balloons": 54061,
-      "broadcast_seconds": 308022
+      "broadcast_seconds": 308022,
+      "cumulative_viewers": 28957
     },
     {
       "id": "owoouoowo",
@@ -161,7 +176,8 @@
       "role": "",
       "team": "JSA",
       "balloons": 15902,
-      "broadcast_seconds": 9747
+      "broadcast_seconds": 9747,
+      "cumulative_viewers": 6673
     },
     {
       "id": "kjhanna824",
@@ -171,7 +187,8 @@
       "role": "",
       "team": "JSA",
       "balloons": 51533,
-      "broadcast_seconds": 384032
+      "broadcast_seconds": 384032,
+      "cumulative_viewers": 27387
     },
     {
       "id": "tamama88",
@@ -181,7 +198,8 @@
       "role": "",
       "team": "JSA",
       "balloons": 39557,
-      "broadcast_seconds": 469704
+      "broadcast_seconds": 469704,
+      "cumulative_viewers": 54297
     },
     {
       "id": "kidsaoq",
@@ -191,7 +209,8 @@
       "role": "",
       "team": "JSA",
       "balloons": 57157,
-      "broadcast_seconds": 325746
+      "broadcast_seconds": 325746,
+      "cumulative_viewers": 35342
     },
     {
       "id": "littlekim12",
@@ -201,7 +220,8 @@
       "role": "",
       "team": "JSA",
       "balloons": 92207,
-      "broadcast_seconds": 362510
+      "broadcast_seconds": 362510,
+      "cumulative_viewers": 49064
     },
     {
       "id": "rldyal71",
@@ -211,7 +231,8 @@
       "role": "",
       "team": "JSA",
       "balloons": 46553,
-      "broadcast_seconds": 389296
+      "broadcast_seconds": 389296,
+      "cumulative_viewers": 24418
     },
     {
       "id": "firebathero",
@@ -221,7 +242,8 @@
       "role": "수장",
       "team": "흑카데미",
       "balloons": 304768,
-      "broadcast_seconds": 421902
+      "broadcast_seconds": 421902,
+      "cumulative_viewers": 286486
     },
     {
       "id": "scan1014",
@@ -231,7 +253,8 @@
       "role": "",
       "team": "흑카데미",
       "balloons": 32429,
-      "broadcast_seconds": 364261
+      "broadcast_seconds": 364261,
+      "cumulative_viewers": 16086
     },
     {
       "id": "bhy95",
@@ -241,7 +264,8 @@
       "role": "",
       "team": "흑카데미",
       "balloons": 28898,
-      "broadcast_seconds": 299319
+      "broadcast_seconds": 299319,
+      "cumulative_viewers": 3863
     },
     {
       "id": "ckmin706",
@@ -251,7 +275,8 @@
       "role": "",
       "team": "흑카데미",
       "balloons": 24534,
-      "broadcast_seconds": 181513
+      "broadcast_seconds": 181513,
+      "cumulative_viewers": 20475
     },
     {
       "id": "ndudska620",
@@ -261,7 +286,8 @@
       "role": "",
       "team": "흑카데미",
       "balloons": 38136,
-      "broadcast_seconds": 339145
+      "broadcast_seconds": 339145,
+      "cumulative_viewers": 7771
     },
     {
       "id": "skarbwhgc",
@@ -271,7 +297,8 @@
       "role": "",
       "team": "흑카데미",
       "balloons": 20459,
-      "broadcast_seconds": 385218
+      "broadcast_seconds": 385218,
+      "cumulative_viewers": 5324
     },
     {
       "id": "jhpark7712",
@@ -281,7 +308,8 @@
       "role": "",
       "team": "흑카데미",
       "balloons": 86112,
-      "broadcast_seconds": 668842
+      "broadcast_seconds": 668842,
+      "cumulative_viewers": 36273
     },
     {
       "id": "ehgmldud1233",
@@ -291,7 +319,8 @@
       "role": "",
       "team": "흑카데미",
       "balloons": 80406,
-      "broadcast_seconds": 579178
+      "broadcast_seconds": 579178,
+      "cumulative_viewers": 63432
     },
     {
       "id": "kwh1992",
@@ -301,7 +330,8 @@
       "role": "",
       "team": "흑카데미",
       "balloons": 55640,
-      "broadcast_seconds": 524860
+      "broadcast_seconds": 524860,
+      "cumulative_viewers": 24763
     },
     {
       "id": "ovoa3316",
@@ -311,7 +341,8 @@
       "role": "",
       "team": "흑카데미",
       "balloons": 152628,
-      "broadcast_seconds": 580731
+      "broadcast_seconds": 580731,
+      "cumulative_viewers": 141993
     },
     {
       "id": "lingolinga",
@@ -321,7 +352,8 @@
       "role": "",
       "team": "흑카데미",
       "balloons": 20501,
-      "broadcast_seconds": 27090
+      "broadcast_seconds": 27090,
+      "cumulative_viewers": 5012
     },
     {
       "id": "chchchshai",
@@ -331,7 +363,8 @@
       "role": "",
       "team": "흑카데미",
       "balloons": 92145,
-      "broadcast_seconds": 295106
+      "broadcast_seconds": 295106,
+      "cumulative_viewers": 20648
     },
     {
       "id": "maeong2",
@@ -341,7 +374,8 @@
       "role": "",
       "team": "흑카데미",
       "balloons": 85965,
-      "broadcast_seconds": 373425
+      "broadcast_seconds": 373425,
+      "cumulative_viewers": 21277
     },
     {
       "id": "tjwjddms1565",
@@ -351,7 +385,8 @@
       "role": "",
       "team": "흑카데미",
       "balloons": 56416,
-      "broadcast_seconds": 390281
+      "broadcast_seconds": 390281,
+      "cumulative_viewers": 18468
     },
     {
       "id": "rudzhd123",
@@ -361,7 +396,8 @@
       "role": "",
       "team": "흑카데미",
       "balloons": 61600,
-      "broadcast_seconds": 378741
+      "broadcast_seconds": 378741,
+      "cumulative_viewers": 21231
     },
     {
       "id": "gangeda",
@@ -371,7 +407,8 @@
       "role": "",
       "team": "흑카데미",
       "balloons": 85428,
-      "broadcast_seconds": 533856
+      "broadcast_seconds": 533856,
+      "cumulative_viewers": 78473
     },
     {
       "id": "dollooo",
@@ -381,7 +418,8 @@
       "role": "",
       "team": "흑카데미",
       "balloons": 39857,
-      "broadcast_seconds": 496545
+      "broadcast_seconds": 496545,
+      "cumulative_viewers": 20061
     },
     {
       "id": "x1aohongmao",
@@ -391,7 +429,8 @@
       "role": "",
       "team": "흑카데미",
       "balloons": 29457,
-      "broadcast_seconds": 357811
+      "broadcast_seconds": 357811,
+      "cumulative_viewers": 13026
     },
     {
       "id": "yuna1024",
@@ -401,7 +440,8 @@
       "role": "",
       "team": "흑카데미",
       "balloons": 41415,
-      "broadcast_seconds": 436398
+      "broadcast_seconds": 436398,
+      "cumulative_viewers": 18777
     },
     {
       "id": "faker1004",
@@ -411,7 +451,8 @@
       "role": "",
       "team": "흑카데미",
       "balloons": 73034,
-      "broadcast_seconds": 804004
+      "broadcast_seconds": 804004,
+      "cumulative_viewers": 56479
     },
     {
       "id": "zpdl1313",
@@ -421,7 +462,8 @@
       "role": "수장",
       "team": "케이대",
       "balloons": 12508237,
-      "broadcast_seconds": 257242
+      "broadcast_seconds": 257242,
+      "cumulative_viewers": 1643568
     },
     {
       "id": "neverdieyj",
@@ -431,7 +473,8 @@
       "role": "",
       "team": "케이대",
       "balloons": 73024,
-      "broadcast_seconds": 227270
+      "broadcast_seconds": 227270,
+      "cumulative_viewers": 31801
     },
     {
       "id": "tmsh401",
@@ -441,7 +484,8 @@
       "role": "",
       "team": "케이대",
       "balloons": 26871,
-      "broadcast_seconds": 349173
+      "broadcast_seconds": 349173,
+      "cumulative_viewers": 86154
     },
     {
       "id": "kkmkhh1234",
@@ -451,7 +495,8 @@
       "role": "",
       "team": "케이대",
       "balloons": 52906,
-      "broadcast_seconds": 316545
+      "broadcast_seconds": 316545,
+      "cumulative_viewers": 93819
     },
     {
       "id": "hongduck9737",
@@ -461,7 +506,8 @@
       "role": "",
       "team": "케이대",
       "balloons": 64986,
-      "broadcast_seconds": 182761
+      "broadcast_seconds": 182761,
+      "cumulative_viewers": 7116
     },
     {
       "id": "wjdalsrl95",
@@ -471,7 +517,8 @@
       "role": "",
       "team": "케이대",
       "balloons": 67859,
-      "broadcast_seconds": 201863
+      "broadcast_seconds": 201863,
+      "cumulative_viewers": 9595
     },
     {
       "id": "understay",
@@ -481,7 +528,8 @@
       "role": "",
       "team": "케이대",
       "balloons": 76661,
-      "broadcast_seconds": 465901
+      "broadcast_seconds": 465901,
+      "cumulative_viewers": 47002
     },
     {
       "id": "skygkrtn",
@@ -491,7 +539,8 @@
       "role": "",
       "team": "케이대",
       "balloons": 192716,
-      "broadcast_seconds": 331185
+      "broadcast_seconds": 331185,
+      "cumulative_viewers": 390531
     },
     {
       "id": "minyoo3972",
@@ -501,7 +550,8 @@
       "role": "",
       "team": "케이대",
       "balloons": 36515,
-      "broadcast_seconds": 199753
+      "broadcast_seconds": 199753,
+      "cumulative_viewers": 5992
     },
     {
       "id": "ever316",
@@ -511,7 +561,8 @@
       "role": "",
       "team": "케이대",
       "balloons": 79026,
-      "broadcast_seconds": 521005
+      "broadcast_seconds": 521005,
+      "cumulative_viewers": 41398
     },
     {
       "id": "zcv0320",
@@ -521,7 +572,8 @@
       "role": "",
       "team": "케이대",
       "balloons": 0,
-      "broadcast_seconds": 0
+      "broadcast_seconds": 0,
+      "cumulative_viewers": 0
     },
     {
       "id": "seul0316",
@@ -531,7 +583,8 @@
       "role": "",
       "team": "케이대",
       "balloons": 159170,
-      "broadcast_seconds": 387814
+      "broadcast_seconds": 387814,
+      "cumulative_viewers": 158216
     },
     {
       "id": "clclcl8888",
@@ -541,7 +594,8 @@
       "role": "",
       "team": "케이대",
       "balloons": 0,
-      "broadcast_seconds": 0
+      "broadcast_seconds": 0,
+      "cumulative_viewers": 0
     },
     {
       "id": "agah1106",
@@ -551,7 +605,8 @@
       "role": "",
       "team": "케이대",
       "balloons": 123006,
-      "broadcast_seconds": 313311
+      "broadcast_seconds": 313311,
+      "cumulative_viewers": 27544
     },
     {
       "id": "goni2677",
@@ -561,7 +616,8 @@
       "role": "",
       "team": "케이대",
       "balloons": 175918,
-      "broadcast_seconds": 402581
+      "broadcast_seconds": 402581,
+      "cumulative_viewers": 85099
     },
     {
       "id": "qkrgkdms01",
@@ -571,7 +627,8 @@
       "role": "",
       "team": "케이대",
       "balloons": 135685,
-      "broadcast_seconds": 337259
+      "broadcast_seconds": 337259,
+      "cumulative_viewers": 217655
     },
     {
       "id": "wittyku",
@@ -581,7 +638,8 @@
       "role": "",
       "team": "케이대",
       "balloons": 201413,
-      "broadcast_seconds": 418107
+      "broadcast_seconds": 418107,
+      "cumulative_viewers": 79571
     },
     {
       "id": "seols2",
@@ -591,7 +649,8 @@
       "role": "",
       "team": "케이대",
       "balloons": 101116,
-      "broadcast_seconds": 379105
+      "broadcast_seconds": 379105,
+      "cumulative_viewers": 39005
     },
     {
       "id": "thdeksql",
@@ -601,7 +660,8 @@
       "role": "",
       "team": "케이대",
       "balloons": 83050,
-      "broadcast_seconds": 290491
+      "broadcast_seconds": 290491,
+      "cumulative_viewers": 32045
     },
     {
       "id": "kjy3443",
@@ -611,7 +671,8 @@
       "role": "",
       "team": "케이대",
       "balloons": 68532,
-      "broadcast_seconds": 411056
+      "broadcast_seconds": 411056,
+      "cumulative_viewers": 70714
     },
     {
       "id": "jooyoung0040",
@@ -621,7 +682,8 @@
       "role": "",
       "team": "케이대",
       "balloons": 55557,
-      "broadcast_seconds": 564773
+      "broadcast_seconds": 564773,
+      "cumulative_viewers": 62344
     },
     {
       "id": "brainzerg7",
@@ -631,7 +693,8 @@
       "role": "수장",
       "team": "캄몬스타즈",
       "balloons": 459662,
-      "broadcast_seconds": 386199
+      "broadcast_seconds": 386199,
+      "cumulative_viewers": 1615742
     },
     {
       "id": "minchul",
@@ -641,7 +704,8 @@
       "role": "",
       "team": "캄몬스타즈",
       "balloons": 192335,
-      "broadcast_seconds": 442386
+      "broadcast_seconds": 442386,
+      "cumulative_viewers": 221105
     },
     {
       "id": "bye1013",
@@ -651,7 +715,8 @@
       "role": "",
       "team": "캄몬스타즈",
       "balloons": 48733,
-      "broadcast_seconds": 420677
+      "broadcast_seconds": 420677,
+      "cumulative_viewers": 287833
     },
     {
       "id": "hoonykkk",
@@ -661,7 +726,8 @@
       "role": "",
       "team": "캄몬스타즈",
       "balloons": 147480,
-      "broadcast_seconds": 438566
+      "broadcast_seconds": 438566,
+      "cumulative_viewers": 38359
     },
     {
       "id": "h78ert",
@@ -671,7 +737,8 @@
       "role": "",
       "team": "캄몬스타즈",
       "balloons": 108868,
-      "broadcast_seconds": 283796
+      "broadcast_seconds": 283796,
+      "cumulative_viewers": 76470
     },
     {
       "id": "rondobba",
@@ -681,7 +748,8 @@
       "role": "",
       "team": "캄몬스타즈",
       "balloons": 104657,
-      "broadcast_seconds": 206480
+      "broadcast_seconds": 206480,
+      "cumulative_viewers": 36387
     },
     {
       "id": "goodzerg",
@@ -691,7 +759,8 @@
       "role": "",
       "team": "캄몬스타즈",
       "balloons": 235898,
-      "broadcast_seconds": 324551
+      "broadcast_seconds": 324551,
+      "cumulative_viewers": 104793
     },
     {
       "id": "jmc06170",
@@ -701,7 +770,8 @@
       "role": "",
       "team": "캄몬스타즈",
       "balloons": 130305,
-      "broadcast_seconds": 319132
+      "broadcast_seconds": 319132,
+      "cumulative_viewers": 64059
     },
     {
       "id": "jihoon002",
@@ -711,7 +781,8 @@
       "role": "",
       "team": "캄몬스타즈",
       "balloons": 169396,
-      "broadcast_seconds": 218895
+      "broadcast_seconds": 218895,
+      "cumulative_viewers": 242216
     },
     {
       "id": "rnaqpdrjf",
@@ -721,7 +792,8 @@
       "role": "",
       "team": "캄몬스타즈",
       "balloons": 220961,
-      "broadcast_seconds": 279972
+      "broadcast_seconds": 279972,
+      "cumulative_viewers": 127986
     },
     {
       "id": "wjswlgns09",
@@ -731,7 +803,8 @@
       "role": "",
       "team": "캄몬스타즈",
       "balloons": 366872,
-      "broadcast_seconds": 467724
+      "broadcast_seconds": 467724,
+      "cumulative_viewers": 333790
     },
     {
       "id": "freshtomato",
@@ -741,7 +814,8 @@
       "role": "",
       "team": "캄몬스타즈",
       "balloons": 525657,
-      "broadcast_seconds": 369958
+      "broadcast_seconds": 369958,
+      "cumulative_viewers": 592466
     },
     {
       "id": "thelddl",
@@ -751,7 +825,8 @@
       "role": "",
       "team": "캄몬스타즈",
       "balloons": 154736,
-      "broadcast_seconds": 352676
+      "broadcast_seconds": 352676,
+      "cumulative_viewers": 87717
     },
     {
       "id": "alaelddl97",
@@ -761,7 +836,8 @@
       "role": "",
       "team": "캄몬스타즈",
       "balloons": 180945,
-      "broadcast_seconds": 412082
+      "broadcast_seconds": 412082,
+      "cumulative_viewers": 59656
     },
     {
       "id": "soju2022",
@@ -771,7 +847,8 @@
       "role": "",
       "team": "캄몬스타즈",
       "balloons": 119310,
-      "broadcast_seconds": 311577
+      "broadcast_seconds": 311577,
+      "cumulative_viewers": 68920
     },
     {
       "id": "db001202",
@@ -781,7 +858,8 @@
       "role": "",
       "team": "캄몬스타즈",
       "balloons": 213295,
-      "broadcast_seconds": 343460
+      "broadcast_seconds": 343460,
+      "cumulative_viewers": 208467
     },
     {
       "id": "fpahsdltu1",
@@ -791,7 +869,8 @@
       "role": "",
       "team": "캄몬스타즈",
       "balloons": 227725,
-      "broadcast_seconds": 299538
+      "broadcast_seconds": 299538,
+      "cumulative_viewers": 237616
     },
     {
       "id": "seemin88",
@@ -801,7 +880,8 @@
       "role": "",
       "team": "캄몬스타즈",
       "balloons": 215637,
-      "broadcast_seconds": 484076
+      "broadcast_seconds": 484076,
+      "cumulative_viewers": 212665
     },
     {
       "id": "dlaguswl501",
@@ -811,7 +891,8 @@
       "role": "",
       "team": "캄몬스타즈",
       "balloons": 146011,
-      "broadcast_seconds": 251639
+      "broadcast_seconds": 251999,
+      "cumulative_viewers": 127833
     },
     {
       "id": "vldpfm2",
@@ -821,7 +902,8 @@
       "role": "",
       "team": "캄몬스타즈",
       "balloons": 195971,
-      "broadcast_seconds": 279949
+      "broadcast_seconds": 279949,
+      "cumulative_viewers": 110195
     },
     {
       "id": "2meonjin",
@@ -831,7 +913,8 @@
       "role": "",
       "team": "캄몬스타즈",
       "balloons": 259523,
-      "broadcast_seconds": 418851
+      "broadcast_seconds": 418851,
+      "cumulative_viewers": 148476
     },
     {
       "id": "sksmsskdsl10",
@@ -841,7 +924,8 @@
       "role": "",
       "team": "캄몬스타즈",
       "balloons": 690688,
-      "broadcast_seconds": 417781
+      "broadcast_seconds": 417781,
+      "cumulative_viewers": 393305
     },
     {
       "id": "dlqudgk1227",
@@ -851,7 +935,8 @@
       "role": "수장",
       "team": "엠비대",
       "balloons": 306704,
-      "broadcast_seconds": 254855
+      "broadcast_seconds": 255215,
+      "cumulative_viewers": 174697
     },
     {
       "id": "tiger3006",
@@ -861,7 +946,8 @@
       "role": "수장",
       "team": "엠비대",
       "balloons": 55553,
-      "broadcast_seconds": 227834
+      "broadcast_seconds": 227834,
+      "cumulative_viewers": 335985
     },
     {
       "id": "lyh8808",
@@ -871,7 +957,8 @@
       "role": "",
       "team": "엠비대",
       "balloons": 80776,
-      "broadcast_seconds": 199830
+      "broadcast_seconds": 199830,
+      "cumulative_viewers": 27576
     },
     {
       "id": "rlarnfk24",
@@ -881,7 +968,8 @@
       "role": "",
       "team": "엠비대",
       "balloons": 2933,
-      "broadcast_seconds": 139074
+      "broadcast_seconds": 139074,
+      "cumulative_viewers": 2297
     },
     {
       "id": "wnsgur2da",
@@ -891,7 +979,8 @@
       "role": "",
       "team": "엠비대",
       "balloons": 6032,
-      "broadcast_seconds": 190084
+      "broadcast_seconds": 190084,
+      "cumulative_viewers": 6612
     },
     {
       "id": "jackpot",
@@ -901,7 +990,8 @@
       "role": "",
       "team": "엠비대",
       "balloons": 28699,
-      "broadcast_seconds": 400697
+      "broadcast_seconds": 400697,
+      "cumulative_viewers": 13358
     },
     {
       "id": "paralyze92",
@@ -911,7 +1001,8 @@
       "role": "",
       "team": "엠비대",
       "balloons": 47385,
-      "broadcast_seconds": 320933
+      "broadcast_seconds": 320933,
+      "cumulative_viewers": 11395
     },
     {
       "id": "byromantic",
@@ -921,7 +1012,8 @@
       "role": "",
       "team": "엠비대",
       "balloons": 5749,
-      "broadcast_seconds": 141014
+      "broadcast_seconds": 141014,
+      "cumulative_viewers": 11014
     },
     {
       "id": "askl021",
@@ -931,7 +1023,8 @@
       "role": "",
       "team": "엠비대",
       "balloons": 12600,
-      "broadcast_seconds": 179294
+      "broadcast_seconds": 179294,
+      "cumulative_viewers": 6115
     },
     {
       "id": "kalmian",
@@ -941,7 +1034,8 @@
       "role": "",
       "team": "엠비대",
       "balloons": 8882,
-      "broadcast_seconds": 217745
+      "broadcast_seconds": 217745,
+      "cumulative_viewers": 3401
     },
     {
       "id": "ghkdud1617",
@@ -951,7 +1045,8 @@
       "role": "",
       "team": "엠비대",
       "balloons": 49381,
-      "broadcast_seconds": 173853
+      "broadcast_seconds": 173853,
+      "cumulative_viewers": 16959
     },
     {
       "id": "bora99",
@@ -961,7 +1056,8 @@
       "role": "",
       "team": "엠비대",
       "balloons": 75018,
-      "broadcast_seconds": 311403
+      "broadcast_seconds": 311403,
+      "cumulative_viewers": 43523
     },
     {
       "id": "rabbitmiffy",
@@ -971,7 +1067,8 @@
       "role": "",
       "team": "엠비대",
       "balloons": 62396,
-      "broadcast_seconds": 223859
+      "broadcast_seconds": 223859,
+      "cumulative_viewers": 31645
     },
     {
       "id": "synyoung",
@@ -981,7 +1078,8 @@
       "role": "",
       "team": "엠비대",
       "balloons": 29886,
-      "broadcast_seconds": 224434
+      "broadcast_seconds": 224434,
+      "cumulative_viewers": 6784
     },
     {
       "id": "gkdud3294",
@@ -991,7 +1089,8 @@
       "role": "",
       "team": "엠비대",
       "balloons": 57760,
-      "broadcast_seconds": 242805
+      "broadcast_seconds": 242805,
+      "cumulative_viewers": 14282
     },
     {
       "id": "qocnrhdwn1",
@@ -1001,7 +1100,8 @@
       "role": "",
       "team": "엠비대",
       "balloons": 58993,
-      "broadcast_seconds": 162881
+      "broadcast_seconds": 162881,
+      "cumulative_viewers": 15123
     },
     {
       "id": "have1y",
@@ -1011,7 +1111,8 @@
       "role": "",
       "team": "엠비대",
       "balloons": 73269,
-      "broadcast_seconds": 190726
+      "broadcast_seconds": 190726,
+      "cumulative_viewers": 20773
     },
     {
       "id": "dyaan0v0",
@@ -1021,7 +1122,8 @@
       "role": "",
       "team": "엠비대",
       "balloons": 60750,
-      "broadcast_seconds": 287294
+      "broadcast_seconds": 287294,
+      "cumulative_viewers": 14456
     },
     {
       "id": "arr0530",
@@ -1031,7 +1133,8 @@
       "role": "",
       "team": "엠비대",
       "balloons": 31868,
-      "broadcast_seconds": 318391
+      "broadcast_seconds": 318391,
+      "cumulative_viewers": 15270
     },
     {
       "id": "hamhee",
@@ -1041,7 +1144,8 @@
       "role": "",
       "team": "엠비대",
       "balloons": 26220,
-      "broadcast_seconds": 400670
+      "broadcast_seconds": 400670,
+      "cumulative_viewers": 22005
     },
     {
       "id": "chuwari13",
@@ -1051,7 +1155,8 @@
       "role": "",
       "team": "엠비대",
       "balloons": 34127,
-      "broadcast_seconds": 336626
+      "broadcast_seconds": 336626,
+      "cumulative_viewers": 16735
     },
     {
       "id": "tkdduddb06",
@@ -1061,7 +1166,8 @@
       "role": "수장",
       "team": "와플대",
       "balloons": 122961,
-      "broadcast_seconds": 381741
+      "broadcast_seconds": 381741,
+      "cumulative_viewers": 566795
     },
     {
       "id": "kss33325",
@@ -1071,7 +1177,8 @@
       "role": "",
       "team": "와플대",
       "balloons": 23381,
-      "broadcast_seconds": 251822
+      "broadcast_seconds": 251822,
+      "cumulative_viewers": 4362
     },
     {
       "id": "khy12088wsss",
@@ -1081,7 +1188,8 @@
       "role": "",
       "team": "와플대",
       "balloons": 25609,
-      "broadcast_seconds": 267701
+      "broadcast_seconds": 267701,
+      "cumulative_viewers": 4204
     },
     {
       "id": "isangwk",
@@ -1091,7 +1199,8 @@
       "role": "",
       "team": "와플대",
       "balloons": 25800,
-      "broadcast_seconds": 300365
+      "broadcast_seconds": 300365,
+      "cumulative_viewers": 7837
     },
     {
       "id": "daegalheo",
@@ -1101,7 +1210,8 @@
       "role": "",
       "team": "와플대",
       "balloons": 42245,
-      "broadcast_seconds": 397688
+      "broadcast_seconds": 397688,
+      "cumulative_viewers": 16132
     },
     {
       "id": "julyzerg",
@@ -1111,7 +1221,8 @@
       "role": "",
       "team": "와플대",
       "balloons": 18132,
-      "broadcast_seconds": 155647
+      "broadcast_seconds": 155647,
+      "cumulative_viewers": 21992
     },
     {
       "id": "soonhani",
@@ -1121,7 +1232,8 @@
       "role": "",
       "team": "와플대",
       "balloons": 0,
-      "broadcast_seconds": 0
+      "broadcast_seconds": 0,
+      "cumulative_viewers": 0
     },
     {
       "id": "kwbm123081",
@@ -1131,7 +1243,8 @@
       "role": "",
       "team": "와플대",
       "balloons": 6027,
-      "broadcast_seconds": 36197
+      "broadcast_seconds": 36197,
+      "cumulative_viewers": 595
     },
     {
       "id": "hee4343",
@@ -1141,7 +1254,8 @@
       "role": "",
       "team": "와플대",
       "balloons": 105012,
-      "broadcast_seconds": 384074
+      "broadcast_seconds": 384074,
+      "cumulative_viewers": 25080
     },
     {
       "id": "nylove276",
@@ -1151,7 +1265,8 @@
       "role": "",
       "team": "와플대",
       "balloons": 139532,
-      "broadcast_seconds": 342313
+      "broadcast_seconds": 342313,
+      "cumulative_viewers": 58593
     },
     {
       "id": "jjjjeong",
@@ -1161,7 +1276,8 @@
       "role": "",
       "team": "와플대",
       "balloons": 14517,
-      "broadcast_seconds": 48166
+      "broadcast_seconds": 48166,
+      "cumulative_viewers": 3740
     },
     {
       "id": "gkgus99",
@@ -1171,7 +1287,8 @@
       "role": "",
       "team": "와플대",
       "balloons": 31129,
-      "broadcast_seconds": 263541
+      "broadcast_seconds": 263541,
+      "cumulative_viewers": 6220
     },
     {
       "id": "shj06170",
@@ -1181,7 +1298,8 @@
       "role": "",
       "team": "와플대",
       "balloons": 27460,
-      "broadcast_seconds": 311507
+      "broadcast_seconds": 311507,
+      "cumulative_viewers": 7505
     },
     {
       "id": "as1823",
@@ -1191,7 +1309,8 @@
       "role": "",
       "team": "와플대",
       "balloons": 30575,
-      "broadcast_seconds": 319549
+      "broadcast_seconds": 319549,
+      "cumulative_viewers": 13413
     },
     {
       "id": "kimp1ay",
@@ -1201,7 +1320,8 @@
       "role": "",
       "team": "와플대",
       "balloons": 59504,
-      "broadcast_seconds": 372893
+      "broadcast_seconds": 372893,
+      "cumulative_viewers": 18219
     },
     {
       "id": "e2003jin",
@@ -1211,7 +1331,8 @@
       "role": "",
       "team": "와플대",
       "balloons": 9293,
-      "broadcast_seconds": 187954
+      "broadcast_seconds": 187954,
+      "cumulative_viewers": 4309
     },
     {
       "id": "ititit",
@@ -1221,7 +1342,8 @@
       "role": "수장",
       "team": "수술대",
       "balloons": 123553,
-      "broadcast_seconds": 281143
+      "broadcast_seconds": 281143,
+      "cumulative_viewers": 1398758
     },
     {
       "id": "thakzkf",
@@ -1231,7 +1353,8 @@
       "role": "",
       "team": "수술대",
       "balloons": 46414,
-      "broadcast_seconds": 449280
+      "broadcast_seconds": 449280,
+      "cumulative_viewers": 206160
     },
     {
       "id": "palko1",
@@ -1241,7 +1364,8 @@
       "role": "",
       "team": "수술대",
       "balloons": 89878,
-      "broadcast_seconds": 294004
+      "broadcast_seconds": 294004,
+      "cumulative_viewers": 262692
     },
     {
       "id": "dohyeon97",
@@ -1251,7 +1375,8 @@
       "role": "",
       "team": "수술대",
       "balloons": 53030,
-      "broadcast_seconds": 255424
+      "broadcast_seconds": 255424,
+      "cumulative_viewers": 22973
     },
     {
       "id": "qndnd12",
@@ -1261,7 +1386,8 @@
       "role": "",
       "team": "수술대",
       "balloons": 37320,
-      "broadcast_seconds": 352029
+      "broadcast_seconds": 352029,
+      "cumulative_viewers": 24456
     },
     {
       "id": "wjswpalssla1",
@@ -1271,7 +1397,8 @@
       "role": "",
       "team": "수술대",
       "balloons": 48387,
-      "broadcast_seconds": 348951
+      "broadcast_seconds": 348951,
+      "cumulative_viewers": 49875
     },
     {
       "id": "comcmxx",
@@ -1281,7 +1408,8 @@
       "role": "",
       "team": "수술대",
       "balloons": 31337,
-      "broadcast_seconds": 370429
+      "broadcast_seconds": 370429,
+      "cumulative_viewers": 20984
     },
     {
       "id": "gjgj3274",
@@ -1291,7 +1419,8 @@
       "role": "",
       "team": "수술대",
       "balloons": 104920,
-      "broadcast_seconds": 390592
+      "broadcast_seconds": 390869,
+      "cumulative_viewers": 422471
     },
     {
       "id": "bijyu90",
@@ -1301,7 +1430,8 @@
       "role": "",
       "team": "수술대",
       "balloons": 29875,
-      "broadcast_seconds": 213780
+      "broadcast_seconds": 213780,
+      "cumulative_viewers": 12467
     },
     {
       "id": "dmswls4565",
@@ -1311,7 +1441,8 @@
       "role": "",
       "team": "수술대",
       "balloons": 63464,
-      "broadcast_seconds": 255642
+      "broadcast_seconds": 255642,
+      "cumulative_viewers": 29211
     },
     {
       "id": "pazzy1",
@@ -1321,7 +1452,8 @@
       "role": "",
       "team": "수술대",
       "balloons": 206875,
-      "broadcast_seconds": 338665
+      "broadcast_seconds": 338665,
+      "cumulative_viewers": 63893
     },
     {
       "id": "rlsk0705",
@@ -1331,7 +1463,8 @@
       "role": "",
       "team": "수술대",
       "balloons": 154280,
-      "broadcast_seconds": 366816
+      "broadcast_seconds": 366816,
+      "cumulative_viewers": 35773
     },
     {
       "id": "totlllsz",
@@ -1341,7 +1474,8 @@
       "role": "",
       "team": "수술대",
       "balloons": 52676,
-      "broadcast_seconds": 432250
+      "broadcast_seconds": 432250,
+      "cumulative_viewers": 34464
     },
     {
       "id": "nerve89",
@@ -1351,7 +1485,8 @@
       "role": "",
       "team": "수술대",
       "balloons": 82951,
-      "broadcast_seconds": 311778
+      "broadcast_seconds": 311778,
+      "cumulative_viewers": 33770
     },
     {
       "id": "wlgua7272",
@@ -1361,7 +1496,8 @@
       "role": "",
       "team": "수술대",
       "balloons": 108749,
-      "broadcast_seconds": 344792
+      "broadcast_seconds": 344792,
+      "cumulative_viewers": 68371
     },
     {
       "id": "nreupne",
@@ -1371,7 +1507,8 @@
       "role": "",
       "team": "수술대",
       "balloons": 72578,
-      "broadcast_seconds": 349145
+      "broadcast_seconds": 349145,
+      "cumulative_viewers": 31971
     },
     {
       "id": "tato1104",
@@ -1381,7 +1518,8 @@
       "role": "",
       "team": "수술대",
       "balloons": 73820,
-      "broadcast_seconds": 329791
+      "broadcast_seconds": 329791,
+      "cumulative_viewers": 32529
     },
     {
       "id": "jiinii000",
@@ -1391,7 +1529,8 @@
       "role": "",
       "team": "수술대",
       "balloons": 70470,
-      "broadcast_seconds": 397538
+      "broadcast_seconds": 397538,
+      "cumulative_viewers": 107363
     },
     {
       "id": "min030606",
@@ -1401,7 +1540,8 @@
       "role": "",
       "team": "수술대",
       "balloons": 89954,
-      "broadcast_seconds": 413513
+      "broadcast_seconds": 413513,
+      "cumulative_viewers": 45492
     },
     {
       "id": "heyyo0123",
@@ -1411,7 +1551,8 @@
       "role": "",
       "team": "수술대",
       "balloons": 54666,
-      "broadcast_seconds": 310240
+      "broadcast_seconds": 310240,
+      "cumulative_viewers": 44599
     },
     {
       "id": "jungym0116",
@@ -1421,7 +1562,8 @@
       "role": "",
       "team": "수술대",
       "balloons": 198732,
-      "broadcast_seconds": 275605
+      "broadcast_seconds": 275605,
+      "cumulative_viewers": 25104
     },
     {
       "id": "zinsim",
@@ -1431,7 +1573,8 @@
       "role": "",
       "team": "수술대",
       "balloons": 0,
-      "broadcast_seconds": 0
+      "broadcast_seconds": 0,
+      "cumulative_viewers": 0
     },
     {
       "id": "ode0411",
@@ -1441,7 +1584,8 @@
       "role": "",
       "team": "수술대",
       "balloons": 27814,
-      "broadcast_seconds": 222984
+      "broadcast_seconds": 222984,
+      "cumulative_viewers": 15093
     },
     {
       "id": "arinbbidol",
@@ -1451,7 +1595,8 @@
       "role": "수장",
       "team": "뉴캣슬",
       "balloons": 495632,
-      "broadcast_seconds": 300978
+      "broadcast_seconds": 300978,
+      "cumulative_viewers": 1200337
     },
     {
       "id": "peros777",
@@ -1461,7 +1606,8 @@
       "role": "",
       "team": "뉴캣슬",
       "balloons": 35462,
-      "broadcast_seconds": 270480
+      "broadcast_seconds": 270480,
+      "cumulative_viewers": 57301
     },
     {
       "id": "wodnrdldia",
@@ -1471,7 +1617,8 @@
       "role": "",
       "team": "뉴캣슬",
       "balloons": 256469,
-      "broadcast_seconds": 419333
+      "broadcast_seconds": 419333,
+      "cumulative_viewers": 301317
     },
     {
       "id": "ksmo54",
@@ -1481,7 +1628,8 @@
       "role": "",
       "team": "뉴캣슬",
       "balloons": 39002,
-      "broadcast_seconds": 306535
+      "broadcast_seconds": 306535,
+      "cumulative_viewers": 27706
     },
     {
       "id": "killkg2",
@@ -1491,7 +1639,8 @@
       "role": "",
       "team": "뉴캣슬",
       "balloons": 94951,
-      "broadcast_seconds": 486270
+      "broadcast_seconds": 486270,
+      "cumulative_viewers": 38807
     },
     {
       "id": "dmk1212",
@@ -1501,7 +1650,8 @@
       "role": "",
       "team": "뉴캣슬",
       "balloons": 33442,
-      "broadcast_seconds": 190765
+      "broadcast_seconds": 190765,
+      "cumulative_viewers": 6462
     },
     {
       "id": "dbrbals",
@@ -1511,7 +1661,8 @@
       "role": "",
       "team": "뉴캣슬",
       "balloons": 48628,
-      "broadcast_seconds": 284099
+      "broadcast_seconds": 284099,
+      "cumulative_viewers": 9788
     },
     {
       "id": "jun10280",
@@ -1521,7 +1672,8 @@
       "role": "",
       "team": "뉴캣슬",
       "balloons": 91535,
-      "broadcast_seconds": 184082
+      "broadcast_seconds": 184082,
+      "cumulative_viewers": 11075
     },
     {
       "id": "ywww123",
@@ -1531,7 +1683,8 @@
       "role": "",
       "team": "뉴캣슬",
       "balloons": 58455,
-      "broadcast_seconds": 446144
+      "broadcast_seconds": 446144,
+      "cumulative_viewers": 20005
     },
     {
       "id": "parkle1006",
@@ -1541,7 +1694,8 @@
       "role": "",
       "team": "뉴캣슬",
       "balloons": 113298,
-      "broadcast_seconds": 424082
+      "broadcast_seconds": 424082,
+      "cumulative_viewers": 95122
     },
     {
       "id": "dbwjdcool1",
@@ -1551,7 +1705,8 @@
       "role": "",
       "team": "뉴캣슬",
       "balloons": 112543,
-      "broadcast_seconds": 293429
+      "broadcast_seconds": 293429,
+      "cumulative_viewers": 32570
     },
     {
       "id": "123rhaxld",
@@ -1561,7 +1716,8 @@
       "role": "",
       "team": "뉴캣슬",
       "balloons": 168800,
-      "broadcast_seconds": 384281
+      "broadcast_seconds": 384281,
+      "cumulative_viewers": 112834
     },
     {
       "id": "zzzz809",
@@ -1571,7 +1727,8 @@
       "role": "",
       "team": "뉴캣슬",
       "balloons": 98994,
-      "broadcast_seconds": 341603
+      "broadcast_seconds": 341603,
+      "cumulative_viewers": 48081
     },
     {
       "id": "2ahgo1203",
@@ -1581,7 +1738,8 @@
       "role": "",
       "team": "뉴캣슬",
       "balloons": 102764,
-      "broadcast_seconds": 283423
+      "broadcast_seconds": 283423,
+      "cumulative_viewers": 54422
     },
     {
       "id": "aybjc2319",
@@ -1591,7 +1749,8 @@
       "role": "",
       "team": "뉴캣슬",
       "balloons": 70980,
-      "broadcast_seconds": 321442
+      "broadcast_seconds": 321442,
+      "cumulative_viewers": 31797
     },
     {
       "id": "diniowo",
@@ -1601,7 +1760,8 @@
       "role": "",
       "team": "뉴캣슬",
       "balloons": 169264,
-      "broadcast_seconds": 359218
+      "broadcast_seconds": 359218,
+      "cumulative_viewers": 83886
     },
     {
       "id": "totoo23",
@@ -1611,7 +1771,8 @@
       "role": "",
       "team": "뉴캣슬",
       "balloons": 100810,
-      "broadcast_seconds": 307861
+      "broadcast_seconds": 307861,
+      "cumulative_viewers": 19358
     },
     {
       "id": "queenzu",
@@ -1621,7 +1782,8 @@
       "role": "",
       "team": "뉴캣슬",
       "balloons": 266040,
-      "broadcast_seconds": 423325
+      "broadcast_seconds": 423325,
+      "cumulative_viewers": 80786
     },
     {
       "id": "corgi1102",
@@ -1631,7 +1793,8 @@
       "role": "",
       "team": "뉴캣슬",
       "balloons": 72149,
-      "broadcast_seconds": 381174
+      "broadcast_seconds": 381174,
+      "cumulative_viewers": 21766
     },
     {
       "id": "yuzzzz",
@@ -1641,7 +1804,8 @@
       "role": "",
       "team": "뉴캣슬",
       "balloons": 117965,
-      "broadcast_seconds": 294936
+      "broadcast_seconds": 294936,
+      "cumulative_viewers": 42592
     },
     {
       "id": "1004yomi",
@@ -1651,7 +1815,8 @@
       "role": "",
       "team": "뉴캣슬",
       "balloons": 44528,
-      "broadcast_seconds": 424037
+      "broadcast_seconds": 424037,
+      "cumulative_viewers": 31738
     },
     {
       "id": "qwer1317",
@@ -1661,7 +1826,8 @@
       "role": "",
       "team": "뉴캣슬",
       "balloons": 43138,
-      "broadcast_seconds": 341964
+      "broadcast_seconds": 341964,
+      "cumulative_viewers": 16912
     },
     {
       "id": "tndkekdy",
@@ -1671,7 +1837,8 @@
       "role": "",
       "team": "뉴캣슬",
       "balloons": 141548,
-      "broadcast_seconds": 376025
+      "broadcast_seconds": 376025,
+      "cumulative_viewers": 85106
     },
     {
       "id": "jhw1729",
@@ -1681,7 +1848,8 @@
       "role": "수장",
       "team": "BGM",
       "balloons": 259659,
-      "broadcast_seconds": 240980
+      "broadcast_seconds": 240980,
+      "cumulative_viewers": 315159
     },
     {
       "id": "lky6407",
@@ -1691,7 +1859,8 @@
       "role": "",
       "team": "BGM",
       "balloons": 64316,
-      "broadcast_seconds": 347955
+      "broadcast_seconds": 347955,
+      "cumulative_viewers": 5834
     },
     {
       "id": "bumsoo552",
@@ -1701,7 +1870,8 @@
       "role": "",
       "team": "BGM",
       "balloons": 28659,
-      "broadcast_seconds": 299274
+      "broadcast_seconds": 299274,
+      "cumulative_viewers": 5019
     },
     {
       "id": "daehan7224",
@@ -1711,7 +1881,8 @@
       "role": "",
       "team": "BGM",
       "balloons": 12104,
-      "broadcast_seconds": 98744
+      "broadcast_seconds": 98744,
+      "cumulative_viewers": 999
     },
     {
       "id": "nada11200",
@@ -1721,7 +1892,8 @@
       "role": "",
       "team": "BGM",
       "balloons": 16230,
-      "broadcast_seconds": 130200
+      "broadcast_seconds": 130200,
+      "cumulative_viewers": 10210
     },
     {
       "id": "wkddudrms15",
@@ -1731,7 +1903,8 @@
       "role": "",
       "team": "BGM",
       "balloons": 37498,
-      "broadcast_seconds": 276904
+      "broadcast_seconds": 276904,
+      "cumulative_viewers": 9834
     },
     {
       "id": "dudwn4974",
@@ -1741,7 +1914,8 @@
       "role": "",
       "team": "BGM",
       "balloons": 82148,
-      "broadcast_seconds": 521238
+      "broadcast_seconds": 521238,
+      "cumulative_viewers": 17711
     },
     {
       "id": "s1on0106",
@@ -1751,7 +1925,8 @@
       "role": "",
       "team": "BGM",
       "balloons": 49009,
-      "broadcast_seconds": 333278
+      "broadcast_seconds": 333278,
+      "cumulative_viewers": 6896
     },
     {
       "id": "eeceec",
@@ -1761,7 +1936,8 @@
       "role": "",
       "team": "BGM",
       "balloons": 50055,
-      "broadcast_seconds": 504364
+      "broadcast_seconds": 504364,
+      "cumulative_viewers": 29347
     },
     {
       "id": "kitty1029",
@@ -1771,7 +1947,8 @@
       "role": "",
       "team": "BGM",
       "balloons": 138605,
-      "broadcast_seconds": 205017
+      "broadcast_seconds": 205017,
+      "cumulative_viewers": 10658
     },
     {
       "id": "ldk8481",
@@ -1781,7 +1958,8 @@
       "role": "",
       "team": "BGM",
       "balloons": 95971,
-      "broadcast_seconds": 546124
+      "broadcast_seconds": 546124,
+      "cumulative_viewers": 18355
     },
     {
       "id": "hy4985",
@@ -1791,7 +1969,8 @@
       "role": "",
       "team": "BGM",
       "balloons": 23654,
-      "broadcast_seconds": 195615
+      "broadcast_seconds": 195615,
+      "cumulative_viewers": 3055
     },
     {
       "id": "dmsthfdldia",
@@ -1801,7 +1980,8 @@
       "role": "",
       "team": "BGM",
       "balloons": 34360,
-      "broadcast_seconds": 254358
+      "broadcast_seconds": 254358,
+      "cumulative_viewers": 5408
     },
     {
       "id": "dmsgkdn12",
@@ -1811,7 +1991,8 @@
       "role": "",
       "team": "BGM",
       "balloons": 73124,
-      "broadcast_seconds": 428338
+      "broadcast_seconds": 428338,
+      "cumulative_viewers": 77849
     },
     {
       "id": "ghlidhjgioew",
@@ -1821,7 +2002,8 @@
       "role": "",
       "team": "BGM",
       "balloons": 47339,
-      "broadcast_seconds": 246437
+      "broadcast_seconds": 246437,
+      "cumulative_viewers": 7209
     },
     {
       "id": "yyssaa33",
@@ -1831,7 +2013,8 @@
       "role": "",
       "team": "BGM",
       "balloons": 28390,
-      "broadcast_seconds": 271280
+      "broadcast_seconds": 271280,
+      "cumulative_viewers": 6557
     },
     {
       "id": "xzqwe1",
@@ -1841,7 +2024,8 @@
       "role": "",
       "team": "BGM",
       "balloons": 33946,
-      "broadcast_seconds": 202653
+      "broadcast_seconds": 202653,
+      "cumulative_viewers": 4412
     },
     {
       "id": "happyhee97",
@@ -1851,7 +2035,8 @@
       "role": "",
       "team": "BGM",
       "balloons": 81922,
-      "broadcast_seconds": 249170
+      "broadcast_seconds": 249530,
+      "cumulative_viewers": 7264
     },
     {
       "id": "janjanoo",
@@ -1861,7 +2046,8 @@
       "role": "",
       "team": "BGM",
       "balloons": 123368,
-      "broadcast_seconds": 463500
+      "broadcast_seconds": 463500,
+      "cumulative_viewers": 15419
     },
     {
       "id": "suhi370erw",
@@ -1871,7 +2057,8 @@
       "role": "수장",
       "team": "HM",
       "balloons": 2434075,
-      "broadcast_seconds": 300149
+      "broadcast_seconds": 300149,
+      "cumulative_viewers": 194439
     },
     {
       "id": "ghtjs3833",
@@ -1881,7 +2068,8 @@
       "role": "",
       "team": "HM",
       "balloons": 7901,
-      "broadcast_seconds": 311121
+      "broadcast_seconds": 311121,
+      "cumulative_viewers": 21868
     },
     {
       "id": "bts150",
@@ -1891,7 +2079,8 @@
       "role": "",
       "team": "HM",
       "balloons": 23357,
-      "broadcast_seconds": 489120
+      "broadcast_seconds": 489120,
+      "cumulative_viewers": 26173
     },
     {
       "id": "jhyhlli123",
@@ -1901,7 +2090,8 @@
       "role": "",
       "team": "HM",
       "balloons": 6290,
-      "broadcast_seconds": 183944
+      "broadcast_seconds": 183944,
+      "cumulative_viewers": 2095
     },
     {
       "id": "nalra82",
@@ -1911,7 +2101,8 @@
       "role": "",
       "team": "HM",
       "balloons": 1308,
-      "broadcast_seconds": 60228
+      "broadcast_seconds": 60228,
+      "cumulative_viewers": 5144
     },
     {
       "id": "heksd",
@@ -1921,7 +2112,8 @@
       "role": "",
       "team": "HM",
       "balloons": 11926,
-      "broadcast_seconds": 172149
+      "broadcast_seconds": 172149,
+      "cumulative_viewers": 1970
     },
     {
       "id": "igoldtree",
@@ -1931,7 +2123,8 @@
       "role": "",
       "team": "HM",
       "balloons": 18552,
-      "broadcast_seconds": 384499
+      "broadcast_seconds": 384499,
+      "cumulative_viewers": 3508
     },
     {
       "id": "sr629",
@@ -1941,7 +2134,8 @@
       "role": "",
       "team": "HM",
       "balloons": 41779,
-      "broadcast_seconds": 337310
+      "broadcast_seconds": 337310,
+      "cumulative_viewers": 10039
     },
     {
       "id": "ekfrqkf",
@@ -1951,7 +2145,8 @@
       "role": "",
       "team": "HM",
       "balloons": 37920,
-      "broadcast_seconds": 292670
+      "broadcast_seconds": 292670,
+      "cumulative_viewers": 11158
     },
     {
       "id": "snowssa",
@@ -1961,7 +2156,8 @@
       "role": "",
       "team": "HM",
       "balloons": 54195,
-      "broadcast_seconds": 415529
+      "broadcast_seconds": 415529,
+      "cumulative_viewers": 19926
     },
     {
       "id": "ynblbee",
@@ -1971,7 +2167,8 @@
       "role": "",
       "team": "HM",
       "balloons": 50165,
-      "broadcast_seconds": 307476
+      "broadcast_seconds": 307476,
+      "cumulative_viewers": 14063
     },
     {
       "id": "asdsa1113",
@@ -1981,7 +2178,8 @@
       "role": "",
       "team": "HM",
       "balloons": 33290,
-      "broadcast_seconds": 255651
+      "broadcast_seconds": 255651,
+      "cumulative_viewers": 11056
     },
     {
       "id": "onzzang",
@@ -1991,7 +2189,8 @@
       "role": "",
       "team": "HM",
       "balloons": 25773,
-      "broadcast_seconds": 376611
+      "broadcast_seconds": 376611,
+      "cumulative_viewers": 8054
     },
     {
       "id": "ara9687",
@@ -2001,7 +2200,8 @@
       "role": "",
       "team": "HM",
       "balloons": 21141,
-      "broadcast_seconds": 461976
+      "broadcast_seconds": 461976,
+      "cumulative_viewers": 6573
     },
     {
       "id": "organ333",
@@ -2011,7 +2211,8 @@
       "role": "수장",
       "team": "DM",
       "balloons": 58234,
-      "broadcast_seconds": 207697
+      "broadcast_seconds": 207697,
+      "cumulative_viewers": 67125
     },
     {
       "id": "70jeontaekyu",
@@ -2021,7 +2222,8 @@
       "role": "수장",
       "team": "DM",
       "balloons": 127491,
-      "broadcast_seconds": 176589
+      "broadcast_seconds": 176589,
+      "cumulative_viewers": 134944
     },
     {
       "id": "gnsl418",
@@ -2031,7 +2233,8 @@
       "role": "",
       "team": "DM",
       "balloons": 33823,
-      "broadcast_seconds": 254816
+      "broadcast_seconds": 254816,
+      "cumulative_viewers": 7502
     },
     {
       "id": "zealot0846",
@@ -2041,7 +2244,8 @@
       "role": "",
       "team": "DM",
       "balloons": 27961,
-      "broadcast_seconds": 369216
+      "broadcast_seconds": 369216,
+      "cumulative_viewers": 14925
     },
     {
       "id": "lovelove7777",
@@ -2051,7 +2255,8 @@
       "role": "",
       "team": "DM",
       "balloons": 123395,
-      "broadcast_seconds": 326925
+      "broadcast_seconds": 326925,
+      "cumulative_viewers": 36326
     },
     {
       "id": "cyj982002",
@@ -2061,7 +2266,8 @@
       "role": "",
       "team": "DM",
       "balloons": 41861,
-      "broadcast_seconds": 285194
+      "broadcast_seconds": 285194,
+      "cumulative_viewers": 44265
     },
     {
       "id": "jscando77",
@@ -2071,7 +2277,8 @@
       "role": "",
       "team": "DM",
       "balloons": 66640,
-      "broadcast_seconds": 283889
+      "broadcast_seconds": 283889,
+      "cumulative_viewers": 23205
     },
     {
       "id": "lily0104",
@@ -2081,7 +2288,8 @@
       "role": "",
       "team": "DM",
       "balloons": 66002,
-      "broadcast_seconds": 366804
+      "broadcast_seconds": 366804,
+      "cumulative_viewers": 11018
     },
     {
       "id": "nasd06",
@@ -2091,7 +2299,8 @@
       "role": "",
       "team": "DM",
       "balloons": 54870,
-      "broadcast_seconds": 277719
+      "broadcast_seconds": 277719,
+      "cumulative_viewers": 17601
     },
     {
       "id": "5eulgii",
@@ -2101,7 +2310,8 @@
       "role": "",
       "team": "DM",
       "balloons": 51770,
-      "broadcast_seconds": 384279
+      "broadcast_seconds": 384279,
+      "cumulative_viewers": 18322
     },
     {
       "id": "danu619",
@@ -2111,7 +2321,8 @@
       "role": "",
       "team": "DM",
       "balloons": 175510,
-      "broadcast_seconds": 251686
+      "broadcast_seconds": 251686,
+      "cumulative_viewers": 24397
     },
     {
       "id": "eunseo0152",
@@ -2121,7 +2332,8 @@
       "role": "",
       "team": "DM",
       "balloons": 145712,
-      "broadcast_seconds": 349683
+      "broadcast_seconds": 349683,
+      "cumulative_viewers": 32949
     },
     {
       "id": "eunjo0105",
@@ -2131,7 +2343,8 @@
       "role": "",
       "team": "DM",
       "balloons": 125805,
-      "broadcast_seconds": 302771
+      "broadcast_seconds": 302771,
+      "cumulative_viewers": 17112
     },
     {
       "id": "sulstyle00",
@@ -2141,7 +2354,8 @@
       "role": "수장",
       "team": "신세계",
       "balloons": 119572,
-      "broadcast_seconds": 554185
+      "broadcast_seconds": 554185,
+      "cumulative_viewers": 526217
     },
     {
       "id": "cksgmldbs",
@@ -2151,7 +2365,8 @@
       "role": "",
       "team": "신세계",
       "balloons": 52424,
-      "broadcast_seconds": 341366
+      "broadcast_seconds": 341366,
+      "cumulative_viewers": 87522
     },
     {
       "id": "snfjdro369",
@@ -2161,7 +2376,8 @@
       "role": "",
       "team": "신세계",
       "balloons": 23574,
-      "broadcast_seconds": 263060
+      "broadcast_seconds": 263060,
+      "cumulative_viewers": 70190
     },
     {
       "id": "rnjsgurwls15",
@@ -2171,7 +2387,8 @@
       "role": "",
       "team": "신세계",
       "balloons": 91940,
-      "broadcast_seconds": 546512
+      "broadcast_seconds": 546872,
+      "cumulative_viewers": 53971
     },
     {
       "id": "byspire",
@@ -2181,7 +2398,8 @@
       "role": "",
       "team": "신세계",
       "balloons": 0,
-      "broadcast_seconds": 0
+      "broadcast_seconds": 0,
+      "cumulative_viewers": 0
     },
     {
       "id": "zealotmaru",
@@ -2191,7 +2409,8 @@
       "role": "",
       "team": "신세계",
       "balloons": 1242,
-      "broadcast_seconds": 42567
+      "broadcast_seconds": 42567,
+      "cumulative_viewers": 786
     },
     {
       "id": "simcheong23",
@@ -2201,7 +2420,8 @@
       "role": "",
       "team": "신세계",
       "balloons": 40480,
-      "broadcast_seconds": 394353
+      "broadcast_seconds": 394353,
+      "cumulative_viewers": 22963
     },
     {
       "id": "djathekd",
@@ -2211,7 +2431,8 @@
       "role": "",
       "team": "신세계",
       "balloons": 21735,
-      "broadcast_seconds": 288242
+      "broadcast_seconds": 288242,
+      "cumulative_viewers": 17234
     },
     {
       "id": "della2440",
@@ -2221,7 +2442,8 @@
       "role": "",
       "team": "신세계",
       "balloons": 50769,
-      "broadcast_seconds": 392821
+      "broadcast_seconds": 393181,
+      "cumulative_viewers": 27203
     },
     {
       "id": "rnfma14",
@@ -2231,7 +2453,8 @@
       "role": "",
       "team": "신세계",
       "balloons": 49774,
-      "broadcast_seconds": 306883
+      "broadcast_seconds": 306883,
+      "cumulative_viewers": 19439
     },
     {
       "id": "jiwooris2",
@@ -2241,7 +2464,8 @@
       "role": "",
       "team": "신세계",
       "balloons": 143580,
-      "broadcast_seconds": 392096
+      "broadcast_seconds": 392096,
+      "cumulative_viewers": 43617
     },
     {
       "id": "khl1589",
@@ -2251,7 +2475,8 @@
       "role": "",
       "team": "신세계",
       "balloons": 50839,
-      "broadcast_seconds": 334577
+      "broadcast_seconds": 334577,
+      "cumulative_viewers": 19635
     },
     {
       "id": "haeun5513",
@@ -2261,7 +2486,8 @@
       "role": "",
       "team": "신세계",
       "balloons": 47817,
-      "broadcast_seconds": 317162
+      "broadcast_seconds": 317522,
+      "cumulative_viewers": 49797
     },
     {
       "id": "finepearls",
@@ -2271,7 +2497,8 @@
       "role": "",
       "team": "신세계",
       "balloons": 122471,
-      "broadcast_seconds": 293883
+      "broadcast_seconds": 293883,
+      "cumulative_viewers": 11282
     },
     {
       "id": "vlfvlf789",
@@ -2281,7 +2508,8 @@
       "role": "수장",
       "team": "더블비",
       "balloons": 438516,
-      "broadcast_seconds": 469045
+      "broadcast_seconds": 469045,
+      "cumulative_viewers": 2496997
     },
     {
       "id": "mede1234",
@@ -2291,7 +2519,8 @@
       "role": "전력외",
       "team": "더블비",
       "balloons": 46762,
-      "broadcast_seconds": 57448
+      "broadcast_seconds": 57448,
+      "cumulative_viewers": 25385
     },
     {
       "id": "mwhdgus",
@@ -2301,7 +2530,8 @@
       "role": "",
       "team": "더블비",
       "balloons": 80020,
-      "broadcast_seconds": 88936
+      "broadcast_seconds": 88936,
+      "cumulative_viewers": 28645
     },
     {
       "id": "suji84",
@@ -2311,7 +2541,8 @@
       "role": "",
       "team": "더블비",
       "balloons": 258641,
-      "broadcast_seconds": 401906
+      "broadcast_seconds": 401906,
+      "cumulative_viewers": 134909
     },
     {
       "id": "aram1213",
@@ -2321,7 +2552,8 @@
       "role": "",
       "team": "더블비",
       "balloons": 118790,
-      "broadcast_seconds": 395160
+      "broadcast_seconds": 395160,
+      "cumulative_viewers": 99458
     },
     {
       "id": "dptmfl1258",
@@ -2331,7 +2563,8 @@
       "role": "",
       "team": "더블비",
       "balloons": 124263,
-      "broadcast_seconds": 287559
+      "broadcast_seconds": 287559,
+      "cumulative_viewers": 84227
     },
     {
       "id": "zzonii",
@@ -2341,7 +2574,8 @@
       "role": "",
       "team": "더블비",
       "balloons": 62315,
-      "broadcast_seconds": 297495
+      "broadcast_seconds": 297495,
+      "cumulative_viewers": 56542
     },
     {
       "id": "fidfidfid",
@@ -2351,7 +2585,8 @@
       "role": "",
       "team": "더블비",
       "balloons": 58014,
-      "broadcast_seconds": 203725
+      "broadcast_seconds": 203725,
+      "cumulative_viewers": 22432
     },
     {
       "id": "jk890202",
@@ -2361,7 +2596,8 @@
       "role": "수장",
       "team": "드림즈",
       "balloons": 471203,
-      "broadcast_seconds": 533635
+      "broadcast_seconds": 533635,
+      "cumulative_viewers": 1666229
     },
     {
       "id": "hby0724",
@@ -2371,7 +2607,8 @@
       "role": "",
       "team": "드림즈",
       "balloons": 62769,
-      "broadcast_seconds": 299263
+      "broadcast_seconds": 299263,
+      "cumulative_viewers": 44602
     },
     {
       "id": "djdbstn",
@@ -2381,7 +2618,8 @@
       "role": "",
       "team": "드림즈",
       "balloons": 51042,
-      "broadcast_seconds": 412805
+      "broadcast_seconds": 412805,
+      "cumulative_viewers": 35639
     },
     {
       "id": "dbsdydx",
@@ -2391,7 +2629,8 @@
       "role": "",
       "team": "드림즈",
       "balloons": 53957,
-      "broadcast_seconds": 187956
+      "broadcast_seconds": 187956,
+      "cumulative_viewers": 28181
     },
     {
       "id": "tjgpdus97",
@@ -2401,7 +2640,8 @@
       "role": "",
       "team": "드림즈",
       "balloons": 351074,
-      "broadcast_seconds": 429743
+      "broadcast_seconds": 429743,
+      "cumulative_viewers": 229847
     },
     {
       "id": "moguleave",
@@ -2411,7 +2651,8 @@
       "role": "",
       "team": "드림즈",
       "balloons": 236667,
-      "broadcast_seconds": 132343
+      "broadcast_seconds": 132343,
+      "cumulative_viewers": 86416
     },
     {
       "id": "queen030",
@@ -2421,7 +2662,8 @@
       "role": "",
       "team": "드림즈",
       "balloons": 122045,
-      "broadcast_seconds": 207893
+      "broadcast_seconds": 207893,
+      "cumulative_viewers": 96586
     },
     {
       "id": "wlswn6565",
@@ -2431,7 +2673,8 @@
       "role": "",
       "team": "드림즈",
       "balloons": 173095,
-      "broadcast_seconds": 334979
+      "broadcast_seconds": 334979,
+      "cumulative_viewers": 183373
     },
     {
       "id": "j4141h",
@@ -2441,7 +2684,8 @@
       "role": "",
       "team": "드림즈",
       "balloons": 149931,
-      "broadcast_seconds": 589995
+      "broadcast_seconds": 589995,
+      "cumulative_viewers": 106363
     },
     {
       "id": "nmirifo7795",
@@ -2451,7 +2695,8 @@
       "role": "",
       "team": "드림즈",
       "balloons": 106626,
-      "broadcast_seconds": 422816
+      "broadcast_seconds": 422816,
+      "cumulative_viewers": 61663
     }
   ]
 }
