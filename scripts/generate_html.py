@@ -174,11 +174,13 @@ PAGE_CSS = """
   }
   .back-link:hover { color: #4a5ce0; }
   .top-meta-group {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-end;
-    gap: 3px;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    flex-wrap: wrap;
+    justify-content: flex-end;
   }
+  .top-meta-sep { color: #c2c5cc; }
   .top-meta {
     font-size: 10px;
     color: #a4a8b2;
@@ -877,6 +879,7 @@ def assemble_single_page(all_data: list, current_year: int, current_month: int,
     {nav_html}
     <span class="top-meta-group">
       <span class="top-meta" id="top-meta-text">{default_meta_html}</span>
+      {'<span class="top-meta-sep">·</span>' if back_link_html else ''}
       {back_link_html}
     </span>
   </div>
