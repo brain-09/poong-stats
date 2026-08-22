@@ -724,21 +724,29 @@ def page_shell(*, top_bar_html: str, body_html: str, include_mobile_css: bool = 
     style = PAGE_CSS + (MOBILE_CSS if include_mobile_css else "")
     font_url = f"{logo_prefix}fonts/PretendardVariable.woff2"
 
-    # 와이고수 게시글 등에 iframe으로 삽입됐을 때는 "전체페이지로" 이동이 의미가
-    # 없으므로(embed 안에서 넘어가봤자 어색함), 팀 단독 페이지에 있는 뒤로가기
-    # 링크(top_bar_html 안에 이미 조건부로 포함됨)는 iframe 안에서 열린 경우에만
-    # 자바스크립트로 숨긴다. 브라우저에서 직접 team 페이지 URL로 들어온 경우
-    # (= 최상위 문서)에는 그대로 보여준다. getElementById가 못 찾으면(=전체
-    # 페이지) 그냥 아무 일도 안 하고 지나간다.
+    # 팀 단독 페이지의 뒤로가기 링크(top_bar_html 안에 이미 조건부로 포함됨)는
+    # "이 페이지에 어떻게 들어왔는지"로 보임/숨김을 자동 판단한다.
+    # - 최상위 문서(iframe 아님, 브라우저에서 직접 team URL로 들어온 경우): 그냥 보임
+    # - iframe 안 + referrer가 우리 사이트의 index.html(=전체 페이지 임베드
+    #   안에서 팀 이름을 눌러 같은 iframe 안에서 넘어온 경우): 보임
+    # - iframe 안 + 그 외(=게시글이 이 team 페이지 URL을 iframe src로 직접
+    #   박아놓은 단독 임베드인 경우): 숨김
+    # getElementById가 못 찾으면(=전체 페이지) 아무 일도 안 하고 지나간다.
     iframe_hide_script = """<script>
 (function () {
   var backLink = document.getElementById('back-to-full-link');
-  if (backLink && window.self !== window.top) {
+  if (!backLink) return;
+  if (window.self === window.top) return;
+  var cameFromFullPage = false;
+  try {
+    var ref = new URL(document.referrer);
+    cameFromFullPage = ref.origin === window.location.origin && /\\/(index\\.html)?$/.test(ref.pathname);
+  } catch (e) {}
+  if (!cameFromFullPage) {
     backLink.style.display = 'none';
   }
 })();
 </script>"""
-
     return f"""<!DOCTYPE html>
 <html lang="ko">
 <head>
