@@ -715,7 +715,7 @@ def page_shell(*, top_bar_html: str, body_html: str, include_mobile_css: bool = 
   font-family: 'Pretendard Variable';
   font-weight: 45 920;
   font-style: normal;
-  font-display: swap;
+  font-display: block;
   src: url('{font_url}') format('woff2-variations');
 }}
 {style}
