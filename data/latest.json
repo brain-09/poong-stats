@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-08-22 12:20:32",
+  "updated_at": "2026-08-22 12:34:07",
   "year": 2026,
   "month": 8,
   "members": [
@@ -10,9 +10,9 @@
       "birthdate": "1995-12-09",
       "role": "수장",
       "team": "JSA",
-      "balloons": 2922718,
-      "broadcast_seconds": 543534,
-      "cumulative_viewers": 2015034
+      "balloons": 2922788,
+      "broadcast_seconds": 544374,
+      "cumulative_viewers": 2020049
     },
     {
       "id": "sharpragu",
@@ -22,8 +22,8 @@
       "role": "",
       "team": "JSA",
       "balloons": 85503,
-      "broadcast_seconds": 452100,
-      "cumulative_viewers": 67461
+      "broadcast_seconds": 452940,
+      "cumulative_viewers": 67922
     },
     {
       "id": "dpfgc3",
@@ -891,8 +891,8 @@
       "role": "",
       "team": "캄몬스타즈",
       "balloons": 146011,
-      "broadcast_seconds": 252359,
-      "cumulative_viewers": 127938
+      "broadcast_seconds": 253199,
+      "cumulative_viewers": 128177
     },
     {
       "id": "vldpfm2",
@@ -934,9 +934,9 @@
       "birthdate": "1992-12-27",
       "role": "수장",
       "team": "엠비대",
-      "balloons": 306706,
-      "broadcast_seconds": 255575,
-      "cumulative_viewers": 174872
+      "balloons": 306708,
+      "broadcast_seconds": 256415,
+      "cumulative_viewers": 175343
     },
     {
       "id": "tiger3006",
@@ -1418,9 +1418,9 @@
       "birthdate": "1993-11-21",
       "role": "",
       "team": "수술대",
-      "balloons": 105120,
-      "broadcast_seconds": 391229,
-      "cumulative_viewers": 422793
+      "balloons": 105221,
+      "broadcast_seconds": 392069,
+      "cumulative_viewers": 423455
     },
     {
       "id": "bijyu90",
@@ -2035,8 +2035,8 @@
       "role": "",
       "team": "BGM",
       "balloons": 81922,
-      "broadcast_seconds": 249890,
-      "cumulative_viewers": 7279
+      "broadcast_seconds": 250730,
+      "cumulative_viewers": 7340
     },
     {
       "id": "janjanoo",
@@ -2387,8 +2387,8 @@
       "role": "",
       "team": "신세계",
       "balloons": 93354,
-      "broadcast_seconds": 547232,
-      "cumulative_viewers": 54033
+      "broadcast_seconds": 548072,
+      "cumulative_viewers": 54168
     },
     {
       "id": "byspire",
@@ -2442,8 +2442,8 @@
       "role": "",
       "team": "신세계",
       "balloons": 50769,
-      "broadcast_seconds": 393541,
-      "cumulative_viewers": 27236
+      "broadcast_seconds": 394381,
+      "cumulative_viewers": 27310
     },
     {
       "id": "rnfma14",
@@ -2485,9 +2485,9 @@
       "birthdate": "2006-06-24",
       "role": "",
       "team": "신세계",
-      "balloons": 47820,
-      "broadcast_seconds": 317882,
-      "cumulative_viewers": 49873
+      "balloons": 48266,
+      "broadcast_seconds": 318722,
+      "cumulative_viewers": 50052
     },
     {
       "id": "finepearls",
