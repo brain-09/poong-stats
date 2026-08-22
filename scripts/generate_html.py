@@ -166,14 +166,19 @@ PAGE_CSS = """
   .back-link {
     display: inline-flex;
     align-items: center;
-    gap: 4px;
-    font-size: 13px;
-    font-weight: 500;
+    gap: 3px;
+    font-size: 10px;
+    font-weight: 600;
     color: #8a8d97;
     text-decoration: none;
-    margin: 0 0 8px 4px;
   }
   .back-link:hover { color: #4a5ce0; }
+  .top-meta-group {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 3px;
+  }
   .top-meta {
     font-size: 10px;
     color: #a4a8b2;
@@ -717,21 +722,13 @@ def page_shell(*, top_bar_html: str, body_html: str, include_mobile_css: bool = 
     style = PAGE_CSS + (MOBILE_CSS if include_mobile_css else "")
     font_url = f"{logo_prefix}fonts/PretendardVariable.woff2"
 
-    # 팀 단독 페이지(logo_prefix="../")에서만 카드 바깥 위쪽에 뒤로가기 링크를 둔다.
-    # 카드 안 "연도/월/지표" 부분은 전체 페이지와 완전히 동일한 위치/크기를 유지해야
-    # 하므로, 뒤로가기는 카드 안에 넣지 않고 카드 바깥에 별도 줄로 분리한다.
-    back_link_html = ""
-    iframe_hide_script = ""
-    if logo_prefix:
-        back_link_html = (
-            f'<a href="{logo_prefix}index.html" id="back-to-full-link" class="back-link">'
-            f'← 전체페이지</a>'
-        )
-        # 와이고수 게시글 등에 iframe으로 삽입됐을 때는 "전체페이지로" 이동이
-        # 의미가 없으므로(embed 안에서 넘어가봤자 어색함), iframe 안에서 열린
-        # 경우에만 이 링크를 숨긴다. 브라우저에서 직접 team 페이지 URL로 들어온
-        # 경우(= 최상위 문서)에는 그대로 보여준다.
-        iframe_hide_script = """<script>
+    # 와이고수 게시글 등에 iframe으로 삽입됐을 때는 "전체페이지로" 이동이 의미가
+    # 없으므로(embed 안에서 넘어가봤자 어색함), 팀 단독 페이지에 있는 뒤로가기
+    # 링크(top_bar_html 안에 이미 조건부로 포함됨)는 iframe 안에서 열린 경우에만
+    # 자바스크립트로 숨긴다. 브라우저에서 직접 team 페이지 URL로 들어온 경우
+    # (= 최상위 문서)에는 그대로 보여준다. getElementById가 못 찾으면(=전체
+    # 페이지) 그냥 아무 일도 안 하고 지나간다.
+    iframe_hide_script = """<script>
 (function () {
   var backLink = document.getElementById('back-to-full-link');
   if (backLink && window.self !== window.top) {
@@ -759,7 +756,6 @@ def page_shell(*, top_bar_html: str, body_html: str, include_mobile_css: bool = 
 </style>
 </head>
 <body>
-  {back_link_html}
   {top_bar_html}
   {body_html}
   <div class="legend">
@@ -865,10 +861,24 @@ def assemble_single_page(all_data: list, current_year: int, current_month: int,
   </span>
     """
 
+    # 팀 단독 페이지(logo_prefix="../")에서만 뒤로가기 링크를 둔다. "연도/월/지표"
+    # 부분(nav_html)은 절대 건드리지 않고, 카드 오른쪽 메타 텍스트 아래에 작게
+    # 쌓아서 카드 높이가 늘어나지 않게 한다(카드 바깥에 새 줄을 만들면 그만큼
+    # 페이지 전체가 밀려 내려가서 이 방식으로 바꿈).
+    back_link_html = ""
+    if logo_prefix:
+        back_link_html = (
+            f'<a href="{logo_prefix}index.html" id="back-to-full-link" class="back-link">'
+            f'← 전체페이지</a>'
+        )
+
     top_bar_html = f"""
   <div class="top-bar">
     {nav_html}
-    <span class="top-meta" id="top-meta-text">{default_meta_html}</span>
+    <span class="top-meta-group">
+      <span class="top-meta" id="top-meta-text">{default_meta_html}</span>
+      {back_link_html}
+    </span>
   </div>
     """
 
