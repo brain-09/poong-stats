@@ -355,6 +355,7 @@ PAGE_CSS = """
     min-width: 0;
   }
   .stat-card-header { display: flex; align-items: center; justify-content: center; gap: 4px; margin-bottom: 5px; margin-left: -6px; }
+  .stat-card-header.no-icon { margin-left: 0; }
   .stat-label { font-size: 12px; color: #1a1d29; font-weight: 600; }
   .stat-value { font-size: 14px; font-weight: 800; color: #1a1d29; font-variant-numeric: tabular-nums; }
   .stat-icon { color: #1a1d29; flex-shrink: 0; }
@@ -363,6 +364,14 @@ PAGE_CSS = """
   .stat-card.total-avg { background: #f1eefb; border: none; }
   .stat-card.total-avg .stat-value { color: #26215c; }
 
+  .profile-photo-img {
+    width: 72px;
+    height: 72px;
+    border-radius: 50%;
+    object-fit: cover;
+    background: #f2f3f5;
+    flex-shrink: 0;
+  }
   .profile-row {
     display: flex;
     justify-content: space-between;
@@ -1148,7 +1157,7 @@ def build_profile_page(all_data: list) -> str:
     <div class="team-card-topbar" id="profile-topbar"></div>
     <div class="team-header">
       <div class="team-header-left">
-        <img class="team-logo" id="profile-photo" alt="">
+        <img class="profile-photo-img" id="profile-photo" alt="">
         <span class="team-name" id="profile-nickname"></span>
       </div>
     </div>
@@ -1168,19 +1177,19 @@ def build_profile_page(all_data: list) -> str:
     </div>
     <div class="team-footer">
       <div class="stat-card">
-        <div class="stat-card-header"><span class="stat-label">별풍선</span></div>
+        <div class="stat-card-header no-icon"><span class="stat-label">별풍선</span></div>
         <div class="stat-value" id="profile-balloons"></div>
       </div>
       <div class="stat-card">
-        <div class="stat-card-header"><span class="stat-label">방송시간</span></div>
+        <div class="stat-card-header no-icon"><span class="stat-label">방송시간</span></div>
         <div class="stat-value" id="profile-broadcast"></div>
       </div>
       <div class="stat-card">
-        <div class="stat-card-header"><span class="stat-label">누적시청자</span></div>
+        <div class="stat-card-header no-icon"><span class="stat-label">누적시청자</span></div>
         <div class="stat-value" id="profile-viewers"></div>
       </div>
       <div class="stat-card">
-        <div class="stat-card-header"><span class="stat-label">스폰전적</span></div>
+        <div class="stat-card-header no-icon"><span class="stat-label">스폰전적</span></div>
         <div class="stat-value" style="font-size:11px;color:#a4a8b2;">준비중</div>
       </div>
     </div>
@@ -1228,7 +1237,11 @@ def build_profile_page(all_data: list) -> str:
   function fmt(n) {{ return (n || 0).toLocaleString('ko-KR'); }}
   function fmtBroadcast(sec) {{
     sec = sec || 0;
-    return Math.floor(sec / 3600) + 'h ' + Math.floor((sec % 3600) / 60) + 'm';
+    var h = Math.floor(sec / 3600);
+    var m = Math.floor((sec % 3600) / 60);
+    var s = Math.floor(sec % 60);
+    var pad2 = function (n) {{ return (n < 10 ? '0' : '') + n; }};
+    return pad2(h) + ':' + pad2(m) + ':' + pad2(s);
   }}
 
   function populateMonths(year, preselectMonth) {{
