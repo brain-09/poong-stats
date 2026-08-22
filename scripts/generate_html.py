@@ -350,12 +350,7 @@ PAGE_CSS = """
   }
   .stat-label { font-size: 12px; color: #a4a8b2; margin-bottom: 4px; font-weight: 600; }
   .stat-value { font-size: 14px; font-weight: 800; color: #1a1d29; font-variant-numeric: tabular-nums; }
-  .stat-card.female-avg { background: #d9f2f2; border: none; }
-  .stat-card.female-avg .stat-label { color: #0e6b6b; }
-  .stat-card.female-avg .stat-value { color: #0a4d4d; }
-  .stat-card.total-avg { background: #efe9fc; border: none; }
-  .stat-card.total-avg .stat-label { color: #6a3fb0; }
-  .stat-card.total-avg .stat-value { color: #4a2984; }
+  .stat-icon { display: block; margin: 0 auto 6px; color: #b9bcc5; }
 
   .legend {
     max-width: 1080px;
@@ -405,6 +400,7 @@ MOBILE_CSS = """
     .member-value { font-size: 6px; padding-left: 4px; }
     .team-footer { padding: 6px 5px 7px; gap: 3px; }
     .stat-card { padding: 6px 4px; border-radius: 8px; }
+    .stat-icon { width: 10px; height: 10px; margin-bottom: 3px; }
     .stat-label { font-size: 6px; margin-bottom: 2px; }
     .stat-value { font-size: 7px; }
     .legend { font-size: 5px; margin-top: 8px; }
@@ -454,6 +450,15 @@ BROADCAST_METRIC = Metric(key="broadcast", field="broadcast_seconds", exclude_ro
 VIEWER_METRIC = Metric(key="viewer", field="cumulative_viewers", exclude_roles=True,
                         format_fn=fmt, unit_label="누적시청자")
 METRICS = [BALLOON_METRIC, BROADCAST_METRIC, VIEWER_METRIC]
+
+# 팀 카드 하단 요약 카드(전체 합계/여자 평균/전체 평균)용 아이콘. 외부 아이콘
+# 폰트 CDN을 새로 추가하지 않고(폰트도 self-host해서 로딩 지연을 없앴는데
+# 아이콘 때문에 다시 외부 CDN을 걸면 그 노력이 무의미해짐) 가벼운 인라인 SVG로
+# 직접 그린다. stroke="currentColor"라 .stat-icon의 color 값을 그대로 따라간다.
+_ICON_ATTRS = 'viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"'
+STAT_ICON_SUM = f'<svg class="stat-icon" {_ICON_ATTRS}><ellipse cx="12" cy="6" rx="7" ry="3"/><path d="M5 6v5c0 1.66 3.13 3 7 3s7-1.34 7-3V6"/><path d="M5 11v5c0 1.66 3.13 3 7 3s7-1.34 7-3v-5"/></svg>'
+STAT_ICON_FEMALE = f'<svg class="stat-icon" {_ICON_ATTRS}><circle cx="12" cy="9" r="5"/><path d="M12 14v7M9 18h6"/></svg>'
+STAT_ICON_AVG = f'<svg class="stat-icon" {_ICON_ATTRS}><path d="M4 20V10M12 20V4M20 20v-7"/></svg>'
 
 
 def parse_birthdate(bd):
@@ -634,14 +639,17 @@ def build_team_card(team_name: str, members: list, current_month: int, tiers: di
       </div>
       <div class="team-footer">
         <div class="stat-card">
+          {STAT_ICON_SUM}
           <div class="stat-label">전체 합계</div>
           <div class="stat-value">{metric.format_fn(total_sum)}</div>
         </div>
         <div class="stat-card female-avg">
+          {STAT_ICON_FEMALE}
           <div class="stat-label">여자 평균</div>
           <div class="stat-value">{metric.format_fn(female_avg)}</div>
         </div>
         <div class="stat-card total-avg">
+          {STAT_ICON_AVG}
           <div class="stat-label">전체 평균</div>
           <div class="stat-value">{metric.format_fn(total_avg)}</div>
         </div>
