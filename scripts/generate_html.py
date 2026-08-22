@@ -342,16 +342,16 @@ PAGE_CSS = """
   .stat-card {
     flex: 1;
     text-align: center;
-    padding: 12px 8px;
+    padding: 14px 8px;
     border-radius: 16px;
     background: #fff;
     border: 1px solid #eef0f2;
     min-width: 0;
   }
-  .stat-card-header { display: flex; align-items: center; justify-content: center; gap: 4px; margin-bottom: 5px; }
+  .stat-card-header { position: relative; display: inline-block; margin-bottom: 5px; }
   .stat-label { font-size: 12px; color: #1a1d29; font-weight: 600; }
   .stat-value { font-size: 14px; font-weight: 800; color: #1a1d29; font-variant-numeric: tabular-nums; }
-  .stat-icon { display: block; color: #1a1d29; flex-shrink: 0; }
+  .stat-icon { position: absolute; top: 50%; left: -16px; transform: translateY(-50%); color: #1a1d29; }
   .stat-card.female-avg { background: #eaf7f5; border: none; }
   .stat-card.female-avg .stat-value { color: #085041; }
   .stat-card.total-avg { background: #f1eefb; border: none; }
@@ -404,9 +404,9 @@ MOBILE_CSS = """
     .bday-mark { font-size: 4px; }
     .member-value { font-size: 6px; padding-left: 4px; }
     .team-footer { padding: 6px 5px 7px; gap: 3px; }
-    .stat-card { padding: 6px 4px; border-radius: 8px; }
-    .stat-card-header { gap: 2px; margin-bottom: 2px; }
-    .stat-icon { width: 6px; height: 6px; }
+    .stat-card { padding: 7px 4px; border-radius: 8px; }
+    .stat-card-header { margin-bottom: 2px; }
+    .stat-icon { width: 6px; height: 6px; left: -8px; }
     .stat-label { font-size: 6px; }
     .stat-value { font-size: 7px; }
     .legend { font-size: 5px; margin-top: 8px; }
