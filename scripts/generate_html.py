@@ -129,6 +129,7 @@ PAGE_CSS = """
     background: #fff;
     border-radius: 20px;
     padding: 16px 20px;
+    min-height: 64px;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -361,7 +362,7 @@ MOBILE_CSS = """
      PAGE_CSS 쪽을 2배로 맞추면 된다. */
   @media (max-width: 600px) {
     body { padding: 12px 6px; }
-    .top-bar { border-radius: 10px; padding: 8px 10px; gap: 4px; }
+    .top-bar { border-radius: 10px; padding: 8px 10px; gap: 4px; min-height: 34px; }
     .month-select-group { gap: 2px; }
     .top-date-select { font-size: 10px; }
     .nav-chevron { font-size: 7px; margin: 0 2px; }
