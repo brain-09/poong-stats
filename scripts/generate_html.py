@@ -489,8 +489,15 @@ STAT_ICON_AVG = f'<svg class="stat-icon" {_ICON_ATTRS}><path d="M4 20V10M12 20V4
 
 # 개인 프로필 페이지(profile.html?id=...)에서 쓰는 SOOP 프로필사진/방송국 URL.
 # {id} 자리를 실제 SOOP 아이디로 그대로 바꿔치기한다.
-SOOP_PROFILE_IMG_TEMPLATE = "https://profile.img.sooplive.co.kr/LOGO/su/{id}/{id}.jpg"
+# {id}는 SOOP 아이디, {prefix}는 그 아이디의 첫 두 글자(폴더 샤딩용) -
+# JS에서 targetId.substring(0, 2)로 계산해서 넣는다.
+SOOP_PROFILE_IMG_TEMPLATE = "https://profile.img.sooplive.com/LOGO/{prefix}/{id}/{id}.jpg"
 SOOP_STATION_TEMPLATE = "https://www.sooplive.com/station/{id}"
+
+# 방송국 링크 아이콘(SOOP 로고) - 레포에 별도 이미지 파일을 안 두고 base64로
+# HTML에 직접 박아넣는다. 파일 배치를 깜빡하거나 경로가 어긋나서 아이콘이
+# 깨지는 일 자체를 원천적으로 없애기 위함.
+SOOP_LOGO_ICON_DATA_URI = "data:image/png;base64,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"
 
 
 def parse_birthdate(bd):
@@ -1157,7 +1164,7 @@ def build_profile_page(all_data: list) -> str:
       <div class="profile-row">
         <span class="profile-row-label">방송국</span>
         <a id="profile-station-link" href="#" target="_blank" rel="noopener">
-          <img class="profile-station-icon" src="icons/soop-logo.jpg" alt="방송국 바로가기">
+          <img class="profile-station-icon" src="{SOOP_LOGO_ICON_DATA_URI}" alt="방송국 바로가기">
         </a>
       </div>
     </div>
@@ -1253,7 +1260,8 @@ def build_profile_page(all_data: list) -> str:
     var photoImg = document.getElementById('profile-photo');
     photoImg.onerror = function () {{ this.style.visibility = 'hidden'; }};
     photoImg.onload = function () {{ this.style.visibility = ''; }};
-    photoImg.src = '{SOOP_PROFILE_IMG_TEMPLATE}'.split('{{id}}').join(targetId);
+    var idPrefix = targetId.substring(0, 2);
+    photoImg.src = '{SOOP_PROFILE_IMG_TEMPLATE}'.split('{{prefix}}').join(idPrefix).split('{{id}}').join(targetId);
     document.getElementById('profile-topbar').style.background = teamColors[member.team] || '{DEFAULT_TOPBAR_COLOR}';
     document.getElementById('profile-nickname').textContent = member.nickname || '';
     document.getElementById('profile-gender').textContent = member.gender === 'f' ? '여' : '남';
