@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-08-22 22:42:08",
+  "updated_at": "2026-08-23 00:20:48",
   "year": 2026,
   "month": 8,
   "members": [
@@ -10,9 +10,11 @@
       "birthdate": "1995-12-09",
       "role": "수장",
       "team": "JSA",
+      "race": "프로토스",
+      "tier": "3",
       "balloons": 2937196,
-      "broadcast_seconds": 571202,
-      "cumulative_viewers": 2119665
+      "broadcast_seconds": 571344,
+      "cumulative_viewers": 2120465
     },
     {
       "id": "sharpragu",
@@ -21,9 +23,11 @@
       "birthdate": "1992-06-15",
       "role": "",
       "team": "JSA",
-      "balloons": 87628,
-      "broadcast_seconds": 472560,
-      "cumulative_viewers": 71750
+      "race": "테란",
+      "tier": "갓",
+      "balloons": 92728,
+      "broadcast_seconds": 478440,
+      "cumulative_viewers": 72575
     },
     {
       "id": "dpfgc3",
@@ -32,6 +36,8 @@
       "birthdate": "1994-07-19",
       "role": "",
       "team": "JSA",
+      "race": "저그",
+      "tier": "갓",
       "balloons": 45032,
       "broadcast_seconds": 530750,
       "cumulative_viewers": 192132
@@ -43,6 +49,8 @@
       "birthdate": "1992-04-23",
       "role": "",
       "team": "JSA",
+      "race": "저그",
+      "tier": "갓",
       "balloons": 125448,
       "broadcast_seconds": 292455,
       "cumulative_viewers": 203784
@@ -54,6 +62,8 @@
       "birthdate": "1989-07-21",
       "role": "",
       "team": "JSA",
+      "race": "테란",
+      "tier": "킹",
       "balloons": 57371,
       "broadcast_seconds": 268152,
       "cumulative_viewers": 12518
@@ -65,9 +75,11 @@
       "birthdate": "1995-05-24",
       "role": "",
       "team": "JSA",
-      "balloons": 77263,
-      "broadcast_seconds": 424960,
-      "cumulative_viewers": 18177
+      "race": "테란",
+      "tier": "잭",
+      "balloons": 83263,
+      "broadcast_seconds": 430840,
+      "cumulative_viewers": 18412
     },
     {
       "id": "dgh9641",
@@ -76,6 +88,8 @@
       "birthdate": "1994-01-27",
       "role": "",
       "team": "JSA",
+      "race": "저그",
+      "tier": "잭",
       "balloons": 79912,
       "broadcast_seconds": 326855,
       "cumulative_viewers": 70196
@@ -87,6 +101,8 @@
       "birthdate": "1990-02-03",
       "role": "",
       "team": "JSA",
+      "race": "프로토스",
+      "tier": "조커",
       "balloons": 82880,
       "broadcast_seconds": 301567,
       "cumulative_viewers": 12613
@@ -98,9 +114,11 @@
       "birthdate": "1997-12-11",
       "role": "",
       "team": "JSA",
-      "balloons": 197019,
-      "broadcast_seconds": 407991,
-      "cumulative_viewers": 104097
+      "race": "저그",
+      "tier": "2",
+      "balloons": 201385,
+      "broadcast_seconds": 413871,
+      "cumulative_viewers": 105461
     },
     {
       "id": "phh95426",
@@ -109,9 +127,11 @@
       "birthdate": "1995-04-26",
       "role": "",
       "team": "JSA",
-      "balloons": 94634,
-      "broadcast_seconds": 301805,
-      "cumulative_viewers": 25033
+      "race": "테란",
+      "tier": "3",
+      "balloons": 98099,
+      "broadcast_seconds": 307685,
+      "cumulative_viewers": 25480
     },
     {
       "id": "dkfka8945",
@@ -120,9 +140,11 @@
       "birthdate": "1996-09-09",
       "role": "",
       "team": "JSA",
-      "balloons": 100214,
-      "broadcast_seconds": 393737,
-      "cumulative_viewers": 101312
+      "race": "저그",
+      "tier": "3",
+      "balloons": 104248,
+      "broadcast_seconds": 398848,
+      "cumulative_viewers": 102820
     },
     {
       "id": "ftrudals",
@@ -131,9 +153,11 @@
       "birthdate": "1996-11-27",
       "role": "",
       "team": "JSA",
-      "balloons": 104102,
-      "broadcast_seconds": 408592,
-      "cumulative_viewers": 57810
+      "race": "저그",
+      "tier": "4",
+      "balloons": 108522,
+      "broadcast_seconds": 414472,
+      "cumulative_viewers": 58900
     },
     {
       "id": "fudnjs0235",
@@ -142,9 +166,11 @@
       "birthdate": "2001-01-03",
       "role": "",
       "team": "JSA",
-      "balloons": 132474,
-      "broadcast_seconds": 392492,
-      "cumulative_viewers": 41936
+      "race": "테란",
+      "tier": "6",
+      "balloons": 132714,
+      "broadcast_seconds": 398372,
+      "cumulative_viewers": 42632
     },
     {
       "id": "wjddmstj79",
@@ -153,9 +179,11 @@
       "birthdate": "1997-07-15",
       "role": "",
       "team": "JSA",
+      "race": "저그",
+      "tier": "7",
       "balloons": 81279,
-      "broadcast_seconds": 355298,
-      "cumulative_viewers": 76414
+      "broadcast_seconds": 361178,
+      "cumulative_viewers": 77292
     },
     {
       "id": "begoniah",
@@ -164,9 +192,11 @@
       "birthdate": "1996-01-06",
       "role": "",
       "team": "JSA",
-      "balloons": 60488,
-      "broadcast_seconds": 331865,
-      "cumulative_viewers": 33726
+      "race": "저그",
+      "tier": "7",
+      "balloons": 64541,
+      "broadcast_seconds": 337745,
+      "cumulative_viewers": 34423
     },
     {
       "id": "owoouoowo",
@@ -175,6 +205,8 @@
       "birthdate": "2001-08-18",
       "role": "",
       "team": "JSA",
+      "race": "프로토스",
+      "tier": "7",
       "balloons": 15902,
       "broadcast_seconds": 9747,
       "cumulative_viewers": 6673
@@ -186,9 +218,11 @@
       "birthdate": "2001-08-24",
       "role": "",
       "team": "JSA",
+      "race": "프로토스",
+      "tier": "8",
       "balloons": 52815,
-      "broadcast_seconds": 404219,
-      "cumulative_viewers": 28492
+      "broadcast_seconds": 410099,
+      "cumulative_viewers": 28715
     },
     {
       "id": "tamama88",
@@ -197,9 +231,11 @@
       "birthdate": "2001-04-23",
       "role": "",
       "team": "JSA",
-      "balloons": 41187,
-      "broadcast_seconds": 492589,
-      "cumulative_viewers": 55852
+      "race": "테란",
+      "tier": "유스",
+      "balloons": 41190,
+      "broadcast_seconds": 498469,
+      "cumulative_viewers": 56160
     },
     {
       "id": "kidsaoq",
@@ -208,9 +244,11 @@
       "birthdate": "1999-12-09",
       "role": "",
       "team": "JSA",
-      "balloons": 57975,
-      "broadcast_seconds": 342609,
-      "cumulative_viewers": 36143
+      "race": "저그",
+      "tier": "유스",
+      "balloons": 58229,
+      "broadcast_seconds": 348489,
+      "cumulative_viewers": 36433
     },
     {
       "id": "littlekim12",
@@ -219,6 +257,8 @@
       "birthdate": "2000-10-16",
       "role": "",
       "team": "JSA",
+      "race": "저그",
+      "tier": "유스",
       "balloons": 92207,
       "broadcast_seconds": 362510,
       "cumulative_viewers": 49064
@@ -230,6 +270,8 @@
       "birthdate": "1996-08-31",
       "role": "",
       "team": "JSA",
+      "race": "프로토스",
+      "tier": "유스",
       "balloons": 47547,
       "broadcast_seconds": 398046,
       "cumulative_viewers": 24840
@@ -241,9 +283,11 @@
       "birthdate": "1988-03-02",
       "role": "수장",
       "team": "흑카데미",
-      "balloons": 306198,
-      "broadcast_seconds": 435278,
-      "cumulative_viewers": 293305
+      "race": "테란",
+      "tier": "잭",
+      "balloons": 311197,
+      "broadcast_seconds": 441158,
+      "cumulative_viewers": 296883
     },
     {
       "id": "scan1014",
@@ -252,9 +296,11 @@
       "birthdate": "1993-10-14",
       "role": "",
       "team": "흑카데미",
+      "race": "테란",
+      "tier": "킹",
       "balloons": 33329,
-      "broadcast_seconds": 384304,
-      "cumulative_viewers": 17143
+      "broadcast_seconds": 384759,
+      "cumulative_viewers": 17158
     },
     {
       "id": "bhy95",
@@ -263,6 +309,8 @@
       "birthdate": "1995-11-27",
       "role": "",
       "team": "흑카데미",
+      "race": "테란",
+      "tier": "잭",
       "balloons": 28898,
       "broadcast_seconds": 299319,
       "cumulative_viewers": 3863
@@ -274,9 +322,11 @@
       "birthdate": "1989-12-17",
       "role": "",
       "team": "흑카데미",
-      "balloons": 24534,
-      "broadcast_seconds": 181513,
-      "cumulative_viewers": 20475
+      "race": "테란",
+      "tier": "잭",
+      "balloons": 29534,
+      "broadcast_seconds": 187248,
+      "cumulative_viewers": 21173
     },
     {
       "id": "ndudska620",
@@ -285,9 +335,11 @@
       "birthdate": "1994-03-18",
       "role": "",
       "team": "흑카데미",
-      "balloons": 39936,
-      "broadcast_seconds": 351767,
-      "cumulative_viewers": 7936
+      "race": "테란",
+      "tier": "조커",
+      "balloons": 40336,
+      "broadcast_seconds": 355733,
+      "cumulative_viewers": 8035
     },
     {
       "id": "skarbwhgc",
@@ -296,9 +348,11 @@
       "birthdate": "1994-04-02",
       "role": "",
       "team": "흑카데미",
-      "balloons": 20459,
-      "broadcast_seconds": 395146,
-      "cumulative_viewers": 5406
+      "race": "테란",
+      "tier": "스페이드",
+      "balloons": 21459,
+      "broadcast_seconds": 397727,
+      "cumulative_viewers": 5445
     },
     {
       "id": "jhpark7712",
@@ -307,9 +361,11 @@
       "birthdate": "1991-07-11",
       "role": "",
       "team": "흑카데미",
-      "balloons": 86763,
-      "broadcast_seconds": 681999,
-      "cumulative_viewers": 36734
+      "race": "테란",
+      "tier": "1",
+      "balloons": 87490,
+      "broadcast_seconds": 687879,
+      "cumulative_viewers": 37037
     },
     {
       "id": "ehgmldud1233",
@@ -318,9 +374,11 @@
       "birthdate": "1996-11-02",
       "role": "",
       "team": "흑카데미",
-      "balloons": 82806,
-      "broadcast_seconds": 592482,
-      "cumulative_viewers": 64250
+      "race": "테란",
+      "tier": "2",
+      "balloons": 87806,
+      "broadcast_seconds": 598362,
+      "cumulative_viewers": 64888
     },
     {
       "id": "kwh1992",
@@ -329,6 +387,8 @@
       "birthdate": "1992-02-15",
       "role": "",
       "team": "흑카데미",
+      "race": "테란",
+      "tier": "2",
       "balloons": 55640,
       "broadcast_seconds": 524860,
       "cumulative_viewers": 24763
@@ -340,6 +400,8 @@
       "birthdate": "1995-05-30",
       "role": "",
       "team": "흑카데미",
+      "race": "테란",
+      "tier": "3",
       "balloons": 152628,
       "broadcast_seconds": 580731,
       "cumulative_viewers": 141993
@@ -351,6 +413,8 @@
       "birthdate": "1997-11-05",
       "role": "",
       "team": "흑카데미",
+      "race": "테란",
+      "tier": "5",
       "balloons": 20501,
       "broadcast_seconds": 27090,
       "cumulative_viewers": 5012
@@ -362,9 +426,11 @@
       "birthdate": "1991-11-21",
       "role": "",
       "team": "흑카데미",
-      "balloons": 96599,
-      "broadcast_seconds": 310299,
-      "cumulative_viewers": 21686
+      "race": "테란",
+      "tier": "5",
+      "balloons": 103951,
+      "broadcast_seconds": 316179,
+      "cumulative_viewers": 22345
     },
     {
       "id": "maeong2",
@@ -373,9 +439,11 @@
       "birthdate": "2001-04-03",
       "role": "",
       "team": "흑카데미",
-      "balloons": 96496,
-      "broadcast_seconds": 386798,
-      "cumulative_viewers": 21817
+      "race": "테란",
+      "tier": "6",
+      "balloons": 103059,
+      "broadcast_seconds": 392678,
+      "cumulative_viewers": 22564
     },
     {
       "id": "tjwjddms1565",
@@ -384,9 +452,11 @@
       "birthdate": "1997-10-07",
       "role": "",
       "team": "흑카데미",
-      "balloons": 58045,
-      "broadcast_seconds": 408328,
-      "cumulative_viewers": 19513
+      "race": "테란",
+      "tier": "6",
+      "balloons": 63161,
+      "broadcast_seconds": 414208,
+      "cumulative_viewers": 19975
     },
     {
       "id": "rudzhd123",
@@ -395,9 +465,11 @@
       "birthdate": "1999-05-16",
       "role": "",
       "team": "흑카데미",
-      "balloons": 63156,
-      "broadcast_seconds": 397355,
-      "cumulative_viewers": 22455
+      "race": "테란",
+      "tier": "7",
+      "balloons": 63556,
+      "broadcast_seconds": 403235,
+      "cumulative_viewers": 22771
     },
     {
       "id": "gangeda",
@@ -406,6 +478,8 @@
       "birthdate": "2002-05-04",
       "role": "",
       "team": "흑카데미",
+      "race": "테란",
+      "tier": "7",
       "balloons": 85428,
       "broadcast_seconds": 533856,
       "cumulative_viewers": 78473
@@ -417,6 +491,8 @@
       "birthdate": "1996-10-18",
       "role": "",
       "team": "흑카데미",
+      "race": "테란",
+      "tier": "8",
       "balloons": 39857,
       "broadcast_seconds": 496545,
       "cumulative_viewers": 20061
@@ -428,6 +504,8 @@
       "birthdate": "2004-12-25",
       "role": "",
       "team": "흑카데미",
+      "race": "테란",
+      "tier": "8",
       "balloons": 29457,
       "broadcast_seconds": 357811,
       "cumulative_viewers": 13026
@@ -439,6 +517,8 @@
       "birthdate": "2003-10-24",
       "role": "",
       "team": "흑카데미",
+      "race": "테란",
+      "tier": "유스",
       "balloons": 41415,
       "broadcast_seconds": 436398,
       "cumulative_viewers": 18777
@@ -450,6 +530,8 @@
       "birthdate": "1997-04-11",
       "role": "",
       "team": "흑카데미",
+      "race": "테란",
+      "tier": "유스",
       "balloons": 73034,
       "broadcast_seconds": 804004,
       "cumulative_viewers": 56479
@@ -461,9 +543,11 @@
       "birthdate": "1989-11-23",
       "role": "수장",
       "team": "케이대",
-      "balloons": 12515792,
-      "broadcast_seconds": 275961,
-      "cumulative_viewers": 1818861
+      "race": "프로토스",
+      "tier": "8",
+      "balloons": 12526864,
+      "broadcast_seconds": 280037,
+      "cumulative_viewers": 1854180
     },
     {
       "id": "neverdieyj",
@@ -472,6 +556,8 @@
       "birthdate": "1993-01-24",
       "role": "",
       "team": "케이대",
+      "race": "테란",
+      "tier": "갓",
       "balloons": 73024,
       "broadcast_seconds": 227270,
       "cumulative_viewers": 31801
@@ -483,6 +569,8 @@
       "birthdate": "1993-04-01",
       "role": "",
       "team": "케이대",
+      "race": "프로토스",
+      "tier": "갓",
       "balloons": 26871,
       "broadcast_seconds": 349173,
       "cumulative_viewers": 86154
@@ -494,6 +582,8 @@
       "birthdate": "1988-09-08",
       "role": "",
       "team": "케이대",
+      "race": "저그",
+      "tier": "킹",
       "balloons": 52906,
       "broadcast_seconds": 316545,
       "cumulative_viewers": 93819
@@ -505,9 +595,11 @@
       "birthdate": "1995-08-21",
       "role": "",
       "team": "케이대",
-      "balloons": 64986,
-      "broadcast_seconds": 182761,
-      "cumulative_viewers": 7116
+      "race": "프로토스",
+      "tier": "킹",
+      "balloons": 77788,
+      "broadcast_seconds": 185804,
+      "cumulative_viewers": 15137
     },
     {
       "id": "wjdalsrl95",
@@ -516,6 +608,8 @@
       "birthdate": "1995-03-16",
       "role": "",
       "team": "케이대",
+      "race": "테란",
+      "tier": "잭",
       "balloons": 67859,
       "broadcast_seconds": 201863,
       "cumulative_viewers": 9595
@@ -527,6 +621,8 @@
       "birthdate": "1988-01-15",
       "role": "",
       "team": "케이대",
+      "race": "저그",
+      "tier": "잭",
       "balloons": 76661,
       "broadcast_seconds": 465901,
       "cumulative_viewers": 47002
@@ -538,6 +634,8 @@
       "birthdate": "1989-04-23",
       "role": "",
       "team": "케이대",
+      "race": "프로토스",
+      "tier": "조커",
       "balloons": 192716,
       "broadcast_seconds": 331185,
       "cumulative_viewers": 390531
@@ -549,6 +647,8 @@
       "birthdate": "2002-03-02",
       "role": "",
       "team": "케이대",
+      "race": "프로토스",
+      "tier": "스페이드",
       "balloons": 36515,
       "broadcast_seconds": 199753,
       "cumulative_viewers": 5992
@@ -560,6 +660,8 @@
       "birthdate": "1988-01-02",
       "role": "",
       "team": "케이대",
+      "race": "저그",
+      "tier": "0",
       "balloons": 79026,
       "broadcast_seconds": 521005,
       "cumulative_viewers": 41398
@@ -571,6 +673,8 @@
       "birthdate": "1997-03-20",
       "role": "",
       "team": "케이대",
+      "race": "프로토스",
+      "tier": "0",
       "balloons": 0,
       "broadcast_seconds": 0,
       "cumulative_viewers": 0
@@ -582,6 +686,8 @@
       "birthdate": "1993-03-16",
       "role": "",
       "team": "케이대",
+      "race": "프로토스",
+      "tier": "2",
       "balloons": 159170,
       "broadcast_seconds": 387814,
       "cumulative_viewers": 158216
@@ -593,6 +699,8 @@
       "birthdate": "1998-11-12",
       "role": "",
       "team": "케이대",
+      "race": "저그",
+      "tier": "4",
       "balloons": 0,
       "broadcast_seconds": 0,
       "cumulative_viewers": 0
@@ -604,6 +712,8 @@
       "birthdate": "1997-11-05",
       "role": "",
       "team": "케이대",
+      "race": "프로토스",
+      "tier": "4",
       "balloons": 123006,
       "broadcast_seconds": 313311,
       "cumulative_viewers": 27544
@@ -615,6 +725,8 @@
       "birthdate": "2001-02-17",
       "role": "",
       "team": "케이대",
+      "race": "테란",
+      "tier": "5",
       "balloons": 175918,
       "broadcast_seconds": 402581,
       "cumulative_viewers": 85099
@@ -626,6 +738,8 @@
       "birthdate": "2001-03-26",
       "role": "",
       "team": "케이대",
+      "race": "저그",
+      "tier": "6",
       "balloons": 135685,
       "broadcast_seconds": 337259,
       "cumulative_viewers": 217655
@@ -637,6 +751,8 @@
       "birthdate": "2001-09-24",
       "role": "",
       "team": "케이대",
+      "race": "저그",
+      "tier": "6",
       "balloons": 201413,
       "broadcast_seconds": 418107,
       "cumulative_viewers": 79571
@@ -648,6 +764,8 @@
       "birthdate": "1999-07-05",
       "role": "",
       "team": "케이대",
+      "race": "프로토스",
+      "tier": "6",
       "balloons": 101116,
       "broadcast_seconds": 379105,
       "cumulative_viewers": 39005
@@ -659,6 +777,8 @@
       "birthdate": "2001-03-05",
       "role": "",
       "team": "케이대",
+      "race": "테란",
+      "tier": "8",
       "balloons": 83050,
       "broadcast_seconds": 290491,
       "cumulative_viewers": 32045
@@ -670,6 +790,8 @@
       "birthdate": "1997-07-14",
       "role": "",
       "team": "케이대",
+      "race": "프로토스",
+      "tier": "8",
       "balloons": 68532,
       "broadcast_seconds": 411056,
       "cumulative_viewers": 70714
@@ -681,6 +803,8 @@
       "birthdate": "2002-10-13",
       "role": "",
       "team": "케이대",
+      "race": "저그",
+      "tier": "유스",
       "balloons": 55557,
       "broadcast_seconds": 564773,
       "cumulative_viewers": 62344
@@ -692,9 +816,11 @@
       "birthdate": "1989-06-13",
       "role": "수장",
       "team": "캄몬스타즈",
-      "balloons": 461053,
-      "broadcast_seconds": 399605,
-      "cumulative_viewers": 1723757
+      "race": "저그",
+      "tier": "킹",
+      "balloons": 466753,
+      "broadcast_seconds": 405485,
+      "cumulative_viewers": 1747204
     },
     {
       "id": "minchul",
@@ -703,6 +829,8 @@
       "birthdate": "1991-12-10",
       "role": "",
       "team": "캄몬스타즈",
+      "race": "저그",
+      "tier": "갓",
       "balloons": 192335,
       "broadcast_seconds": 442386,
       "cumulative_viewers": 221105
@@ -714,9 +842,11 @@
       "birthdate": "1994-01-28",
       "role": "",
       "team": "캄몬스타즈",
-      "balloons": 48743,
-      "broadcast_seconds": 436679,
-      "cumulative_viewers": 295639
+      "race": "프로토스",
+      "tier": "갓",
+      "balloons": 53168,
+      "broadcast_seconds": 442559,
+      "cumulative_viewers": 299582
     },
     {
       "id": "hoonykkk",
@@ -725,9 +855,11 @@
       "birthdate": "1992-07-16",
       "role": "",
       "team": "캄몬스타즈",
-      "balloons": 148180,
-      "broadcast_seconds": 452149,
-      "cumulative_viewers": 39127
+      "race": "테란",
+      "tier": "킹",
+      "balloons": 148195,
+      "broadcast_seconds": 458029,
+      "cumulative_viewers": 39630
     },
     {
       "id": "h78ert",
@@ -736,9 +868,11 @@
       "birthdate": "1992-06-24",
       "role": "",
       "team": "캄몬스타즈",
+      "race": "저그",
+      "tier": "킹",
       "balloons": 110231,
-      "broadcast_seconds": 307240,
-      "cumulative_viewers": 83770
+      "broadcast_seconds": 313120,
+      "cumulative_viewers": 84491
     },
     {
       "id": "rondobba",
@@ -747,6 +881,8 @@
       "birthdate": "1993-02-04",
       "role": "",
       "team": "캄몬스타즈",
+      "race": "테란",
+      "tier": "잭",
       "balloons": 104657,
       "broadcast_seconds": 206480,
       "cumulative_viewers": 36387
@@ -758,9 +894,11 @@
       "birthdate": "1991-08-17",
       "role": "",
       "team": "캄몬스타즈",
+      "race": "저그",
+      "tier": "잭",
       "balloons": 237031,
-      "broadcast_seconds": 341855,
-      "cumulative_viewers": 106488
+      "broadcast_seconds": 347735,
+      "cumulative_viewers": 107194
     },
     {
       "id": "jmc06170",
@@ -769,9 +907,11 @@
       "birthdate": "1991-06-17",
       "role": "",
       "team": "캄몬스타즈",
+      "race": "프로토스",
+      "tier": "잭",
       "balloons": 130805,
-      "broadcast_seconds": 333207,
-      "cumulative_viewers": 65543
+      "broadcast_seconds": 339087,
+      "cumulative_viewers": 66321
     },
     {
       "id": "jihoon002",
@@ -780,9 +920,11 @@
       "birthdate": "1990-12-10",
       "role": "",
       "team": "캄몬스타즈",
-      "balloons": 169397,
-      "broadcast_seconds": 240071,
-      "cumulative_viewers": 248283
+      "race": "프로토스",
+      "tier": "잭",
+      "balloons": 169679,
+      "broadcast_seconds": 241749,
+      "cumulative_viewers": 248749
     },
     {
       "id": "rnaqpdrjf",
@@ -791,9 +933,11 @@
       "birthdate": "1994-02-27",
       "role": "",
       "team": "캄몬스타즈",
-      "balloons": 221121,
-      "broadcast_seconds": 293600,
-      "cumulative_viewers": 131557
+      "race": "저그",
+      "tier": "2",
+      "balloons": 226123,
+      "broadcast_seconds": 299480,
+      "cumulative_viewers": 134390
     },
     {
       "id": "wjswlgns09",
@@ -802,9 +946,11 @@
       "birthdate": "1997-09-01",
       "role": "",
       "team": "캄몬스타즈",
-      "balloons": 369510,
-      "broadcast_seconds": 487738,
-      "cumulative_viewers": 351293
+      "race": "테란",
+      "tier": "3",
+      "balloons": 369513,
+      "broadcast_seconds": 493618,
+      "cumulative_viewers": 354755
     },
     {
       "id": "freshtomato",
@@ -813,6 +959,8 @@
       "birthdate": "1999-08-05",
       "role": "",
       "team": "캄몬스타즈",
+      "race": "프로토스",
+      "tier": "3",
       "balloons": 525657,
       "broadcast_seconds": 369958,
       "cumulative_viewers": 592466
@@ -824,9 +972,11 @@
       "birthdate": "1996-11-21",
       "role": "",
       "team": "캄몬스타즈",
-      "balloons": 158057,
-      "broadcast_seconds": 375258,
-      "cumulative_viewers": 93761
+      "race": "테란",
+      "tier": "4",
+      "balloons": 158134,
+      "broadcast_seconds": 376084,
+      "cumulative_viewers": 93963
     },
     {
       "id": "alaelddl97",
@@ -835,6 +985,8 @@
       "birthdate": "1997-05-14",
       "role": "",
       "team": "캄몬스타즈",
+      "race": "저그",
+      "tier": "4",
       "balloons": 180945,
       "broadcast_seconds": 412082,
       "cumulative_viewers": 59656
@@ -846,9 +998,11 @@
       "birthdate": "1999-02-22",
       "role": "",
       "team": "캄몬스타즈",
-      "balloons": 120651,
-      "broadcast_seconds": 325583,
-      "cumulative_viewers": 71216
+      "race": "테란",
+      "tier": "5",
+      "balloons": 126118,
+      "broadcast_seconds": 331463,
+      "cumulative_viewers": 73958
     },
     {
       "id": "db001202",
@@ -857,9 +1011,11 @@
       "birthdate": "2000-12-02",
       "role": "",
       "team": "캄몬스타즈",
-      "balloons": 213949,
-      "broadcast_seconds": 359790,
-      "cumulative_viewers": 215410
+      "race": "저그",
+      "tier": "5",
+      "balloons": 214049,
+      "broadcast_seconds": 365670,
+      "cumulative_viewers": 218011
     },
     {
       "id": "fpahsdltu1",
@@ -868,6 +1024,8 @@
       "birthdate": "1999-10-15",
       "role": "",
       "team": "캄몬스타즈",
+      "race": "프로토스",
+      "tier": "5",
       "balloons": 227725,
       "broadcast_seconds": 299538,
       "cumulative_viewers": 237616
@@ -879,9 +1037,11 @@
       "birthdate": "2000-01-20",
       "role": "",
       "team": "캄몬스타즈",
-      "balloons": 217254,
-      "broadcast_seconds": 504697,
-      "cumulative_viewers": 221917
+      "race": "테란",
+      "tier": "6",
+      "balloons": 223063,
+      "broadcast_seconds": 510577,
+      "cumulative_viewers": 223986
     },
     {
       "id": "dlaguswl501",
@@ -890,9 +1050,11 @@
       "birthdate": "1998-11-11",
       "role": "",
       "team": "캄몬스타즈",
-      "balloons": 150074,
-      "broadcast_seconds": 289679,
-      "cumulative_viewers": 145261
+      "race": "저그",
+      "tier": "6",
+      "balloons": 150326,
+      "broadcast_seconds": 289860,
+      "cumulative_viewers": 145380
     },
     {
       "id": "vldpfm2",
@@ -901,9 +1063,11 @@
       "birthdate": "1999-01-02",
       "role": "",
       "team": "캄몬스타즈",
-      "balloons": 197707,
-      "broadcast_seconds": 295634,
-      "cumulative_viewers": 112840
+      "race": "프로토스",
+      "tier": "6",
+      "balloons": 203324,
+      "broadcast_seconds": 301514,
+      "cumulative_viewers": 114617
     },
     {
       "id": "2meonjin",
@@ -912,9 +1076,11 @@
       "birthdate": "2001-01-13",
       "role": "",
       "team": "캄몬스타즈",
-      "balloons": 261706,
-      "broadcast_seconds": 437543,
-      "cumulative_viewers": 153952
+      "race": "저그",
+      "tier": "7",
+      "balloons": 263273,
+      "broadcast_seconds": 443423,
+      "cumulative_viewers": 155303
     },
     {
       "id": "sksmsskdsl10",
@@ -923,9 +1089,11 @@
       "birthdate": "1999-08-11",
       "role": "",
       "team": "캄몬스타즈",
-      "balloons": 693812,
-      "broadcast_seconds": 431012,
-      "cumulative_viewers": 401020
+      "race": "저그",
+      "tier": "유스",
+      "balloons": 694723,
+      "broadcast_seconds": 436892,
+      "cumulative_viewers": 404356
     },
     {
       "id": "dlqudgk1227",
@@ -934,9 +1102,11 @@
       "birthdate": "1992-12-27",
       "role": "수장",
       "team": "엠비대",
-      "balloons": 308607,
-      "broadcast_seconds": 262607,
-      "cumulative_viewers": 178565
+      "race": "저그",
+      "tier": "8",
+      "balloons": 308958,
+      "broadcast_seconds": 265839,
+      "cumulative_viewers": 179859
     },
     {
       "id": "tiger3006",
@@ -945,6 +1115,8 @@
       "birthdate": "1984-12-19",
       "role": "수장",
       "team": "엠비대",
+      "race": "프로토스",
+      "tier": "8",
       "balloons": 55553,
       "broadcast_seconds": 227834,
       "cumulative_viewers": 335985
@@ -956,6 +1128,8 @@
       "birthdate": "1991-08-24",
       "role": "",
       "team": "엠비대",
+      "race": "저그",
+      "tier": "킹",
       "balloons": 80776,
       "broadcast_seconds": 199830,
       "cumulative_viewers": 27576
@@ -967,6 +1141,8 @@
       "birthdate": "1995-08-30",
       "role": "",
       "team": "엠비대",
+      "race": "테란",
+      "tier": "잭",
       "balloons": 2933,
       "broadcast_seconds": 139074,
       "cumulative_viewers": 2297
@@ -978,6 +1154,8 @@
       "birthdate": "1992-03-05",
       "role": "",
       "team": "엠비대",
+      "race": "저그",
+      "tier": "잭",
       "balloons": 6032,
       "broadcast_seconds": 190084,
       "cumulative_viewers": 6612
@@ -989,6 +1167,8 @@
       "birthdate": "1994-11-08",
       "role": "",
       "team": "엠비대",
+      "race": "저그",
+      "tier": "잭",
       "balloons": 28699,
       "broadcast_seconds": 400697,
       "cumulative_viewers": 13358
@@ -1000,6 +1180,8 @@
       "birthdate": "1992-10-15",
       "role": "",
       "team": "엠비대",
+      "race": "프로토스",
+      "tier": "잭",
       "balloons": 47385,
       "broadcast_seconds": 320933,
       "cumulative_viewers": 11395
@@ -1011,6 +1193,8 @@
       "birthdate": "1994-03-01",
       "role": "",
       "team": "엠비대",
+      "race": "테란",
+      "tier": "조커",
       "balloons": 5749,
       "broadcast_seconds": 141014,
       "cumulative_viewers": 11014
@@ -1022,6 +1206,8 @@
       "birthdate": "1992-11-27",
       "role": "",
       "team": "엠비대",
+      "race": "프로토스",
+      "tier": "스페이드",
       "balloons": 12600,
       "broadcast_seconds": 179294,
       "cumulative_viewers": 6115
@@ -1033,6 +1219,8 @@
       "birthdate": "1989-11-26",
       "role": "",
       "team": "엠비대",
+      "race": "프로토스",
+      "tier": "0",
       "balloons": 8882,
       "broadcast_seconds": 217745,
       "cumulative_viewers": 3401
@@ -1044,6 +1232,8 @@
       "birthdate": "1996-10-29",
       "role": "",
       "team": "엠비대",
+      "race": "저그",
+      "tier": "2",
       "balloons": 49381,
       "broadcast_seconds": 173853,
       "cumulative_viewers": 16959
@@ -1055,6 +1245,8 @@
       "birthdate": "1999-04-27",
       "role": "",
       "team": "엠비대",
+      "race": "프로토스",
+      "tier": "3",
       "balloons": 75018,
       "broadcast_seconds": 311403,
       "cumulative_viewers": 43523
@@ -1066,6 +1258,8 @@
       "birthdate": "1999-02-02",
       "role": "",
       "team": "엠비대",
+      "race": "테란",
+      "tier": "5",
       "balloons": 62396,
       "broadcast_seconds": 223859,
       "cumulative_viewers": 31645
@@ -1077,6 +1271,8 @@
       "birthdate": "1996-02-16",
       "role": "",
       "team": "엠비대",
+      "race": "저그",
+      "tier": "5",
       "balloons": 29886,
       "broadcast_seconds": 224434,
       "cumulative_viewers": 6784
@@ -1088,6 +1284,8 @@
       "birthdate": "1997-05-24",
       "role": "",
       "team": "엠비대",
+      "race": "프로토스",
+      "tier": "5",
       "balloons": 57760,
       "broadcast_seconds": 242805,
       "cumulative_viewers": 14282
@@ -1099,6 +1297,8 @@
       "birthdate": "1996-12-02",
       "role": "",
       "team": "엠비대",
+      "race": "테란",
+      "tier": "6",
       "balloons": 58993,
       "broadcast_seconds": 162881,
       "cumulative_viewers": 15123
@@ -1110,6 +1310,8 @@
       "birthdate": "1997-04-23",
       "role": "",
       "team": "엠비대",
+      "race": "프로토스",
+      "tier": "6",
       "balloons": 73269,
       "broadcast_seconds": 190726,
       "cumulative_viewers": 20773
@@ -1121,6 +1323,8 @@
       "birthdate": "2004-03-01",
       "role": "",
       "team": "엠비대",
+      "race": "테란",
+      "tier": "7",
       "balloons": 60750,
       "broadcast_seconds": 287294,
       "cumulative_viewers": 14456
@@ -1132,6 +1336,8 @@
       "birthdate": "1997-05-30",
       "role": "",
       "team": "엠비대",
+      "race": "저그",
+      "tier": "8",
       "balloons": 31868,
       "broadcast_seconds": 318391,
       "cumulative_viewers": 15270
@@ -1143,6 +1349,8 @@
       "birthdate": "2003-06-05",
       "role": "",
       "team": "엠비대",
+      "race": "저그",
+      "tier": "8",
       "balloons": 26220,
       "broadcast_seconds": 400670,
       "cumulative_viewers": 22005
@@ -1154,6 +1362,8 @@
       "birthdate": "2002-11-13",
       "role": "",
       "team": "엠비대",
+      "race": "프로토스",
+      "tier": "8",
       "balloons": 34127,
       "broadcast_seconds": 336626,
       "cumulative_viewers": 16735
@@ -1165,9 +1375,11 @@
       "birthdate": "1994-06-28",
       "role": "수장",
       "team": "와플대",
-      "balloons": 139467,
-      "broadcast_seconds": 401022,
-      "cumulative_viewers": 591717
+      "race": "프로토스",
+      "tier": "8",
+      "balloons": 139775,
+      "broadcast_seconds": 405891,
+      "cumulative_viewers": 601033
     },
     {
       "id": "kss33325",
@@ -1176,6 +1388,8 @@
       "birthdate": "1997-03-25",
       "role": "",
       "team": "와플대",
+      "race": "저그",
+      "tier": "잭",
       "balloons": 23381,
       "broadcast_seconds": 251822,
       "cumulative_viewers": 4362
@@ -1187,6 +1401,8 @@
       "birthdate": "1997-12-08",
       "role": "",
       "team": "와플대",
+      "race": "프로토스",
+      "tier": "잭",
       "balloons": 25609,
       "broadcast_seconds": 267701,
       "cumulative_viewers": 4204
@@ -1198,6 +1414,8 @@
       "birthdate": "1987-02-21",
       "role": "",
       "team": "와플대",
+      "race": "테란",
+      "tier": "조커",
       "balloons": 25800,
       "broadcast_seconds": 300365,
       "cumulative_viewers": 7837
@@ -1209,6 +1427,8 @@
       "birthdate": "1992-05-18",
       "role": "",
       "team": "와플대",
+      "race": "저그",
+      "tier": "조커",
       "balloons": 42245,
       "broadcast_seconds": 397688,
       "cumulative_viewers": 16132
@@ -1220,6 +1440,8 @@
       "birthdate": "1986-12-18",
       "role": "",
       "team": "와플대",
+      "race": "저그",
+      "tier": "스페이드",
       "balloons": 18132,
       "broadcast_seconds": 155647,
       "cumulative_viewers": 21992
@@ -1231,6 +1453,8 @@
       "birthdate": "1990-11-26",
       "role": "",
       "team": "와플대",
+      "race": "프로토스",
+      "tier": "3",
       "balloons": 0,
       "broadcast_seconds": 0,
       "cumulative_viewers": 0
@@ -1242,6 +1466,8 @@
       "birthdate": "1998-05-19",
       "role": "",
       "team": "와플대",
+      "race": "테란",
+      "tier": "4",
       "balloons": 6027,
       "broadcast_seconds": 36197,
       "cumulative_viewers": 595
@@ -1253,9 +1479,11 @@
       "birthdate": "1996-10-04",
       "role": "",
       "team": "와플대",
-      "balloons": 105012,
-      "broadcast_seconds": 384074,
-      "cumulative_viewers": 25080
+      "race": "저그",
+      "tier": "5",
+      "balloons": 105013,
+      "broadcast_seconds": 386731,
+      "cumulative_viewers": 25308
     },
     {
       "id": "nylove276",
@@ -1264,6 +1492,8 @@
       "birthdate": "1996-06-08",
       "role": "",
       "team": "와플대",
+      "race": "저그",
+      "tier": "5",
       "balloons": 139532,
       "broadcast_seconds": 342313,
       "cumulative_viewers": 58593
@@ -1275,6 +1505,8 @@
       "birthdate": "1992-07-09",
       "role": "",
       "team": "와플대",
+      "race": "프로토스",
+      "tier": "6",
       "balloons": 14517,
       "broadcast_seconds": 48166,
       "cumulative_viewers": 3740
@@ -1286,6 +1518,8 @@
       "birthdate": "1997-09-07",
       "role": "",
       "team": "와플대",
+      "race": "테란",
+      "tier": "7",
       "balloons": 31129,
       "broadcast_seconds": 263541,
       "cumulative_viewers": 6220
@@ -1297,6 +1531,8 @@
       "birthdate": "1995-06-17",
       "role": "",
       "team": "와플대",
+      "race": "저그",
+      "tier": "7",
       "balloons": 27460,
       "broadcast_seconds": 311507,
       "cumulative_viewers": 7505
@@ -1308,9 +1544,11 @@
       "birthdate": "1997-05-23",
       "role": "",
       "team": "와플대",
-      "balloons": 30875,
-      "broadcast_seconds": 334733,
-      "cumulative_viewers": 13784
+      "race": "저그",
+      "tier": "8",
+      "balloons": 30995,
+      "broadcast_seconds": 340613,
+      "cumulative_viewers": 14031
     },
     {
       "id": "kimp1ay",
@@ -1319,6 +1557,8 @@
       "birthdate": "1996-11-16",
       "role": "",
       "team": "와플대",
+      "race": "프로토스",
+      "tier": "8",
       "balloons": 59504,
       "broadcast_seconds": 372893,
       "cumulative_viewers": 18219
@@ -1330,6 +1570,8 @@
       "birthdate": "2005-07-01",
       "role": "",
       "team": "와플대",
+      "race": "프로토스",
+      "tier": "유스",
       "balloons": 9293,
       "broadcast_seconds": 187954,
       "cumulative_viewers": 4309
@@ -1341,6 +1583,8 @@
       "birthdate": "1994-01-15",
       "role": "수장",
       "team": "수술대",
+      "race": "프로토스",
+      "tier": "5",
       "balloons": 123553,
       "broadcast_seconds": 281143,
       "cumulative_viewers": 1398758
@@ -1352,6 +1596,8 @@
       "birthdate": "1995-08-22",
       "role": "",
       "team": "수술대",
+      "race": "저그",
+      "tier": "갓",
       "balloons": 46414,
       "broadcast_seconds": 449280,
       "cumulative_viewers": 206160
@@ -1363,9 +1609,11 @@
       "birthdate": "1989-11-21",
       "role": "",
       "team": "수술대",
-      "balloons": 92438,
-      "broadcast_seconds": 316844,
-      "cumulative_viewers": 326020
+      "race": "테란",
+      "tier": "킹",
+      "balloons": 92471,
+      "broadcast_seconds": 317341,
+      "cumulative_viewers": 327503
     },
     {
       "id": "dohyeon97",
@@ -1374,6 +1622,8 @@
       "birthdate": "1997-08-17",
       "role": "",
       "team": "수술대",
+      "race": "저그",
+      "tier": "잭",
       "balloons": 53030,
       "broadcast_seconds": 255424,
       "cumulative_viewers": 22973
@@ -1385,6 +1635,8 @@
       "birthdate": "1991-01-02",
       "role": "",
       "team": "수술대",
+      "race": "저그",
+      "tier": "조커",
       "balloons": 37320,
       "broadcast_seconds": 352029,
       "cumulative_viewers": 24456
@@ -1396,6 +1648,8 @@
       "birthdate": "1993-08-21",
       "role": "",
       "team": "수술대",
+      "race": "프로토스",
+      "tier": "조커",
       "balloons": 48387,
       "broadcast_seconds": 348951,
       "cumulative_viewers": 49875
@@ -1407,9 +1661,11 @@
       "birthdate": "1986-02-01",
       "role": "",
       "team": "수술대",
+      "race": "프로토스",
+      "tier": "조커",
       "balloons": 32383,
-      "broadcast_seconds": 396818,
-      "cumulative_viewers": 22365
+      "broadcast_seconds": 398236,
+      "cumulative_viewers": 22403
     },
     {
       "id": "gjgj3274",
@@ -1418,6 +1674,8 @@
       "birthdate": "1993-11-21",
       "role": "",
       "team": "수술대",
+      "race": "프로토스",
+      "tier": "0",
       "balloons": 106218,
       "broadcast_seconds": 403753,
       "cumulative_viewers": 435827
@@ -1429,9 +1687,11 @@
       "birthdate": "1990-10-02",
       "role": "",
       "team": "수술대",
+      "race": "테란",
+      "tier": "1",
       "balloons": 30435,
-      "broadcast_seconds": 227084,
-      "cumulative_viewers": 12937
+      "broadcast_seconds": 232964,
+      "cumulative_viewers": 13190
     },
     {
       "id": "dmswls4565",
@@ -1440,9 +1700,11 @@
       "birthdate": "1998-11-22",
       "role": "",
       "team": "수술대",
-      "balloons": 65158,
-      "broadcast_seconds": 272443,
-      "cumulative_viewers": 30429
+      "race": "저그",
+      "tier": "3",
+      "balloons": 65160,
+      "broadcast_seconds": 278323,
+      "cumulative_viewers": 31280
     },
     {
       "id": "pazzy1",
@@ -1451,6 +1713,8 @@
       "birthdate": "1988-06-25",
       "role": "",
       "team": "수술대",
+      "race": "저그",
+      "tier": "3",
       "balloons": 221851,
       "broadcast_seconds": 356229,
       "cumulative_viewers": 67328
@@ -1462,6 +1726,8 @@
       "birthdate": "1997-07-05",
       "role": "",
       "team": "수술대",
+      "race": "프로토스",
+      "tier": "3",
       "balloons": 154280,
       "broadcast_seconds": 366816,
       "cumulative_viewers": 35773
@@ -1473,9 +1739,11 @@
       "birthdate": "1993-04-15",
       "role": "",
       "team": "수술대",
-      "balloons": 53343,
-      "broadcast_seconds": 444610,
-      "cumulative_viewers": 34759
+      "race": "저그",
+      "tier": "4",
+      "balloons": 53943,
+      "broadcast_seconds": 450490,
+      "cumulative_viewers": 34983
     },
     {
       "id": "nerve89",
@@ -1484,9 +1752,11 @@
       "birthdate": "1997-04-29",
       "role": "",
       "team": "수술대",
-      "balloons": 86188,
-      "broadcast_seconds": 331400,
-      "cumulative_viewers": 35225
+      "race": "테란",
+      "tier": "5",
+      "balloons": 86386,
+      "broadcast_seconds": 337280,
+      "cumulative_viewers": 35855
     },
     {
       "id": "wlgua7272",
@@ -1495,9 +1765,11 @@
       "birthdate": "1994-10-13",
       "role": "",
       "team": "수술대",
-      "balloons": 110627,
-      "broadcast_seconds": 363420,
-      "cumulative_viewers": 70735
+      "race": "저그",
+      "tier": "6",
+      "balloons": 110927,
+      "broadcast_seconds": 369300,
+      "cumulative_viewers": 71358
     },
     {
       "id": "nreupne",
@@ -1506,9 +1778,11 @@
       "birthdate": "1999-02-15",
       "role": "",
       "team": "수술대",
-      "balloons": 72644,
-      "broadcast_seconds": 366698,
-      "cumulative_viewers": 33097
+      "race": "저그",
+      "tier": "6",
+      "balloons": 73493,
+      "broadcast_seconds": 372578,
+      "cumulative_viewers": 33604
     },
     {
       "id": "tato1104",
@@ -1517,9 +1791,11 @@
       "birthdate": "1998-11-04",
       "role": "",
       "team": "수술대",
-      "balloons": 75541,
-      "broadcast_seconds": 355692,
-      "cumulative_viewers": 34992
+      "race": "프로토스",
+      "tier": "6",
+      "balloons": 76820,
+      "broadcast_seconds": 359115,
+      "cumulative_viewers": 35248
     },
     {
       "id": "jiinii000",
@@ -1528,9 +1804,11 @@
       "birthdate": "2004-06-08",
       "role": "",
       "team": "수술대",
-      "balloons": 70480,
-      "broadcast_seconds": 402638,
-      "cumulative_viewers": 108145
+      "race": "테란",
+      "tier": "7",
+      "balloons": 71295,
+      "broadcast_seconds": 408518,
+      "cumulative_viewers": 109843
     },
     {
       "id": "min030606",
@@ -1539,6 +1817,8 @@
       "birthdate": "2003-06-06",
       "role": "",
       "team": "수술대",
+      "race": "저그",
+      "tier": "7",
       "balloons": 89954,
       "broadcast_seconds": 413513,
       "cumulative_viewers": 45492
@@ -1550,6 +1830,8 @@
       "birthdate": "2000-01-20",
       "role": "",
       "team": "수술대",
+      "race": "프로토스",
+      "tier": "7",
       "balloons": 54666,
       "broadcast_seconds": 310240,
       "cumulative_viewers": 44599
@@ -1561,9 +1843,11 @@
       "birthdate": "2002-01-16",
       "role": "",
       "team": "수술대",
-      "balloons": 203156,
-      "broadcast_seconds": 294604,
-      "cumulative_viewers": 26526
+      "race": "프로토스",
+      "tier": "7",
+      "balloons": 204971,
+      "broadcast_seconds": 300484,
+      "cumulative_viewers": 27066
     },
     {
       "id": "zinsim",
@@ -1572,6 +1856,8 @@
       "birthdate": "1996-12-12",
       "role": "",
       "team": "수술대",
+      "race": "프로토스",
+      "tier": "8",
       "balloons": 0,
       "broadcast_seconds": 0,
       "cumulative_viewers": 0
@@ -1583,9 +1869,11 @@
       "birthdate": "2003-09-28",
       "role": "",
       "team": "수술대",
-      "balloons": 29182,
-      "broadcast_seconds": 236462,
-      "cumulative_viewers": 15513
+      "race": "테란",
+      "tier": "유스",
+      "balloons": 29598,
+      "broadcast_seconds": 242342,
+      "cumulative_viewers": 15758
     },
     {
       "id": "arinbbidol",
@@ -1594,6 +1882,8 @@
       "birthdate": "1988-10-22",
       "role": "수장",
       "team": "뉴캣슬",
+      "race": "테란",
+      "tier": "조커",
       "balloons": 514055,
       "broadcast_seconds": 318958,
       "cumulative_viewers": 1240379
@@ -1605,6 +1895,8 @@
       "birthdate": "1991-10-03",
       "role": "",
       "team": "뉴캣슬",
+      "race": "테란",
+      "tier": "갓",
       "balloons": 35462,
       "broadcast_seconds": 270480,
       "cumulative_viewers": 57301
@@ -1616,6 +1908,8 @@
       "birthdate": "1989-10-06",
       "role": "",
       "team": "뉴캣슬",
+      "race": "프로토스",
+      "tier": "갓",
       "balloons": 256469,
       "broadcast_seconds": 419333,
       "cumulative_viewers": 301317
@@ -1627,6 +1921,8 @@
       "birthdate": "1997-07-25",
       "role": "",
       "team": "뉴캣슬",
+      "race": "프로토스",
+      "tier": "잭",
       "balloons": 39002,
       "broadcast_seconds": 306535,
       "cumulative_viewers": 27706
@@ -1638,6 +1934,8 @@
       "birthdate": "1995-03-26",
       "role": "",
       "team": "뉴캣슬",
+      "race": "저그",
+      "tier": "조커",
       "balloons": 104112,
       "broadcast_seconds": 494185,
       "cumulative_viewers": 40048
@@ -1649,6 +1947,8 @@
       "birthdate": "1993-12-12",
       "role": "",
       "team": "뉴캣슬",
+      "race": "저그",
+      "tier": "조커",
       "balloons": 33442,
       "broadcast_seconds": 190765,
       "cumulative_viewers": 6462
@@ -1660,6 +1960,8 @@
       "birthdate": "1997-01-18",
       "role": "",
       "team": "뉴캣슬",
+      "race": "테란",
+      "tier": "스페이드",
       "balloons": 60310,
       "broadcast_seconds": 294028,
       "cumulative_viewers": 12426
@@ -1671,6 +1973,8 @@
       "birthdate": "1984-10-28",
       "role": "",
       "team": "뉴캣슬",
+      "race": "저그",
+      "tier": "스페이드",
       "balloons": 91535,
       "broadcast_seconds": 184082,
       "cumulative_viewers": 11075
@@ -1682,9 +1986,11 @@
       "birthdate": "1993-12-19",
       "role": "",
       "team": "뉴캣슬",
+      "race": "프로토스",
+      "tier": "스페이드",
       "balloons": 71263,
-      "broadcast_seconds": 461039,
-      "cumulative_viewers": 20504
+      "broadcast_seconds": 461459,
+      "cumulative_viewers": 20522
     },
     {
       "id": "parkle1006",
@@ -1693,6 +1999,8 @@
       "birthdate": "1996-07-05",
       "role": "",
       "team": "뉴캣슬",
+      "race": "프로토스",
+      "tier": "3",
       "balloons": 113298,
       "broadcast_seconds": 424082,
       "cumulative_viewers": 95122
@@ -1704,6 +2012,8 @@
       "birthdate": "2000-04-19",
       "role": "",
       "team": "뉴캣슬",
+      "race": "프로토스",
+      "tier": "4",
       "balloons": 112543,
       "broadcast_seconds": 293429,
       "cumulative_viewers": 32570
@@ -1715,6 +2025,8 @@
       "birthdate": "1997-01-24",
       "role": "",
       "team": "뉴캣슬",
+      "race": "프로토스",
+      "tier": "4",
       "balloons": 168800,
       "broadcast_seconds": 384281,
       "cumulative_viewers": 112834
@@ -1726,9 +2038,11 @@
       "birthdate": "2003-06-18",
       "role": "",
       "team": "뉴캣슬",
-      "balloons": 98994,
-      "broadcast_seconds": 341603,
-      "cumulative_viewers": 48081
+      "race": "프로토스",
+      "tier": "5",
+      "balloons": 122710,
+      "broadcast_seconds": 346605,
+      "cumulative_viewers": 49334
     },
     {
       "id": "2ahgo1203",
@@ -1737,9 +2051,11 @@
       "birthdate": "1998-12-03",
       "role": "",
       "team": "뉴캣슬",
+      "race": "테란",
+      "tier": "6",
       "balloons": 103128,
-      "broadcast_seconds": 297975,
-      "cumulative_viewers": 56409
+      "broadcast_seconds": 298659,
+      "cumulative_viewers": 56593
     },
     {
       "id": "aybjc2319",
@@ -1748,9 +2064,11 @@
       "birthdate": "2002-11-02",
       "role": "",
       "team": "뉴캣슬",
+      "race": "프로토스",
+      "tier": "6",
       "balloons": 78020,
-      "broadcast_seconds": 336515,
-      "cumulative_viewers": 33110
+      "broadcast_seconds": 336937,
+      "cumulative_viewers": 33167
     },
     {
       "id": "diniowo",
@@ -1759,6 +2077,8 @@
       "birthdate": "1998-04-23",
       "role": "",
       "team": "뉴캣슬",
+      "race": "프로토스",
+      "tier": "6",
       "balloons": 169264,
       "broadcast_seconds": 359218,
       "cumulative_viewers": 83886
@@ -1770,9 +2090,11 @@
       "birthdate": "2002-02-10",
       "role": "",
       "team": "뉴캣슬",
-      "balloons": 117400,
-      "broadcast_seconds": 325288,
-      "cumulative_viewers": 20537
+      "race": "테란",
+      "tier": "7",
+      "balloons": 117600,
+      "broadcast_seconds": 325729,
+      "cumulative_viewers": 20570
     },
     {
       "id": "queenzu",
@@ -1781,9 +2103,11 @@
       "birthdate": "2004-08-16",
       "role": "",
       "team": "뉴캣슬",
-      "balloons": 285297,
-      "broadcast_seconds": 449173,
-      "cumulative_viewers": 88424
+      "race": "저그",
+      "tier": "7",
+      "balloons": 300484,
+      "broadcast_seconds": 455053,
+      "cumulative_viewers": 89541
     },
     {
       "id": "corgi1102",
@@ -1792,9 +2116,11 @@
       "birthdate": "2001-11-02",
       "role": "",
       "team": "뉴캣슬",
+      "race": "저그",
+      "tier": "7",
       "balloons": 74049,
-      "broadcast_seconds": 396844,
-      "cumulative_viewers": 22357
+      "broadcast_seconds": 402724,
+      "cumulative_viewers": 22778
     },
     {
       "id": "yuzzzz",
@@ -1803,6 +2129,8 @@
       "birthdate": "2002-02-09",
       "role": "",
       "team": "뉴캣슬",
+      "race": "저그",
+      "tier": "8",
       "balloons": 119049,
       "broadcast_seconds": 304561,
       "cumulative_viewers": 44475
@@ -1814,6 +2142,8 @@
       "birthdate": "1996-03-02",
       "role": "",
       "team": "뉴캣슬",
+      "race": "프로토스",
+      "tier": "8",
       "balloons": 44528,
       "broadcast_seconds": 424037,
       "cumulative_viewers": 31738
@@ -1825,9 +2155,11 @@
       "birthdate": "2003-01-07",
       "role": "",
       "team": "뉴캣슬",
-      "balloons": 43338,
-      "broadcast_seconds": 358585,
-      "cumulative_viewers": 17434
+      "race": "프로토스",
+      "tier": "8",
+      "balloons": 45185,
+      "broadcast_seconds": 364465,
+      "cumulative_viewers": 17784
     },
     {
       "id": "tndkekdy",
@@ -1836,6 +2168,8 @@
       "birthdate": "2003-01-31",
       "role": "",
       "team": "뉴캣슬",
+      "race": "프로토스",
+      "tier": "유스",
       "balloons": 141548,
       "broadcast_seconds": 376025,
       "cumulative_viewers": 85106
@@ -1847,6 +2181,8 @@
       "birthdate": "1990-02-23",
       "role": "수장",
       "team": "BGM",
+      "race": "프로토스",
+      "tier": "8",
       "balloons": 259659,
       "broadcast_seconds": 240980,
       "cumulative_viewers": 315159
@@ -1858,9 +2194,11 @@
       "birthdate": "1995-08-28",
       "role": "",
       "team": "BGM",
+      "race": "프로토스",
+      "tier": "잭",
       "balloons": 64649,
-      "broadcast_seconds": 362021,
-      "cumulative_viewers": 6001
+      "broadcast_seconds": 367901,
+      "cumulative_viewers": 6122
     },
     {
       "id": "bumsoo552",
@@ -1869,9 +2207,11 @@
       "birthdate": "1994-01-02",
       "role": "",
       "team": "BGM",
+      "race": "프로토스",
+      "tier": "잭",
       "balloons": 29147,
-      "broadcast_seconds": 320510,
-      "cumulative_viewers": 5519
+      "broadcast_seconds": 326390,
+      "cumulative_viewers": 5608
     },
     {
       "id": "daehan7224",
@@ -1880,9 +2220,11 @@
       "birthdate": "1979-12-08",
       "role": "",
       "team": "BGM",
+      "race": "저그",
+      "tier": "조커",
       "balloons": 12104,
-      "broadcast_seconds": 112258,
-      "cumulative_viewers": 1118
+      "broadcast_seconds": 118138,
+      "cumulative_viewers": 1191
     },
     {
       "id": "nada11200",
@@ -1891,6 +2233,8 @@
       "birthdate": "1984-11-20",
       "role": "",
       "team": "BGM",
+      "race": "테란",
+      "tier": "스페이드",
       "balloons": 16230,
       "broadcast_seconds": 130200,
       "cumulative_viewers": 10210
@@ -1902,9 +2246,11 @@
       "birthdate": "1989-11-21",
       "role": "",
       "team": "BGM",
+      "race": "프로토스",
+      "tier": "스페이드",
       "balloons": 37498,
-      "broadcast_seconds": 291090,
-      "cumulative_viewers": 10130
+      "broadcast_seconds": 296970,
+      "cumulative_viewers": 10290
     },
     {
       "id": "dudwn4974",
@@ -1913,9 +2259,11 @@
       "birthdate": "1993-04-02",
       "role": "",
       "team": "BGM",
-      "balloons": 85837,
-      "broadcast_seconds": 541027,
-      "cumulative_viewers": 18431
+      "race": "프로토스",
+      "tier": "1",
+      "balloons": 85843,
+      "broadcast_seconds": 546907,
+      "cumulative_viewers": 18698
     },
     {
       "id": "s1on0106",
@@ -1924,6 +2272,8 @@
       "birthdate": "1993-01-06",
       "role": "",
       "team": "BGM",
+      "race": "테란",
+      "tier": "2",
       "balloons": 49009,
       "broadcast_seconds": 333278,
       "cumulative_viewers": 6896
@@ -1935,6 +2285,8 @@
       "birthdate": "1993-04-20",
       "role": "",
       "team": "BGM",
+      "race": "테란",
+      "tier": "3",
       "balloons": 50055,
       "broadcast_seconds": 504364,
       "cumulative_viewers": 29347
@@ -1946,9 +2298,11 @@
       "birthdate": "1991-08-12",
       "role": "",
       "team": "BGM",
-      "balloons": 138606,
-      "broadcast_seconds": 210450,
-      "cumulative_viewers": 10794
+      "race": "프로토스",
+      "tier": "4",
+      "balloons": 138607,
+      "broadcast_seconds": 216330,
+      "cumulative_viewers": 11212
     },
     {
       "id": "ldk8481",
@@ -1957,6 +2311,8 @@
       "birthdate": "1990-12-14",
       "role": "",
       "team": "BGM",
+      "race": "저그",
+      "tier": "5",
       "balloons": 95971,
       "broadcast_seconds": 546124,
       "cumulative_viewers": 18355
@@ -1968,9 +2324,11 @@
       "birthdate": "1981-09-13",
       "role": "",
       "team": "BGM",
+      "race": "프로토스",
+      "tier": "5",
       "balloons": 23654,
-      "broadcast_seconds": 195615,
-      "cumulative_viewers": 3055
+      "broadcast_seconds": 200788,
+      "cumulative_viewers": 3141
     },
     {
       "id": "dmsthfdldia",
@@ -1979,9 +2337,11 @@
       "birthdate": "1995-07-15",
       "role": "",
       "team": "BGM",
+      "race": "프로토스",
+      "tier": "5",
       "balloons": 34870,
-      "broadcast_seconds": 267686,
-      "cumulative_viewers": 5619
+      "broadcast_seconds": 268997,
+      "cumulative_viewers": 5661
     },
     {
       "id": "dmsgkdn12",
@@ -1990,6 +2350,8 @@
       "birthdate": "1996-04-03",
       "role": "",
       "team": "BGM",
+      "race": "저그",
+      "tier": "6",
       "balloons": 73124,
       "broadcast_seconds": 428338,
       "cumulative_viewers": 77849
@@ -2001,6 +2363,8 @@
       "birthdate": "1998-04-10",
       "role": "",
       "team": "BGM",
+      "race": "저그",
+      "tier": "7",
       "balloons": 47450,
       "broadcast_seconds": 264414,
       "cumulative_viewers": 7698
@@ -2012,9 +2376,11 @@
       "birthdate": "1992-08-27",
       "role": "",
       "team": "BGM",
+      "race": "프로토스",
+      "tier": "7",
       "balloons": 28390,
-      "broadcast_seconds": 279090,
-      "cumulative_viewers": 6680
+      "broadcast_seconds": 284970,
+      "cumulative_viewers": 6905
     },
     {
       "id": "xzqwe1",
@@ -2023,9 +2389,11 @@
       "birthdate": "1996-10-03",
       "role": "",
       "team": "BGM",
-      "balloons": 33946,
-      "broadcast_seconds": 204784,
-      "cumulative_viewers": 4461
+      "race": "저그",
+      "tier": "8",
+      "balloons": 33947,
+      "broadcast_seconds": 210664,
+      "cumulative_viewers": 4669
     },
     {
       "id": "happyhee97",
@@ -2034,9 +2402,11 @@
       "birthdate": "1997-04-29",
       "role": "",
       "team": "BGM",
-      "balloons": 89350,
-      "broadcast_seconds": 287210,
-      "cumulative_viewers": 8671
+      "race": "프로토스",
+      "tier": "8",
+      "balloons": 95296,
+      "broadcast_seconds": 289854,
+      "cumulative_viewers": 8785
     },
     {
       "id": "janjanoo",
@@ -2045,6 +2415,8 @@
       "birthdate": "1996-10-09",
       "role": "",
       "team": "BGM",
+      "race": "테란",
+      "tier": "유스",
       "balloons": 123368,
       "broadcast_seconds": 463500,
       "cumulative_viewers": 15419
@@ -2056,6 +2428,8 @@
       "birthdate": "1995-06-21",
       "role": "수장",
       "team": "HM",
+      "race": "프로토스",
+      "tier": "체크",
       "balloons": 2434075,
       "broadcast_seconds": 300149,
       "cumulative_viewers": 194439
@@ -2067,6 +2441,8 @@
       "birthdate": "1990-02-28",
       "role": "",
       "team": "HM",
+      "race": "테란",
+      "tier": "갓",
       "balloons": 7901,
       "broadcast_seconds": 311121,
       "cumulative_viewers": 21868
@@ -2078,6 +2454,8 @@
       "birthdate": "1992-04-15",
       "role": "",
       "team": "HM",
+      "race": "저그",
+      "tier": "킹",
       "balloons": 23357,
       "broadcast_seconds": 489120,
       "cumulative_viewers": 26173
@@ -2089,6 +2467,8 @@
       "birthdate": "1994-01-13",
       "role": "",
       "team": "HM",
+      "race": "프로토스",
+      "tier": "조커",
       "balloons": 6290,
       "broadcast_seconds": 183944,
       "cumulative_viewers": 2095
@@ -2100,6 +2480,8 @@
       "birthdate": "1982-03-15",
       "role": "",
       "team": "HM",
+      "race": "프로토스",
+      "tier": "스페이드",
       "balloons": 1308,
       "broadcast_seconds": 60228,
       "cumulative_viewers": 5144
@@ -2111,6 +2493,8 @@
       "birthdate": "1987-09-17",
       "role": "",
       "team": "HM",
+      "race": "프로토스",
+      "tier": "0",
       "balloons": 11926,
       "broadcast_seconds": 172149,
       "cumulative_viewers": 1970
@@ -2122,6 +2506,8 @@
       "birthdate": "1986-11-27",
       "role": "",
       "team": "HM",
+      "race": "테란",
+      "tier": "1",
       "balloons": 18552,
       "broadcast_seconds": 384499,
       "cumulative_viewers": 3508
@@ -2133,6 +2519,8 @@
       "birthdate": "1985-06-29",
       "role": "",
       "team": "HM",
+      "race": "프로토스",
+      "tier": "3",
       "balloons": 41779,
       "broadcast_seconds": 337310,
       "cumulative_viewers": 10039
@@ -2144,9 +2532,11 @@
       "birthdate": "1991-08-23",
       "role": "",
       "team": "HM",
+      "race": "프로토스",
+      "tier": "4",
       "balloons": 51910,
-      "broadcast_seconds": 316304,
-      "cumulative_viewers": 12087
+      "broadcast_seconds": 316493,
+      "cumulative_viewers": 12096
     },
     {
       "id": "snowssa",
@@ -2155,6 +2545,8 @@
       "birthdate": "2000-12-15",
       "role": "",
       "team": "HM",
+      "race": "프로토스",
+      "tier": "5",
       "balloons": 54195,
       "broadcast_seconds": 415529,
       "cumulative_viewers": 19926
@@ -2166,6 +2558,8 @@
       "birthdate": "1992-05-30",
       "role": "",
       "team": "HM",
+      "race": "저그",
+      "tier": "6",
       "balloons": 50165,
       "broadcast_seconds": 307476,
       "cumulative_viewers": 14063
@@ -2177,6 +2571,8 @@
       "birthdate": "1996-04-14",
       "role": "",
       "team": "HM",
+      "race": "프로토스",
+      "tier": "7",
       "balloons": 33290,
       "broadcast_seconds": 255651,
       "cumulative_viewers": 11056
@@ -2188,6 +2584,8 @@
       "birthdate": "1993-05-13",
       "role": "",
       "team": "HM",
+      "race": "테란",
+      "tier": "8",
       "balloons": 25773,
       "broadcast_seconds": 376611,
       "cumulative_viewers": 8054
@@ -2199,9 +2597,11 @@
       "birthdate": "2000-07-14",
       "role": "",
       "team": "HM",
-      "balloons": 21141,
-      "broadcast_seconds": 475190,
-      "cumulative_viewers": 6775
+      "race": "프로토스",
+      "tier": "유스",
+      "balloons": 21295,
+      "broadcast_seconds": 481070,
+      "cumulative_viewers": 6864
     },
     {
       "id": "organ333",
@@ -2210,9 +2610,11 @@
       "birthdate": "1988-01-29",
       "role": "수장",
       "team": "DM",
-      "balloons": 69460,
-      "broadcast_seconds": 223964,
-      "cumulative_viewers": 115805
+      "race": "테란",
+      "tier": "킹",
+      "balloons": 85660,
+      "broadcast_seconds": 229844,
+      "cumulative_viewers": 128860
     },
     {
       "id": "70jeontaekyu",
@@ -2221,6 +2623,8 @@
       "birthdate": "1984-02-13",
       "role": "수장",
       "team": "DM",
+      "race": "프로토스",
+      "tier": "스페이드",
       "balloons": 127491,
       "broadcast_seconds": 176589,
       "cumulative_viewers": 134944
@@ -2232,6 +2636,8 @@
       "birthdate": "1992-02-18",
       "role": "",
       "team": "DM",
+      "race": "저그",
+      "tier": "킹",
       "balloons": 33823,
       "broadcast_seconds": 254816,
       "cumulative_viewers": 7502
@@ -2243,6 +2649,8 @@
       "birthdate": "1993-07-12",
       "role": "",
       "team": "DM",
+      "race": "프로토스",
+      "tier": "킹",
       "balloons": 27961,
       "broadcast_seconds": 369216,
       "cumulative_viewers": 14925
@@ -2254,6 +2662,8 @@
       "birthdate": "1985-05-21",
       "role": "",
       "team": "DM",
+      "race": "테란",
+      "tier": "0",
       "balloons": 123395,
       "broadcast_seconds": 326925,
       "cumulative_viewers": 36326
@@ -2265,6 +2675,8 @@
       "birthdate": "1998-10-01",
       "role": "",
       "team": "DM",
+      "race": "프로토스",
+      "tier": "2",
       "balloons": 41861,
       "broadcast_seconds": 285194,
       "cumulative_viewers": 44265
@@ -2276,6 +2688,8 @@
       "birthdate": "1995-02-08",
       "role": "",
       "team": "DM",
+      "race": "프로토스",
+      "tier": "3",
       "balloons": 66640,
       "broadcast_seconds": 283889,
       "cumulative_viewers": 23205
@@ -2287,6 +2701,8 @@
       "birthdate": "1996-01-05",
       "role": "",
       "team": "DM",
+      "race": "저그",
+      "tier": "4",
       "balloons": 66002,
       "broadcast_seconds": 366804,
       "cumulative_viewers": 11018
@@ -2298,6 +2714,8 @@
       "birthdate": "1997-06-20",
       "role": "",
       "team": "DM",
+      "race": "테란",
+      "tier": "6",
       "balloons": 54870,
       "broadcast_seconds": 277719,
       "cumulative_viewers": 17601
@@ -2309,6 +2727,8 @@
       "birthdate": "1996-01-11",
       "role": "",
       "team": "DM",
+      "race": "테란",
+      "tier": "7",
       "balloons": 51770,
       "broadcast_seconds": 384279,
       "cumulative_viewers": 18322
@@ -2320,6 +2740,8 @@
       "birthdate": "1999-06-19",
       "role": "",
       "team": "DM",
+      "race": "저그",
+      "tier": "7",
       "balloons": 175510,
       "broadcast_seconds": 251686,
       "cumulative_viewers": 24397
@@ -2331,6 +2753,8 @@
       "birthdate": "2000-10-28",
       "role": "",
       "team": "DM",
+      "race": "프로토스",
+      "tier": "7",
       "balloons": 145712,
       "broadcast_seconds": 349683,
       "cumulative_viewers": 32949
@@ -2342,6 +2766,8 @@
       "birthdate": "2005-01-05",
       "role": "",
       "team": "DM",
+      "race": "저그",
+      "tier": "8",
       "balloons": 125805,
       "broadcast_seconds": 302771,
       "cumulative_viewers": 17112
@@ -2353,9 +2779,11 @@
       "birthdate": "체크",
       "role": "수장",
       "team": "신세계",
-      "balloons": 126789,
-      "broadcast_seconds": 560755,
-      "cumulative_viewers": 532143
+      "race": "저그",
+      "tier": "체크",
+      "balloons": 137226,
+      "broadcast_seconds": 564572,
+      "cumulative_viewers": 550370
     },
     {
       "id": "cksgmldbs",
@@ -2364,6 +2792,8 @@
       "birthdate": "1992-05-17",
       "role": "",
       "team": "신세계",
+      "race": "테란",
+      "tier": "갓",
       "balloons": 52424,
       "broadcast_seconds": 341366,
       "cumulative_viewers": 87522
@@ -2375,9 +2805,11 @@
       "birthdate": "1993-12-14",
       "role": "",
       "team": "신세계",
+      "race": "프로토스",
+      "tier": "킹",
       "balloons": 26334,
-      "broadcast_seconds": 279153,
-      "cumulative_viewers": 73073
+      "broadcast_seconds": 280871,
+      "cumulative_viewers": 73548
     },
     {
       "id": "rnjsgurwls15",
@@ -2386,9 +2818,11 @@
       "birthdate": "1991-11-23",
       "role": "",
       "team": "신세계",
-      "balloons": 93654,
-      "broadcast_seconds": 569747,
-      "cumulative_viewers": 55331
+      "race": "프로토스",
+      "tier": "잭",
+      "balloons": 93656,
+      "broadcast_seconds": 575627,
+      "cumulative_viewers": 55963
     },
     {
       "id": "byspire",
@@ -2397,6 +2831,8 @@
       "birthdate": "1995-01-28",
       "role": "",
       "team": "신세계",
+      "race": "저그",
+      "tier": "조커",
       "balloons": 0,
       "broadcast_seconds": 0,
       "cumulative_viewers": 0
@@ -2408,6 +2844,8 @@
       "birthdate": "1988-12-23",
       "role": "",
       "team": "신세계",
+      "race": "프로토스",
+      "tier": "조커",
       "balloons": 1242,
       "broadcast_seconds": 42567,
       "cumulative_viewers": 786
@@ -2419,9 +2857,11 @@
       "birthdate": "1991-06-03",
       "role": "",
       "team": "신세계",
-      "balloons": 57509,
-      "broadcast_seconds": 427511,
-      "cumulative_viewers": 25212
+      "race": "저그",
+      "tier": "2",
+      "balloons": 57521,
+      "broadcast_seconds": 433391,
+      "cumulative_viewers": 26305
     },
     {
       "id": "djathekd",
@@ -2430,6 +2870,8 @@
       "birthdate": "1987-10-31",
       "role": "",
       "team": "신세계",
+      "race": "프로토스",
+      "tier": "4",
       "balloons": 21735,
       "broadcast_seconds": 288242,
       "cumulative_viewers": 17234
@@ -2441,9 +2883,11 @@
       "birthdate": "2000-12-05",
       "role": "",
       "team": "신세계",
-      "balloons": 51170,
-      "broadcast_seconds": 410653,
-      "cumulative_viewers": 27827
+      "race": "프로토스",
+      "tier": "5",
+      "balloons": 51190,
+      "broadcast_seconds": 413336,
+      "cumulative_viewers": 27937
     },
     {
       "id": "rnfma14",
@@ -2452,9 +2896,11 @@
       "birthdate": "1995-03-11",
       "role": "",
       "team": "신세계",
-      "balloons": 49774,
-      "broadcast_seconds": 311157,
-      "cumulative_viewers": 19614
+      "race": "저그",
+      "tier": "6",
+      "balloons": 61688,
+      "broadcast_seconds": 316897,
+      "cumulative_viewers": 36420
     },
     {
       "id": "jiwooris2",
@@ -2463,9 +2909,11 @@
       "birthdate": "2004-08-05",
       "role": "",
       "team": "신세계",
-      "balloons": 143591,
-      "broadcast_seconds": 416185,
-      "cumulative_viewers": 46136
+      "race": "테란",
+      "tier": "7",
+      "balloons": 147575,
+      "broadcast_seconds": 422065,
+      "cumulative_viewers": 48336
     },
     {
       "id": "khl1589",
@@ -2474,9 +2922,11 @@
       "birthdate": "1997-01-21",
       "role": "",
       "team": "신세계",
-      "balloons": 51873,
-      "broadcast_seconds": 347607,
-      "cumulative_viewers": 20008
+      "race": "프로토스",
+      "tier": "7",
+      "balloons": 51915,
+      "broadcast_seconds": 353487,
+      "cumulative_viewers": 21049
     },
     {
       "id": "haeun5513",
@@ -2485,6 +2935,8 @@
       "birthdate": "2006-06-24",
       "role": "",
       "team": "신세계",
+      "race": "테란",
+      "tier": "8",
       "balloons": 51903,
       "broadcast_seconds": 348114,
       "cumulative_viewers": 54653
@@ -2496,9 +2948,11 @@
       "birthdate": "1997-03-27",
       "role": "",
       "team": "신세계",
-      "balloons": 127494,
-      "broadcast_seconds": 311511,
-      "cumulative_viewers": 11714
+      "race": "프로토스",
+      "tier": "8",
+      "balloons": 130831,
+      "broadcast_seconds": 317391,
+      "cumulative_viewers": 12209
     },
     {
       "id": "vlfvlf789",
@@ -2507,6 +2961,8 @@
       "birthdate": "1994-02-18",
       "role": "수장",
       "team": "더블비",
+      "race": "프로토스",
+      "tier": "2",
       "balloons": 443606,
       "broadcast_seconds": 480480,
       "cumulative_viewers": 2560218
@@ -2518,6 +2974,8 @@
       "birthdate": "체크",
       "role": "전력외",
       "team": "더블비",
+      "race": "테란",
+      "tier": "체크",
       "balloons": 46762,
       "broadcast_seconds": 57448,
       "cumulative_viewers": 25385
@@ -2529,9 +2987,11 @@
       "birthdate": "1996-05-22",
       "role": "",
       "team": "더블비",
-      "balloons": 81928,
-      "broadcast_seconds": 104403,
-      "cumulative_viewers": 29967
+      "race": "저그",
+      "tier": "잭",
+      "balloons": 83068,
+      "broadcast_seconds": 110283,
+      "cumulative_viewers": 31185
     },
     {
       "id": "suji84",
@@ -2540,9 +3000,11 @@
       "birthdate": "1997-08-04",
       "role": "",
       "team": "더블비",
-      "balloons": 262972,
-      "broadcast_seconds": 417369,
-      "cumulative_viewers": 137029
+      "race": "저그",
+      "tier": "4",
+      "balloons": 272090,
+      "broadcast_seconds": 423249,
+      "cumulative_viewers": 138621
     },
     {
       "id": "aram1213",
@@ -2551,9 +3013,11 @@
       "birthdate": "1993-12-13",
       "role": "",
       "team": "더블비",
-      "balloons": 121799,
-      "broadcast_seconds": 402664,
-      "cumulative_viewers": 101146
+      "race": "저그",
+      "tier": "5",
+      "balloons": 126799,
+      "broadcast_seconds": 405842,
+      "cumulative_viewers": 103704
     },
     {
       "id": "dptmfl1258",
@@ -2562,6 +3026,8 @@
       "birthdate": "1995-08-11",
       "role": "",
       "team": "더블비",
+      "race": "프로토스",
+      "tier": "5",
       "balloons": 124263,
       "broadcast_seconds": 287559,
       "cumulative_viewers": 84227
@@ -2573,9 +3039,11 @@
       "birthdate": "1995-03-28",
       "role": "",
       "team": "더블비",
-      "balloons": 68311,
-      "broadcast_seconds": 317828,
-      "cumulative_viewers": 59666
+      "race": "프로토스",
+      "tier": "7",
+      "balloons": 69157,
+      "broadcast_seconds": 323708,
+      "cumulative_viewers": 60469
     },
     {
       "id": "fidfidfid",
@@ -2584,9 +3052,11 @@
       "birthdate": "1999-01-17",
       "role": "",
       "team": "더블비",
-      "balloons": 60040,
-      "broadcast_seconds": 220631,
-      "cumulative_viewers": 23692
+      "race": "저그",
+      "tier": "8",
+      "balloons": 60487,
+      "broadcast_seconds": 226511,
+      "cumulative_viewers": 24240
     },
     {
       "id": "jk890202",
@@ -2595,9 +3065,11 @@
       "birthdate": "1990-07-04",
       "role": "수장",
       "team": "드림즈",
-      "balloons": 472604,
-      "broadcast_seconds": 556903,
-      "cumulative_viewers": 1733024
+      "race": "프로토스",
+      "tier": "킹",
+      "balloons": 472804,
+      "broadcast_seconds": 562783,
+      "cumulative_viewers": 1743057
     },
     {
       "id": "hby0724",
@@ -2606,9 +3078,11 @@
       "birthdate": "1991-07-24",
       "role": "",
       "team": "드림즈",
+      "race": "테란",
+      "tier": "갓",
       "balloons": 62979,
-      "broadcast_seconds": 312886,
-      "cumulative_viewers": 45579
+      "broadcast_seconds": 318766,
+      "cumulative_viewers": 46108
     },
     {
       "id": "djdbstn",
@@ -2617,6 +3091,8 @@
       "birthdate": "1992-09-24",
       "role": "",
       "team": "드림즈",
+      "race": "저그",
+      "tier": "킹",
       "balloons": 51042,
       "broadcast_seconds": 412805,
       "cumulative_viewers": 35639
@@ -2628,6 +3104,8 @@
       "birthdate": "1988-07-14",
       "role": "",
       "team": "드림즈",
+      "race": "프로토스",
+      "tier": "킹",
       "balloons": 53957,
       "broadcast_seconds": 187956,
       "cumulative_viewers": 28181
@@ -2639,6 +3117,8 @@
       "birthdate": "2000-09-22",
       "role": "",
       "team": "드림즈",
+      "race": "저그",
+      "tier": "3",
       "balloons": 351074,
       "broadcast_seconds": 429743,
       "cumulative_viewers": 229847
@@ -2650,9 +3130,11 @@
       "birthdate": "2002-03-28",
       "role": "",
       "team": "드림즈",
-      "balloons": 251202,
-      "broadcast_seconds": 154299,
-      "cumulative_viewers": 93329
+      "race": "테란",
+      "tier": "6",
+      "balloons": 251688,
+      "broadcast_seconds": 160179,
+      "cumulative_viewers": 94632
     },
     {
       "id": "queen030",
@@ -2661,9 +3143,11 @@
       "birthdate": "1998-05-08",
       "role": "",
       "team": "드림즈",
-      "balloons": 124814,
-      "broadcast_seconds": 228304,
-      "cumulative_viewers": 101629
+      "race": "프로토스",
+      "tier": "6",
+      "balloons": 128610,
+      "broadcast_seconds": 234184,
+      "cumulative_viewers": 103038
     },
     {
       "id": "wlswn6565",
@@ -2672,9 +3156,11 @@
       "birthdate": "2001-01-13",
       "role": "",
       "team": "드림즈",
-      "balloons": 173516,
-      "broadcast_seconds": 352035,
-      "cumulative_viewers": 187832
+      "race": "프로토스",
+      "tier": "7",
+      "balloons": 174015,
+      "broadcast_seconds": 357177,
+      "cumulative_viewers": 189421
     },
     {
       "id": "j4141h",
@@ -2683,9 +3169,11 @@
       "birthdate": "체크",
       "role": "",
       "team": "드림즈",
-      "balloons": 155176,
-      "broadcast_seconds": 624911,
-      "cumulative_viewers": 112907
+      "race": "테란",
+      "tier": "유스",
+      "balloons": 155276,
+      "broadcast_seconds": 630791,
+      "cumulative_viewers": 113450
     },
     {
       "id": "nmirifo7795",
@@ -2694,9 +3182,11 @@
       "birthdate": "체크",
       "role": "",
       "team": "드림즈",
+      "race": "체크",
+      "tier": "유스",
       "balloons": 108425,
-      "broadcast_seconds": 443372,
-      "cumulative_viewers": 63952
+      "broadcast_seconds": 449252,
+      "cumulative_viewers": 64447
     }
   ]
 }

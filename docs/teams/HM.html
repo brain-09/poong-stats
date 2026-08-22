@@ -214,6 +214,8 @@
     white-space: nowrap;
     text-overflow: ellipsis;
   }
+  .member-name-link { display: flex; align-items: center; gap: 6px; min-width: 0; color: inherit; text-decoration: none; }
+  .member-name-link:hover { text-decoration: underline; }
   .member-row.tier1 .member-name,
   .member-row.tier5 .member-name,
   .member-row.tier10 .member-name,
@@ -259,6 +261,18 @@
   .stat-card.total-avg { background: #f1eefb; border: none; }
   .stat-card.total-avg .stat-value { color: #26215c; }
 
+  .profile-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 16px;
+    font-size: 12px;
+    border-bottom: 1px solid #f2f3f5;
+  }
+  .profile-row-label { color: #6b6f79; font-weight: 600; }
+  .profile-row-value { font-weight: 700; color: #1a1d29; }
+  .profile-station-icon { width: 20px; height: 20px; border-radius: 5px; display: block; }
+
   .legend {
     max-width: 1080px;
     margin: 16px auto 0;
@@ -293,7 +307,7 @@
     <span class="top-meta-group">
       <a href="../index.html" id="back-to-full-link" class="back-link">← 전체페이지</a>
       <span class="top-meta-sep">·</span>
-      <span class="top-meta" id="top-meta-text">14팀 · 245명 · 업데이트 2026-08-22 22:42:08 · 출처: <a href='https://poonggo.com' target='_blank' rel='noopener' class='source-link'>풍고</a></span>
+      <span class="top-meta" id="top-meta-text">14팀 · 245명 · 업데이트 2026-08-23 00:20:48 · 출처: <a href='https://poonggo.com' target='_blank' rel='noopener' class='source-link'>풍고</a></span>
     </span>
   </div>
     
@@ -308,25 +322,25 @@
       <div class="member-columns">
         <div class="member-col">
           <div class="member-col-label"><span class="col-label-text">남자 멤버</span><span class="unit-label">별풍선</span></div>
-          <div class='member-row excluded'><span class='member-name'>혁민</span><span class='member-value'>2,434,075</span></div><div class='member-row '><span class='member-name'>방태수</span><span class='member-value'>23,357</span></div><div class='member-row '><span class='member-name'>카리스</span><span class='member-value'>18,552</span></div><div class='member-row '><span class='member-name'>파메</span><span class='member-value'>11,926</span></div><div class='member-row '><span class='member-name'>최호선</span><span class='member-value'>7,901</span></div><div class='member-row '><span class='member-name'>박준혁</span><span class='member-value'>6,290</span></div><div class='member-row '><span class='member-name'>강민</span><span class='member-value'>1,308</span></div>
+          <div class='member-row excluded'><span class='member-name'><a class='member-name-link' href='../profile.html?id=suhi370erw'>혁민</a></span><span class='member-value'>2,434,075</span></div><div class='member-row '><span class='member-name'><a class='member-name-link' href='../profile.html?id=bts150'>방태수</a></span><span class='member-value'>23,357</span></div><div class='member-row '><span class='member-name'><a class='member-name-link' href='../profile.html?id=igoldtree'>카리스</a></span><span class='member-value'>18,552</span></div><div class='member-row '><span class='member-name'><a class='member-name-link' href='../profile.html?id=heksd'>파메</a></span><span class='member-value'>11,926</span></div><div class='member-row '><span class='member-name'><a class='member-name-link' href='../profile.html?id=ghtjs3833'>최호선</a></span><span class='member-value'>7,901</span></div><div class='member-row '><span class='member-name'><a class='member-name-link' href='../profile.html?id=jhyhlli123'>박준혁</a></span><span class='member-value'>6,290</span></div><div class='member-row '><span class='member-name'><a class='member-name-link' href='../profile.html?id=nalra82'>강민</a></span><span class='member-value'>1,308</span></div>
         </div>
         <div class="member-col">
           <div class="member-col-label"><span class="col-label-text">여자 멤버</span><span class="unit-label">별풍선</span></div>
-          <div class='member-row '><span class='member-name'>설둥이</span><span class='member-value'>54,195</span></div><div class='member-row '><span class='member-name'>슬아<span class='bday-mark'>🎂</span></span><span class='member-value'>51,910</span></div><div class='member-row '><span class='member-name'>연블비</span><span class='member-value'>50,165</span></div><div class='member-row '><span class='member-name'>사랑e</span><span class='member-value'>41,779</span></div><div class='member-row '><span class='member-name'>세월</span><span class='member-value'>33,290</span></div><div class='member-row '><span class='member-name'>이응씨</span><span class='member-value'>25,773</span></div><div class='member-row '><span class='member-name'>이아라</span><span class='member-value'>21,141</span></div>
+          <div class='member-row '><span class='member-name'><a class='member-name-link' href='../profile.html?id=snowssa'>설둥이</a></span><span class='member-value'>54,195</span></div><div class='member-row '><span class='member-name'><a class='member-name-link' href='../profile.html?id=ekfrqkf'>슬아<span class='bday-mark'>🎂</span></a></span><span class='member-value'>51,910</span></div><div class='member-row '><span class='member-name'><a class='member-name-link' href='../profile.html?id=ynblbee'>연블비</a></span><span class='member-value'>50,165</span></div><div class='member-row '><span class='member-name'><a class='member-name-link' href='../profile.html?id=sr629'>사랑e</a></span><span class='member-value'>41,779</span></div><div class='member-row '><span class='member-name'><a class='member-name-link' href='../profile.html?id=asdsa1113'>세월</a></span><span class='member-value'>33,290</span></div><div class='member-row '><span class='member-name'><a class='member-name-link' href='../profile.html?id=onzzang'>이응씨</a></span><span class='member-value'>25,773</span></div><div class='member-row '><span class='member-name'><a class='member-name-link' href='../profile.html?id=ara9687'>이아라</a></span><span class='member-value'>21,295</span></div>
         </div>
       </div>
       <div class="team-footer">
         <div class="stat-card">
           <div class="stat-card-header"><svg class="stat-icon" viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="6" rx="7" ry="3"/><path d="M5 6v5c0 1.66 3.13 3 7 3s7-1.34 7-3V6"/><path d="M5 11v5c0 1.66 3.13 3 7 3s7-1.34 7-3v-5"/></svg><span class="stat-label">전체 합계</span></div>
-          <div class="stat-value">347,587</div>
+          <div class="stat-value">347,741</div>
         </div>
         <div class="stat-card female-avg">
           <div class="stat-card-header"><svg class="stat-icon" viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="9" r="5"/><path d="M12 14v7M9 18h6"/></svg><span class="stat-label">여자 평균</span></div>
-          <div class="stat-value">39,750</div>
+          <div class="stat-value">39,772</div>
         </div>
         <div class="stat-card total-avg">
           <div class="stat-card-header"><svg class="stat-icon" viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20V10M12 20V4M20 20v-7"/></svg><span class="stat-label">전체 평균</span></div>
-          <div class="stat-value">26,737</div>
+          <div class="stat-value">26,749</div>
         </div>
       </div>
     </div>
@@ -340,25 +354,25 @@
       <div class="member-columns">
         <div class="member-col">
           <div class="member-col-label"><span class="col-label-text">남자 멤버</span><span class="unit-label">방송시간</span></div>
-          <div class='member-row tier10'><span class='member-name'>방태수</span><span class='member-value'>135:52:00</span></div><div class='member-row '><span class='member-name'>카리스</span><span class='member-value'>106:48:19</span></div><div class='member-row '><span class='member-name'>최호선</span><span class='member-value'>86:25:21</span></div><div class='member-row '><span class='member-name'>혁민</span><span class='member-value'>83:22:29</span></div><div class='member-row '><span class='member-name'>박준혁</span><span class='member-value'>51:05:44</span></div><div class='member-row '><span class='member-name'>파메</span><span class='member-value'>47:49:09</span></div><div class='member-row '><span class='member-name'>강민</span><span class='member-value'>16:43:48</span></div>
+          <div class='member-row tier10'><span class='member-name'><a class='member-name-link' href='../profile.html?id=bts150'>방태수</a></span><span class='member-value'>135:52:00</span></div><div class='member-row '><span class='member-name'><a class='member-name-link' href='../profile.html?id=igoldtree'>카리스</a></span><span class='member-value'>106:48:19</span></div><div class='member-row '><span class='member-name'><a class='member-name-link' href='../profile.html?id=ghtjs3833'>최호선</a></span><span class='member-value'>86:25:21</span></div><div class='member-row '><span class='member-name'><a class='member-name-link' href='../profile.html?id=suhi370erw'>혁민</a></span><span class='member-value'>83:22:29</span></div><div class='member-row '><span class='member-name'><a class='member-name-link' href='../profile.html?id=jhyhlli123'>박준혁</a></span><span class='member-value'>51:05:44</span></div><div class='member-row '><span class='member-name'><a class='member-name-link' href='../profile.html?id=heksd'>파메</a></span><span class='member-value'>47:49:09</span></div><div class='member-row '><span class='member-name'><a class='member-name-link' href='../profile.html?id=nalra82'>강민</a></span><span class='member-value'>16:43:48</span></div>
         </div>
         <div class="member-col">
           <div class="member-col-label"><span class="col-label-text">여자 멤버</span><span class="unit-label">방송시간</span></div>
-          <div class='member-row '><span class='member-name'>이아라</span><span class='member-value'>131:59:50</span></div><div class='member-row '><span class='member-name'>설둥이</span><span class='member-value'>115:25:29</span></div><div class='member-row '><span class='member-name'>이응씨</span><span class='member-value'>104:36:51</span></div><div class='member-row '><span class='member-name'>사랑e</span><span class='member-value'>93:41:50</span></div><div class='member-row '><span class='member-name'>슬아<span class='bday-mark'>🎂</span></span><span class='member-value'>87:51:44</span></div><div class='member-row '><span class='member-name'>연블비</span><span class='member-value'>85:24:36</span></div><div class='member-row '><span class='member-name'>세월</span><span class='member-value'>71:00:51</span></div>
+          <div class='member-row tier10'><span class='member-name'><a class='member-name-link' href='../profile.html?id=ara9687'>이아라</a></span><span class='member-value'>133:37:50</span></div><div class='member-row '><span class='member-name'><a class='member-name-link' href='../profile.html?id=snowssa'>설둥이</a></span><span class='member-value'>115:25:29</span></div><div class='member-row '><span class='member-name'><a class='member-name-link' href='../profile.html?id=onzzang'>이응씨</a></span><span class='member-value'>104:36:51</span></div><div class='member-row '><span class='member-name'><a class='member-name-link' href='../profile.html?id=sr629'>사랑e</a></span><span class='member-value'>93:41:50</span></div><div class='member-row '><span class='member-name'><a class='member-name-link' href='../profile.html?id=ekfrqkf'>슬아<span class='bday-mark'>🎂</span></a></span><span class='member-value'>87:54:53</span></div><div class='member-row '><span class='member-name'><a class='member-name-link' href='../profile.html?id=ynblbee'>연블비</a></span><span class='member-value'>85:24:36</span></div><div class='member-row '><span class='member-name'><a class='member-name-link' href='../profile.html?id=asdsa1113'>세월</a></span><span class='member-value'>71:00:51</span></div>
         </div>
       </div>
       <div class="team-footer">
         <div class="stat-card">
           <div class="stat-card-header"><svg class="stat-icon" viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="6" rx="7" ry="3"/><path d="M5 6v5c0 1.66 3.13 3 7 3s7-1.34 7-3V6"/><path d="M5 11v5c0 1.66 3.13 3 7 3s7-1.34 7-3v-5"/></svg><span class="stat-label">전체 합계</span></div>
-          <div class="stat-value">1218:08:01</div>
+          <div class="stat-value">1219:49:10</div>
         </div>
         <div class="stat-card female-avg">
           <div class="stat-card-header"><svg class="stat-icon" viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="9" r="5"/><path d="M12 14v7M9 18h6"/></svg><span class="stat-label">여자 평균</span></div>
-          <div class="stat-value">98:34:27</div>
+          <div class="stat-value">98:48:54</div>
         </div>
         <div class="stat-card total-avg">
           <div class="stat-card-header"><svg class="stat-icon" viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20V10M12 20V4M20 20v-7"/></svg><span class="stat-label">전체 평균</span></div>
-          <div class="stat-value">87:00:34</div>
+          <div class="stat-value">87:07:48</div>
         </div>
       </div>
     </div>
@@ -372,25 +386,25 @@
       <div class="member-columns">
         <div class="member-col">
           <div class="member-col-label"><span class="col-label-text">남자 멤버</span><span class="unit-label">누적시청자</span></div>
-          <div class='member-row excluded'><span class='member-name'>혁민</span><span class='member-value'>194,439</span></div><div class='member-row '><span class='member-name'>방태수</span><span class='member-value'>26,173</span></div><div class='member-row '><span class='member-name'>최호선</span><span class='member-value'>21,868</span></div><div class='member-row '><span class='member-name'>강민</span><span class='member-value'>5,144</span></div><div class='member-row '><span class='member-name'>카리스</span><span class='member-value'>3,508</span></div><div class='member-row '><span class='member-name'>박준혁</span><span class='member-value'>2,095</span></div><div class='member-row '><span class='member-name'>파메</span><span class='member-value'>1,970</span></div>
+          <div class='member-row excluded'><span class='member-name'><a class='member-name-link' href='../profile.html?id=suhi370erw'>혁민</a></span><span class='member-value'>194,439</span></div><div class='member-row '><span class='member-name'><a class='member-name-link' href='../profile.html?id=bts150'>방태수</a></span><span class='member-value'>26,173</span></div><div class='member-row '><span class='member-name'><a class='member-name-link' href='../profile.html?id=ghtjs3833'>최호선</a></span><span class='member-value'>21,868</span></div><div class='member-row '><span class='member-name'><a class='member-name-link' href='../profile.html?id=nalra82'>강민</a></span><span class='member-value'>5,144</span></div><div class='member-row '><span class='member-name'><a class='member-name-link' href='../profile.html?id=igoldtree'>카리스</a></span><span class='member-value'>3,508</span></div><div class='member-row '><span class='member-name'><a class='member-name-link' href='../profile.html?id=jhyhlli123'>박준혁</a></span><span class='member-value'>2,095</span></div><div class='member-row '><span class='member-name'><a class='member-name-link' href='../profile.html?id=heksd'>파메</a></span><span class='member-value'>1,970</span></div>
         </div>
         <div class="member-col">
           <div class="member-col-label"><span class="col-label-text">여자 멤버</span><span class="unit-label">누적시청자</span></div>
-          <div class='member-row '><span class='member-name'>설둥이</span><span class='member-value'>19,926</span></div><div class='member-row '><span class='member-name'>연블비</span><span class='member-value'>14,063</span></div><div class='member-row '><span class='member-name'>슬아<span class='bday-mark'>🎂</span></span><span class='member-value'>12,087</span></div><div class='member-row '><span class='member-name'>세월</span><span class='member-value'>11,056</span></div><div class='member-row '><span class='member-name'>사랑e</span><span class='member-value'>10,039</span></div><div class='member-row '><span class='member-name'>이응씨</span><span class='member-value'>8,054</span></div><div class='member-row '><span class='member-name'>이아라</span><span class='member-value'>6,775</span></div>
+          <div class='member-row '><span class='member-name'><a class='member-name-link' href='../profile.html?id=snowssa'>설둥이</a></span><span class='member-value'>19,926</span></div><div class='member-row '><span class='member-name'><a class='member-name-link' href='../profile.html?id=ynblbee'>연블비</a></span><span class='member-value'>14,063</span></div><div class='member-row '><span class='member-name'><a class='member-name-link' href='../profile.html?id=ekfrqkf'>슬아<span class='bday-mark'>🎂</span></a></span><span class='member-value'>12,096</span></div><div class='member-row '><span class='member-name'><a class='member-name-link' href='../profile.html?id=asdsa1113'>세월</a></span><span class='member-value'>11,056</span></div><div class='member-row '><span class='member-name'><a class='member-name-link' href='../profile.html?id=sr629'>사랑e</a></span><span class='member-value'>10,039</span></div><div class='member-row '><span class='member-name'><a class='member-name-link' href='../profile.html?id=onzzang'>이응씨</a></span><span class='member-value'>8,054</span></div><div class='member-row '><span class='member-name'><a class='member-name-link' href='../profile.html?id=ara9687'>이아라</a></span><span class='member-value'>6,864</span></div>
         </div>
       </div>
       <div class="team-footer">
         <div class="stat-card">
           <div class="stat-card-header"><svg class="stat-icon" viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="6" rx="7" ry="3"/><path d="M5 6v5c0 1.66 3.13 3 7 3s7-1.34 7-3V6"/><path d="M5 11v5c0 1.66 3.13 3 7 3s7-1.34 7-3v-5"/></svg><span class="stat-label">전체 합계</span></div>
-          <div class="stat-value">142,758</div>
+          <div class="stat-value">142,856</div>
         </div>
         <div class="stat-card female-avg">
           <div class="stat-card-header"><svg class="stat-icon" viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="9" r="5"/><path d="M12 14v7M9 18h6"/></svg><span class="stat-label">여자 평균</span></div>
-          <div class="stat-value">11,714</div>
+          <div class="stat-value">11,728</div>
         </div>
         <div class="stat-card total-avg">
           <div class="stat-card-header"><svg class="stat-icon" viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20V10M12 20V4M20 20v-7"/></svg><span class="stat-label">전체 평균</span></div>
-          <div class="stat-value">10,981</div>
+          <div class="stat-value">10,989</div>
         </div>
       </div>
     </div>
@@ -404,11 +418,11 @@
       <div class="member-columns">
         <div class="member-col">
           <div class="member-col-label"><span class="col-label-text">남자 멤버</span><span class="unit-label">별풍선</span></div>
-          <div class='member-row excluded'><span class='member-name'>혁민</span><span class='member-value'>4,663,548</span></div><div class='member-row '><span class='member-name'>카리스</span><span class='member-value'>42,459</span></div><div class='member-row '><span class='member-name'>방태수</span><span class='member-value'>33,892</span></div><div class='member-row '><span class='member-name'>파메</span><span class='member-value'>23,431</span></div><div class='member-row '><span class='member-name'>박준혁</span><span class='member-value'>18,517</span></div><div class='member-row '><span class='member-name'>최호선</span><span class='member-value'>14,404</span></div><div class='member-row '><span class='member-name'>강민</span><span class='member-value'>8,443</span></div>
+          <div class='member-row excluded'><span class='member-name'><a class='member-name-link' href='../profile.html?id=suhi370erw'>혁민</a></span><span class='member-value'>4,663,548</span></div><div class='member-row '><span class='member-name'><a class='member-name-link' href='../profile.html?id=igoldtree'>카리스</a></span><span class='member-value'>42,459</span></div><div class='member-row '><span class='member-name'><a class='member-name-link' href='../profile.html?id=bts150'>방태수</a></span><span class='member-value'>33,892</span></div><div class='member-row '><span class='member-name'><a class='member-name-link' href='../profile.html?id=heksd'>파메</a></span><span class='member-value'>23,431</span></div><div class='member-row '><span class='member-name'><a class='member-name-link' href='../profile.html?id=jhyhlli123'>박준혁</a></span><span class='member-value'>18,517</span></div><div class='member-row '><span class='member-name'><a class='member-name-link' href='../profile.html?id=ghtjs3833'>최호선</a></span><span class='member-value'>14,404</span></div><div class='member-row '><span class='member-name'><a class='member-name-link' href='../profile.html?id=nalra82'>강민</a></span><span class='member-value'>8,443</span></div>
         </div>
         <div class="member-col">
           <div class="member-col-label"><span class="col-label-text">여자 멤버</span><span class="unit-label">별풍선</span></div>
-          <div class='member-row '><span class='member-name'>연블비</span><span class='member-value'>117,166</span></div><div class='member-row '><span class='member-name'>사랑e</span><span class='member-value'>50,151</span></div><div class='member-row '><span class='member-name'>세월</span><span class='member-value'>45,748</span></div><div class='member-row '><span class='member-name'>설둥이</span><span class='member-value'>44,952</span></div><div class='member-row '><span class='member-name'>슬아</span><span class='member-value'>31,579</span></div><div class='member-row '><span class='member-name'>이아라<span class='bday-mark'>🎂</span></span><span class='member-value'>27,872</span></div><div class='member-row '><span class='member-name'>이응씨</span><span class='member-value'>22,049</span></div>
+          <div class='member-row '><span class='member-name'><a class='member-name-link' href='../profile.html?id=ynblbee'>연블비</a></span><span class='member-value'>117,166</span></div><div class='member-row '><span class='member-name'><a class='member-name-link' href='../profile.html?id=sr629'>사랑e</a></span><span class='member-value'>50,151</span></div><div class='member-row '><span class='member-name'><a class='member-name-link' href='../profile.html?id=asdsa1113'>세월</a></span><span class='member-value'>45,748</span></div><div class='member-row '><span class='member-name'><a class='member-name-link' href='../profile.html?id=snowssa'>설둥이</a></span><span class='member-value'>44,952</span></div><div class='member-row '><span class='member-name'><a class='member-name-link' href='../profile.html?id=ekfrqkf'>슬아</a></span><span class='member-value'>31,579</span></div><div class='member-row '><span class='member-name'><a class='member-name-link' href='../profile.html?id=ara9687'>이아라<span class='bday-mark'>🎂</span></a></span><span class='member-value'>27,872</span></div><div class='member-row '><span class='member-name'><a class='member-name-link' href='../profile.html?id=onzzang'>이응씨</a></span><span class='member-value'>22,049</span></div>
         </div>
       </div>
       <div class="team-footer">
@@ -436,11 +450,11 @@
       <div class="member-columns">
         <div class="member-col">
           <div class="member-col-label"><span class="col-label-text">남자 멤버</span><span class="unit-label">방송시간</span></div>
-          <div class='member-row '><span class='member-name'>혁민</span><span class='member-value'>225:31:19</span></div><div class='member-row '><span class='member-name'>방태수</span><span class='member-value'>190:46:12</span></div><div class='member-row '><span class='member-name'>카리스</span><span class='member-value'>180:14:00</span></div><div class='member-row '><span class='member-name'>파메</span><span class='member-value'>110:30:42</span></div><div class='member-row '><span class='member-name'>최호선</span><span class='member-value'>87:44:59</span></div><div class='member-row '><span class='member-name'>박준혁</span><span class='member-value'>86:13:15</span></div><div class='member-row '><span class='member-name'>강민</span><span class='member-value'>24:11:00</span></div>
+          <div class='member-row '><span class='member-name'><a class='member-name-link' href='../profile.html?id=suhi370erw'>혁민</a></span><span class='member-value'>225:31:19</span></div><div class='member-row '><span class='member-name'><a class='member-name-link' href='../profile.html?id=bts150'>방태수</a></span><span class='member-value'>190:46:12</span></div><div class='member-row '><span class='member-name'><a class='member-name-link' href='../profile.html?id=igoldtree'>카리스</a></span><span class='member-value'>180:14:00</span></div><div class='member-row '><span class='member-name'><a class='member-name-link' href='../profile.html?id=heksd'>파메</a></span><span class='member-value'>110:30:42</span></div><div class='member-row '><span class='member-name'><a class='member-name-link' href='../profile.html?id=ghtjs3833'>최호선</a></span><span class='member-value'>87:44:59</span></div><div class='member-row '><span class='member-name'><a class='member-name-link' href='../profile.html?id=jhyhlli123'>박준혁</a></span><span class='member-value'>86:13:15</span></div><div class='member-row '><span class='member-name'><a class='member-name-link' href='../profile.html?id=nalra82'>강민</a></span><span class='member-value'>24:11:00</span></div>
         </div>
         <div class="member-col">
           <div class="member-col-label"><span class="col-label-text">여자 멤버</span><span class="unit-label">방송시간</span></div>
-          <div class='member-row '><span class='member-name'>이아라<span class='bday-mark'>🎂</span></span><span class='member-value'>198:10:03</span></div><div class='member-row '><span class='member-name'>설둥이</span><span class='member-value'>115:15:00</span></div><div class='member-row '><span class='member-name'>이응씨</span><span class='member-value'>114:19:18</span></div><div class='member-row '><span class='member-name'>슬아</span><span class='member-value'>101:16:18</span></div><div class='member-row '><span class='member-name'>사랑e</span><span class='member-value'>99:20:03</span></div><div class='member-row '><span class='member-name'>연블비</span><span class='member-value'>98:32:36</span></div><div class='member-row '><span class='member-name'>세월</span><span class='member-value'>96:43:39</span></div>
+          <div class='member-row '><span class='member-name'><a class='member-name-link' href='../profile.html?id=ara9687'>이아라<span class='bday-mark'>🎂</span></a></span><span class='member-value'>198:10:03</span></div><div class='member-row '><span class='member-name'><a class='member-name-link' href='../profile.html?id=snowssa'>설둥이</a></span><span class='member-value'>115:15:00</span></div><div class='member-row '><span class='member-name'><a class='member-name-link' href='../profile.html?id=onzzang'>이응씨</a></span><span class='member-value'>114:19:18</span></div><div class='member-row '><span class='member-name'><a class='member-name-link' href='../profile.html?id=ekfrqkf'>슬아</a></span><span class='member-value'>101:16:18</span></div><div class='member-row '><span class='member-name'><a class='member-name-link' href='../profile.html?id=sr629'>사랑e</a></span><span class='member-value'>99:20:03</span></div><div class='member-row '><span class='member-name'><a class='member-name-link' href='../profile.html?id=ynblbee'>연블비</a></span><span class='member-value'>98:32:36</span></div><div class='member-row '><span class='member-name'><a class='member-name-link' href='../profile.html?id=asdsa1113'>세월</a></span><span class='member-value'>96:43:39</span></div>
         </div>
       </div>
       <div class="team-footer">
@@ -468,11 +482,11 @@
       <div class="member-columns">
         <div class="member-col">
           <div class="member-col-label"><span class="col-label-text">남자 멤버</span><span class="unit-label">누적시청자</span></div>
-          <div class='member-row excluded'><span class='member-name'>혁민</span><span class='member-value'>494,167</span></div><div class='member-row '><span class='member-name'>방태수</span><span class='member-value'>32,644</span></div><div class='member-row '><span class='member-name'>최호선</span><span class='member-value'>21,124</span></div><div class='member-row '><span class='member-name'>강민</span><span class='member-value'>8,094</span></div><div class='member-row '><span class='member-name'>카리스</span><span class='member-value'>6,444</span></div><div class='member-row '><span class='member-name'>파메</span><span class='member-value'>6,123</span></div><div class='member-row '><span class='member-name'>박준혁</span><span class='member-value'>3,367</span></div>
+          <div class='member-row excluded'><span class='member-name'><a class='member-name-link' href='../profile.html?id=suhi370erw'>혁민</a></span><span class='member-value'>494,167</span></div><div class='member-row '><span class='member-name'><a class='member-name-link' href='../profile.html?id=bts150'>방태수</a></span><span class='member-value'>32,644</span></div><div class='member-row '><span class='member-name'><a class='member-name-link' href='../profile.html?id=ghtjs3833'>최호선</a></span><span class='member-value'>21,124</span></div><div class='member-row '><span class='member-name'><a class='member-name-link' href='../profile.html?id=nalra82'>강민</a></span><span class='member-value'>8,094</span></div><div class='member-row '><span class='member-name'><a class='member-name-link' href='../profile.html?id=igoldtree'>카리스</a></span><span class='member-value'>6,444</span></div><div class='member-row '><span class='member-name'><a class='member-name-link' href='../profile.html?id=heksd'>파메</a></span><span class='member-value'>6,123</span></div><div class='member-row '><span class='member-name'><a class='member-name-link' href='../profile.html?id=jhyhlli123'>박준혁</a></span><span class='member-value'>3,367</span></div>
         </div>
         <div class="member-col">
           <div class="member-col-label"><span class="col-label-text">여자 멤버</span><span class="unit-label">누적시청자</span></div>
-          <div class='member-row '><span class='member-name'>세월</span><span class='member-value'>21,692</span></div><div class='member-row '><span class='member-name'>사랑e</span><span class='member-value'>16,172</span></div><div class='member-row '><span class='member-name'>연블비</span><span class='member-value'>15,483</span></div><div class='member-row '><span class='member-name'>설둥이</span><span class='member-value'>14,074</span></div><div class='member-row '><span class='member-name'>슬아</span><span class='member-value'>14,014</span></div><div class='member-row '><span class='member-name'>이아라<span class='bday-mark'>🎂</span></span><span class='member-value'>9,618</span></div><div class='member-row '><span class='member-name'>이응씨</span><span class='member-value'>8,994</span></div>
+          <div class='member-row '><span class='member-name'><a class='member-name-link' href='../profile.html?id=asdsa1113'>세월</a></span><span class='member-value'>21,692</span></div><div class='member-row '><span class='member-name'><a class='member-name-link' href='../profile.html?id=sr629'>사랑e</a></span><span class='member-value'>16,172</span></div><div class='member-row '><span class='member-name'><a class='member-name-link' href='../profile.html?id=ynblbee'>연블비</a></span><span class='member-value'>15,483</span></div><div class='member-row '><span class='member-name'><a class='member-name-link' href='../profile.html?id=snowssa'>설둥이</a></span><span class='member-value'>14,074</span></div><div class='member-row '><span class='member-name'><a class='member-name-link' href='../profile.html?id=ekfrqkf'>슬아</a></span><span class='member-value'>14,014</span></div><div class='member-row '><span class='member-name'><a class='member-name-link' href='../profile.html?id=ara9687'>이아라<span class='bday-mark'>🎂</span></a></span><span class='member-value'>9,618</span></div><div class='member-row '><span class='member-name'><a class='member-name-link' href='../profile.html?id=onzzang'>이응씨</a></span><span class='member-value'>8,994</span></div>
         </div>
       </div>
       <div class="team-footer">
@@ -501,7 +515,7 @@
   </div>
 <script>
 (function () {
-  var meta = {"2026-08-balloon": {"teamCount": 14, "memberCount": 245, "updatedAt": "2026-08-22 22:42:08", "excludeRoles": true, "title": "HM 별풍선"}, "2026-08-broadcast": {"teamCount": 14, "memberCount": 245, "updatedAt": "2026-08-22 22:42:08", "excludeRoles": false, "title": "HM 방송시간"}, "2026-08-viewer": {"teamCount": 14, "memberCount": 245, "updatedAt": "2026-08-22 22:42:08", "excludeRoles": true, "title": "HM 누적시청자"}, "2026-07-balloon": {"teamCount": 12, "memberCount": 227, "updatedAt": "수동 백필", "excludeRoles": true, "title": "HM 별풍선"}, "2026-07-broadcast": {"teamCount": 12, "memberCount": 227, "updatedAt": "수동 백필", "excludeRoles": false, "title": "HM 방송시간"}, "2026-07-viewer": {"teamCount": 12, "memberCount": 227, "updatedAt": "수동 백필", "excludeRoles": true, "title": "HM 누적시청자"}};
+  var meta = {"2026-08-balloon": {"teamCount": 14, "memberCount": 245, "updatedAt": "2026-08-23 00:20:48", "excludeRoles": true, "title": "HM 별풍선"}, "2026-08-broadcast": {"teamCount": 14, "memberCount": 245, "updatedAt": "2026-08-23 00:20:48", "excludeRoles": false, "title": "HM 방송시간"}, "2026-08-viewer": {"teamCount": 14, "memberCount": 245, "updatedAt": "2026-08-23 00:20:48", "excludeRoles": true, "title": "HM 누적시청자"}, "2026-07-balloon": {"teamCount": 12, "memberCount": 227, "updatedAt": "수동 백필", "excludeRoles": true, "title": "HM 별풍선"}, "2026-07-broadcast": {"teamCount": 12, "memberCount": 227, "updatedAt": "수동 백필", "excludeRoles": false, "title": "HM 방송시간"}, "2026-07-viewer": {"teamCount": 12, "memberCount": 227, "updatedAt": "수동 백필", "excludeRoles": true, "title": "HM 누적시청자"}};
   var monthsByYear = {"2026": [8, 7]};
   var yearSel = document.getElementById('ms-year-select');
   var monthSel = document.getElementById('ms-month-select');
