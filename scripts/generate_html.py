@@ -112,12 +112,11 @@ def normalize_balloons(members: list) -> list:
 
 # 모든 페이지가 공유하는 스타일. f-string이 아니라 일반 문자열이라 중괄호를 그대로 쓴다.
 PAGE_CSS = """
-  @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;800;900&display=swap');
-
   * { box-sizing: border-box; }
 
   body {
-    font-family: 'Noto Sans KR', -apple-system, "Malgun Gothic", sans-serif;
+    font-family: 'Pretendard Variable', 'Pretendard', -apple-system, BlinkMacSystemFont,
+      system-ui, "Malgun Gothic", sans-serif;
     background: #f4f5f7;
     margin: 0;
     padding: 20px 10px;
@@ -342,7 +341,7 @@ PAGE_CSS = """
     max-width: 1080px;
     margin: 16px auto 0;
     font-size: 10px;
-    color: #a4a8b2;
+    color: #6b6f79;
     text-align: center;
   }
   .legend span { margin: 0 6px; }
@@ -704,6 +703,9 @@ def page_shell(*, top_bar_html: str, body_html: str, include_mobile_css: bool = 
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>{title}</title>
+<link rel="preconnect" href="https://cdn.jsdelivr.net">
+<link rel="stylesheet" as="style" crossorigin
+      href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.css">
 <style>
 {style}
 </style>
