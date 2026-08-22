@@ -24,6 +24,9 @@ jobs:
       - name: Install dependencies
         run: pip install pillow
 
+      - name: Download self-hosted font (once)
+        run: python scripts/download_font.py
+
       - name: Fetch data
         run: python scripts/fetch_data.py
 
