@@ -428,8 +428,6 @@ MOBILE_CSS = """
     .stat-icon { width: 6px; height: 6px; }
     .stat-label { font-size: 6px; }
     .stat-value { font-size: 7px; }
-    .profile-row { padding: 4px 8px; font-size: 6px; }
-    .profile-station-icon { width: 10px; height: 10px; border-radius: 3px; }
     .legend { font-size: 5px; margin-top: 8px; }
     .legend span { margin: 0 3px; }
     .legend .sw { width: 6px; height: 6px; margin-right: 2px; }
@@ -1145,7 +1143,7 @@ def build_profile_page(all_data: list) -> str:
     """
 
     body_html = f"""
-  <div style="max-width:1080px;margin:0 auto;">
+  <div style="max-width:480px;margin:0 auto;">
   <div class="team-card" id="profile-card" style="display:none;">
     <div class="team-card-topbar" id="profile-topbar"></div>
     <div class="team-header">
@@ -1293,7 +1291,7 @@ def build_profile_page(all_data: list) -> str:
 </script>"""
 
     return page_shell(
-        top_bar_html=top_bar_html, body_html=body_html, include_mobile_css=True,
+        top_bar_html=top_bar_html, body_html=body_html, include_mobile_css=False,
         title="프로필", extra_script=extra_script, logo_prefix="", show_legend=False,
     )
 
