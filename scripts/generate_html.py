@@ -46,6 +46,17 @@ LOGOS_DIR = ROOT / "docs" / "logos"
 EXCLUDED_ROLES = {"수장", "전력외"}
 DEFAULT_TOPBAR_COLOR = "#4a5ce0"
 _topbar_color_cache: dict = {}
+_json_file_cache: dict = {}
+
+
+def _load_json_cached(path: Path) -> dict:
+    """같은 아카이브 파일을 여러 팀/지표에서 반복해서 읽지 않도록 캐싱한다.
+    이번 실행 중에는 archive json 내용이 바뀔 일이 없으므로 안전하다."""
+    key = str(path)
+    if key not in _json_file_cache:
+        with open(path, "r", encoding="utf-8") as f:
+            _json_file_cache[key] = json.load(f)
+    return _json_file_cache[key]
 
 
 def get_team_topbar_color(team_name: str) -> str:
@@ -499,8 +510,7 @@ def load_previous_ranks(year: int, month: int, metric: Metric = BALLOON_METRIC):
     path = ARCHIVE_DIR / f"{slug}.json"
     if not path.exists():
         return None
-    with open(path, "r", encoding="utf-8") as f:
-        prev_data = json.load(f)
+    prev_data = _load_json_cached(path)
     return compute_team_ranks(normalize_balloons(prev_data["members"]), metric)
 
 
@@ -629,14 +639,28 @@ def list_archive_slugs() -> list:
     return sorted(slugs, reverse=True)
 
 
-def build_grid_panel(data: dict, metric: Metric, logo_prefix: str) -> str:
+def compute_panel_context(all_data: list, metrics: list) -> dict:
+    """(연,월,지표)별 tiers/전체순위/전달순위를 미리 한 번씩만 계산해서 캐싱한다.
+    이 값들은 어느 팀 페이지를 만드는지와 무관(항상 전체 멤버 기준)하므로,
+    전체 페이지 1개 + 팀별 단독 페이지 N개가 전부 이 결과를 그대로 재사용한다.
+    -> 팀 수만큼 반복되던 정렬/집계/아카이브 파일 읽기를 (연,월,지표) 조합 수만큼으로 줄인다."""
+    context = {}
+    for data in all_data:
+        y, m = data["year"], data["month"]
+        for metric in metrics:
+            tiers = compute_percentile_tiers(data["members"], metric)
+            current_ranks = compute_team_ranks(data["members"], metric)
+            prev_ranks = load_previous_ranks(y, m, metric)
+            context[(y, m, metric.key)] = (tiers, current_ranks, prev_ranks)
+    return context
+
+
+def build_grid_panel(data: dict, metric: Metric, logo_prefix: str, context: dict) -> str:
     """전체 팀 그리드 패널 (모든 팀 카드, 전체 평균 내림차순 정렬). 팀 이름을 누르면
     현재 보고 있던 연/월/지표를 그대로 유지한 채 그 팀의 단독 페이지로 이동한다."""
     members = data["members"]
     teams = group_teams(members)
-    tiers = compute_percentile_tiers(members, metric)
-    current_ranks = compute_team_ranks(members, metric)
-    prev_ranks = load_previous_ranks(data["year"], data["month"], metric)
+    tiers, current_ranks, prev_ranks = context[(data["year"], data["month"], metric.key)]
 
     team_cards = []
     for team_name, team_members in teams.items():
@@ -651,7 +675,7 @@ def build_grid_panel(data: dict, metric: Metric, logo_prefix: str) -> str:
     return f'<div class="grid">{cards_html}</div>'
 
 
-def build_single_team_panel(data: dict, team_name: str, metric: Metric, logo_prefix: str) -> str:
+def build_single_team_panel(data: dict, team_name: str, metric: Metric, logo_prefix: str, context: dict) -> str:
     """특정 팀 하나만 담은 패널. 그 달에 팀이 없으면 안내 문구만 표시."""
     teams = group_teams(data["members"])
     team_members = teams.get(team_name)
@@ -662,9 +686,7 @@ def build_single_team_panel(data: dict, team_name: str, metric: Metric, logo_pre
             '이 달에는 팀 정보가 없습니다.</div></div>'
         )
 
-    tiers = compute_percentile_tiers(data["members"], metric)
-    current_ranks = compute_team_ranks(data["members"], metric)
-    prev_ranks = load_previous_ranks(data["year"], data["month"], metric)
+    tiers, current_ranks, prev_ranks = context[(data["year"], data["month"], metric.key)]
     badge = rank_change_badge(current_ranks[team_name], prev_ranks, team_name)
     _, card_html = build_team_card(team_name, team_members, data["month"], tiers, logo_prefix, badge, metric)
     return f'<div class="grid single-team">{card_html}</div>'
@@ -714,8 +736,7 @@ def load_all_month_data():
     all_data = [current_data]
     for slug in list_archive_slugs():
         path = ARCHIVE_DIR / f"{slug}.json"
-        with open(path, "r", encoding="utf-8") as f:
-            d = json.load(f)
+        d = _load_json_cached(path)
         d["members"] = normalize_balloons(d["members"])
         all_data.append(d)
 
@@ -724,11 +745,13 @@ def load_all_month_data():
 
 def assemble_single_page(all_data: list, current_year: int, current_month: int,
                           panel_builder, logo_prefix: str, include_mobile_css: bool,
-                          page_title_base: str) -> str:
+                          page_title_base: str, context: dict) -> str:
     """
     all_data의 모든 (연,월) x (별풍선/방송시간) 조합을 패널로 미리 렌더링해서
     하나의 페이지에 담고, 연도/월/지표 select 3개 + 자바스크립트로 전환하게 만든다.
-    panel_builder(data, metric, logo_prefix) -> 패널 안쪽 HTML (grid div)
+    panel_builder(data, metric, logo_prefix, context) -> 패널 안쪽 HTML (grid div)
+    context는 compute_panel_context()에서 미리 계산해둔 tiers/순위 - 어느 페이지를
+    만들든(전체든 팀별 단독이든) 같은 값을 재사용해 중복 계산을 없앤다.
     """
     default_key = f"{current_year:04d}-{current_month:02d}-{BALLOON_METRIC.key}"
 
@@ -742,7 +765,7 @@ def assemble_single_page(all_data: list, current_year: int, current_month: int,
 
         for metric in METRICS:
             key = f"{y:04d}-{m:02d}-{metric.key}"
-            panel_inner = panel_builder(data, metric, logo_prefix)
+            panel_inner = panel_builder(data, metric, logo_prefix, context)
             style_attr = "" if key == default_key else " style=\"display:none;\""
             panels_html.append(f"<div class='page-panel' data-key='{key}'{style_attr}>{panel_inner}</div>")
 
@@ -887,11 +910,15 @@ def main():
     current_data, all_data = load_all_month_data()
     current_year, current_month = current_data["year"], current_data["month"]
 
+    # (연,월,지표)별 tiers/순위를 한 번만 계산 - 아래 전체 페이지 + 팀별 단독 페이지
+    # N개가 전부 이 결과를 재사용한다 (팀 수만큼 반복 계산하던 걸 없앰)
+    context = compute_panel_context(all_data, METRICS)
+
     # 전체 페이지 (모든 팀)
     html = assemble_single_page(
         all_data, current_year, current_month,
         panel_builder=build_grid_panel, logo_prefix="",
-        include_mobile_css=True, page_title_base="팀별",
+        include_mobile_css=True, page_title_base="팀별", context=context,
     )
     OUTPUT_PATH.parent.mkdir(parents=True, exist_ok=True)
     with open(OUTPUT_PATH, "w", encoding="utf-8") as f:
@@ -906,13 +933,13 @@ def main():
     if all_team_names:
         OUTPUT_TEAMS_DIR.mkdir(parents=True, exist_ok=True)
         for team_name in sorted(all_team_names):
-            def _panel_builder(data, metric, logo_prefix, _team=team_name):
-                return build_single_team_panel(data, _team, metric, logo_prefix)
+            def _panel_builder(data, metric, logo_prefix, context, _team=team_name):
+                return build_single_team_panel(data, _team, metric, logo_prefix, context)
 
             team_html = assemble_single_page(
                 all_data, current_year, current_month,
                 panel_builder=_panel_builder, logo_prefix="../",
-                include_mobile_css=False, page_title_base=team_name,
+                include_mobile_css=False, page_title_base=team_name, context=context,
             )
             out_path = OUTPUT_TEAMS_DIR / f"{team_name}.html"
             with open(out_path, "w", encoding="utf-8") as f:
