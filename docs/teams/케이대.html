@@ -253,6 +253,7 @@
     min-width: 0;
   }
   .stat-card-header { display: flex; align-items: center; justify-content: center; gap: 4px; margin-bottom: 5px; margin-left: -6px; }
+  .stat-card-header.no-icon { margin-left: 0; }
   .stat-label { font-size: 12px; color: #1a1d29; font-weight: 600; }
   .stat-value { font-size: 14px; font-weight: 800; color: #1a1d29; font-variant-numeric: tabular-nums; }
   .stat-icon { color: #1a1d29; flex-shrink: 0; }
@@ -261,6 +262,14 @@
   .stat-card.total-avg { background: #f1eefb; border: none; }
   .stat-card.total-avg .stat-value { color: #26215c; }
 
+  .profile-photo-img {
+    width: 72px;
+    height: 72px;
+    border-radius: 50%;
+    object-fit: cover;
+    background: #f2f3f5;
+    flex-shrink: 0;
+  }
   .profile-row {
     display: flex;
     justify-content: space-between;
@@ -307,7 +316,7 @@
     <span class="top-meta-group">
       <a href="../index.html" id="back-to-full-link" class="back-link">← 전체페이지</a>
       <span class="top-meta-sep">·</span>
-      <span class="top-meta" id="top-meta-text">14팀 · 245명 · 업데이트 2026-08-23 00:41:56 · 출처: <a href='https://poonggo.com' target='_blank' rel='noopener' class='source-link'>풍고</a></span>
+      <span class="top-meta" id="top-meta-text">14팀 · 245명 · 업데이트 2026-08-23 00:51:18 · 출처: <a href='https://poonggo.com' target='_blank' rel='noopener' class='source-link'>풍고</a></span>
     </span>
   </div>
     
@@ -515,7 +524,7 @@
   </div>
 <script>
 (function () {
-  var meta = {"2026-08-balloon": {"teamCount": 14, "memberCount": 245, "updatedAt": "2026-08-23 00:41:56", "excludeRoles": true, "title": "케이대 별풍선"}, "2026-08-broadcast": {"teamCount": 14, "memberCount": 245, "updatedAt": "2026-08-23 00:41:56", "excludeRoles": false, "title": "케이대 방송시간"}, "2026-08-viewer": {"teamCount": 14, "memberCount": 245, "updatedAt": "2026-08-23 00:41:56", "excludeRoles": true, "title": "케이대 누적시청자"}, "2026-07-balloon": {"teamCount": 12, "memberCount": 227, "updatedAt": "수동 백필", "excludeRoles": true, "title": "케이대 별풍선"}, "2026-07-broadcast": {"teamCount": 12, "memberCount": 227, "updatedAt": "수동 백필", "excludeRoles": false, "title": "케이대 방송시간"}, "2026-07-viewer": {"teamCount": 12, "memberCount": 227, "updatedAt": "수동 백필", "excludeRoles": true, "title": "케이대 누적시청자"}};
+  var meta = {"2026-08-balloon": {"teamCount": 14, "memberCount": 245, "updatedAt": "2026-08-23 00:51:18", "excludeRoles": true, "title": "케이대 별풍선"}, "2026-08-broadcast": {"teamCount": 14, "memberCount": 245, "updatedAt": "2026-08-23 00:51:18", "excludeRoles": false, "title": "케이대 방송시간"}, "2026-08-viewer": {"teamCount": 14, "memberCount": 245, "updatedAt": "2026-08-23 00:51:18", "excludeRoles": true, "title": "케이대 누적시청자"}, "2026-07-balloon": {"teamCount": 12, "memberCount": 227, "updatedAt": "수동 백필", "excludeRoles": true, "title": "케이대 별풍선"}, "2026-07-broadcast": {"teamCount": 12, "memberCount": 227, "updatedAt": "수동 백필", "excludeRoles": false, "title": "케이대 방송시간"}, "2026-07-viewer": {"teamCount": 12, "memberCount": 227, "updatedAt": "수동 백필", "excludeRoles": true, "title": "케이대 누적시청자"}};
   var monthsByYear = {"2026": [8, 7]};
   var yearSel = document.getElementById('ms-year-select');
   var monthSel = document.getElementById('ms-month-select');
