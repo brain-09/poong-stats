@@ -4,10 +4,15 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>DM 별풍선</title>
-<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
-<link rel="stylesheet" as="style" crossorigin
-      href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.css">
+<link rel="preload" href="../fonts/PretendardVariable.woff2" as="font" type="font/woff2" crossorigin>
 <style>
+@font-face {
+  font-family: 'Pretendard Variable';
+  font-weight: 45 920;
+  font-style: normal;
+  font-display: swap;
+  src: url('../fonts/PretendardVariable.woff2') format('woff2-variations');
+}
 
   * { box-sizing: border-box; }
 
@@ -472,7 +477,7 @@
   </div>
 <script>
 (function () {
-  var meta = {"2026-08-balloon": {"teamCount": 14, "memberCount": 245, "updatedAt": "2026-08-22 14:25:04", "excludeRoles": true, "title": "DM 별풍선"}, "2026-08-broadcast": {"teamCount": 14, "memberCount": 245, "updatedAt": "2026-08-22 14:25:04", "excludeRoles": false, "title": "DM 방송시간"}, "2026-08-viewer": {"teamCount": 14, "memberCount": 245, "updatedAt": "2026-08-22 14:25:04", "excludeRoles": true, "title": "DM 누적시청자"}, "2026-07-balloon": {"teamCount": 12, "memberCount": 227, "updatedAt": "수동 백필", "excludeRoles": true, "title": "DM 별풍선"}, "2026-07-broadcast": {"teamCount": 12, "memberCount": 227, "updatedAt": "수동 백필", "excludeRoles": false, "title": "DM 방송시간"}, "2026-07-viewer": {"teamCount": 12, "memberCount": 227, "updatedAt": "수동 백필", "excludeRoles": true, "title": "DM 누적시청자"}};
+  var meta = {"2026-08-balloon": {"teamCount": 14, "memberCount": 245, "updatedAt": "2026-08-22 14:32:52", "excludeRoles": true, "title": "DM 별풍선"}, "2026-08-broadcast": {"teamCount": 14, "memberCount": 245, "updatedAt": "2026-08-22 14:32:52", "excludeRoles": false, "title": "DM 방송시간"}, "2026-08-viewer": {"teamCount": 14, "memberCount": 245, "updatedAt": "2026-08-22 14:32:52", "excludeRoles": true, "title": "DM 누적시청자"}, "2026-07-balloon": {"teamCount": 12, "memberCount": 227, "updatedAt": "수동 백필", "excludeRoles": true, "title": "DM 별풍선"}, "2026-07-broadcast": {"teamCount": 12, "memberCount": 227, "updatedAt": "수동 백필", "excludeRoles": false, "title": "DM 방송시간"}, "2026-07-viewer": {"teamCount": 12, "memberCount": 227, "updatedAt": "수동 백필", "excludeRoles": true, "title": "DM 누적시청자"}};
   var monthsByYear = {"2026": [8, 7]};
   var yearSel = document.getElementById('ms-year-select');
   var monthSel = document.getElementById('ms-month-select');
