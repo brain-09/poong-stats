@@ -886,9 +886,9 @@ def assemble_single_page(all_data: list, current_year: int, current_month: int,
   <div class="top-bar">
     {nav_html}
     <span class="top-meta-group">
-      <span class="top-meta" id="top-meta-text">{default_meta_html}</span>
-      {'<span class="top-meta-sep">·</span>' if back_link_html else ''}
       {back_link_html}
+      {'<span class="top-meta-sep">·</span>' if back_link_html else ''}
+      <span class="top-meta" id="top-meta-text">{default_meta_html}</span>
     </span>
   </div>
     """
