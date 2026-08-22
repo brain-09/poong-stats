@@ -692,21 +692,32 @@ def build_single_team_panel(data: dict, team_name: str, metric: Metric, logo_pre
 
 
 def page_shell(*, top_bar_html: str, body_html: str, include_mobile_css: bool = True,
-               title: str, extra_script: str) -> str:
+               title: str, extra_script: str, logo_prefix: str = "") -> str:
     """모든 페이지 공통 뼈대. 팀 단독 페이지는 카드 1개뿐이라 모바일 압축 스타일이
     필요없어서 include_mobile_css=False로 뺄 수 있음. '수장/전력외' 범례 항목은
-    id로 표시해두고, 지표 전환 시 자바스크립트가 보였다/숨겼다 한다."""
+    id로 표시해두고, 지표 전환 시 자바스크립트가 보였다/숨겼다 한다.
+
+    Pretendard 폰트는 CDN에서 실시간으로 불러오지 않고 docs/fonts/에 self-host해서
+    쓴다 (scripts/download_font.py가 최초 1회 받아둠) - 로드시 폰트가 늦게 적용되며
+    깜빡이는 현상(FOUT)을 최소화하기 위함. logo_prefix로 로고와 동일하게 상대경로를
+    맞춘다 (전체 페이지는 "", 팀 단독 페이지는 "../")."""
     style = PAGE_CSS + (MOBILE_CSS if include_mobile_css else "")
+    font_url = f"{logo_prefix}fonts/PretendardVariable.woff2"
     return f"""<!DOCTYPE html>
 <html lang="ko">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>{title}</title>
-<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
-<link rel="stylesheet" as="style" crossorigin
-      href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.css">
+<link rel="preload" href="{font_url}" as="font" type="font/woff2" crossorigin>
 <style>
+@font-face {{
+  font-family: 'Pretendard Variable';
+  font-weight: 45 920;
+  font-style: normal;
+  font-display: swap;
+  src: url('{font_url}') format('woff2-variations');
+}}
 {style}
 </style>
 </head>
@@ -905,6 +916,7 @@ def assemble_single_page(all_data: list, current_year: int, current_month: int,
     return page_shell(
         top_bar_html=top_bar_html, body_html=body_html, include_mobile_css=include_mobile_css,
         title=f"{page_title_base} {BALLOON_METRIC.unit_label}", extra_script=extra_script,
+        logo_prefix=logo_prefix,
     )
 
 
