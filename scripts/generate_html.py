@@ -808,6 +808,13 @@ def assemble_single_page(all_data: list, current_year: int, current_month: int,
     months_by_year_json = json.dumps({str(y): sorted(ms, reverse=True) for y, ms in years_months.items()})
     metadata_json = json.dumps(metadata, ensure_ascii=False)
 
+    default_meta = metadata[default_key]
+    default_meta_html = (
+        f"{default_meta['teamCount']}팀 · {default_meta['memberCount']}명 · "
+        f"업데이트 {default_meta['updatedAt']} · 출처: "
+        f"<a href='https://poonggo.com' target='_blank' rel='noopener' class='source-link'>풍고</a>"
+    )
+
     nav_html = f"""
   <span class="month-select-group">
     <select class="top-date-select" id="ms-year-select">{year_options}</select>
@@ -822,7 +829,7 @@ def assemble_single_page(all_data: list, current_year: int, current_month: int,
     top_bar_html = f"""
   <div class="top-bar">
     {nav_html}
-    <span class="top-meta" id="top-meta-text"></span>
+    <span class="top-meta" id="top-meta-text">{default_meta_html}</span>
   </div>
     """
 
