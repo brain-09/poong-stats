@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-08-23 00:20:48",
+  "updated_at": "2026-08-23 00:41:56",
   "year": 2026,
   "month": 8,
   "members": [
@@ -25,9 +25,9 @@
       "team": "JSA",
       "race": "테란",
       "tier": "갓",
-      "balloons": 92728,
-      "broadcast_seconds": 478440,
-      "cumulative_viewers": 72575
+      "balloons": 93744,
+      "broadcast_seconds": 479700,
+      "cumulative_viewers": 72824
     },
     {
       "id": "dpfgc3",
@@ -78,8 +78,8 @@
       "race": "테란",
       "tier": "잭",
       "balloons": 83263,
-      "broadcast_seconds": 430840,
-      "cumulative_viewers": 18412
+      "broadcast_seconds": 432100,
+      "cumulative_viewers": 18449
     },
     {
       "id": "dgh9641",
@@ -116,9 +116,9 @@
       "team": "JSA",
       "race": "저그",
       "tier": "2",
-      "balloons": 201385,
-      "broadcast_seconds": 413871,
-      "cumulative_viewers": 105461
+      "balloons": 201405,
+      "broadcast_seconds": 415131,
+      "cumulative_viewers": 105618
     },
     {
       "id": "phh95426",
@@ -129,9 +129,9 @@
       "team": "JSA",
       "race": "테란",
       "tier": "3",
-      "balloons": 98099,
-      "broadcast_seconds": 307685,
-      "cumulative_viewers": 25480
+      "balloons": 98599,
+      "broadcast_seconds": 308945,
+      "cumulative_viewers": 25642
     },
     {
       "id": "dkfka8945",
@@ -155,9 +155,9 @@
       "team": "JSA",
       "race": "저그",
       "tier": "4",
-      "balloons": 108522,
-      "broadcast_seconds": 414472,
-      "cumulative_viewers": 58900
+      "balloons": 108525,
+      "broadcast_seconds": 415732,
+      "cumulative_viewers": 59153
     },
     {
       "id": "fudnjs0235",
@@ -169,8 +169,8 @@
       "race": "테란",
       "tier": "6",
       "balloons": 132714,
-      "broadcast_seconds": 398372,
-      "cumulative_viewers": 42632
+      "broadcast_seconds": 399632,
+      "cumulative_viewers": 42765
     },
     {
       "id": "wjddmstj79",
@@ -182,8 +182,8 @@
       "race": "저그",
       "tier": "7",
       "balloons": 81279,
-      "broadcast_seconds": 361178,
-      "cumulative_viewers": 77292
+      "broadcast_seconds": 362438,
+      "cumulative_viewers": 77453
     },
     {
       "id": "begoniah",
@@ -194,9 +194,9 @@
       "team": "JSA",
       "race": "저그",
       "tier": "7",
-      "balloons": 64541,
-      "broadcast_seconds": 337745,
-      "cumulative_viewers": 34423
+      "balloons": 64641,
+      "broadcast_seconds": 339005,
+      "cumulative_viewers": 34551
     },
     {
       "id": "owoouoowo",
@@ -221,8 +221,8 @@
       "race": "프로토스",
       "tier": "8",
       "balloons": 52815,
-      "broadcast_seconds": 410099,
-      "cumulative_viewers": 28715
+      "broadcast_seconds": 411359,
+      "cumulative_viewers": 28777
     },
     {
       "id": "tamama88",
@@ -233,9 +233,9 @@
       "team": "JSA",
       "race": "테란",
       "tier": "유스",
-      "balloons": 41190,
-      "broadcast_seconds": 498469,
-      "cumulative_viewers": 56160
+      "balloons": 41339,
+      "broadcast_seconds": 499729,
+      "cumulative_viewers": 56215
     },
     {
       "id": "kidsaoq",
@@ -247,8 +247,8 @@
       "race": "저그",
       "tier": "유스",
       "balloons": 58229,
-      "broadcast_seconds": 348489,
-      "cumulative_viewers": 36433
+      "broadcast_seconds": 349749,
+      "cumulative_viewers": 36472
     },
     {
       "id": "littlekim12",
@@ -286,8 +286,8 @@
       "race": "테란",
       "tier": "잭",
       "balloons": 311197,
-      "broadcast_seconds": 441158,
-      "cumulative_viewers": 296883
+      "broadcast_seconds": 442418,
+      "cumulative_viewers": 297605
     },
     {
       "id": "scan1014",
@@ -325,8 +325,8 @@
       "race": "테란",
       "tier": "잭",
       "balloons": 29534,
-      "broadcast_seconds": 187248,
-      "cumulative_viewers": 21173
+      "broadcast_seconds": 188508,
+      "cumulative_viewers": 21286
     },
     {
       "id": "ndudska620",
@@ -364,8 +364,8 @@
       "race": "테란",
       "tier": "1",
       "balloons": 87490,
-      "broadcast_seconds": 687879,
-      "cumulative_viewers": 37037
+      "broadcast_seconds": 689139,
+      "cumulative_viewers": 37080
     },
     {
       "id": "ehgmldud1233",
@@ -377,8 +377,8 @@
       "race": "테란",
       "tier": "2",
       "balloons": 87806,
-      "broadcast_seconds": 598362,
-      "cumulative_viewers": 64888
+      "broadcast_seconds": 599622,
+      "cumulative_viewers": 65017
     },
     {
       "id": "kwh1992",
@@ -429,8 +429,8 @@
       "race": "테란",
       "tier": "5",
       "balloons": 103951,
-      "broadcast_seconds": 316179,
-      "cumulative_viewers": 22345
+      "broadcast_seconds": 317439,
+      "cumulative_viewers": 22417
     },
     {
       "id": "maeong2",
@@ -442,8 +442,8 @@
       "race": "테란",
       "tier": "6",
       "balloons": 103059,
-      "broadcast_seconds": 392678,
-      "cumulative_viewers": 22564
+      "broadcast_seconds": 393938,
+      "cumulative_viewers": 22620
     },
     {
       "id": "tjwjddms1565",
@@ -455,8 +455,8 @@
       "race": "테란",
       "tier": "6",
       "balloons": 63161,
-      "broadcast_seconds": 414208,
-      "cumulative_viewers": 19975
+      "broadcast_seconds": 415468,
+      "cumulative_viewers": 20090
     },
     {
       "id": "rudzhd123",
@@ -468,8 +468,8 @@
       "race": "테란",
       "tier": "7",
       "balloons": 63556,
-      "broadcast_seconds": 403235,
-      "cumulative_viewers": 22771
+      "broadcast_seconds": 404495,
+      "cumulative_viewers": 22844
     },
     {
       "id": "gangeda",
@@ -597,9 +597,9 @@
       "team": "케이대",
       "race": "프로토스",
       "tier": "킹",
-      "balloons": 77788,
-      "broadcast_seconds": 185804,
-      "cumulative_viewers": 15137
+      "balloons": 80789,
+      "broadcast_seconds": 186936,
+      "cumulative_viewers": 17235
     },
     {
       "id": "wjdalsrl95",
@@ -819,8 +819,8 @@
       "race": "저그",
       "tier": "킹",
       "balloons": 466753,
-      "broadcast_seconds": 405485,
-      "cumulative_viewers": 1747204
+      "broadcast_seconds": 406745,
+      "cumulative_viewers": 1750397
     },
     {
       "id": "minchul",
@@ -845,8 +845,8 @@
       "race": "프로토스",
       "tier": "갓",
       "balloons": 53168,
-      "broadcast_seconds": 442559,
-      "cumulative_viewers": 299582
+      "broadcast_seconds": 443819,
+      "cumulative_viewers": 300154
     },
     {
       "id": "hoonykkk",
@@ -858,8 +858,8 @@
       "race": "테란",
       "tier": "킹",
       "balloons": 148195,
-      "broadcast_seconds": 458029,
-      "cumulative_viewers": 39630
+      "broadcast_seconds": 459289,
+      "cumulative_viewers": 39695
     },
     {
       "id": "h78ert",
@@ -871,8 +871,8 @@
       "race": "저그",
       "tier": "킹",
       "balloons": 110231,
-      "broadcast_seconds": 313120,
-      "cumulative_viewers": 84491
+      "broadcast_seconds": 314380,
+      "cumulative_viewers": 84598
     },
     {
       "id": "rondobba",
@@ -897,8 +897,8 @@
       "race": "저그",
       "tier": "잭",
       "balloons": 237031,
-      "broadcast_seconds": 347735,
-      "cumulative_viewers": 107194
+      "broadcast_seconds": 348995,
+      "cumulative_viewers": 107300
     },
     {
       "id": "jmc06170",
@@ -910,8 +910,8 @@
       "race": "프로토스",
       "tier": "잭",
       "balloons": 130805,
-      "broadcast_seconds": 339087,
-      "cumulative_viewers": 66321
+      "broadcast_seconds": 340347,
+      "cumulative_viewers": 66459
     },
     {
       "id": "jihoon002",
@@ -936,8 +936,8 @@
       "race": "저그",
       "tier": "2",
       "balloons": 226123,
-      "broadcast_seconds": 299480,
-      "cumulative_viewers": 134390
+      "broadcast_seconds": 300740,
+      "cumulative_viewers": 134745
     },
     {
       "id": "wjswlgns09",
@@ -948,9 +948,9 @@
       "team": "캄몬스타즈",
       "race": "테란",
       "tier": "3",
-      "balloons": 369513,
-      "broadcast_seconds": 493618,
-      "cumulative_viewers": 354755
+      "balloons": 369625,
+      "broadcast_seconds": 494878,
+      "cumulative_viewers": 355298
     },
     {
       "id": "freshtomato",
@@ -1001,8 +1001,8 @@
       "race": "테란",
       "tier": "5",
       "balloons": 126118,
-      "broadcast_seconds": 331463,
-      "cumulative_viewers": 73958
+      "broadcast_seconds": 332723,
+      "cumulative_viewers": 74230
     },
     {
       "id": "db001202",
@@ -1014,8 +1014,8 @@
       "race": "저그",
       "tier": "5",
       "balloons": 214049,
-      "broadcast_seconds": 365670,
-      "cumulative_viewers": 218011
+      "broadcast_seconds": 366930,
+      "cumulative_viewers": 218266
     },
     {
       "id": "fpahsdltu1",
@@ -1040,8 +1040,8 @@
       "race": "테란",
       "tier": "6",
       "balloons": 223063,
-      "broadcast_seconds": 510577,
-      "cumulative_viewers": 223986
+      "broadcast_seconds": 511837,
+      "cumulative_viewers": 224222
     },
     {
       "id": "dlaguswl501",
@@ -1066,8 +1066,8 @@
       "race": "프로토스",
       "tier": "6",
       "balloons": 203324,
-      "broadcast_seconds": 301514,
-      "cumulative_viewers": 114617
+      "broadcast_seconds": 302774,
+      "cumulative_viewers": 114769
     },
     {
       "id": "2meonjin",
@@ -1079,8 +1079,8 @@
       "race": "저그",
       "tier": "7",
       "balloons": 263273,
-      "broadcast_seconds": 443423,
-      "cumulative_viewers": 155303
+      "broadcast_seconds": 444683,
+      "cumulative_viewers": 155517
     },
     {
       "id": "sksmsskdsl10",
@@ -1091,9 +1091,9 @@
       "team": "캄몬스타즈",
       "race": "저그",
       "tier": "유스",
-      "balloons": 694723,
-      "broadcast_seconds": 436892,
-      "cumulative_viewers": 404356
+      "balloons": 695923,
+      "broadcast_seconds": 438152,
+      "cumulative_viewers": 404942
     },
     {
       "id": "dlqudgk1227",
@@ -1104,9 +1104,9 @@
       "team": "엠비대",
       "race": "저그",
       "tier": "8",
-      "balloons": 308958,
-      "broadcast_seconds": 265839,
-      "cumulative_viewers": 179859
+      "balloons": 309048,
+      "broadcast_seconds": 267099,
+      "cumulative_viewers": 180757
     },
     {
       "id": "tiger3006",
@@ -1377,9 +1377,9 @@
       "team": "와플대",
       "race": "프로토스",
       "tier": "8",
-      "balloons": 139775,
-      "broadcast_seconds": 405891,
-      "cumulative_viewers": 601033
+      "balloons": 139984,
+      "broadcast_seconds": 407151,
+      "cumulative_viewers": 603354
     },
     {
       "id": "kss33325",
@@ -1429,9 +1429,9 @@
       "team": "와플대",
       "race": "저그",
       "tier": "조커",
-      "balloons": 42245,
-      "broadcast_seconds": 397688,
-      "cumulative_viewers": 16132
+      "balloons": 43733,
+      "broadcast_seconds": 398227,
+      "cumulative_viewers": 16154
     },
     {
       "id": "julyzerg",
@@ -1481,9 +1481,9 @@
       "team": "와플대",
       "race": "저그",
       "tier": "5",
-      "balloons": 105013,
-      "broadcast_seconds": 386731,
-      "cumulative_viewers": 25308
+      "balloons": 107275,
+      "broadcast_seconds": 387991,
+      "cumulative_viewers": 25411
     },
     {
       "id": "nylove276",
@@ -1546,9 +1546,9 @@
       "team": "와플대",
       "race": "저그",
       "tier": "8",
-      "balloons": 30995,
-      "broadcast_seconds": 340613,
-      "cumulative_viewers": 14031
+      "balloons": 31114,
+      "broadcast_seconds": 341873,
+      "cumulative_viewers": 14071
     },
     {
       "id": "kimp1ay",
@@ -1676,9 +1676,9 @@
       "team": "수술대",
       "race": "프로토스",
       "tier": "0",
-      "balloons": 106218,
-      "broadcast_seconds": 403753,
-      "cumulative_viewers": 435827
+      "balloons": 106249,
+      "broadcast_seconds": 404764,
+      "cumulative_viewers": 437071
     },
     {
       "id": "bijyu90",
@@ -1690,8 +1690,8 @@
       "race": "테란",
       "tier": "1",
       "balloons": 30435,
-      "broadcast_seconds": 232964,
-      "cumulative_viewers": 13190
+      "broadcast_seconds": 234224,
+      "cumulative_viewers": 13230
     },
     {
       "id": "dmswls4565",
@@ -1702,9 +1702,9 @@
       "team": "수술대",
       "race": "저그",
       "tier": "3",
-      "balloons": 65160,
-      "broadcast_seconds": 278323,
-      "cumulative_viewers": 31280
+      "balloons": 65503,
+      "broadcast_seconds": 279583,
+      "cumulative_viewers": 31474
     },
     {
       "id": "pazzy1",
@@ -1742,8 +1742,8 @@
       "race": "저그",
       "tier": "4",
       "balloons": 53943,
-      "broadcast_seconds": 450490,
-      "cumulative_viewers": 34983
+      "broadcast_seconds": 451750,
+      "cumulative_viewers": 35011
     },
     {
       "id": "nerve89",
@@ -1754,9 +1754,9 @@
       "team": "수술대",
       "race": "테란",
       "tier": "5",
-      "balloons": 86386,
-      "broadcast_seconds": 337280,
-      "cumulative_viewers": 35855
+      "balloons": 92386,
+      "broadcast_seconds": 338540,
+      "cumulative_viewers": 36016
     },
     {
       "id": "wlgua7272",
@@ -1768,8 +1768,8 @@
       "race": "저그",
       "tier": "6",
       "balloons": 110927,
-      "broadcast_seconds": 369300,
-      "cumulative_viewers": 71358
+      "broadcast_seconds": 370560,
+      "cumulative_viewers": 71488
     },
     {
       "id": "nreupne",
@@ -1780,9 +1780,9 @@
       "team": "수술대",
       "race": "저그",
       "tier": "6",
-      "balloons": 73493,
-      "broadcast_seconds": 372578,
-      "cumulative_viewers": 33604
+      "balloons": 73521,
+      "broadcast_seconds": 373838,
+      "cumulative_viewers": 33680
     },
     {
       "id": "tato1104",
@@ -1806,9 +1806,9 @@
       "team": "수술대",
       "race": "테란",
       "tier": "7",
-      "balloons": 71295,
-      "broadcast_seconds": 408518,
-      "cumulative_viewers": 109843
+      "balloons": 87078,
+      "broadcast_seconds": 409778,
+      "cumulative_viewers": 110468
     },
     {
       "id": "min030606",
@@ -1845,9 +1845,9 @@
       "team": "수술대",
       "race": "프로토스",
       "tier": "7",
-      "balloons": 204971,
-      "broadcast_seconds": 300484,
-      "cumulative_viewers": 27066
+      "balloons": 205091,
+      "broadcast_seconds": 301744,
+      "cumulative_viewers": 27210
     },
     {
       "id": "zinsim",
@@ -1872,8 +1872,8 @@
       "race": "테란",
       "tier": "유스",
       "balloons": 29598,
-      "broadcast_seconds": 242342,
-      "cumulative_viewers": 15758
+      "broadcast_seconds": 243602,
+      "cumulative_viewers": 15811
     },
     {
       "id": "arinbbidol",
@@ -2040,9 +2040,9 @@
       "team": "뉴캣슬",
       "race": "프로토스",
       "tier": "5",
-      "balloons": 122710,
-      "broadcast_seconds": 346605,
-      "cumulative_viewers": 49334
+      "balloons": 122932,
+      "broadcast_seconds": 347865,
+      "cumulative_viewers": 49602
     },
     {
       "id": "2ahgo1203",
@@ -2106,8 +2106,8 @@
       "race": "저그",
       "tier": "7",
       "balloons": 300484,
-      "broadcast_seconds": 455053,
-      "cumulative_viewers": 89541
+      "broadcast_seconds": 456313,
+      "cumulative_viewers": 89652
     },
     {
       "id": "corgi1102",
@@ -2118,9 +2118,9 @@
       "team": "뉴캣슬",
       "race": "저그",
       "tier": "7",
-      "balloons": 74049,
-      "broadcast_seconds": 402724,
-      "cumulative_viewers": 22778
+      "balloons": 74052,
+      "broadcast_seconds": 403984,
+      "cumulative_viewers": 22866
     },
     {
       "id": "yuzzzz",
@@ -2158,8 +2158,8 @@
       "race": "프로토스",
       "tier": "8",
       "balloons": 45185,
-      "broadcast_seconds": 364465,
-      "cumulative_viewers": 17784
+      "broadcast_seconds": 365725,
+      "cumulative_viewers": 17828
     },
     {
       "id": "tndkekdy",
@@ -2197,8 +2197,8 @@
       "race": "프로토스",
       "tier": "잭",
       "balloons": 64649,
-      "broadcast_seconds": 367901,
-      "cumulative_viewers": 6122
+      "broadcast_seconds": 369161,
+      "cumulative_viewers": 6140
     },
     {
       "id": "bumsoo552",
@@ -2210,8 +2210,8 @@
       "race": "프로토스",
       "tier": "잭",
       "balloons": 29147,
-      "broadcast_seconds": 326390,
-      "cumulative_viewers": 5608
+      "broadcast_seconds": 327650,
+      "cumulative_viewers": 5634
     },
     {
       "id": "daehan7224",
@@ -2223,8 +2223,8 @@
       "race": "저그",
       "tier": "조커",
       "balloons": 12104,
-      "broadcast_seconds": 118138,
-      "cumulative_viewers": 1191
+      "broadcast_seconds": 119398,
+      "cumulative_viewers": 1206
     },
     {
       "id": "nada11200",
@@ -2249,8 +2249,8 @@
       "race": "프로토스",
       "tier": "스페이드",
       "balloons": 37498,
-      "broadcast_seconds": 296970,
-      "cumulative_viewers": 10290
+      "broadcast_seconds": 298230,
+      "cumulative_viewers": 10322
     },
     {
       "id": "dudwn4974",
@@ -2262,8 +2262,8 @@
       "race": "프로토스",
       "tier": "1",
       "balloons": 85843,
-      "broadcast_seconds": 546907,
-      "cumulative_viewers": 18698
+      "broadcast_seconds": 548167,
+      "cumulative_viewers": 18751
     },
     {
       "id": "s1on0106",
@@ -2301,8 +2301,8 @@
       "race": "프로토스",
       "tier": "4",
       "balloons": 138607,
-      "broadcast_seconds": 216330,
-      "cumulative_viewers": 11212
+      "broadcast_seconds": 217590,
+      "cumulative_viewers": 11274
     },
     {
       "id": "ldk8481",
@@ -2327,8 +2327,8 @@
       "race": "프로토스",
       "tier": "5",
       "balloons": 23654,
-      "broadcast_seconds": 200788,
-      "cumulative_viewers": 3141
+      "broadcast_seconds": 202048,
+      "cumulative_viewers": 3152
     },
     {
       "id": "dmsthfdldia",
@@ -2379,8 +2379,8 @@
       "race": "프로토스",
       "tier": "7",
       "balloons": 28390,
-      "broadcast_seconds": 284970,
-      "cumulative_viewers": 6905
+      "broadcast_seconds": 286230,
+      "cumulative_viewers": 6955
     },
     {
       "id": "xzqwe1",
@@ -2392,8 +2392,8 @@
       "race": "저그",
       "tier": "8",
       "balloons": 33947,
-      "broadcast_seconds": 210664,
-      "cumulative_viewers": 4669
+      "broadcast_seconds": 211924,
+      "cumulative_viewers": 4702
     },
     {
       "id": "happyhee97",
@@ -2600,8 +2600,8 @@
       "race": "프로토스",
       "tier": "유스",
       "balloons": 21295,
-      "broadcast_seconds": 481070,
-      "cumulative_viewers": 6864
+      "broadcast_seconds": 482330,
+      "cumulative_viewers": 6882
     },
     {
       "id": "organ333",
@@ -2612,9 +2612,9 @@
       "team": "DM",
       "race": "테란",
       "tier": "킹",
-      "balloons": 85660,
-      "broadcast_seconds": 229844,
-      "cumulative_viewers": 128860
+      "balloons": 87174,
+      "broadcast_seconds": 231104,
+      "cumulative_viewers": 129779
     },
     {
       "id": "70jeontaekyu",
@@ -2820,9 +2820,9 @@
       "team": "신세계",
       "race": "프로토스",
       "tier": "잭",
-      "balloons": 93656,
-      "broadcast_seconds": 575627,
-      "cumulative_viewers": 55963
+      "balloons": 93756,
+      "broadcast_seconds": 576887,
+      "cumulative_viewers": 56231
     },
     {
       "id": "byspire",
@@ -2859,9 +2859,9 @@
       "team": "신세계",
       "race": "저그",
       "tier": "2",
-      "balloons": 57521,
-      "broadcast_seconds": 433391,
-      "cumulative_viewers": 26305
+      "balloons": 59093,
+      "broadcast_seconds": 434651,
+      "cumulative_viewers": 26544
     },
     {
       "id": "djathekd",
@@ -2911,9 +2911,9 @@
       "team": "신세계",
       "race": "테란",
       "tier": "7",
-      "balloons": 147575,
-      "broadcast_seconds": 422065,
-      "cumulative_viewers": 48336
+      "balloons": 148105,
+      "broadcast_seconds": 423325,
+      "cumulative_viewers": 49391
     },
     {
       "id": "khl1589",
@@ -2924,9 +2924,9 @@
       "team": "신세계",
       "race": "프로토스",
       "tier": "7",
-      "balloons": 51915,
-      "broadcast_seconds": 353487,
-      "cumulative_viewers": 21049
+      "balloons": 51953,
+      "broadcast_seconds": 354747,
+      "cumulative_viewers": 21685
     },
     {
       "id": "haeun5513",
@@ -2950,9 +2950,9 @@
       "team": "신세계",
       "race": "프로토스",
       "tier": "8",
-      "balloons": 130831,
-      "broadcast_seconds": 317391,
-      "cumulative_viewers": 12209
+      "balloons": 132626,
+      "broadcast_seconds": 318651,
+      "cumulative_viewers": 12402
     },
     {
       "id": "vlfvlf789",
@@ -2963,9 +2963,9 @@
       "team": "더블비",
       "race": "프로토스",
       "tier": "2",
-      "balloons": 443606,
-      "broadcast_seconds": 480480,
-      "cumulative_viewers": 2560218
+      "balloons": 443812,
+      "broadcast_seconds": 481299,
+      "cumulative_viewers": 2564196
     },
     {
       "id": "mede1234",
@@ -2989,9 +2989,9 @@
       "team": "더블비",
       "race": "저그",
       "tier": "잭",
-      "balloons": 83068,
-      "broadcast_seconds": 110283,
-      "cumulative_viewers": 31185
+      "balloons": 83745,
+      "broadcast_seconds": 111543,
+      "cumulative_viewers": 31336
     },
     {
       "id": "suji84",
@@ -3002,9 +3002,9 @@
       "team": "더블비",
       "race": "저그",
       "tier": "4",
-      "balloons": 272090,
-      "broadcast_seconds": 423249,
-      "cumulative_viewers": 138621
+      "balloons": 274918,
+      "broadcast_seconds": 424509,
+      "cumulative_viewers": 139064
     },
     {
       "id": "aram1213",
@@ -3016,8 +3016,8 @@
       "race": "저그",
       "tier": "5",
       "balloons": 126799,
-      "broadcast_seconds": 405842,
-      "cumulative_viewers": 103704
+      "broadcast_seconds": 406009,
+      "cumulative_viewers": 103875
     },
     {
       "id": "dptmfl1258",
@@ -3041,9 +3041,9 @@
       "team": "더블비",
       "race": "프로토스",
       "tier": "7",
-      "balloons": 69157,
-      "broadcast_seconds": 323708,
-      "cumulative_viewers": 60469
+      "balloons": 69217,
+      "broadcast_seconds": 324968,
+      "cumulative_viewers": 60611
     },
     {
       "id": "fidfidfid",
@@ -3054,9 +3054,9 @@
       "team": "더블비",
       "race": "저그",
       "tier": "8",
-      "balloons": 60487,
-      "broadcast_seconds": 226511,
-      "cumulative_viewers": 24240
+      "balloons": 60661,
+      "broadcast_seconds": 227771,
+      "cumulative_viewers": 24312
     },
     {
       "id": "jk890202",
@@ -3068,8 +3068,8 @@
       "race": "프로토스",
       "tier": "킹",
       "balloons": 472804,
-      "broadcast_seconds": 562783,
-      "cumulative_viewers": 1743057
+      "broadcast_seconds": 564043,
+      "cumulative_viewers": 1744117
     },
     {
       "id": "hby0724",
@@ -3081,8 +3081,8 @@
       "race": "테란",
       "tier": "갓",
       "balloons": 62979,
-      "broadcast_seconds": 318766,
-      "cumulative_viewers": 46108
+      "broadcast_seconds": 320026,
+      "cumulative_viewers": 46191
     },
     {
       "id": "djdbstn",
@@ -3133,8 +3133,8 @@
       "race": "테란",
       "tier": "6",
       "balloons": 251688,
-      "broadcast_seconds": 160179,
-      "cumulative_viewers": 94632
+      "broadcast_seconds": 161439,
+      "cumulative_viewers": 94834
     },
     {
       "id": "queen030",
@@ -3146,8 +3146,8 @@
       "race": "프로토스",
       "tier": "6",
       "balloons": 128610,
-      "broadcast_seconds": 234184,
-      "cumulative_viewers": 103038
+      "broadcast_seconds": 235444,
+      "cumulative_viewers": 103305
     },
     {
       "id": "wlswn6565",
@@ -3171,9 +3171,9 @@
       "team": "드림즈",
       "race": "테란",
       "tier": "유스",
-      "balloons": 155276,
-      "broadcast_seconds": 630791,
-      "cumulative_viewers": 113450
+      "balloons": 155283,
+      "broadcast_seconds": 632051,
+      "cumulative_viewers": 113541
     },
     {
       "id": "nmirifo7795",
@@ -3185,8 +3185,8 @@
       "race": "체크",
       "tier": "유스",
       "balloons": 108425,
-      "broadcast_seconds": 449252,
-      "cumulative_viewers": 64447
+      "broadcast_seconds": 450512,
+      "cumulative_viewers": 64496
     }
   ]
 }
