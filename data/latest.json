@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-08-22 17:07:59",
+  "updated_at": "2026-08-22 18:02:39",
   "year": 2026,
   "month": 8,
   "members": [
@@ -10,9 +10,9 @@
       "birthdate": "1995-12-09",
       "role": "수장",
       "team": "JSA",
-      "balloons": 2923248,
-      "broadcast_seconds": 551381,
-      "cumulative_viewers": 2055707
+      "balloons": 2925931,
+      "broadcast_seconds": 554402,
+      "cumulative_viewers": 2072583
     },
     {
       "id": "sharpragu",
@@ -22,8 +22,8 @@
       "role": "",
       "team": "JSA",
       "balloons": 86818,
-      "broadcast_seconds": 455603,
-      "cumulative_viewers": 70179
+      "broadcast_seconds": 455760,
+      "cumulative_viewers": 70223
     },
     {
       "id": "dpfgc3",
@@ -33,8 +33,8 @@
       "role": "",
       "team": "JSA",
       "balloons": 45032,
-      "broadcast_seconds": 530514,
-      "cumulative_viewers": 192029
+      "broadcast_seconds": 530750,
+      "cumulative_viewers": 192132
     },
     {
       "id": "tjdeosks",
@@ -120,9 +120,9 @@
       "birthdate": "1996-09-09",
       "role": "",
       "team": "JSA",
-      "balloons": 95635,
-      "broadcast_seconds": 373637,
-      "cumulative_viewers": 96865
+      "balloons": 96982,
+      "broadcast_seconds": 376937,
+      "cumulative_viewers": 98419
     },
     {
       "id": "ftrudals",
@@ -131,9 +131,9 @@
       "birthdate": "1996-11-27",
       "role": "",
       "team": "JSA",
-      "balloons": 91774,
-      "broadcast_seconds": 390700,
-      "cumulative_viewers": 56363
+      "balloons": 96580,
+      "broadcast_seconds": 391792,
+      "cumulative_viewers": 56583
     },
     {
       "id": "fudnjs0235",
@@ -143,8 +143,8 @@
       "role": "",
       "team": "JSA",
       "balloons": 131342,
-      "broadcast_seconds": 375623,
-      "cumulative_viewers": 37594
+      "broadcast_seconds": 375692,
+      "cumulative_viewers": 37635
     },
     {
       "id": "wjddmstj79",
@@ -164,9 +164,9 @@
       "birthdate": "1996-01-06",
       "role": "",
       "team": "JSA",
-      "balloons": 56846,
-      "broadcast_seconds": 311765,
-      "cumulative_viewers": 31199
+      "balloons": 59099,
+      "broadcast_seconds": 315065,
+      "cumulative_viewers": 32344
     },
     {
       "id": "owoouoowo",
@@ -186,9 +186,9 @@
       "birthdate": "2001-08-24",
       "role": "",
       "team": "JSA",
-      "balloons": 51533,
-      "broadcast_seconds": 384119,
-      "cumulative_viewers": 27400
+      "balloons": 52205,
+      "broadcast_seconds": 387419,
+      "cumulative_viewers": 27869
     },
     {
       "id": "tamama88",
@@ -197,9 +197,9 @@
       "birthdate": "2001-04-23",
       "role": "",
       "team": "JSA",
-      "balloons": 39678,
-      "broadcast_seconds": 472489,
-      "cumulative_viewers": 54755
+      "balloons": 40189,
+      "broadcast_seconds": 475789,
+      "cumulative_viewers": 55150
     },
     {
       "id": "kidsaoq",
@@ -209,8 +209,8 @@
       "role": "",
       "team": "JSA",
       "balloons": 57157,
-      "broadcast_seconds": 325746,
-      "cumulative_viewers": 35342
+      "broadcast_seconds": 325809,
+      "cumulative_viewers": 35356
     },
     {
       "id": "littlekim12",
@@ -230,9 +230,9 @@
       "birthdate": "1996-08-31",
       "role": "",
       "team": "JSA",
-      "balloons": 46553,
-      "broadcast_seconds": 389296,
-      "cumulative_viewers": 24418
+      "balloons": 46708,
+      "broadcast_seconds": 391179,
+      "cumulative_viewers": 24567
     },
     {
       "id": "firebathero",
@@ -253,8 +253,8 @@
       "role": "",
       "team": "흑카데미",
       "balloons": 32429,
-      "broadcast_seconds": 364261,
-      "cumulative_viewers": 16086
+      "broadcast_seconds": 367504,
+      "cumulative_viewers": 16485
     },
     {
       "id": "bhy95",
@@ -384,9 +384,9 @@
       "birthdate": "1997-10-07",
       "role": "",
       "team": "흑카데미",
-      "balloons": 56416,
-      "broadcast_seconds": 390281,
-      "cumulative_viewers": 18468
+      "balloons": 56526,
+      "broadcast_seconds": 391528,
+      "cumulative_viewers": 18646
     },
     {
       "id": "rudzhd123",
@@ -395,9 +395,9 @@
       "birthdate": "1999-05-16",
       "role": "",
       "team": "흑카데미",
-      "balloons": 61600,
-      "broadcast_seconds": 378741,
-      "cumulative_viewers": 21231
+      "balloons": 62096,
+      "broadcast_seconds": 380555,
+      "cumulative_viewers": 21504
     },
     {
       "id": "gangeda",
@@ -461,9 +461,9 @@
       "birthdate": "1989-11-23",
       "role": "수장",
       "team": "케이대",
-      "balloons": 12508237,
-      "broadcast_seconds": 257242,
-      "cumulative_viewers": 1643568
+      "balloons": 12509225,
+      "broadcast_seconds": 259161,
+      "cumulative_viewers": 1658314
     },
     {
       "id": "neverdieyj",
@@ -736,9 +736,9 @@
       "birthdate": "1992-06-24",
       "role": "",
       "team": "캄몬스타즈",
-      "balloons": 108959,
-      "broadcast_seconds": 287140,
-      "cumulative_viewers": 79018
+      "balloons": 109198,
+      "broadcast_seconds": 290440,
+      "cumulative_viewers": 81447
     },
     {
       "id": "rondobba",
@@ -759,8 +759,8 @@
       "role": "",
       "team": "캄몬스타즈",
       "balloons": 235898,
-      "broadcast_seconds": 324551,
-      "cumulative_viewers": 104793
+      "broadcast_seconds": 325055,
+      "cumulative_viewers": 104918
     },
     {
       "id": "jmc06170",
@@ -781,8 +781,8 @@
       "role": "",
       "team": "캄몬스타즈",
       "balloons": 169396,
-      "broadcast_seconds": 219971,
-      "cumulative_viewers": 242719
+      "broadcast_seconds": 223271,
+      "cumulative_viewers": 244215
     },
     {
       "id": "rnaqpdrjf",
@@ -802,9 +802,9 @@
       "birthdate": "1997-09-01",
       "role": "",
       "team": "캄몬스타즈",
-      "balloons": 366872,
-      "broadcast_seconds": 467724,
-      "cumulative_viewers": 333790
+      "balloons": 367368,
+      "broadcast_seconds": 470938,
+      "cumulative_viewers": 337776
     },
     {
       "id": "freshtomato",
@@ -824,9 +824,9 @@
       "birthdate": "1996-11-21",
       "role": "",
       "team": "캄몬스타즈",
-      "balloons": 154751,
-      "broadcast_seconds": 355158,
-      "cumulative_viewers": 89577
+      "balloons": 154828,
+      "broadcast_seconds": 358458,
+      "cumulative_viewers": 90943
     },
     {
       "id": "alaelddl97",
@@ -879,9 +879,9 @@
       "birthdate": "2000-01-20",
       "role": "",
       "team": "캄몬스타즈",
-      "balloons": 215637,
-      "broadcast_seconds": 484597,
-      "cumulative_viewers": 213117
+      "balloons": 215662,
+      "broadcast_seconds": 487897,
+      "cumulative_viewers": 216211
     },
     {
       "id": "dlaguswl501",
@@ -890,9 +890,9 @@
       "birthdate": "1998-11-11",
       "role": "",
       "team": "캄몬스타즈",
-      "balloons": 146026,
-      "broadcast_seconds": 269579,
-      "cumulative_viewers": 134223
+      "balloons": 149109,
+      "broadcast_seconds": 272879,
+      "cumulative_viewers": 138061
     },
     {
       "id": "vldpfm2",
@@ -912,9 +912,9 @@
       "birthdate": "2001-01-13",
       "role": "",
       "team": "캄몬스타즈",
-      "balloons": 259523,
-      "broadcast_seconds": 418851,
-      "cumulative_viewers": 148476
+      "balloons": 259766,
+      "broadcast_seconds": 420743,
+      "cumulative_viewers": 149671
     },
     {
       "id": "sksmsskdsl10",
@@ -1165,9 +1165,9 @@
       "birthdate": "1994-06-28",
       "role": "수장",
       "team": "와플대",
-      "balloons": 122961,
-      "broadcast_seconds": 381741,
-      "cumulative_viewers": 566795
+      "balloons": 123214,
+      "broadcast_seconds": 384222,
+      "cumulative_viewers": 570345
     },
     {
       "id": "kss33325",
@@ -1364,8 +1364,8 @@
       "role": "",
       "team": "수술대",
       "balloons": 92323,
-      "broadcast_seconds": 298508,
-      "cumulative_viewers": 268793
+      "broadcast_seconds": 300044,
+      "cumulative_viewers": 271547
     },
     {
       "id": "dohyeon97",
@@ -1407,9 +1407,9 @@
       "birthdate": "1986-02-01",
       "role": "",
       "team": "수술대",
-      "balloons": 32372,
-      "broadcast_seconds": 376718,
-      "cumulative_viewers": 21698
+      "balloons": 32383,
+      "broadcast_seconds": 380018,
+      "cumulative_viewers": 21988
     },
     {
       "id": "gjgj3274",
@@ -1441,8 +1441,8 @@
       "role": "",
       "team": "수술대",
       "balloons": 63464,
-      "broadcast_seconds": 255642,
-      "cumulative_viewers": 29211
+      "broadcast_seconds": 255643,
+      "cumulative_viewers": 29218
     },
     {
       "id": "pazzy1",
@@ -1451,9 +1451,9 @@
       "birthdate": "1988-06-25",
       "role": "",
       "team": "수술대",
-      "balloons": 216064,
-      "broadcast_seconds": 352890,
-      "cumulative_viewers": 66781
+      "balloons": 221851,
+      "broadcast_seconds": 356229,
+      "cumulative_viewers": 67328
     },
     {
       "id": "rlsk0705",
@@ -1484,9 +1484,9 @@
       "birthdate": "1997-04-29",
       "role": "",
       "team": "수술대",
-      "balloons": 82951,
-      "broadcast_seconds": 311778,
-      "cumulative_viewers": 33770
+      "balloons": 83150,
+      "broadcast_seconds": 314600,
+      "cumulative_viewers": 34282
     },
     {
       "id": "wlgua7272",
@@ -1496,8 +1496,8 @@
       "role": "",
       "team": "수술대",
       "balloons": 108749,
-      "broadcast_seconds": 344792,
-      "cumulative_viewers": 68371
+      "broadcast_seconds": 346620,
+      "cumulative_viewers": 68901
     },
     {
       "id": "nreupne",
@@ -1506,9 +1506,9 @@
       "birthdate": "1999-02-15",
       "role": "",
       "team": "수술대",
-      "balloons": 72578,
-      "broadcast_seconds": 349145,
-      "cumulative_viewers": 31971
+      "balloons": 72606,
+      "broadcast_seconds": 349898,
+      "cumulative_viewers": 32077
     },
     {
       "id": "tato1104",
@@ -1561,9 +1561,9 @@
       "birthdate": "2002-01-16",
       "role": "",
       "team": "수술대",
-      "balloons": 198732,
-      "broadcast_seconds": 275605,
-      "cumulative_viewers": 25104
+      "balloons": 199096,
+      "broadcast_seconds": 277804,
+      "cumulative_viewers": 25613
     },
     {
       "id": "zinsim",
@@ -1594,9 +1594,9 @@
       "birthdate": "1988-10-22",
       "role": "수장",
       "team": "뉴캣슬",
-      "balloons": 495632,
-      "broadcast_seconds": 300978,
-      "cumulative_viewers": 1200337
+      "balloons": 501632,
+      "broadcast_seconds": 302479,
+      "cumulative_viewers": 1205700
     },
     {
       "id": "peros777",
@@ -1638,9 +1638,9 @@
       "birthdate": "1995-03-26",
       "role": "",
       "team": "뉴캣슬",
-      "balloons": 104107,
-      "broadcast_seconds": 490487,
-      "cumulative_viewers": 39516
+      "balloons": 104111,
+      "broadcast_seconds": 493787,
+      "cumulative_viewers": 40026
     },
     {
       "id": "dmk1212",
@@ -1771,8 +1771,8 @@
       "role": "",
       "team": "뉴캣슬",
       "balloons": 100810,
-      "broadcast_seconds": 307861,
-      "cumulative_viewers": 19358
+      "broadcast_seconds": 308488,
+      "cumulative_viewers": 19435
     },
     {
       "id": "queenzu",
@@ -1781,9 +1781,9 @@
       "birthdate": "2004-08-16",
       "role": "",
       "team": "뉴캣슬",
-      "balloons": 281203,
-      "broadcast_seconds": 429073,
-      "cumulative_viewers": 84471
+      "balloons": 281383,
+      "broadcast_seconds": 432373,
+      "cumulative_viewers": 85965
     },
     {
       "id": "corgi1102",
@@ -1803,9 +1803,9 @@
       "birthdate": "2002-02-09",
       "role": "",
       "team": "뉴캣슬",
-      "balloons": 117965,
-      "broadcast_seconds": 297127,
-      "cumulative_viewers": 43275
+      "balloons": 119049,
+      "broadcast_seconds": 300427,
+      "cumulative_viewers": 44023
     },
     {
       "id": "1004yomi",
@@ -1870,8 +1870,8 @@
       "role": "",
       "team": "BGM",
       "balloons": 29047,
-      "broadcast_seconds": 300410,
-      "cumulative_viewers": 5083
+      "broadcast_seconds": 303710,
+      "cumulative_viewers": 5211
     },
     {
       "id": "daehan7224",
@@ -1913,9 +1913,9 @@
       "birthdate": "1993-04-02",
       "role": "",
       "team": "BGM",
-      "balloons": 82148,
-      "broadcast_seconds": 521238,
-      "cumulative_viewers": 17711
+      "balloons": 82305,
+      "broadcast_seconds": 524227,
+      "cumulative_viewers": 17922
     },
     {
       "id": "s1on0106",
@@ -2002,8 +2002,8 @@
       "role": "",
       "team": "BGM",
       "balloons": 47339,
-      "broadcast_seconds": 246437,
-      "cumulative_viewers": 7209
+      "broadcast_seconds": 248128,
+      "cumulative_viewers": 7308
     },
     {
       "id": "yyssaa33",
@@ -2034,9 +2034,9 @@
       "birthdate": "1997-04-29",
       "role": "",
       "team": "BGM",
-      "balloons": 82168,
-      "broadcast_seconds": 267110,
-      "cumulative_viewers": 8146
+      "balloons": 86141,
+      "broadcast_seconds": 270410,
+      "cumulative_viewers": 8323
     },
     {
       "id": "janjanoo",
@@ -2144,9 +2144,9 @@
       "birthdate": "1991-08-23",
       "role": "",
       "team": "HM",
-      "balloons": 41254,
-      "broadcast_seconds": 296204,
-      "cumulative_viewers": 11462
+      "balloons": 43620,
+      "broadcast_seconds": 299504,
+      "cumulative_viewers": 11668
     },
     {
       "id": "snowssa",
@@ -2353,9 +2353,9 @@
       "birthdate": "체크",
       "role": "수장",
       "team": "신세계",
-      "balloons": 123744,
-      "broadcast_seconds": 555877,
-      "cumulative_viewers": 527918
+      "balloons": 126754,
+      "broadcast_seconds": 559177,
+      "cumulative_viewers": 531286
     },
     {
       "id": "cksgmldbs",
@@ -2420,8 +2420,8 @@
       "role": "",
       "team": "신세계",
       "balloons": 57506,
-      "broadcast_seconds": 407411,
-      "cumulative_viewers": 24347
+      "broadcast_seconds": 410711,
+      "cumulative_viewers": 24607
     },
     {
       "id": "djathekd",
@@ -2464,8 +2464,8 @@
       "role": "",
       "team": "신세계",
       "balloons": 143590,
-      "broadcast_seconds": 396085,
-      "cumulative_viewers": 44632
+      "broadcast_seconds": 399385,
+      "cumulative_viewers": 45109
     },
     {
       "id": "khl1589",
@@ -2486,8 +2486,8 @@
       "role": "",
       "team": "신세계",
       "balloons": 51903,
-      "broadcast_seconds": 335102,
-      "cumulative_viewers": 53368
+      "broadcast_seconds": 338402,
+      "cumulative_viewers": 53897
     },
     {
       "id": "finepearls",
@@ -2496,9 +2496,9 @@
       "birthdate": "1997-03-27",
       "role": "",
       "team": "신세계",
-      "balloons": 122471,
-      "broadcast_seconds": 293883,
-      "cumulative_viewers": 11282
+      "balloons": 122612,
+      "broadcast_seconds": 294711,
+      "cumulative_viewers": 11324
     },
     {
       "id": "vlfvlf789",
@@ -2551,9 +2551,9 @@
       "birthdate": "1993-12-13",
       "role": "",
       "team": "더블비",
-      "balloons": 118791,
-      "broadcast_seconds": 395416,
-      "cumulative_viewers": 99548
+      "balloons": 119401,
+      "broadcast_seconds": 398716,
+      "cumulative_viewers": 100394
     },
     {
       "id": "dptmfl1258",
@@ -2573,9 +2573,9 @@
       "birthdate": "1995-03-28",
       "role": "",
       "team": "더블비",
-      "balloons": 62315,
-      "broadcast_seconds": 297728,
-      "cumulative_viewers": 56603
+      "balloons": 63197,
+      "broadcast_seconds": 301028,
+      "cumulative_viewers": 57539
     },
     {
       "id": "fidfidfid",
@@ -2585,8 +2585,8 @@
       "role": "",
       "team": "더블비",
       "balloons": 58014,
-      "broadcast_seconds": 203725,
-      "cumulative_viewers": 22432
+      "broadcast_seconds": 203831,
+      "cumulative_viewers": 22459
     },
     {
       "id": "jk890202",
@@ -2596,8 +2596,8 @@
       "role": "수장",
       "team": "드림즈",
       "balloons": 471996,
-      "broadcast_seconds": 541259,
-      "cumulative_viewers": 1705474
+      "broadcast_seconds": 541861,
+      "cumulative_viewers": 1708099
     },
     {
       "id": "hby0724",
@@ -2650,9 +2650,9 @@
       "birthdate": "2002-03-28",
       "role": "",
       "team": "드림즈",
-      "balloons": 237687,
-      "broadcast_seconds": 134199,
-      "cumulative_viewers": 87687
+      "balloons": 239023,
+      "broadcast_seconds": 137499,
+      "cumulative_viewers": 89935
     },
     {
       "id": "queen030",
@@ -2661,9 +2661,9 @@
       "birthdate": "1998-05-08",
       "role": "",
       "team": "드림즈",
-      "balloons": 122045,
-      "broadcast_seconds": 208204,
-      "cumulative_viewers": 96726
+      "balloons": 123490,
+      "broadcast_seconds": 211504,
+      "cumulative_viewers": 98744
     },
     {
       "id": "wlswn6565",
@@ -2673,8 +2673,8 @@
       "role": "",
       "team": "드림즈",
       "balloons": 173095,
-      "broadcast_seconds": 334979,
-      "cumulative_viewers": 183373
+      "broadcast_seconds": 335235,
+      "cumulative_viewers": 183530
     },
     {
       "id": "j4141h",
@@ -2683,9 +2683,9 @@
       "birthdate": "체크",
       "role": "",
       "team": "드림즈",
-      "balloons": 154972,
-      "broadcast_seconds": 604811,
-      "cumulative_viewers": 110849
+      "balloons": 155072,
+      "broadcast_seconds": 608111,
+      "cumulative_viewers": 111648
     },
     {
       "id": "nmirifo7795",
@@ -2694,9 +2694,9 @@
       "birthdate": "체크",
       "role": "",
       "team": "드림즈",
-      "balloons": 106626,
-      "broadcast_seconds": 423272,
-      "cumulative_viewers": 61746
+      "balloons": 107701,
+      "broadcast_seconds": 426572,
+      "cumulative_viewers": 62628
     }
   ]
 }
