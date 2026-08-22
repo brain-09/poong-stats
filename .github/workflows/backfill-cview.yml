@@ -1,0 +1,41 @@
+name: Backfill cumulative viewers
+
+# Actions 탭에서 수동으로만 실행 (자동 스케줄 없음)
+on:
+  workflow_dispatch:
+    inputs:
+      month:
+        description: "특정 달만 백필하려면 YYYY-MM 형식으로 입력 (비워두면 누락된 파일 전부)"
+        required: false
+        default: ""
+
+permissions:
+  contents: write
+
+jobs:
+  backfill:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Run backfill
+        run: |
+          if [ -n "${{ github.event.inputs.month }}" ]; then
+            python scripts/backfill_cview.py --month "${{ github.event.inputs.month }}"
+          else
+            python scripts/backfill_cview.py
+          fi
+
+      - name: Commit and push if changed
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git diff --quiet --cached || git commit -m "누적시청자 백필: ${{ github.event.inputs.month || '전체' }}"
+          git push
