@@ -11,10 +11,10 @@ docs/archive/YYYY-MM.html, docs/broadcast.html, docs/archive-broadcast/YYYY-MM.h
 전체 페이지에서 팀 이름을 누르면, 보고 있던 연/월/지표를 쿼리 파라미터로 이어받아
 그 팀의 단독 페이지가 같은 상태로 열린다.
 
-별풍선(BALLOON_METRIC)과 방송시간(BROADCAST_METRIC) 페이지는 레이아웃이 동일하지만,
-방송시간 페이지는 수장/전력외 직책도 합계·평균 집계에 포함한다는 점만 다르다
-(Metric.exclude_roles 값으로 제어) - 이에 따라 하단 범례의 "수장/전력외" 항목도
-지표를 바꿀 때마다 자바스크립트로 보였다 숨겨졌다 한다.
+별풍선(BALLOON_METRIC)/방송시간(BROADCAST_METRIC)/누적시청자(VIEWER_METRIC) 페이지는
+레이아웃이 동일하지만, 방송시간 페이지만 수장/전력외 직책도 합계·평균 집계에 포함한다는
+점이 다르다(Metric.exclude_roles 값으로 제어; 별풍선·누적시청자는 제외) - 이에 따라
+하단 범례의 "수장/전력외" 항목도 지표를 바꿀 때마다 자바스크립트로 보였다 숨겨졌다 한다.
 
 과거 달 데이터는 fetch_data.py가 달이 바뀔 때 그 달 기준으로 API를 한 번 더 호출해
 확정된 별풍선 값으로 갱신한 뒤 data/archive/에 보관해둔 것 - 그 시점의 team/gender/role이
@@ -85,10 +85,11 @@ def get_team_topbar_color(team_name: str) -> str:
 
 
 def normalize_balloons(members: list) -> list:
-    """balloons/broadcast_seconds 값이 문자열 등으로 저장돼있어도 항상 int로 안전하게
-    맞춰준다 (크롤링 스크립트가 정수로 저장해도, 예전 데이터 파일이 남아있는 경우 대비)."""
+    """balloons/broadcast_seconds/cumulative_viewers 값이 문자열 등으로 저장돼있어도
+    항상 int로 안전하게 맞춰준다 (크롤링 스크립트가 정수로 저장해도, 예전 데이터 파일이
+    남아있는 경우 대비)."""
     for m in members:
-        for field in ("balloons", "broadcast_seconds"):
+        for field in ("balloons", "broadcast_seconds", "cumulative_viewers"):
             raw = m.get(field, 0)
             if not isinstance(raw, int):
                 try:
@@ -330,7 +331,7 @@ PAGE_CSS = """
     max-width: 1080px;
     margin: 16px auto 0;
     font-size: 10px;
-    color: #6b6f79;
+    color: #a4a8b2;
     text-align: center;
   }
   .legend span { margin: 0 6px; }
@@ -416,10 +417,13 @@ class Metric:
 
 # 별풍선 페이지(기존): 수장/전력외 직책은 집계에서 제외
 BALLOON_METRIC = Metric(key="balloon", field="balloons", exclude_roles=True, format_fn=fmt, unit_label="별풍선")
-# 방송시간 페이지(신규): 수장/전력외도 집계에 포함
+# 방송시간 페이지: 수장/전력외도 집계에 포함
 BROADCAST_METRIC = Metric(key="broadcast", field="broadcast_seconds", exclude_roles=False,
                            format_fn=format_broadcast_time, unit_label="방송시간")
-METRICS = [BALLOON_METRIC, BROADCAST_METRIC]
+# 누적시청자 페이지(신규): 별풍선과 동일하게 수장/전력외 직책은 집계에서 제외
+VIEWER_METRIC = Metric(key="viewer", field="cumulative_viewers", exclude_roles=True,
+                        format_fn=fmt, unit_label="누적시청자")
+METRICS = [BALLOON_METRIC, BROADCAST_METRIC, VIEWER_METRIC]
 
 
 def parse_birthdate(bd):
@@ -864,7 +868,7 @@ def assemble_single_page(all_data: list, current_year: int, current_month: int,
         : (monthsInYear.length ? monthsInYear[0] : null);
       populateMonths(qy, preselect);
     }}
-    if (qmetric && (qmetric === 'balloon' || qmetric === 'broadcast')) {{
+    if (qmetric && (qmetric === 'balloon' || qmetric === 'broadcast' || qmetric === 'viewer')) {{
       metricSel.value = qmetric;
     }}
   }})();

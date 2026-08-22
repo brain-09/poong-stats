@@ -1,6 +1,6 @@
 """
 풍고(poonggo.com) 공식 API를 사용해서, members.json에 등록된 멤버들의 이번달
-별풍선 합계와 방송시간(초)을 뽑아 data/latest.json 으로 저장하는 스크립트.
+별풍선 합계, 방송시간(초), 누적시청자 수를 뽑아 data/latest.json 으로 저장하는 스크립트.
 
 이 API는 풍고 운영진에게 정식으로 이용 허가를 받아 사용 중이며 (문의 회신 기준),
 ids 파라미터에 아이디를 콤마로 최대 300개까지 묶어 한 번에 조회할 수 있다.
@@ -110,6 +110,7 @@ def fetch_poonggo_monthly(year: int, month: int, ids: list):
                 data_by_id[member_id] = {
                     "balloons": _to_int(entry.get("amt")),
                     "broadcast_seconds": _to_int(entry.get("broadTime")),
+                    "cumulative_viewers": _to_int(entry.get("cview")),
                 }
 
     return data_by_id
@@ -154,10 +155,13 @@ def archive_previous_month_if_needed(new_year: int, new_month: int, all_ids: lis
             member_id = m.get("id")
             if member_id and member_id in data_by_id:
                 new_data = data_by_id[member_id]
-                if new_data["balloons"] != m.get("balloons") or new_data["broadcast_seconds"] != m.get("broadcast_seconds"):
+                if (new_data["balloons"] != m.get("balloons")
+                        or new_data["broadcast_seconds"] != m.get("broadcast_seconds")
+                        or new_data["cumulative_viewers"] != m.get("cumulative_viewers")):
                     updated_count += 1
                 m["balloons"] = new_data["balloons"]
                 m["broadcast_seconds"] = new_data["broadcast_seconds"]
+                m["cumulative_viewers"] = new_data["cumulative_viewers"]
         prev["updated_at"] = kst_now().strftime(DATETIME_FORMAT) + " (말일 확정치)"
         print(f"[보관] 확정치로 갱신된 인원: {updated_count}명")
     else:
@@ -209,6 +213,7 @@ def main():
             "team": m.get("team"),
             "balloons": member_data["balloons"] if member_data else 0,
             "broadcast_seconds": member_data["broadcast_seconds"] if member_data else 0,
+            "cumulative_viewers": member_data["cumulative_viewers"] if member_data else 0,
         })
 
     if not_found:
