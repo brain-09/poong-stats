@@ -349,14 +349,12 @@ PAGE_CSS = """
     min-width: 0;
   }
   .stat-card-header { display: flex; align-items: center; justify-content: center; gap: 4px; margin-bottom: 5px; }
-  .stat-label { font-size: 12px; color: #a4a8b2; font-weight: 600; }
+  .stat-label { font-size: 12px; color: #1a1d29; font-weight: 600; }
   .stat-value { font-size: 14px; font-weight: 800; color: #1a1d29; font-variant-numeric: tabular-nums; }
-  .stat-icon { display: block; color: #b9bcc5; flex-shrink: 0; }
+  .stat-icon { display: block; color: #1a1d29; flex-shrink: 0; }
   .stat-card.female-avg { background: #eaf7f5; border: none; }
-  .stat-card.female-avg .stat-label, .stat-card.female-avg .stat-icon { color: #0f6e56; }
   .stat-card.female-avg .stat-value { color: #085041; }
   .stat-card.total-avg { background: #f1eefb; border: none; }
-  .stat-card.total-avg .stat-label, .stat-card.total-avg .stat-icon { color: #3c3489; }
   .stat-card.total-avg .stat-value { color: #26215c; }
 
   .legend {
