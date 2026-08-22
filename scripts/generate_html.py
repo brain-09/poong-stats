@@ -365,8 +365,8 @@ PAGE_CSS = """
   .stat-card.total-avg .stat-value { color: #26215c; }
 
   .profile-photo-img {
-    width: 72px;
-    height: 72px;
+    width: 24px;
+    height: 24px;
     border-radius: 50%;
     object-fit: cover;
     background: #f2f3f5;
