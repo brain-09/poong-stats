@@ -41,9 +41,13 @@ DATA_PATH = ROOT / "data" / "latest.json"
 ARCHIVE_DIR = ROOT / "data" / "archive"
 OUTPUT_PATH = ROOT / "docs" / "index.html"
 OUTPUT_TEAMS_DIR = ROOT / "docs" / "teams"
+OUTPUT_PROFILE_PATH = ROOT / "docs" / "profile.html"
 LOGOS_DIR = ROOT / "docs" / "logos"
 
 EXCLUDED_ROLES = {"수장", "전력외"}
+# FA/휴면인 사람은 나중에 개인 프로필용으로 members.json에 미리 등록해두는
+# 것뿐, 실제 팀 소속이 아니므로 팀 카드/팀 페이지 집계 대상에서 완전히 뺀다.
+NON_TEAM_LABELS = {"FA", "휴면"}
 DEFAULT_TOPBAR_COLOR = "#4a5ce0"
 _topbar_color_cache: dict = {}
 _json_file_cache: dict = {}
@@ -312,6 +316,8 @@ PAGE_CSS = """
     white-space: nowrap;
     text-overflow: ellipsis;
   }
+  .member-name-link { display: flex; align-items: center; gap: 6px; min-width: 0; color: inherit; text-decoration: none; }
+  .member-name-link:hover { text-decoration: underline; }
   .member-row.tier1 .member-name,
   .member-row.tier5 .member-name,
   .member-row.tier10 .member-name,
@@ -357,6 +363,18 @@ PAGE_CSS = """
   .stat-card.total-avg { background: #f1eefb; border: none; }
   .stat-card.total-avg .stat-value { color: #26215c; }
 
+  .profile-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 16px;
+    font-size: 12px;
+    border-bottom: 1px solid #f2f3f5;
+  }
+  .profile-row-label { color: #6b6f79; font-weight: 600; }
+  .profile-row-value { font-weight: 700; color: #1a1d29; }
+  .profile-station-icon { width: 20px; height: 20px; border-radius: 5px; display: block; }
+
   .legend {
     max-width: 1080px;
     margin: 16px auto 0;
@@ -401,6 +419,7 @@ MOBILE_CSS = """
     .member-col-label .col-label-text, .member-col-label .unit-label { font-size: 6px; }
     .member-row { padding: 4px 8px; min-height: 14px; border-left-width: 2px; }
     .member-name { font-size: 6px; gap: 3px; }
+    .member-name-link { gap: 3px; }
     .bday-mark { font-size: 4px; }
     .member-value { font-size: 6px; padding-left: 4px; }
     .team-footer { padding: 6px 5px 7px; gap: 3px; }
@@ -409,6 +428,8 @@ MOBILE_CSS = """
     .stat-icon { width: 6px; height: 6px; }
     .stat-label { font-size: 6px; }
     .stat-value { font-size: 7px; }
+    .profile-row { padding: 4px 8px; font-size: 6px; }
+    .profile-station-icon { width: 10px; height: 10px; border-radius: 3px; }
     .legend { font-size: 5px; margin-top: 8px; }
     .legend span { margin: 0 3px; }
     .legend .sw { width: 6px; height: 6px; margin-right: 2px; }
@@ -466,6 +487,11 @@ STAT_ICON_SUM = f'<svg class="stat-icon" {_ICON_ATTRS}><ellipse cx="12" cy="6" r
 STAT_ICON_FEMALE = f'<svg class="stat-icon" {_ICON_ATTRS}><circle cx="12" cy="9" r="5"/><path d="M12 14v7M9 18h6"/></svg>'
 STAT_ICON_AVG = f'<svg class="stat-icon" {_ICON_ATTRS}><path d="M4 20V10M12 20V4M20 20v-7"/></svg>'
 
+# 개인 프로필 페이지(profile.html?id=...)에서 쓰는 SOOP 프로필사진/방송국 URL.
+# {id} 자리를 실제 SOOP 아이디로 그대로 바꿔치기한다.
+SOOP_PROFILE_IMG_TEMPLATE = "https://profile.img.sooplive.co.kr/LOGO/su/{id}/{id}.jpg"
+SOOP_STATION_TEMPLATE = "https://www.sooplive.com/station/{id}"
+
 
 def parse_birthdate(bd):
     if not bd:
@@ -509,7 +535,10 @@ def compute_percentile_tiers(members: list, metric: Metric = BALLOON_METRIC):
 def group_teams(members: list) -> OrderedDict:
     teams = OrderedDict()
     for m in members:
-        teams.setdefault(m.get("team", "미분류"), []).append(m)
+        team = m.get("team", "미분류")
+        if team in NON_TEAM_LABELS:
+            continue
+        teams.setdefault(team, []).append(m)
     return teams
 
 
@@ -600,9 +629,15 @@ def build_team_card(team_name: str, members: list, current_month: int, tiers: di
         bday = parse_birthdate(m.get("birthdate"))
         bday_html = "<span class='bday-mark'>🎂</span>" if bday and bday[0] == current_month else ""
         row_class = value_class(m, tiers, metric)
+        member_id = m.get("id")
+        name_inner = f"{m['nickname']}{bday_html}"
+        name_content = (
+            f"<a class='member-name-link' href='{logo_prefix}profile.html?id={member_id}'>{name_inner}</a>"
+            if member_id else name_inner
+        )
         return (
             f"<div class='member-row {row_class}'>"
-            f"<span class='member-name'>{m['nickname']}{bday_html}</span>"
+            f"<span class='member-name'>{name_content}</span>"
             f"<span class='member-value'>{metric.text(m)}</span>"
             f"</div>"
         )
@@ -723,10 +758,12 @@ def build_single_team_panel(data: dict, team_name: str, metric: Metric, logo_pre
 
 
 def page_shell(*, top_bar_html: str, body_html: str, include_mobile_css: bool = True,
-               title: str, extra_script: str, logo_prefix: str = "") -> str:
+               title: str, extra_script: str, logo_prefix: str = "", show_legend: bool = True) -> str:
     """모든 페이지 공통 뼈대. 팀 단독 페이지는 카드 1개뿐이라 모바일 압축 스타일이
     필요없어서 include_mobile_css=False로 뺄 수 있음. '수장/전력외' 범례 항목은
-    id로 표시해두고, 지표 전환 시 자바스크립트가 보였다/숨겼다 한다.
+    id로 표시해두고, 지표 전환 시 자바스크립트가 보였다/숨겼다 한다. 프로필
+    페이지처럼 상위%/수장·전력외 개념 자체가 없는 페이지는 show_legend=False로
+    범례 자체를 뺄 수 있음.
 
     Pretendard 폰트는 CDN에서 실시간으로 불러오지 않고 docs/fonts/에 self-host해서
     쓴다 (scripts/download_font.py가 최초 1회 받아둠) - 로드시 폰트가 늦게 적용되며
@@ -758,6 +795,17 @@ def page_shell(*, top_bar_html: str, body_html: str, include_mobile_css: bool = 
   }
 })();
 </script>"""
+
+    legend_html = ""
+    if show_legend:
+        legend_html = """<div class="legend">
+    <span><span class="sw" style="background:#d6e9fb;"></span>상위 1%</span>
+    <span><span class="sw" style="background:#dcefdd;"></span>상위 5%</span>
+    <span><span class="sw" style="background:#fbf3cf;"></span>상위 10%</span>
+    <span id="role-legend-item"><span class="sw" style="background:#fadada;"></span>수장/전력외</span>
+    <span>🎂 생일</span>
+  </div>"""
+
     return f"""<!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -779,13 +827,7 @@ def page_shell(*, top_bar_html: str, body_html: str, include_mobile_css: bool = 
 <body>
   {top_bar_html}
   {body_html}
-  <div class="legend">
-    <span><span class="sw" style="background:#d6e9fb;"></span>상위 1%</span>
-    <span><span class="sw" style="background:#dcefdd;"></span>상위 5%</span>
-    <span><span class="sw" style="background:#fbf3cf;"></span>상위 10%</span>
-    <span id="role-legend-item"><span class="sw" style="background:#fadada;"></span>수장/전력외</span>
-    <span>🎂 생일</span>
-  </div>
+  {legend_html}
 {extra_script}
 {iframe_hide_script}
 </body>
@@ -838,9 +880,10 @@ def assemble_single_page(all_data: list, current_year: int, current_month: int,
             style_attr = "" if key == default_key else " style=\"display:none;\""
             panels_html.append(f"<div class='page-panel' data-key='{key}'{style_attr}>{panel_inner}</div>")
 
+            teams_for_meta = group_teams(data["members"])
             metadata[key] = {
-                "teamCount": len(group_teams(data["members"])),
-                "memberCount": len(data["members"]),
+                "teamCount": len(teams_for_meta),
+                "memberCount": sum(len(v) for v in teams_for_meta.values()),
                 "updatedAt": data["updated_at"],
                 "excludeRoles": metric.exclude_roles,
                 "title": f"{page_title_base} {metric.unit_label}",
@@ -1005,6 +1048,248 @@ def assemble_single_page(all_data: list, current_year: int, current_month: int,
     )
 
 
+def build_profile_page(all_data: list) -> str:
+    """
+    개인 프로필 페이지(docs/profile.html) - 팀 페이지처럼 사람마다 파일을 만드는
+    대신 이 파일 하나로 전부 대응한다. URL에 ?id=SOOP아이디 를 붙여서 접근하면
+    자바스크립트가 그 아이디에 맞는 데이터를 찾아 렌더링한다 (GitHub Pages는
+    서버 라우팅이 없어서 클라이언트에서 처리).
+
+    한 번도 members.json에 등록된 적 없는 아이디로 들어오면 그냥 빈 화면으로
+    남긴다(요청사항). 등록은 됐지만 특정 달에 데이터가 없는 경우(그 달엔 아직
+    팀이 아니었다거나)는 그 달을 선택하면 카드 자체가 숨겨진다.
+
+    이번 달 별풍선/방송시간/누적시청자만 보여주고(팀 내 순위는 표시 안 함),
+    연/월 select로 과거 데이터도 조회 가능. 스폰전적(eloboard.com)은 아직
+    크롤링 허가를 못 받아서 "준비중"으로 자리만 잡아둔다.
+    """
+    current_year, current_month = all_data[0]["year"], all_data[0]["month"]
+
+    years_months = {}  # {연도: {월, 월, ...}}
+    profiles_by_key = {}  # {"YYYY-MM": {"membersById": {...}, "updatedAt": ...}}
+    all_ids = set()
+    all_team_names = set()
+
+    for data in all_data:
+        y, m = data["year"], data["month"]
+        years_months.setdefault(y, set()).add(m)
+        key = f"{y:04d}-{m:02d}"
+
+        members_by_id = {}
+        for mem in data["members"]:
+            mid = mem.get("id")
+            if not mid:
+                continue
+            all_ids.add(mid)
+            if mem.get("team"):
+                all_team_names.add(mem["team"])
+            members_by_id[mid] = {
+                "nickname": mem.get("nickname"),
+                "gender": mem.get("gender"),
+                "birthdate": mem.get("birthdate"),
+                "team": mem.get("team"),
+                "role": mem.get("role"),
+                "race": mem.get("race"),
+                "tier": mem.get("tier"),
+                "balloons": mem.get("balloons", 0),
+                "broadcast_seconds": mem.get("broadcast_seconds", 0),
+                "cumulative_viewers": mem.get("cumulative_viewers", 0),
+            }
+        profiles_by_key[key] = {"membersById": members_by_id, "updatedAt": data["updated_at"]}
+
+    # 팀 카드/팀 페이지랑 동일한 로고 색상 추출 로직을 그대로 재사용해서, 프로필
+    # 카드 상단 바도 그 사람 소속팀 색으로 맞춘다. 로고가 없는 팀이나 team이
+    # 아예 없는 경우(탈퇴 등)는 기본 파란색(DEFAULT_TOPBAR_COLOR)으로 빠진다.
+    team_colors = {team: get_team_topbar_color(team) for team in all_team_names}
+    team_colors_json = json.dumps(team_colors, ensure_ascii=False)
+
+    years_sorted = sorted(years_months.keys(), reverse=True)
+    year_options = "".join(
+        f"<option value='{y}'{' selected' if y == current_year else ''}>{y}년</option>"
+        for y in years_sorted
+    )
+    months_for_current_year = sorted(years_months[current_year], reverse=True)
+    month_options = "".join(
+        f"<option value='{m}'{' selected' if m == current_month else ''}>{m:02d}월</option>"
+        for m in months_for_current_year
+    )
+    months_by_year_json = json.dumps({str(y): sorted(ms, reverse=True) for y, ms in years_months.items()})
+    profiles_json = json.dumps(profiles_by_key, ensure_ascii=False)
+    all_ids_json = json.dumps(sorted(all_ids))
+
+    nav_html = f"""
+  <span class="month-select-group">
+    <select class="top-date-select" id="ms-year-select">{year_options}</select>
+    <span class="nav-chevron">⌄</span>
+    <select class="top-date-select" id="ms-month-select">{month_options}</select>
+    <span class="nav-chevron">⌄</span>
+  </span>
+    """
+
+    top_bar_html = f"""
+  <div class="top-bar">
+    {nav_html}
+    <span class="top-meta-group">
+      <a href="#" id="profile-back-link" class="back-link" style="display:none;">← 뒤로가기</a>
+      <span class="top-meta-sep" id="profile-back-sep" style="display:none;">·</span>
+      <span class="top-meta" id="top-meta-text"></span>
+    </span>
+  </div>
+    """
+
+    body_html = f"""
+  <div style="max-width:1080px;margin:0 auto;">
+  <div class="team-card" id="profile-card" style="display:none;">
+    <div class="team-card-topbar" id="profile-topbar"></div>
+    <div class="team-header">
+      <div class="team-header-left">
+        <img class="team-logo" id="profile-photo" alt="">
+        <span class="team-name" id="profile-nickname"></span>
+      </div>
+    </div>
+    <div class="profile-info">
+      <div class="profile-row"><span class="profile-row-label">성별</span><span class="profile-row-value" id="profile-gender"></span></div>
+      <div class="profile-row"><span class="profile-row-label">생년월일</span><span class="profile-row-value" id="profile-birthdate"></span></div>
+      <div class="profile-row"><span class="profile-row-label">소속</span><span class="profile-row-value" id="profile-team"></span></div>
+      <div class="profile-row"><span class="profile-row-label">직책</span><span class="profile-row-value" id="profile-role"></span></div>
+      <div class="profile-row"><span class="profile-row-label">종족</span><span class="profile-row-value" id="profile-race"></span></div>
+      <div class="profile-row"><span class="profile-row-label">티어</span><span class="profile-row-value" id="profile-tier"></span></div>
+      <div class="profile-row">
+        <span class="profile-row-label">방송국</span>
+        <a id="profile-station-link" href="#" target="_blank" rel="noopener">
+          <img class="profile-station-icon" src="icons/soop-logo.jpg" alt="방송국 바로가기">
+        </a>
+      </div>
+    </div>
+    <div class="team-footer">
+      <div class="stat-card">
+        <div class="stat-card-header"><span class="stat-label">별풍선</span></div>
+        <div class="stat-value" id="profile-balloons"></div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-card-header"><span class="stat-label">방송시간</span></div>
+        <div class="stat-value" id="profile-broadcast"></div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-card-header"><span class="stat-label">누적시청자</span></div>
+        <div class="stat-value" id="profile-viewers"></div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-card-header"><span class="stat-label">스폰전적</span></div>
+        <div class="stat-value" style="font-size:11px;color:#a4a8b2;">준비중</div>
+      </div>
+    </div>
+  </div>
+  </div>
+    """
+
+    extra_script = f"""<script>
+(function () {{
+  var profiles = {profiles_json};
+  var teamColors = {team_colors_json};
+  var monthsByYear = {months_by_year_json};
+  var allIds = {all_ids_json};
+  var targetId = new URLSearchParams(window.location.search).get('id');
+
+  // 등록된 적이 한 번도 없는 아이디면 그냥 빈 화면으로 남긴다.
+  if (!targetId || allIds.indexOf(targetId) === -1) {{
+    return;
+  }}
+
+  // 뒤로가기: 전체페이지에서 눌러서 왔으면 전체페이지로, 팀페이지에서 눌러서
+  // 왔으면 그 팀페이지로 - referrer(직전 페이지 주소)를 그대로 목적지로 쓴다.
+  // 이러면 전체페이지/팀페이지가 그때 보고 있던 연/월/지표 상태까지 그대로
+  // 유지된 채로 돌아간다. referrer가 없거나(직접 URL 입력 등) 다른 사이트에서
+  // 온 경우는 뒤로 갈 곳이 마땅치 않으므로 버튼 자체를 숨긴다.
+  (function () {{
+    var backLink = document.getElementById('profile-back-link');
+    var backSep = document.getElementById('profile-back-sep');
+    if (!document.referrer) return;
+    try {{
+      var ref = new URL(document.referrer);
+      if (ref.origin !== window.location.origin) return;
+      backLink.href = document.referrer;
+      backLink.style.display = '';
+      backSep.style.display = '';
+    }} catch (e) {{}}
+  }})();
+
+  var yearSel = document.getElementById('ms-year-select');
+  var monthSel = document.getElementById('ms-month-select');
+  var metaSpan = document.getElementById('top-meta-text');
+  var card = document.getElementById('profile-card');
+
+  function pad(n) {{ n = parseInt(n, 10); return (n < 10 ? '0' : '') + n; }}
+  function fmt(n) {{ return (n || 0).toLocaleString('ko-KR'); }}
+  function fmtBroadcast(sec) {{
+    sec = sec || 0;
+    return Math.floor(sec / 3600) + 'h ' + Math.floor((sec % 3600) / 60) + 'm';
+  }}
+
+  function populateMonths(year, preselectMonth) {{
+    monthSel.innerHTML = '';
+    (monthsByYear[year] || []).forEach(function (m) {{
+      var opt = document.createElement('option');
+      opt.value = m;
+      opt.textContent = pad(m) + '월';
+      if (m === preselectMonth) opt.selected = true;
+      monthSel.appendChild(opt);
+    }});
+  }}
+
+  function apply() {{
+    var key = yearSel.value + '-' + pad(monthSel.value);
+    var monthData = profiles[key];
+    var member = monthData ? monthData.membersById[targetId] : null;
+
+    if (!member) {{
+      // 등록은 됐지만 이 달엔 데이터가 없는 경우 - 카드만 숨긴다.
+      card.style.display = 'none';
+      metaSpan.textContent = '';
+      return;
+    }}
+
+    card.style.display = '';
+    var photoImg = document.getElementById('profile-photo');
+    photoImg.onerror = function () {{ this.style.visibility = 'hidden'; }};
+    photoImg.onload = function () {{ this.style.visibility = ''; }};
+    photoImg.src = '{SOOP_PROFILE_IMG_TEMPLATE}'.split('{{id}}').join(targetId);
+    document.getElementById('profile-topbar').style.background = teamColors[member.team] || '{DEFAULT_TOPBAR_COLOR}';
+    document.getElementById('profile-nickname').textContent = member.nickname || '';
+    document.getElementById('profile-gender').textContent = member.gender === 'f' ? '여' : '남';
+    document.getElementById('profile-birthdate').textContent = member.birthdate || '-';
+    document.getElementById('profile-team').textContent = member.team || '-';
+    document.getElementById('profile-role').textContent = member.role || '-';
+    document.getElementById('profile-race').textContent = member.race || '-';
+    document.getElementById('profile-tier').textContent = member.tier || '-';
+    document.getElementById('profile-station-link').href = '{SOOP_STATION_TEMPLATE}'.split('{{id}}').join(targetId);
+    document.getElementById('profile-balloons').textContent = fmt(member.balloons);
+    document.getElementById('profile-broadcast').textContent = fmtBroadcast(member.broadcast_seconds);
+    document.getElementById('profile-viewers').textContent = fmt(member.cumulative_viewers);
+
+    document.title = (member.nickname || targetId) + ' 프로필';
+    metaSpan.innerHTML = '업데이트 ' + monthData.updatedAt +
+      ' · 출처: <a href="https://poonggo.com" target="_blank" rel="noopener" class="source-link">풍고</a>';
+  }}
+
+  yearSel.addEventListener('change', function () {{
+    var year = yearSel.value;
+    var monthsInYear = monthsByYear[year] || [];
+    populateMonths(year, monthsInYear.length ? monthsInYear[0] : null);
+    apply();
+  }});
+  monthSel.addEventListener('change', apply);
+
+  apply();
+}})();
+</script>"""
+
+    return page_shell(
+        top_bar_html=top_bar_html, body_html=body_html, include_mobile_css=True,
+        title="프로필", extra_script=extra_script, logo_prefix="", show_legend=False,
+    )
+
+
 def main():
     current_data, all_data = load_all_month_data()
     current_year, current_month = current_data["year"], current_data["month"]
@@ -1044,6 +1329,12 @@ def main():
             with open(out_path, "w", encoding="utf-8") as f:
                 f.write(team_html)
             print(f"완료: {out_path} 생성됨")
+
+    # 개인 프로필 페이지 - profile.html?id=SOOP아이디 로 전 인원 대응
+    profile_html = build_profile_page(all_data)
+    with open(OUTPUT_PROFILE_PATH, "w", encoding="utf-8") as f:
+        f.write(profile_html)
+    print(f"완료: {OUTPUT_PROFILE_PATH} 생성됨")
 
 
 if __name__ == "__main__":

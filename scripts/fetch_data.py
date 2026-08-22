@@ -38,6 +38,11 @@ DATETIME_FORMAT = "%Y-%m-%d %H:%M:%S"
 
 # 풍고 쪽에서 요청을 구분할 수 있도록, 자동화된 요청임을 정직하게 밝히는 User-Agent
 # (사전에 정식으로 이용 허가를 받은 상태이므로 브라우저로 위장하지 않음)
+# FA/휴면인 사람은 나중에 개인 프로필용으로 members.json에 미리 등록해두는
+# 것뿐, 실제 팀 소속이 아니라서 풍고 API 조회 대상에서도 뺀다(별풍선/방송시간/
+# 누적시청자를 끌어올 필요가 없음 - 0으로 남는다).
+NON_TEAM_LABELS = {"FA", "휴면"}
+
 REQUEST_HEADERS = {
     "User-Agent": "poong-stats-bot/1.0 (+https://brain-09.github.io/poong-stats/)",
     "Accept": "application/json",
@@ -181,7 +186,7 @@ def main():
         config = json.load(f)
 
     members = config["members"]
-    all_ids = [m["id"] for m in members if m.get("id")]
+    all_ids = [m["id"] for m in members if m.get("id") and m.get("team") not in NON_TEAM_LABELS]
 
     now = kst_now()
     year, month = now.year, now.month
@@ -200,8 +205,9 @@ def main():
 
     for m in members:
         member_id = m.get("id")
-        member_data = data_by_id.get(member_id) if member_id else None
-        if member_id and member_data is None:
+        is_non_team = m.get("team") in NON_TEAM_LABELS
+        member_data = data_by_id.get(member_id) if member_id and not is_non_team else None
+        if member_id and member_data is None and not is_non_team:
             not_found.append(f"{m['nickname']}({member_id})")
 
         out_members.append({
@@ -211,6 +217,8 @@ def main():
             "birthdate": m.get("birthdate"),
             "role": m.get("role"),
             "team": m.get("team"),
+            "race": m.get("race"),
+            "tier": m.get("tier"),
             "balloons": member_data["balloons"] if member_data else 0,
             "broadcast_seconds": member_data["broadcast_seconds"] if member_data else 0,
             "cumulative_viewers": member_data["cumulative_viewers"] if member_data else 0,
