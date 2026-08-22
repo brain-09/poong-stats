@@ -163,6 +163,17 @@ PAGE_CSS = """
     margin: 0 4px;
     user-select: none;
   }
+  .back-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    font-size: 13px;
+    font-weight: 500;
+    color: #8a8d97;
+    text-decoration: none;
+    margin: 0 0 8px 4px;
+  }
+  .back-link:hover { color: #4a5ce0; }
   .top-meta {
     font-size: 10px;
     color: #a4a8b2;
@@ -705,6 +716,30 @@ def page_shell(*, top_bar_html: str, body_html: str, include_mobile_css: bool = 
     맞춘다 (전체 페이지는 "", 팀 단독 페이지는 "../")."""
     style = PAGE_CSS + (MOBILE_CSS if include_mobile_css else "")
     font_url = f"{logo_prefix}fonts/PretendardVariable.woff2"
+
+    # 팀 단독 페이지(logo_prefix="../")에서만 카드 바깥 위쪽에 뒤로가기 링크를 둔다.
+    # 카드 안 "연도/월/지표" 부분은 전체 페이지와 완전히 동일한 위치/크기를 유지해야
+    # 하므로, 뒤로가기는 카드 안에 넣지 않고 카드 바깥에 별도 줄로 분리한다.
+    back_link_html = ""
+    iframe_hide_script = ""
+    if logo_prefix:
+        back_link_html = (
+            f'<a href="{logo_prefix}index.html" id="back-to-full-link" class="back-link">'
+            f'← 전체페이지</a>'
+        )
+        # 와이고수 게시글 등에 iframe으로 삽입됐을 때는 "전체페이지로" 이동이
+        # 의미가 없으므로(embed 안에서 넘어가봤자 어색함), iframe 안에서 열린
+        # 경우에만 이 링크를 숨긴다. 브라우저에서 직접 team 페이지 URL로 들어온
+        # 경우(= 최상위 문서)에는 그대로 보여준다.
+        iframe_hide_script = """<script>
+(function () {
+  var backLink = document.getElementById('back-to-full-link');
+  if (backLink && window.self !== window.top) {
+    backLink.style.display = 'none';
+  }
+})();
+</script>"""
+
     return f"""<!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -724,6 +759,7 @@ def page_shell(*, top_bar_html: str, body_html: str, include_mobile_css: bool = 
 </style>
 </head>
 <body>
+  {back_link_html}
   {top_bar_html}
   {body_html}
   <div class="legend">
@@ -734,6 +770,7 @@ def page_shell(*, top_bar_html: str, body_html: str, include_mobile_css: bool = 
     <span>🎂 생일</span>
   </div>
 {extra_script}
+{iframe_hide_script}
 </body>
 </html>
 """
@@ -886,6 +923,13 @@ def assemble_single_page(all_data: list, current_year: int, current_month: int,
 
     if (roleLegendItem) roleLegendItem.style.display = m.excludeRoles ? '' : 'none';
     document.title = m.title;
+
+    // 팀 단독 페이지에서만 존재하는 뒤로가기 링크 - 지금 보고 있던 연/월/지표를
+    // 그대로 유지한 채 전체 페이지로 돌아가도록 쿼리파라미터를 갱신해둔다.
+    var backLink = document.getElementById('back-to-full-link');
+    if (backLink) {{
+      backLink.href = '../index.html?y=' + yearSel.value + '&m=' + pad(monthSel.value) + '&metric=' + metricSel.value;
+    }}
   }}
 
   yearSel.addEventListener('change', function () {{
