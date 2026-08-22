@@ -68,14 +68,19 @@
   .back-link {
     display: inline-flex;
     align-items: center;
-    gap: 4px;
-    font-size: 13px;
-    font-weight: 500;
+    gap: 3px;
+    font-size: 10px;
+    font-weight: 600;
     color: #8a8d97;
     text-decoration: none;
-    margin: 0 0 8px 4px;
   }
   .back-link:hover { color: #4a5ce0; }
+  .top-meta-group {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 3px;
+  }
   .top-meta {
     font-size: 10px;
     color: #a4a8b2;
@@ -271,7 +276,6 @@
 </style>
 </head>
 <body>
-  <a href="../index.html" id="back-to-full-link" class="back-link">← 전체페이지</a>
   
   <div class="top-bar">
     
@@ -284,7 +288,10 @@
     <span class="nav-chevron">⌄</span>
   </span>
     
-    <span class="top-meta" id="top-meta-text">14팀 · 245명 · 업데이트 2026-08-22 16:43:05 · 출처: <a href='https://poonggo.com' target='_blank' rel='noopener' class='source-link'>풍고</a></span>
+    <span class="top-meta-group">
+      <span class="top-meta" id="top-meta-text">14팀 · 245명 · 업데이트 2026-08-22 16:48:51 · 출처: <a href='https://poonggo.com' target='_blank' rel='noopener' class='source-link'>풍고</a></span>
+      <a href="../index.html" id="back-to-full-link" class="back-link">← 전체페이지</a>
+    </span>
   </div>
     
   
@@ -491,7 +498,7 @@
   </div>
 <script>
 (function () {
-  var meta = {"2026-08-balloon": {"teamCount": 14, "memberCount": 245, "updatedAt": "2026-08-22 16:43:05", "excludeRoles": true, "title": "엠비대 별풍선"}, "2026-08-broadcast": {"teamCount": 14, "memberCount": 245, "updatedAt": "2026-08-22 16:43:05", "excludeRoles": false, "title": "엠비대 방송시간"}, "2026-08-viewer": {"teamCount": 14, "memberCount": 245, "updatedAt": "2026-08-22 16:43:05", "excludeRoles": true, "title": "엠비대 누적시청자"}, "2026-07-balloon": {"teamCount": 12, "memberCount": 227, "updatedAt": "수동 백필", "excludeRoles": true, "title": "엠비대 별풍선"}, "2026-07-broadcast": {"teamCount": 12, "memberCount": 227, "updatedAt": "수동 백필", "excludeRoles": false, "title": "엠비대 방송시간"}, "2026-07-viewer": {"teamCount": 12, "memberCount": 227, "updatedAt": "수동 백필", "excludeRoles": true, "title": "엠비대 누적시청자"}};
+  var meta = {"2026-08-balloon": {"teamCount": 14, "memberCount": 245, "updatedAt": "2026-08-22 16:48:51", "excludeRoles": true, "title": "엠비대 별풍선"}, "2026-08-broadcast": {"teamCount": 14, "memberCount": 245, "updatedAt": "2026-08-22 16:48:51", "excludeRoles": false, "title": "엠비대 방송시간"}, "2026-08-viewer": {"teamCount": 14, "memberCount": 245, "updatedAt": "2026-08-22 16:48:51", "excludeRoles": true, "title": "엠비대 누적시청자"}, "2026-07-balloon": {"teamCount": 12, "memberCount": 227, "updatedAt": "수동 백필", "excludeRoles": true, "title": "엠비대 별풍선"}, "2026-07-broadcast": {"teamCount": 12, "memberCount": 227, "updatedAt": "수동 백필", "excludeRoles": false, "title": "엠비대 방송시간"}, "2026-07-viewer": {"teamCount": 12, "memberCount": 227, "updatedAt": "수동 백필", "excludeRoles": true, "title": "엠비대 누적시청자"}};
   var monthsByYear = {"2026": [8, 7]};
   var yearSel = document.getElementById('ms-year-select');
   var monthSel = document.getElementById('ms-month-select');
